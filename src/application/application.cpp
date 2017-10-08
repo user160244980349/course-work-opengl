@@ -4,58 +4,46 @@
 
 #include "application.hpp"
 #include <iostream>
-#include <SDL_ttf.h>
-#include <SDL_image.h>
 #include <GL/glew.h>
-//#include <SDL_opengl.h>
+#include <application.hpp>
 
 
 application::application::application() {
 
     init();
+    prepare_shaders();
     flow();
-    drop();
+
+}
+
+application::application::~application() {
+
+    SDL_DestroyWindow(sdl_variables.window);
+    SDL_Quit();
 
 }
 
 int application::application::init() {
-// инициализация SDL
-    if ( SDL_Init(SDL_INIT_EVERYTHING) != 0 ){
+
+    if ( SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0 ){
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
         exit(1);
     }
 
-//     инициализация TTF
-    if ( TTF_Init() != 0 ){
-        std::cout << "Unable to init TTF, error: " << TTF_GetError() << std::endl;
-        exit(3);
-    }
-
-//    инициализация IMG
-    if ( IMG_Init(IMG_INIT_PNG) == 0 ){
-        std::cout << "Unable to init IMG, error: " << IMG_GetError() << std::endl;
-        exit(4);
-    }
-
-//     Создаем окно с заголовком расположенным по центру экрана.
    sdl_variables.window = SDL_CreateWindow("Cube", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_parameters.width, window_parameters.height, SDL_WINDOW_OPENGL);
 
-//     если не получилось создать окно, то выходим
-    if(sdl_variables.window == NULL){
+    if(sdl_variables.window == nullptr){
         std::cout << "Unable to create window, error: " << SDL_GetError() << std::endl;
         exit(5);
     }
 
-//     создаем контекст OpenGL
     SDL_GLContext glcontext = SDL_GL_CreateContext(sdl_variables.window);
 
-//     если не получилось создать контекст, то выходим
-    if(glcontext == NULL){
+    if(glcontext == nullptr){
         std::cout << "Unable to create OpenGL context, error: " << SDL_GetError() << std::endl;
         exit(6);
     }
 
-//     Включаем двойной буфер, настраиваем цвета
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
@@ -64,17 +52,15 @@ int application::application::init() {
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 6);
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
 
-//    Инициализация OpenGL
-//    PFNGLCLEARCOLORIIEXTPROC glClearColor = (PFNGLCLEARCOLORIIEXTPROC)SDL_GL_GetProcAddress("glClearColor");
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // устанавливаем фоновый цвет на черный
-    glClearDepth(1.0);
-    glDepthFunc(GL_LESS);
-    glEnable(GL_DEPTH_TEST); // включаем тест глубины
-    glShadeModel(GL_SMOOTH);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(45.0f, (float) window_parameters.width / (float) window_parameters.height, 0.1f, 100.0f); // настраиваем трехмерную перспективу
-    glMatrixMode(GL_MODELVIEW); // переходим в трехмерный режим
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+//    glClearDepth(1.0);
+//    glDepthFunc(GL_LESS);
+//    glEnable(GL_DEPTH_TEST);
+//    glShadeModel(GL_SMOOTH);
+//    glMatrixMode(GL_PROJECTION);
+//    glLoadIdentity();
+//    gluPerspective(45.0f, (float) window_parameters.width / (float) window_parameters.height, 0.1f, 100.0f);
+//    glMatrixMode(GL_MODELVIEW);
 
     return 0;
 }
@@ -105,30 +91,26 @@ int application::application::flow() {
             default:
                 break;
         }
-//        запоминаем предыдущее событие
         sdl_variables.last_key_pressed = sdl_variables.event;
 
-//        рисуем
         draw();
 
-//        обновляем экран
         SDL_GL_SwapWindow(sdl_variables.window);
     }
 
     return 0;
 }
 
-int application::application::drop() {
+int application::application::draw() {
 
-    SDL_Quit();
+    objects.p1.draw();
 
     return 0;
 }
 
-int application::application::draw() {
+int application::application::prepare_shaders() {
 
-    objects.c1.draw();
-    objects.c1.rotate();
+    objects.p1.prepare_shaders();
 
     return 0;
 }

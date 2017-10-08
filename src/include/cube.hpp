@@ -9,6 +9,7 @@ namespace application::objects {
 
     class cube {
     private:
+
         struct {
             float xrf = 0;
             float yrf = 0;
@@ -16,6 +17,7 @@ namespace application::objects {
         } rotation;
 
     public:
+
         cube();
         int rotate();
         int draw();
