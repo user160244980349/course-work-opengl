@@ -11,13 +11,15 @@ namespace application::graphics {
 
     class vao_vbo {
     private:
-        GLuint VAO;
-        GLuint VBO;
+        struct {
+            GLuint VAO;
+            GLuint VBO;
+        } buffers;
 
     public:
         ~vao_vbo();
-        int prepare(GLfloat *vertices, int count);
-        int draw(int count);
+        int prepare();
+        int draw();
     };
 
 }

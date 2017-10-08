@@ -11,12 +11,16 @@ set(SOURCE_FILES
         src/include/application.hpp
         src/objects/cube.cpp
         src/include/cube.hpp
-        src/objects/primitive.cpp
-        src/include/primitive.hpp
         src/application/shader.cpp
         src/include/shader.hpp
         src/application/timer.cpp
-        src/include/timer.hpp)
+        src/include/timer.hpp
+        src/include/base_object.hpp
+        src/objects/base_object.cpp
+        src/application/vao.cpp
+        src/include/vao.hpp
+        src/application/vbo.cpp
+        src/include/vbo.hpp)
 
 # executables
 add_executable(OpenGL   ${SOURCE_FILES})

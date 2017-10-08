@@ -77,31 +77,12 @@ int application::graphics::shader::prepare(const GLchar *vertex_path, const GLch
     glDeleteShader(shader_variables.vertex_shader);
     glDeleteShader(shader_variables.fragment_shader);
 
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glBindVertexArray(VAO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), nullptr);
-    glEnableVertexAttribArray(0);
+    return 0;
+}
+
+int application::graphics::shader::use() {
 
     glUseProgram(shader_variables.shader_program);
 
     return 0;
-}
-
-int application::graphics::shader::draw() {
-
-    glBindVertexArray(VAO);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
-
-    return 0;
-}
-
-application::graphics::shader::~shader() {
-
-    glDeleteVertexArrays( 1, &VAO );
-    glDeleteBuffers( 1, &VBO );
-
-
 }

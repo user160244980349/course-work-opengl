@@ -6,7 +6,7 @@
 #define OPENGL_APPLICATION_HPP
 
 #include <SDL.h>
-#include "primitive.hpp"
+#include "base_object.hpp"
 #include "cube.hpp"
 #include "timer.hpp"
 
@@ -31,8 +31,7 @@ namespace application {
         } state_variables;
 
         struct {
-            objects::primitive p1;
-            objects::cube c1;
+            objects::base_object p1;
         } objects;
 
         timer frame_update;
