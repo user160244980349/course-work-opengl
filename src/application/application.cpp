@@ -87,14 +87,14 @@ int application::application::flow() {
 
 int application::application::draw() {
 
-    objects.p1.draw();
+    objects.pd.draw();
 
     return 0;
 }
 
 int application::application::prepare_objects() {
 
-    objects.p1.prepare();
+    objects.pd.prepare();
 
     return 0;
 }

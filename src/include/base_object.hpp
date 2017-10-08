@@ -1,5 +1,5 @@
 //
-// Created by user on 08.10.2017.
+// Created by user on 09.10.2017.
 //
 
 #ifndef OPENGL_BASE_OBJECT_HPP
@@ -14,7 +14,7 @@
 namespace application::objects {
 
     class base_object {
-    private:
+    protected:
 
         struct {
             graphics::vao vao_buffer;
@@ -25,8 +25,8 @@ namespace application::objects {
         std::vector<graphics::shader> shaders;
 
     public:
-        int prepare();
-        int draw();
+        virtual int prepare();
+        virtual int draw();
     };
 
 }
