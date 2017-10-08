@@ -12,8 +12,8 @@ namespace application::graphics {
     class shader {
     private:
 
-        GLuint VAO;
-        GLuint VBO;
+        GLuint VAO = 0;
+        GLuint VBO = 0;
 
         GLfloat vertices[9] = {
                 -0.5f, -0.5f, 1.0f,
@@ -22,12 +22,13 @@ namespace application::graphics {
         };
 
         struct {
-            GLuint shader_program;
-            GLuint vertex_shader;
-            GLuint fragment_shader;
+            GLuint shader_program = 0;
+            GLuint vertex_shader = 0;
+            GLuint fragment_shader = 0;
         } shader_variables;
 
     public:
+        ~shader();
         int prepare(const GLchar *vertex_path, const GLchar *fragment_path);
         int draw();
     };

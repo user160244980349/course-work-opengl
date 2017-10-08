@@ -36,6 +36,14 @@ int application::application::init() {
         exit(5);
     }
 
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
+    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 6);
+    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
+
     SDL_GLContext glcontext = SDL_GL_CreateContext(sdl_variables.window);
 
     if(glcontext == nullptr){
@@ -45,23 +53,15 @@ int application::application::init() {
 
     glewInit();
 
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
-    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 6);
-    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
-
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glClearDepth(1.0);
-    glDepthFunc(GL_LESS);
-    glEnable(GL_DEPTH_TEST);
-    glShadeModel(GL_SMOOTH);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(45.0f, (float) window_parameters.width / (float) window_parameters.height, 0.1f, 100.0f);
-    glMatrixMode(GL_MODELVIEW);
+//    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+//    glClearDepth(1.0);
+//    glDepthFunc(GL_LESS);
+//    glEnable(GL_DEPTH_TEST);
+//    glShadeModel(GL_SMOOTH);
+//    glMatrixMode(GL_PROJECTION);
+//    glLoadIdentity();
+//    gluPerspective(45.0f, (float) window_parameters.width / (float) window_parameters.height, 0.1f, 100.0f);
+//    glMatrixMode(GL_MODELVIEW);
 
     return 0;
 }
@@ -87,9 +87,9 @@ int application::application::flow() {
 
 int application::application::draw() {
 
-    objects.c1.rotate();
-    objects.c1.draw();
-//    objects.p1.draw();
+//    objects.c1.rotate();
+//    objects.c1.draw();
+    objects.p1.draw();
 
     return 0;
 }
@@ -122,7 +122,11 @@ int application::application::key_caption() {
                     case SDLK_c:
                         frame_update.run();
                         break;
+                    default:
+                        break;
                 }
+                break;
+            default:
                 break;
         }
         sdl_variables.last_key_pressed = sdl_variables.event;
