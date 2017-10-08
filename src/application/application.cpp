@@ -54,14 +54,14 @@ int application::application::init() {
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
 
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-//    glClearDepth(1.0);
-//    glDepthFunc(GL_LESS);
-//    glEnable(GL_DEPTH_TEST);
-//    glShadeModel(GL_SMOOTH);
-//    glMatrixMode(GL_PROJECTION);
-//    glLoadIdentity();
-//    gluPerspective(45.0f, (float) window_parameters.width / (float) window_parameters.height, 0.1f, 100.0f);
-//    glMatrixMode(GL_MODELVIEW);
+    glClearDepth(1.0);
+    glDepthFunc(GL_LESS);
+    glEnable(GL_DEPTH_TEST);
+    glShadeModel(GL_SMOOTH);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(45.0f, (float) window_parameters.width / (float) window_parameters.height, 0.1f, 100.0f);
+    glMatrixMode(GL_MODELVIEW);
 
     return 0;
 }
@@ -74,7 +74,6 @@ int application::application::flow() {
     while(state_variables.running){
 
         key_caption();
-        glClear(GL_COLOR_BUFFER_BIT);
 
         if (frame_update.fired) {
             frame_update.reset();
@@ -88,9 +87,9 @@ int application::application::flow() {
 
 int application::application::draw() {
 
-//    objects.c1.rotate();
-//    objects.c1.draw();
-    objects.p1.draw();
+    objects.c1.rotate();
+    objects.c1.draw();
+//    objects.p1.draw();
 
     return 0;
 }
