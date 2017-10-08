@@ -19,6 +19,7 @@ int application::graphics::shader::prepare(const GLchar *vertex_path, const GLch
     std::stringstream fragment_shader_stream;
     const GLchar* glchar_vertex_code;
     const GLchar* glchar_fragment_code;
+
     GLint success;
     GLchar info_log[512];
 
@@ -41,7 +42,7 @@ int application::graphics::shader::prepare(const GLchar *vertex_path, const GLch
 
     } catch(std::ifstream::failure &e) {
         std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
-        exit(13);
+        exit(10);
     }
 
     glchar_vertex_code = vertex_code.c_str();
@@ -54,7 +55,7 @@ int application::graphics::shader::prepare(const GLchar *vertex_path, const GLch
     if(!success) {
         glGetShaderInfoLog(shader_variables.vertex_shader, 512, NULL, info_log);
         std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << info_log << std::endl;
-        exit(10);
+        exit(11);
     }
 
     shader_variables.fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -64,7 +65,7 @@ int application::graphics::shader::prepare(const GLchar *vertex_path, const GLch
     if(!success) {
         glGetShaderInfoLog(shader_variables.fragment_shader, 512, NULL, info_log);
         std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << info_log << std::endl;
-        exit(11);
+        exit(12);
     }
 
     shader_variables.shader_program = glCreateProgram();
@@ -75,7 +76,7 @@ int application::graphics::shader::prepare(const GLchar *vertex_path, const GLch
     if(!success) {
         glGetProgramInfoLog(shader_variables.shader_program, 512, NULL, info_log);
         std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << info_log << std::endl;
-        exit(12);
+        exit(13);
     }
 
     glDeleteShader(shader_variables.vertex_shader);

@@ -15,7 +15,6 @@ namespace application::graphics {
         GLuint VAO;
         GLuint VBO;
 
-
         struct {
             GLuint shader_program;
             GLuint vertex_shader;

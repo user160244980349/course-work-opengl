@@ -38,6 +38,7 @@ namespace application {
         int prepare_shaders();
         int flow();
         int draw();
+        int key_caption();
 
     public:
 

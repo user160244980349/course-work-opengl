@@ -54,14 +54,14 @@ int application::application::init() {
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
 
     glClearColor(0.1f, 0.2f, 0.2f, 1.0f);
-    glClearDepth(1.0);
-    glDepthFunc(GL_LESS);
-    glEnable(GL_DEPTH_TEST);
-    glShadeModel(GL_SMOOTH);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(45.0f, (float) window_parameters.width / (float) window_parameters.height, 0.1f, 100.0f);
-    glMatrixMode(GL_MODELVIEW);
+//    glClearDepth(1.0);
+//    glDepthFunc(GL_LESS);
+//    glEnable(GL_DEPTH_TEST);
+//    glShadeModel(GL_SMOOTH);
+//    glMatrixMode(GL_PROJECTION);
+//    glLoadIdentity();
+//    gluPerspective(45.0f, (float) window_parameters.width / (float) window_parameters.height, 0.1f, 100.0f);
+//    glMatrixMode(GL_MODELVIEW);
 
     return 0;
 }
@@ -70,30 +70,9 @@ int application::application::flow() {
 
 
     while(state_variables.running){
-
-        while(SDL_PollEvent(&sdl_variables.event)) {
-            switch (sdl_variables.event.type) {
-                case SDL_QUIT:
-                    state_variables.running = false;
-                    break;
-
-                case SDL_KEYDOWN:
-                    switch (sdl_variables.event.key.keysym.sym) {
-                        case SDLK_q:
-                            if (sdl_variables.last_key_pressed.type == SDL_KEYDOWN &&
-                                sdl_variables.last_key_pressed.key.keysym.sym == SDLK_LCTRL)
-                                state_variables.running = false;
-                            break;
-                    }
-                    break;
-            }
-            sdl_variables.last_key_pressed = sdl_variables.event;
-        }
-
+        key_caption();
         glClear(GL_COLOR_BUFFER_BIT);
-
         draw();
-
         SDL_GL_SwapWindow(sdl_variables.window);
     }
 
@@ -102,9 +81,9 @@ int application::application::flow() {
 
 int application::application::draw() {
 
-    objects.c1.rotate();
-    objects.c1.draw();
-//    objects.p1.draw();
+//    objects.c1.rotate();
+//    objects.c1.draw();
+    objects.p1.draw();
 
     return 0;
 }
@@ -112,6 +91,30 @@ int application::application::draw() {
 int application::application::prepare_shaders() {
 
     objects.p1.prepare_shaders();
+
+    return 0;
+}
+
+int application::application::key_caption() {
+
+    while(SDL_PollEvent(&sdl_variables.event)) {
+        switch (sdl_variables.event.type) {
+            case SDL_QUIT:
+                state_variables.running = false;
+                break;
+
+            case SDL_KEYDOWN:
+                switch (sdl_variables.event.key.keysym.sym) {
+                    case SDLK_q:
+                        if (sdl_variables.last_key_pressed.type == SDL_KEYDOWN &&
+                            sdl_variables.last_key_pressed.key.keysym.sym == SDLK_LCTRL)
+                            state_variables.running = false;
+                        break;
+                }
+                break;
+        }
+        sdl_variables.last_key_pressed = sdl_variables.event;
+    }
 
     return 0;
 }
