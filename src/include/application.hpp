@@ -16,8 +16,8 @@ namespace application {
     private:
 
         struct {
-            const int width = 640; // ширина окна
-            const int height = 480; // высота окна
+            const int width = 640;
+            const int height = 480;
         } window_parameters;
 
         struct {
@@ -37,7 +37,7 @@ namespace application {
         timer frame_update;
 
         int init();
-        int prepare_shaders();
+        int prepare_objects();
         int flow();
         int draw();
         int key_caption();

@@ -13,12 +13,13 @@ namespace application::graphics {
     class vao {
     private:
         GLuint buffer;
+        GLuint draw_style;
 
     public:
         ~vao();
         int create();
-        int set(vbo b);
-        int bind();
+        int set(vbo b, GLuint ds);
+        int bind(std::vector<glm::vec3> v);
     };
 
 }

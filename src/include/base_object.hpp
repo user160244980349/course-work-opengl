@@ -5,8 +5,9 @@
 #ifndef OPENGL_BASE_OBJECT_HPP
 #define OPENGL_BASE_OBJECT_HPP
 
+#include <vector>
+#include <vec3.hpp>
 #include "shader.hpp"
-#include "vao_vbo.hpp"
 #include "vao.hpp"
 #include "vbo.hpp"
 
@@ -16,16 +17,15 @@ namespace application::objects {
     private:
 
         struct {
-            graphics::shader s1;
-        } shaders;
-
-        struct {
             graphics::vao vao_buffer;
             graphics::vbo vbo_buffer;
         } buffers;
 
+        std::vector<glm::vec3> verices;
+        std::vector<graphics::shader> shaders;
+
     public:
-        int prepare_shaders();
+        int prepare();
         int draw();
     };
 

@@ -10,7 +10,7 @@
 application::application::application() {
 
     init();
-    prepare_shaders();
+    prepare_objects();
     flow();
 
 }
@@ -92,9 +92,9 @@ int application::application::draw() {
     return 0;
 }
 
-int application::application::prepare_shaders() {
+int application::application::prepare_objects() {
 
-    objects.p1.prepare_shaders();
+    objects.p1.prepare();
 
     return 0;
 }

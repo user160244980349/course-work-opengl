@@ -13,23 +13,22 @@ int application::graphics::vao::create() {
 }
 
 application::graphics::vao::~vao() {
-
-    glDeleteVertexArrays( 1, &buffer );
-
+    glDeleteVertexArrays(1, &buffer);
 }
 
-int application::graphics::vao::set(vbo b) {
+int application::graphics::vao::set(vbo b, GLuint ds) {
 
+    draw_style = ds;
     glBindVertexArray(buffer);
     glBindBuffer(GL_ARRAY_BUFFER, b.get());
 
     return 0;
 }
 
-int application::graphics::vao::bind() {
+int application::graphics::vao::bind(std::vector<glm::vec3> v) {
 
     glBindVertexArray(buffer);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawArrays(draw_style, 0, v.size());
 
     return 0;
 }

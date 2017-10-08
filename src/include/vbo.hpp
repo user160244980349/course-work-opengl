@@ -6,18 +6,19 @@
 #define OPENGL_VBO_HPP
 
 #include "GL/glew.h"
+#include <vec3.hpp>
+#include <vector>
 
 namespace application::graphics {
 
     class vbo {
     private:
-
         GLuint buffer;
 
     public:
         ~vbo();
         int create();
-        int set();
+        int set(std::vector<glm::vec3> v);
         GLuint get();
     };
 
