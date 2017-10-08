@@ -14,7 +14,9 @@ set(SOURCE_FILES
         src/objects/primitive.cpp
         src/include/primitive.hpp
         src/application/shader.cpp
-        src/include/shader.hpp)
+        src/include/shader.hpp
+        src/application/timer.cpp
+        src/include/timer.hpp)
 
 # executables
 add_executable(OpenGL   ${SOURCE_FILES})

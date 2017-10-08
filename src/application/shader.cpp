@@ -49,21 +49,21 @@ int application::graphics::shader::prepare(const GLchar *vertex_path, const GLch
     glchar_fragment_code = fragment_code.c_str();
 
     shader_variables.vertex_shader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(shader_variables.vertex_shader, 1, &glchar_vertex_code, NULL);
+    glShaderSource(shader_variables.vertex_shader, 1, &glchar_vertex_code, nullptr);
     glCompileShader(shader_variables.vertex_shader);
     glGetShaderiv(shader_variables.vertex_shader, GL_COMPILE_STATUS, &success);
     if(!success) {
-        glGetShaderInfoLog(shader_variables.vertex_shader, 512, NULL, info_log);
+        glGetShaderInfoLog(shader_variables.vertex_shader, 512, nullptr, info_log);
         std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << info_log << std::endl;
         exit(11);
     }
 
     shader_variables.fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(shader_variables.fragment_shader, 1, &glchar_fragment_code, NULL);
+    glShaderSource(shader_variables.fragment_shader, 1, &glchar_fragment_code, nullptr);
     glCompileShader(shader_variables.fragment_shader);
     glGetShaderiv(shader_variables.fragment_shader, GL_COMPILE_STATUS, &success);
     if(!success) {
-        glGetShaderInfoLog(shader_variables.fragment_shader, 512, NULL, info_log);
+        glGetShaderInfoLog(shader_variables.fragment_shader, 512, nullptr, info_log);
         std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << info_log << std::endl;
         exit(12);
     }
@@ -74,7 +74,7 @@ int application::graphics::shader::prepare(const GLchar *vertex_path, const GLch
     glLinkProgram(shader_variables.shader_program);
     glGetProgramiv(shader_variables.shader_program, GL_LINK_STATUS, &success);
     if(!success) {
-        glGetProgramInfoLog(shader_variables.shader_program, 512, NULL, info_log);
+        glGetProgramInfoLog(shader_variables.shader_program, 512, nullptr, info_log);
         std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << info_log << std::endl;
         exit(13);
     }
@@ -82,11 +82,6 @@ int application::graphics::shader::prepare(const GLchar *vertex_path, const GLch
     glDeleteShader(shader_variables.vertex_shader);
     glDeleteShader(shader_variables.fragment_shader);
 
-    GLfloat vertices[9] = {
-            -0.5f, -0.5f, 0.0f, // Left
-            0.5f, -0.5f, 0.0f, // Right
-            0.0f, 0.5f, 0.0f // Top
-    };
 
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);

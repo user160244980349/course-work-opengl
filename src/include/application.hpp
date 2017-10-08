@@ -8,6 +8,7 @@
 #include <SDL.h>
 #include "primitive.hpp"
 #include "cube.hpp"
+#include "timer.hpp"
 
 namespace application {
 
@@ -33,6 +34,8 @@ namespace application {
             objects::primitive p1;
             objects::cube c1;
         } objects;
+
+        timer frame_update;
 
         int init();
         int prepare_shaders();

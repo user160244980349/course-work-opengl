@@ -29,7 +29,7 @@ int application::application::init() {
         exit(1);
     }
 
-   sdl_variables.window = SDL_CreateWindow("Cube", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_parameters.width, window_parameters.height, SDL_WINDOW_ALLOW_HIGHDPI | SDL_WINDOW_OPENGL);
+   sdl_variables.window = SDL_CreateWindow("Cube", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_parameters.width, window_parameters.height, SDL_WINDOW_OPENGL);
 
     if(sdl_variables.window == nullptr){
         std::cout << "Unable to create window, error: " << SDL_GetError() << std::endl;
@@ -53,7 +53,7 @@ int application::application::init() {
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 6);
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
 
-    glClearColor(0.1f, 0.2f, 0.2f, 1.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 //    glClearDepth(1.0);
 //    glDepthFunc(GL_LESS);
 //    glEnable(GL_DEPTH_TEST);
@@ -68,12 +68,19 @@ int application::application::init() {
 
 int application::application::flow() {
 
+    frame_update.set(0.016);
+    frame_update.run();
 
     while(state_variables.running){
+
         key_caption();
         glClear(GL_COLOR_BUFFER_BIT);
-        draw();
-        SDL_GL_SwapWindow(sdl_variables.window);
+
+        if (frame_update.fired) {
+            frame_update.reset();
+            draw();
+            SDL_GL_SwapWindow(sdl_variables.window);
+        }
     }
 
     return 0;
@@ -109,6 +116,12 @@ int application::application::key_caption() {
                         if (sdl_variables.last_key_pressed.type == SDL_KEYDOWN &&
                             sdl_variables.last_key_pressed.key.keysym.sym == SDLK_LCTRL)
                             state_variables.running = false;
+                        break;
+                    case SDLK_s:
+                        frame_update.stop();
+                        break;
+                    case SDLK_c:
+                        frame_update.run();
                         break;
                 }
                 break;

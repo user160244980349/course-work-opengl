@@ -15,6 +15,12 @@ namespace application::graphics {
         GLuint VAO;
         GLuint VBO;
 
+        GLfloat vertices[9] = {
+                -0.5f, -0.5f, 1.0f,
+                0.5f, -0.5f, 1.0f,
+                0.0f,  0.5f, 1.0f
+        };
+
         struct {
             GLuint shader_program;
             GLuint vertex_shader;
