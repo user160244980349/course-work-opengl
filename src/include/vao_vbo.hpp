@@ -15,6 +15,7 @@ namespace application::graphics {
         GLuint VBO;
 
     public:
+        ~vao_vbo();
         int prepare(GLfloat *vertices, int count);
         int draw(int count);
     };

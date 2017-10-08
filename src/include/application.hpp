@@ -6,8 +6,8 @@
 #define OPENGL_APPLICATION_HPP
 
 #include <SDL.h>
-#include "cube.hpp"
 #include "primitive.hpp"
+#include "cube.hpp"
 
 namespace application {
 
@@ -31,6 +31,7 @@ namespace application {
 
         struct {
             objects::primitive p1;
+            objects::cube c1;
         } objects;
 
         int init();

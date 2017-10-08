@@ -14,11 +14,7 @@ namespace application::graphics {
 
         GLuint VAO;
         GLuint VBO;
-        GLfloat vertices[9] = {
-                -0.5f, -0.5f, 0.0f, // Left
-                0.5f, -0.5f, 0.0f, // Right
-                0.0f,  0.5f, 0.0f  // Top
-        };
+
 
         struct {
             GLuint shader_program;

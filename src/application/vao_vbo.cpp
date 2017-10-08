@@ -23,3 +23,10 @@ int application::graphics::vao_vbo::draw(int count) {
 
     return 0;
 }
+
+application::graphics::vao_vbo::~vao_vbo() {
+
+    glDeleteVertexArrays( 1, &VAO );
+    glDeleteBuffers( 1, &VBO );
+
+}
