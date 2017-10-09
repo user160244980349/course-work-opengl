@@ -34,7 +34,7 @@ int application::application::init() {
            SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
            window_parameters.width,
            window_parameters.height,
-           SDL_WINDOW_FULLSCREEN_DESKTOP |
+//           SDL_WINDOW_FULLSCREEN_DESKTOP |
            SDL_WINDOW_OPENGL
    );
 
@@ -115,6 +115,8 @@ int application::application::draw() {
             break;
         case 10:
             objects.random_dots.draw();
+            break;
+        default:
             break;
 
     }
