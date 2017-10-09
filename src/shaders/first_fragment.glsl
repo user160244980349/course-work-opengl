@@ -1,7 +1,9 @@
-#version 450
+#version 330 core
 
-out vec4 color;
+out vec4 outputColor;
+
+smooth in vec3 currentColor;
 
 void main() {
-    color = vec4(1.0f, 0.0f, 1.0f, 1.0f);
+   outputColor = vec4(currentColor, 1.0);   //Задаем цвет пикселя
 }

@@ -8,7 +8,7 @@
 #include "shader.hpp"
 
 
-int application::graphics::shader::prepare(const GLchar *vertex_path, const GLchar *fragment_path) {
+application::graphics::shader::shader(const GLchar *vertex_path, const GLchar *fragment_path) {
 
     std::string vertex_code;
     std::string fragment_code;
@@ -77,7 +77,6 @@ int application::graphics::shader::prepare(const GLchar *vertex_path, const GLch
     glDeleteShader(shader_variables.vertex_shader);
     glDeleteShader(shader_variables.fragment_shader);
 
-    return 0;
 }
 
 int application::graphics::shader::use() {

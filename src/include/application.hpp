@@ -8,17 +8,8 @@
 #include <SDL.h>
 #include "cube.hpp"
 #include "timer.hpp"
-#include "triangle.hpp"
-#include "many_triangles.hpp"
-#include "many_lines.hpp"
-#include "nonfilled_triangle.hpp"
-#include "trapeze.hpp"
-#include "parallelogram.hpp"
-#include "rectangle.hpp"
-#include "nangle.hpp"
-#include "deltoid.hpp"
-#include "rhombus.hpp"
-#include "random_dots.hpp"
+#include "base_object.hpp"
+#include "figure.hpp"
 
 namespace application {
 
@@ -41,19 +32,8 @@ namespace application {
         } state_variables;
 
         struct {
-//            objects::cube cd;
-//            objects::triangle pd;
-//            objects::many_triangles pd;
-//            objects::many_lines pd;
-//            objects::nonfilled_triangle pd;
-//            objects::trapeze pd;
-//            objects::parallelogram pd;
-//            objects::rectangle pd;
-//            objects::nangle pd;
-//            objects::deltoid pd;
-//            objects::rhombus pd;
-            objects::random_dots pd;
-
+//            objects::cube cube;
+            objects::figure figure;
         } objects;
 
         timer frame_update;

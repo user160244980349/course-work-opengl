@@ -20,22 +20,10 @@ set(SOURCE_FILES
         src/application/timer.cpp
         src/include/timer.hpp
 
-        src/application/vao.cpp
-        src/include/vao.hpp
-        src/application/vbo.cpp
-        src/include/vbo.hpp
-
         src/objects/base_object.cpp
         src/include/base_object.hpp
 
-        src/objects/triangle.cpp
-        src/include/triangle.hpp
-
-        src/objects/many_triangles.cpp
-        src/include/many_triangles.hpp
-
-        src/objects/many_lines.cpp
-        src/include/many_lines.hpp src/objects/nonfilled_triangle.cpp src/include/nonfilled_triangle.hpp src/objects/trapeze.cpp src/include/trapeze.hpp src/objects/parallelogram.cpp src/include/parallelogram.hpp src/objects/rectangle.cpp src/include/rectangle.hpp src/objects/nangle.cpp src/include/nangle.hpp src/objects/deltoid.cpp src/include/deltoid.hpp src/objects/rhombus.cpp src/include/rhombus.hpp src/objects/random_dots.cpp src/include/random_dots.hpp)
+        src/objects/figure.cpp src/include/figure.hpp src/include/vertex.hpp src/application/vao_vbo.cpp src/include/vao_vbo.hpp)
 
 # executables
 add_executable(OpenGL   ${SOURCE_FILES})

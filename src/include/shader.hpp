@@ -19,7 +19,7 @@ namespace application::graphics {
         } shader_variables;
 
     public:
-        int prepare(const GLchar *vertex_path, const GLchar *fragment_path);
+        shader(const GLchar *vertex_path, const GLchar *fragment_path);
         int use();
     };
 

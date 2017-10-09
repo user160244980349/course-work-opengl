@@ -8,20 +8,15 @@
 #include <vector>
 #include <vec3.hpp>
 #include "shader.hpp"
-#include "vao.hpp"
-#include "vbo.hpp"
+#include "vertex.hpp"
+#include "vao_vbo.hpp"
 
 namespace application::objects {
 
     class base_object {
     protected:
-
-        struct {
-            graphics::vao vao_buffer;
-            graphics::vbo vbo_buffer;
-        } buffers;
-
-        std::vector<glm::vec3> verices;
+        graphics::vao_vbo buffers;
+        std::vector<graphics::vertex> verices;
         std::vector<graphics::shader> shaders;
 
     public:

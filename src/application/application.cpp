@@ -79,6 +79,7 @@ int application::application::flow() {
             frame_update.reset();
             draw();
             SDL_GL_SwapWindow(sdl_variables.window);
+            glClear(GL_COLOR_BUFFER_BIT);
         }
     }
 
@@ -87,14 +88,16 @@ int application::application::flow() {
 
 int application::application::draw() {
 
-    objects.pd.draw();
+//    objects.cube.draw();
+    objects.figure.draw();
 
     return 0;
 }
 
 int application::application::prepare_objects() {
 
-    objects.pd.prepare();
+//    objects.cube.prepare();
+    objects.figure.prepare();
 
     return 0;
 }
@@ -114,10 +117,10 @@ int application::application::key_caption() {
                             sdl_variables.last_key_pressed.key.keysym.sym == SDLK_LCTRL)
                             state_variables.running = false;
                         break;
-                    case SDLK_s:
+                    case SDLK_w:
                         frame_update.stop();
                         break;
-                    case SDLK_c:
+                    case SDLK_e:
                         frame_update.run();
                         break;
                     default:
