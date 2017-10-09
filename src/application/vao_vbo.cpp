@@ -47,10 +47,10 @@ int application::graphics::vao_vbo::delete_buffer_combo(unsigned int n) {
     return 0;
 }
 
-int application::graphics::vao_vbo::bind_with_order(unsigned int n, std::vector<vertex> v, GLuint* o) {
+int application::graphics::vao_vbo::bind_with_order(unsigned int n, std::vector<vertex> v, unsigned int  count, GLuint ds, GLuint* o) {
 
     glBindVertexArray(buffers[n].vao);
-    glDrawElements(buffers[n].ds, v.size(), GL_UNSIGNED_INT, o);
+    glDrawElements(ds, count, GL_UNSIGNED_INT, o);
 
     return 0;
 }

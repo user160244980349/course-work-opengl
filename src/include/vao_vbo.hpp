@@ -26,7 +26,7 @@ namespace application::graphics {
         ~vao_vbo();
         int new_buffer_combo(GLuint ds, std::vector<vertex> &v);
         int delete_buffer_combo(unsigned int n);
-        int bind_with_order(unsigned int n, std::vector<vertex> v, GLuint *o);
+        int bind_with_order(unsigned int n, std::vector<vertex> v, unsigned int  count, GLuint ds, GLuint *o);
         int bind(unsigned int n, std::vector<vertex> v);
     };
 

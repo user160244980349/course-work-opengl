@@ -2,11 +2,16 @@
 // Created by user on 09.10.2017.
 //
 
+#include <vertex.hpp>
 #include "base_object.hpp"
 
 int application::objects::base_object::prepare() {
 
-    shaders.emplace_back(graphics::shader("../src/shaders/first_vertex.glsl", "../src/shaders/first_fragment.glsl"));
+    shaders.emplace_back(graphics::shader(
+            "../src/shaders/first_vertex.glsl",
+            "../src/shaders/first_fragment.glsl")
+    );
+
     shaders.front().use();
 
     verices.emplace_back(graphics::vertex{glm::vec2(-0.9f, -0.9f), glm::vec3(1.0f, 0.0f, 0.0f)});
@@ -21,9 +26,6 @@ int application::objects::base_object::prepare() {
 int application::objects::base_object::draw() {
 
     buffers.bind(0, verices);
-
-//    GLuint o[] = {0u, 1u, 0u};
-//    buffers.bind_with_order(0, verices, o);
 
     return 0;
 }

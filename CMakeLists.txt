@@ -20,7 +20,13 @@ set(SOURCE_FILES
         src/objects/base_object.cpp
         src/include/base_object.hpp
 
-        src/include/vertex.hpp src/application/vao_vbo.cpp src/include/vao_vbo.hpp)
+        src/include/vertex.hpp
+
+        src/application/vao_vbo.cpp
+        src/include/vao_vbo.hpp
+
+        src/objects/triangles.cpp
+        src/include/triangles.hpp src/objects/lines.cpp src/include/lines.hpp src/objects/isosceles_triangle.cpp src/include/isosceles_triangle.hpp src/objects/trapeze.cpp src/include/trapeze.hpp src/objects/nangle.cpp src/include/nangle.hpp src/objects/parallelogram.cpp src/include/parallelogram.hpp src/objects/rectangle.cpp src/include/rectangle.hpp src/objects/deltoid.cpp src/include/deltoid.hpp src/objects/rhombus.cpp src/include/rhombus.hpp src/objects/random_dots.cpp src/include/random_dots.hpp)
 
 # executables
 add_executable(OpenGL   ${SOURCE_FILES})

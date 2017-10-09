@@ -8,6 +8,16 @@
 #include <SDL.h>
 #include "timer.hpp"
 #include "base_object.hpp"
+#include "triangles.hpp"
+#include "lines.hpp"
+#include "isosceles_triangle.hpp"
+#include "trapeze.hpp"
+#include "nangle.hpp"
+#include "parallelogram.hpp"
+#include "rectangle.hpp"
+#include "deltoid.hpp"
+#include "rhombus.hpp"
+#include "random_dots.hpp"
 
 namespace application {
 
@@ -27,10 +37,21 @@ namespace application {
 
         struct {
             bool running = true;
+            int n = 0; // номер задания
         } state_variables;
 
         struct {
             objects::base_object figure;
+            objects::triangles triangles;
+            objects::lines lines;
+            objects::isosceles_triangle isosceles_triangle;
+            objects::trapeze trapeze;
+            objects::nangle nangle;
+            objects::parallelogram parallelogram;
+            objects::rectangle rectangle;
+            objects::deltoid deltoid;
+            objects::rhombus rhombus;
+            objects::random_dots random_dots;
         } objects;
 
         timer frame_update;

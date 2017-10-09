@@ -30,7 +30,14 @@ int application::application::init() {
         exit(1);
     }
 
-   sdl_variables.window = SDL_CreateWindow("OpenGL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_parameters.width, window_parameters.height, SDL_WINDOW_OPENGL);
+   sdl_variables.window = SDL_CreateWindow(
+           "OpenGL",
+           SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+           window_parameters.width,
+           window_parameters.height,
+           SDL_WINDOW_FULLSCREEN_DESKTOP |
+           SDL_WINDOW_OPENGL
+   );
 
     if(sdl_variables.window == nullptr){
         std::cout << "Unable to create window, error: " << SDL_GetError() << std::endl;
@@ -76,7 +83,42 @@ int application::application::flow() {
 
 int application::application::draw() {
 
-    objects.figure.draw();
+    switch (state_variables.n) {
+        case 0:
+            objects.figure.draw();
+            break;
+        case 1:
+            objects.triangles.draw();
+            break;
+        case 2:
+            objects.lines.draw();
+            break;
+        case 3:
+            objects.isosceles_triangle.draw();
+            break;
+        case 4:
+            objects.trapeze.draw();
+            break;
+        case 5:
+            objects.nangle.draw();
+            break;
+        case 6:
+            objects.parallelogram.draw();
+            break;
+        case 7:
+            objects.rectangle.draw();
+            break;
+        case 8:
+            objects.deltoid.draw();
+            break;
+        case 9:
+            objects.rhombus.draw();
+            break;
+        case 10:
+            objects.random_dots.draw();
+            break;
+
+    }
 
     return 0;
 }
@@ -84,6 +126,16 @@ int application::application::draw() {
 int application::application::prepare_objects() {
 
     objects.figure.prepare();
+    objects.triangles.prepare();
+    objects.lines.prepare();
+    objects.isosceles_triangle.prepare();
+    objects.trapeze.prepare();
+    objects.nangle.prepare();
+    objects.parallelogram.prepare();
+    objects.rectangle.prepare();
+    objects.deltoid.prepare();
+    objects.rhombus.prepare();
+    objects.random_dots.prepare();
 
     return 0;
 }
@@ -108,6 +160,12 @@ int application::application::key_caption() {
                         break;
                     case SDLK_e:
                         frame_update.run();
+                    case SDLK_1:
+                        if  (sdl_variables.event.key.keysym.sym == SDLK_1) {
+                            state_variables.n++;
+                            if (state_variables.n > 10)
+                                state_variables.n = 0;
+                        }
                         break;
                     default:
                         break;
