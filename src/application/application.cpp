@@ -5,7 +5,6 @@
 #include <iostream>
 #include <GL/glew.h>
 #include <application.hpp>
-#include "application.hpp"
 
 
 application::application::application() {
@@ -160,12 +159,10 @@ int application::application::key_caption() {
                         break;
                     case SDLK_e:
                         frame_update.run();
-                    case SDLK_1:
-                        if  (sdl_variables.event.key.keysym.sym == SDLK_1) {
+                    case SDLK_SPACE:
                             state_variables.n++;
                             if (state_variables.n > 10)
                                 state_variables.n = 0;
-                        }
                         break;
                     default:
                         break;
