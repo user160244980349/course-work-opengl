@@ -20,6 +20,7 @@ namespace application::graphics {
 
     public:
         shader(const GLchar *vertex_path, const GLchar *fragment_path);
+        ~shader();
         int use();
     };
 

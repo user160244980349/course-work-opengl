@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <GL/glew.h>
+#include <application.hpp>
 #include "application.hpp"
 
 
@@ -29,7 +30,7 @@ int application::application::init() {
         exit(1);
     }
 
-   sdl_variables.window = SDL_CreateWindow("Cube", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_parameters.width, window_parameters.height, SDL_WINDOW_OPENGL);
+   sdl_variables.window = SDL_CreateWindow("OpenGL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_parameters.width, window_parameters.height, SDL_WINDOW_OPENGL);
 
     if(sdl_variables.window == nullptr){
         std::cout << "Unable to create window, error: " << SDL_GetError() << std::endl;
@@ -37,12 +38,9 @@ int application::application::init() {
     }
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
-    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 6);
-    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
 
     SDL_GLContext glcontext = SDL_GL_CreateContext(sdl_variables.window);
 
@@ -52,16 +50,6 @@ int application::application::init() {
     }
 
     glewInit();
-
-//    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-//    glClearDepth(1.0);
-//    glDepthFunc(GL_LESS);
-//    glEnable(GL_DEPTH_TEST);
-//    glShadeModel(GL_SMOOTH);
-//    glMatrixMode(GL_PROJECTION);
-//    glLoadIdentity();
-//    gluPerspective(45.0f, (float) window_parameters.width / (float) window_parameters.height, 0.1f, 100.0f);
-//    glMatrixMode(GL_MODELVIEW);
 
     return 0;
 }
@@ -88,7 +76,6 @@ int application::application::flow() {
 
 int application::application::draw() {
 
-//    objects.cube.draw();
     objects.figure.draw();
 
     return 0;
@@ -96,7 +83,6 @@ int application::application::draw() {
 
 int application::application::prepare_objects() {
 
-//    objects.cube.prepare();
     objects.figure.prepare();
 
     return 0;

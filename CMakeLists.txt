@@ -11,9 +11,6 @@ set(SOURCE_FILES
         src/application/application.cpp
         src/include/application.hpp
 
-        src/objects/cube.cpp
-        src/include/cube.hpp
-
         src/application/shader.cpp
         src/include/shader.hpp
 
@@ -23,7 +20,7 @@ set(SOURCE_FILES
         src/objects/base_object.cpp
         src/include/base_object.hpp
 
-        src/objects/figure.cpp src/include/figure.hpp src/include/vertex.hpp src/application/vao_vbo.cpp src/include/vao_vbo.hpp)
+        src/include/vertex.hpp src/application/vao_vbo.cpp src/include/vao_vbo.hpp)
 
 # executables
 add_executable(OpenGL   ${SOURCE_FILES})

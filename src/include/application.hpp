@@ -6,10 +6,8 @@
 #define OPENGL_APPLICATION_HPP
 
 #include <SDL.h>
-#include "cube.hpp"
 #include "timer.hpp"
 #include "base_object.hpp"
-#include "figure.hpp"
 
 namespace application {
 
@@ -17,8 +15,8 @@ namespace application {
     private:
 
         struct {
-            const int width = 640;
-            const int height = 480;
+            const int width = 800;
+            const int height = 600;
         } window_parameters;
 
         struct {
@@ -32,8 +30,7 @@ namespace application {
         } state_variables;
 
         struct {
-//            objects::cube cube;
-            objects::figure figure;
+            objects::base_object figure;
         } objects;
 
         timer frame_update;

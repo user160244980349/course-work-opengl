@@ -74,9 +74,6 @@ application::graphics::shader::shader(const GLchar *vertex_path, const GLchar *f
         exit(13);
     }
 
-    glDeleteShader(shader_variables.vertex_shader);
-    glDeleteShader(shader_variables.fragment_shader);
-
 }
 
 int application::graphics::shader::use() {
@@ -84,4 +81,14 @@ int application::graphics::shader::use() {
     glUseProgram(shader_variables.shader_program);
 
     return 0;
+}
+
+application::graphics::shader::~shader() {
+
+//    glDetachShader(shader_variables.vertex_shader, shader_variables.shader_program);
+//    glDetachShader(shader_variables.fragment_shader, shader_variables.shader_program);
+//    glDeleteShader(shader_variables.vertex_shader);
+//    glDeleteShader(shader_variables.fragment_shader);
+//    glDeleteProgram(shader_variables.shader_program);
+
 }
