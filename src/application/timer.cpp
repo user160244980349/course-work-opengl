@@ -3,7 +3,7 @@
 //
 
 #include <SDL_timer.h>
-#include "timer.hpp"
+#include "application/timer.hpp"
 #include <thread>
 
 int application::timer::set(float i) {

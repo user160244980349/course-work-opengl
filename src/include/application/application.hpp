@@ -7,17 +7,7 @@
 
 #include <SDL.h>
 #include "timer.hpp"
-#include "base_object.hpp"
-#include "triangles.hpp"
-#include "lines.hpp"
-#include "isosceles_triangle.hpp"
-#include "trapeze.hpp"
-#include "nangle.hpp"
-#include "parallelogram.hpp"
-#include "rectangle.hpp"
-#include "deltoid.hpp"
-#include "rhombus.hpp"
-#include "random_dots.hpp"
+#include "objects/base_object.hpp"
 
 namespace application {
 
@@ -41,17 +31,7 @@ namespace application {
         } state_variables;
 
         struct {
-            objects::base_object figure;
-            objects::triangles triangles;
-            objects::lines lines;
-            objects::isosceles_triangle isosceles_triangle;
-            objects::trapeze trapeze;
-            objects::nangle nangle;
-            objects::parallelogram parallelogram;
-            objects::rectangle rectangle;
-            objects::deltoid deltoid;
-            objects::rhombus rhombus;
-            objects::random_dots random_dots;
+            objects::base_object base_object;
         } objects;
 
         timer frame_update;

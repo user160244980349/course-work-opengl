@@ -2,9 +2,9 @@
 // Created by user on 09.10.2017.
 //
 
-#include "vao_vbo.hpp"
+#include "application/base_vao_vbo.hpp"
 
-application::graphics::vao_vbo::~vao_vbo() {
+application::graphics::base_vao_vbo::~base_vao_vbo() {
 
     for (int i = 0; i < buffers.size(); i++) {
         glDeleteVertexArrays(i, &buffers[i].vao);
@@ -12,7 +12,7 @@ application::graphics::vao_vbo::~vao_vbo() {
     }
 }
 
-int application::graphics::vao_vbo::new_buffer_combo(GLuint ds, std::vector<vertex> &v) {
+int application::graphics::base_vao_vbo::new_buffer_combo(GLuint ds, std::vector<vertex_2d> &v) {
 
     buffers_combo bc;
 
@@ -25,20 +25,20 @@ int application::graphics::vao_vbo::new_buffer_combo(GLuint ds, std::vector<vert
     //Разрешить использование вершинного атрибута с индексом 0 (позиция)
     glEnableVertexAttribArray(0);
     //Указываем параметры доступа вершинного атрибута к VBO
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(vertex), (GLbyte*)NULL);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(vertex_2d), (GLbyte*)NULL);
     //Разрешить использование вершинного атрибута с индексом 1 (цвет)
     glEnableVertexAttribArray(1);
     //Указываем параметры доступа вершинного атрибута к VBO
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (GLbyte*)NULL + sizeof(glm::vec2));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex_2d), (GLbyte*)NULL + sizeof(glm::vec2));
 
-    glBufferData( GL_ARRAY_BUFFER, sizeof(vertex) * v.size(), v.data(), GL_STATIC_DRAW );
+    glBufferData( GL_ARRAY_BUFFER, sizeof(vertex_2d) * v.size(), v.data(), GL_STATIC_DRAW );
 
     buffers.emplace_back(bc);
 
     return 0;
 }
 
-int application::graphics::vao_vbo::delete_buffer_combo(unsigned int n) {
+int application::graphics::base_vao_vbo::delete_buffer_combo(unsigned int n) {
 
     glDeleteVertexArrays( n, &buffers[n].vao );
     glDeleteBuffers( n, &buffers[n].vbo );
@@ -47,18 +47,14 @@ int application::graphics::vao_vbo::delete_buffer_combo(unsigned int n) {
     return 0;
 }
 
-int application::graphics::vao_vbo::bind_with_order(unsigned int n, std::vector<vertex> v, unsigned int  count, GLuint ds, GLuint* o) {
+int application::graphics::base_vao_vbo::bind(unsigned int i, unsigned int  c, GLuint* o) {
 
-    glBindVertexArray(buffers[n].vao);
-    glDrawElements(ds, count, GL_UNSIGNED_INT, o);
+    glBindVertexArray(buffers[i].vao);
 
-    return 0;
-}
-
-int application::graphics::vao_vbo::bind(unsigned int n, std::vector<vertex> v) {
-
-    glBindVertexArray(buffers[n].vao);
-    glDrawArrays(buffers[n].ds, 0, v.size());
+    if (o == nullptr)
+        glDrawArrays(buffers[i].ds, 0, c);
+    else
+        glDrawElements(buffers[i].ds, c, GL_UNSIGNED_INT, o);
 
     return 0;
 }

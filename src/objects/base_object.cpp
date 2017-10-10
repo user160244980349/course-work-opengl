@@ -2,8 +2,7 @@
 // Created by user on 09.10.2017.
 //
 
-#include <vertex.hpp>
-#include "base_object.hpp"
+#include "objects/base_object.hpp"
 
 int application::objects::base_object::prepare() {
 
@@ -14,9 +13,9 @@ int application::objects::base_object::prepare() {
 
     shaders.front().use();
 
-    verices.emplace_back(graphics::vertex{glm::vec2(-0.9f, -0.9f), glm::vec3(1.0f, 0.0f, 0.0f)});
-    verices.emplace_back(graphics::vertex{glm::vec2( 0.0f,  0.9f), glm::vec3(0.0f, 1.0f, 0.0f)});
-    verices.emplace_back(graphics::vertex{glm::vec2( 0.9f, -0.9f), glm::vec3(0.0f, 0.0f, 1.0f)});
+    verices.emplace_back(graphics::vertex_2d{glm::vec2(-0.9f, -0.9f), glm::vec3(1.0f, 0.0f, 0.0f)});
+    verices.emplace_back(graphics::vertex_2d{glm::vec2( 0.0f,  0.9f), glm::vec3(0.0f, 1.0f, 0.0f)});
+    verices.emplace_back(graphics::vertex_2d{glm::vec2( 0.9f, -0.9f), glm::vec3(0.0f, 0.0f, 1.0f)});
 
     buffers.new_buffer_combo(GL_TRIANGLES, verices);
 
@@ -25,7 +24,7 @@ int application::objects::base_object::prepare() {
 
 int application::objects::base_object::draw() {
 
-    buffers.bind(0, verices);
+    buffers.bind(0, verices.size(), 0);
 
     return 0;
 }

@@ -9,24 +9,27 @@ set(SOURCE_FILES
         src/main.cpp
 
         src/application/application.cpp
-        src/include/application.hpp
+        src/include/application/application.hpp
 
         src/application/shader.cpp
-        src/include/shader.hpp
+        src/include/application/shader.hpp
 
         src/application/timer.cpp
-        src/include/timer.hpp
+        src/include/application/timer.hpp
+
+        src/objects/abstractions/abstract_object.cpp
+        src/include/objects/abstractions/abstract_object.hpp
+
+        src/application/abstractions/abstract_vao_vbo.cpp
+        src/include/application/abstractions/abstract_vao_vbo.hpp
 
         src/objects/base_object.cpp
-        src/include/base_object.hpp
+        src/include/objects/base_object.hpp
 
-        src/include/vertex.hpp
+        src/application/base_vao_vbo.cpp
+        src/include/application/base_vao_vbo.hpp
 
-        src/application/vao_vbo.cpp
-        src/include/vao_vbo.hpp
-
-        src/objects/triangles.cpp
-        src/include/triangles.hpp src/objects/lines.cpp src/include/lines.hpp src/objects/isosceles_triangle.cpp src/include/isosceles_triangle.hpp src/objects/trapeze.cpp src/include/trapeze.hpp src/objects/nangle.cpp src/include/nangle.hpp src/objects/parallelogram.cpp src/include/parallelogram.hpp src/objects/rectangle.cpp src/include/rectangle.hpp src/objects/deltoid.cpp src/include/deltoid.hpp src/objects/rhombus.cpp src/include/rhombus.hpp src/objects/random_dots.cpp src/include/random_dots.hpp)
+        src/include/application/buffers_combo.hpp)
 
 # executables
 add_executable(OpenGL   ${SOURCE_FILES})
