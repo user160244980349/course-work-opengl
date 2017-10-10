@@ -29,7 +29,9 @@ set(SOURCE_FILES
         src/application/base_vao_vbo.cpp
         src/include/application/base_vao_vbo.hpp
 
-        src/include/application/buffers_combo.hpp)
+        src/include/application/buffers_combo.hpp
+
+        )
 
 # executables
 add_executable(OpenGL   ${SOURCE_FILES})
