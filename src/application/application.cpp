@@ -35,6 +35,7 @@ int application::application::init() {
            window_parameters.width,
            window_parameters.height,
 //           SDL_WINDOW_FULLSCREEN_DESKTOP |
+//           SDL_WINDOW_BORDERLESS |
            SDL_WINDOW_OPENGL
    );
 
@@ -161,10 +162,16 @@ int application::application::key_caption() {
                         break;
                     case SDLK_e:
                         frame_update.run();
-                    case SDLK_SPACE:
-                            state_variables.n++;
-                            if (state_variables.n > 10)
-                                state_variables.n = 0;
+                        break;
+                    case SDLK_LEFT:
+                        state_variables.n--;
+                        if (state_variables.n < 0)
+                            state_variables.n = 10;
+                        break;
+                    case SDLK_RIGHT:
+                        state_variables.n++;
+                        if (state_variables.n > 10)
+                            state_variables.n = 0;
                         break;
                     default:
                         break;
