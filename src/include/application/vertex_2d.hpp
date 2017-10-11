@@ -6,9 +6,8 @@
 #define OPENGL_VERTEX_2D_HPP
 
 
-#include <vec3.hpp>
-#include <vec2.hpp>
-
+#include <glm/vec3.hpp>
+#include <glm/vec2.hpp>
 
 namespace application::graphics {
 

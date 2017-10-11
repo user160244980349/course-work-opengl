@@ -5,7 +5,7 @@
 #ifndef OPENGL_APPLICATION_HPP
 #define OPENGL_APPLICATION_HPP
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "timer.hpp"
 #include "objects/base_object.hpp"
 

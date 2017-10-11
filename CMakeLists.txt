@@ -29,25 +29,33 @@ set(SOURCE_FILES
         src/application/base_vao_vbo.cpp
         src/include/application/base_vao_vbo.hpp
 
-        src/include/application/buffers_combo.hpp
-
-        )
+        src/include/application/buffers_combo.hpp)
 
 # executables
 add_executable(OpenGL   ${SOURCE_FILES})
 
-# CMake modules path
-set(CMAKE_MODULE_PATH   ${CMAKE_MODULE_PATH} ${OpenGL_SOURCE_DIR}/cmake-modules)
 
-# SDL paths
-set(SDL2_PATH           ${OpenGL_SOURCE_DIR}/lib/SDL2-2.0.5/x86_64-w64-mingw32)
+if (WIN32)
 
-# include paths
-set(GLEW_INCLUDE_DIR    ${OpenGL_SOURCE_DIR}/lib/glew-2.1.0/include)
-set(GLM_INCLUDE_DIR     ${OpenGL_SOURCE_DIR}/lib/glm-0.9.8.5/glm)
+    # CMake modules path
+    set(CMAKE_MODULE_PATH   ${CMAKE_MODULE_PATH} ${OpenGL_SOURCE_DIR}/cmake-modules)
 
-# libraries binaries
-set(GLEW_LIBRARY    ${OpenGL_SOURCE_DIR}/lib/glew-2.1.0/bin/Release/x64/glew32.dll)
+    # SDL paths
+    set(SDL2_PATH           ${OpenGL_SOURCE_DIR}/lib/SDL2-2.0.5/x86_64-w64-mingw32)
+
+    # include paths
+    set(GLEW_INCLUDE_DIR    ${OpenGL_SOURCE_DIR}/lib/glew-2.1.0/include)
+    set(GLM_INCLUDE_DIR     ${OpenGL_SOURCE_DIR}/lib/glm-0.9.8.5/)
+
+    # libraries binaries
+    set(GLEW_LIBRARY    ${OpenGL_SOURCE_DIR}/lib/glew-2.1.0/bin/Release/x64/glew32.dll)
+
+elseif(UNIX)
+
+    set(CMAKE_CXX_FLAGS  -lpthread)
+    find_package(GLEW REQUIRED)
+
+endif()
 
 # find section
 find_package(SDL2 REQUIRED)
@@ -64,8 +72,7 @@ include_directories(
 
 #link libraries
 target_link_libraries(OpenGL
-        ${SDL2_LIBRARY}
+        ${SDL2_LIBRARIES}
         ${OPENGL_LIBRARIES}
         ${GLEW_LIBRARY}
 )
-

@@ -5,7 +5,7 @@
 #ifndef OPENGL_TIMER_HPP
 #define OPENGL_TIMER_HPP
 
-#include <SDL_events.h>
+#include <SDL2/SDL_events.h>
 
 namespace application {
 
