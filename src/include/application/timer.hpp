@@ -5,7 +5,13 @@
 #ifndef OPENGL_TIMER_HPP
 #define OPENGL_TIMER_HPP
 
+#ifdef __linux__
 #include <SDL2/SDL_events.h>
+#include <SDL2/SDL_timer.h>
+#elif _WIN32
+#include <SDL_timer.h>
+#include <SDL_events.h>
+#endif
 
 namespace application {
 

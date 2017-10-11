@@ -2,7 +2,6 @@
 // Created by user on 08.10.2017.
 //
 
-#include <SDL2/SDL_timer.h>
 #include "application/timer.hpp"
 #include <thread>
 

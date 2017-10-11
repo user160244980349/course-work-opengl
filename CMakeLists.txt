@@ -34,7 +34,6 @@ set(SOURCE_FILES
 # executables
 add_executable(OpenGL   ${SOURCE_FILES})
 
-
 if (WIN32)
 
     # CMake modules path
@@ -50,29 +49,49 @@ if (WIN32)
     # libraries binaries
     set(GLEW_LIBRARY    ${OpenGL_SOURCE_DIR}/lib/glew-2.1.0/bin/Release/x64/glew32.dll)
 
+    # find section
+    find_package(SDL2 REQUIRED)
+    find_package(OpenGL REQUIRED)
+
+    #include directories
+    include_directories(
+            src/include
+            ${SDL2_INCLUDE_DIR}
+            ${OPENGL_INCLUDE_DIRS}
+            ${GLEW_INCLUDE_DIR}
+            ${GLM_INCLUDE_DIR}
+    )
+
+    #link libraries
+    target_link_libraries(OpenGL
+            ${SDL2_LIBRARY}
+            ${OPENGL_LIBRARIES}
+            ${GLEW_LIBRARY}
+    )
+
 elseif(UNIX)
 
     set(CMAKE_CXX_FLAGS  -lpthread)
+
+    # find section
+    find_package(SDL2 REQUIRED)
+    find_package(OpenGL REQUIRED)
     find_package(GLEW REQUIRED)
 
+    #include directories
+    include_directories(
+            src/include
+            ${SDL2_INCLUDE_DIR}
+            ${OPENGL_INCLUDE_DIRS}
+            ${GLEW_INCLUDE_DIR}
+            ${GLM_INCLUDE_DIR}
+    )
+
+    #link libraries
+    target_link_libraries(OpenGL
+            ${SDL2_LIBRARIES}
+            ${OPENGL_LIBRARIES}
+            ${GLEW_LIBRARY}
+    )
+
 endif()
-
-# find section
-find_package(SDL2 REQUIRED)
-find_package(OpenGL REQUIRED)
-
-#include directories
-include_directories(
-        src/include
-        ${SDL2_INCLUDE_DIR}
-        ${OPENGL_INCLUDE_DIRS}
-        ${GLEW_INCLUDE_DIR}
-        ${GLM_INCLUDE_DIR}
-)
-
-#link libraries
-target_link_libraries(OpenGL
-        ${SDL2_LIBRARIES}
-        ${OPENGL_LIBRARIES}
-        ${GLEW_LIBRARY}
-)

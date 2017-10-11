@@ -5,7 +5,12 @@
 #ifndef OPENGL_APPLICATION_HPP
 #define OPENGL_APPLICATION_HPP
 
+
+#ifdef __linux__
 #include <SDL2/SDL.h>
+#elif _WIN32
+#include <SDL.h>
+#endif
 #include "timer.hpp"
 #include "objects/base_object.hpp"
 
