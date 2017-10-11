@@ -29,7 +29,8 @@ set(SOURCE_FILES
         src/application/base_vao_vbo.cpp
         src/include/application/base_vao_vbo.hpp
 
-        src/include/application/buffers_combo.hpp)
+        src/include/application/buffers_combo.hpp
+)
 
 # executables
 add_executable(OpenGL   ${SOURCE_FILES})
@@ -39,7 +40,7 @@ if (WIN32)
     # CMake modules path
     set(CMAKE_MODULE_PATH   ${CMAKE_MODULE_PATH} ${OpenGL_SOURCE_DIR}/cmake-modules)
 
-    # SDL paths
+    # SDL path
     set(SDL2_PATH           ${OpenGL_SOURCE_DIR}/lib/SDL2-2.0.5/x86_64-w64-mingw32)
 
     # include paths
@@ -52,8 +53,9 @@ if (WIN32)
     # find section
     find_package(SDL2 REQUIRED)
     find_package(OpenGL REQUIRED)
+    find_package(GLM REQUIRED)
 
-    #include directories
+    # include directories
     include_directories(
             src/include
             ${SDL2_INCLUDE_DIR}
@@ -62,7 +64,7 @@ if (WIN32)
             ${GLM_INCLUDE_DIR}
     )
 
-    #link libraries
+    # link libraries
     target_link_libraries(OpenGL
             ${SDL2_LIBRARY}
             ${OPENGL_LIBRARIES}
@@ -78,7 +80,7 @@ elseif(UNIX)
     find_package(OpenGL REQUIRED)
     find_package(GLEW REQUIRED)
 
-    #include directories
+    # include directories
     include_directories(
             src/include
             ${SDL2_INCLUDE_DIR}
@@ -87,7 +89,7 @@ elseif(UNIX)
             ${GLM_INCLUDE_DIR}
     )
 
-    #link libraries
+    # link libraries
     target_link_libraries(OpenGL
             ${SDL2_LIBRARIES}
             ${OPENGL_LIBRARIES}
