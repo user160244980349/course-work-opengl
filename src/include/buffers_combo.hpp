@@ -13,9 +13,9 @@ namespace application::graphics {
     typedef struct {
         GLuint vao;
         GLuint vbo;
-//        GLuint ebo;
-        GLuint ds;
-        GLuint* o;
+        GLuint ebo;
+        GLuint draw_style;
+        GLuint used_vertices;
     } buffers_combo;
 
 }

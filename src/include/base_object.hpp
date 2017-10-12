@@ -23,6 +23,7 @@ namespace application::objects {
     public:
         int prepare() override;
         int draw() override;
+        int draw_wf();
     };
 
 }

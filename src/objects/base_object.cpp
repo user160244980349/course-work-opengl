@@ -32,7 +32,14 @@ int application::objects::base_object::prepare() {
 
 int application::objects::base_object::draw() {
 
-    buffers.bind(0);
+    buffers.bind(0, GL_FALSE);
+
+    return 0;
+}
+
+int application::objects::base_object::draw_wf() {
+
+    buffers.bind(0, GL_TRUE);
 
     return 0;
 }

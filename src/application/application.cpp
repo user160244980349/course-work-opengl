@@ -83,7 +83,10 @@ int application::application::flow() {
 
 int application::application::draw() {
 
-    objects.base_object.draw();
+    if (state_variables.warframe == GL_TRUE)
+        objects.base_object.draw_wf();
+    else
+        objects.base_object.draw();
 
     return 0;
 }
@@ -115,6 +118,12 @@ int application::application::key_caption() {
                         break;
                     case SDLK_e:
                         frame_update.run();
+                        break;
+                    case SDLK_r:
+                        if (state_variables.warframe == GL_TRUE)
+                            state_variables.warframe = GL_FALSE;
+                        else
+                            state_variables.warframe = GL_TRUE;
                         break;
                     default:
                         break;

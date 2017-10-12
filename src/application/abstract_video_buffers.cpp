@@ -9,6 +9,6 @@ int application::graphics::abstract_video_buffers::delete_buffer_combo(unsigned 
     return 0;
 }
 
-int application::graphics::abstract_video_buffers::bind(unsigned int i) {
+int application::graphics::abstract_video_buffers::bind(unsigned int i, GLboolean warframe) {
     return 0;
 }

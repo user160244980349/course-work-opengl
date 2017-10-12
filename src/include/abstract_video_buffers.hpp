@@ -15,7 +15,7 @@ namespace application::graphics {
 
     public:
         virtual int delete_buffer_combo(unsigned int n);
-        virtual int bind(unsigned int i);
+        virtual int bind(unsigned int i, GLboolean warframe);
     };
 
 }

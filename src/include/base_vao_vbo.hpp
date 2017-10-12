@@ -12,8 +12,6 @@
 #include "buffers_combo.hpp"
 #include "abstract_video_buffers.hpp"
 
-// TODO fix ebo buffer
-
 namespace application::graphics {
 
     class base_vao_vbo : public abstract_video_buffers {
@@ -24,7 +22,7 @@ namespace application::graphics {
         ~base_vao_vbo();
         int new_buffer_combo(GLuint ds, vertex_3d *v, GLuint *o);
         int delete_buffer_combo(unsigned int n) override;
-        int bind(unsigned int i) override;
+        int bind(unsigned int i, GLboolean warframe) override;
     };
 
 }

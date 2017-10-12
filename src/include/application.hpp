@@ -32,7 +32,7 @@ namespace application {
 
         struct {
             bool running = true;
-            int n = 0; // номер задания
+            GLboolean warframe = GL_FALSE;
         } state_variables;
 
         struct {
