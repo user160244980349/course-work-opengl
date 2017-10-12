@@ -9,28 +9,30 @@ set(SOURCE_FILES
         src/main.cpp
 
         src/application/application.cpp
-        src/include/application/application.hpp
+        src/include/application.hpp
 
         src/application/shader.cpp
-        src/include/application/shader.hpp
+        src/include/shader.hpp
 
         src/application/timer.cpp
-        src/include/application/timer.hpp
+        src/include/timer.hpp
 
-        src/objects/abstractions/abstract_object.cpp
-        src/include/objects/abstractions/abstract_object.hpp
-
-        src/application/abstractions/abstract_vao_vbo.cpp
-        src/include/application/abstractions/abstract_vao_vbo.hpp
+        src/objects/abstract_object.cpp
+        src/include/abstract_object.hpp
 
         src/objects/base_object.cpp
-        src/include/objects/base_object.hpp
+        src/include/base_object.hpp
 
         src/application/base_vao_vbo.cpp
-        src/include/application/base_vao_vbo.hpp
+        src/include/base_vao_vbo.hpp
 
-        src/include/application/buffers_combo.hpp
-)
+        src/include/buffers_combo.hpp
+
+        src/include/abstract_video_buffers.hpp
+        src/application/abstract_video_buffers.cpp
+
+        src/include/vertex_2d.hpp
+        src/include/vertex_3d.hpp)
 
 # executables
 add_executable(OpenGL   ${SOURCE_FILES})

@@ -8,21 +8,23 @@
 
 #include <GL/glew.h>
 #include <vector>
-#include "vertex_2d.hpp"
+#include "vertex_3d.hpp"
 #include "buffers_combo.hpp"
-#include "application/abstractions/abstract_vao_vbo.hpp"
+#include "abstract_video_buffers.hpp"
+
+// TODO fix ebo buffer
 
 namespace application::graphics {
 
-    class base_vao_vbo : public abstract_vao_vbo {
+    class base_vao_vbo : public abstract_video_buffers {
     protected:
         std::vector<buffers_combo> buffers;
 
     public:
         ~base_vao_vbo();
-        int new_buffer_combo(GLuint ds, std::vector<vertex_2d> &v);
+        int new_buffer_combo(GLuint ds, vertex_3d *v, GLuint *o);
         int delete_buffer_combo(unsigned int n) override;
-        int bind(unsigned int i, unsigned int  c, GLuint *o) override;
+        int bind(unsigned int i) override;
     };
 
 }

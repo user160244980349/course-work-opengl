@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <GL/glew.h>
-#include <application/application.hpp>
+#include <application.hpp>
 
 
 application::application::application() {

@@ -2,7 +2,7 @@
 // Created by user on 08.10.2017.
 //
 
-#include "application/timer.hpp"
+#include "timer.hpp"
 #include <thread>
 
 int application::timer::set(float i) {

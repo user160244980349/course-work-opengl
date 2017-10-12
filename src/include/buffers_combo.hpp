@@ -13,7 +13,9 @@ namespace application::graphics {
     typedef struct {
         GLuint vao;
         GLuint vbo;
+//        GLuint ebo;
         GLuint ds;
+        GLuint* o;
     } buffers_combo;
 
 }

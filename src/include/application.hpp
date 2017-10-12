@@ -12,7 +12,7 @@
 #include <SDL.h>
 #endif
 #include "timer.hpp"
-#include "objects/base_object.hpp"
+#include "base_object.hpp"
 
 namespace application {
 

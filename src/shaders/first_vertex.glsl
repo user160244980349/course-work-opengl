@@ -1,11 +1,11 @@
 #version 450 core
 
-layout (location = 0) in vec2 inPosition;
-layout (location = 1) in vec3 inColor;
+layout (location = 0) in vec4 in_position;
+layout (location = 1) in vec4 in_color;
 
-smooth out vec3 currentColor;
+smooth out vec4 current_color;
 
 void main() {
-   currentColor = inColor;   //Передаем информацию о цвете в пиксельный шейдер
-   gl_Position = vec4(inPosition, 0.0, 1.0);   //Задаем положение вершины
+   current_color = in_color;
+   gl_Position = vec4(in_position);
 }

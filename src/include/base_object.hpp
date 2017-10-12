@@ -6,17 +6,18 @@
 #define OPENGL_BASE_OBJECT_HPP
 
 #include <vector>
-#include "objects/abstractions/abstract_object.hpp"
-#include "application/shader.hpp"
-#include "application/vertex_2d.hpp"
-#include "application/base_vao_vbo.hpp"
+#include "abstract_object.hpp"
+#include "shader.hpp"
+#include "vertex_3d.hpp"
+#include "base_vao_vbo.hpp"
 
 namespace application::objects {
 
     class base_object : public abstract_object {
     protected:
         graphics::base_vao_vbo buffers;
-        std::vector<graphics::vertex_2d> verices;
+        std::vector<graphics::vertex_3d> verices;
+        std::vector<GLuint> order;
         std::vector<graphics::shader> shaders;
 
     public:
