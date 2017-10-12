@@ -18,12 +18,12 @@ namespace application {
     class timer {
 
     protected:
-        Uint64 interval;
+        Uint32 interval;
         bool running;
 
-        static int detach(bool &running, bool &fired, Uint64 interval){
-            Uint64 last_time = SDL_GetTicks();
-            Uint64 current_time = last_time;
+        static int detach(bool &running, bool &fired, Uint32 interval){
+            Uint32 last_time = SDL_GetTicks();
+            Uint32 current_time = last_time;
             while (running) {
                 if (!fired) {
                     current_time = SDL_GetTicks();

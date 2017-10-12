@@ -58,6 +58,7 @@ int application::graphics::base_vao_vbo::bind(unsigned int i, GLboolean warframe
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     else
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
     glBindVertexArray(buffers[i].vao);
     glDrawElements(buffers[i].draw_style, buffers[i].used_vertices, GL_UNSIGNED_INT, nullptr);
 
