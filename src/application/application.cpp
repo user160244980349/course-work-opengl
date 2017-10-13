@@ -58,7 +58,7 @@ int application::application::init() {
 
     glewInit();
 
-    glViewport(0, 0, window_parameters.width, window_parameters.height);
+//    glViewport(0, 0, window_parameters.width, window_parameters.height);
 
     return 0;
 }

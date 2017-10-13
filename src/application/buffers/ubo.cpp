@@ -25,19 +25,18 @@ int application::graphics::ubo::connect(GLuint program) {
 }
 
 int application::graphics::ubo::set() {
-
+    glm::mat4 model;
+    glm::mat4 projection;
+    glm::mat4 view;
     struct {
         glm::vec4 color = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
-        // Проекционная матрица : 45&deg; поле обзора, 4:3 соотношение сторон, диапазон : 0.1 юнит <-> 100 юнитов
         glm::mat4 projection = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
-        // Матрица камеры
-        glm::mat4 view       = glm::lookAt(
-                glm::vec3(4,3,3), // Камера находится в мировых координатах (4,3,3)
-                glm::vec3(0,0,0), // И направлена в начало координат
-                glm::vec3(0,1,0)  // "Голова" находится сверху
+        glm::mat4 view = glm::lookAt(
+                glm::vec3(4,3,3),
+                glm::vec3(0,0,0),
+                glm::vec3(0,1,0)
         );
-        // Матрица модели : единичная матрица (Модель находится в начале координат)
-        glm::mat4 model      = glm::mat4(1.0f);  // Индивидуально для каждой модели
+        glm::mat4 model = glm::mat4(1.0f);
     } shader_data;
 
     glBindBuffer(GL_UNIFORM_BUFFER, id);
