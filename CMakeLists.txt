@@ -37,6 +37,9 @@ set(SOURCE_FILES
 
         src/application/buffers/ebo.cpp
         src/include/buffers/ebo.hpp
+
+        src/application/buffers/ubo.cpp
+        src/include/buffers/ubo.hpp
 )
 
 # executables

@@ -17,6 +17,7 @@ namespace application::graphics {
         ~vao();
         int create() override;
         int bind();
+        int unbind();
         int bind(GLuint draw_style, GLuint used_vertices);
     };
 

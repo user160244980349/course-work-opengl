@@ -10,7 +10,9 @@
 namespace application::graphics {
 
     class shader {
-    private:
+    protected:
+
+    public:
 
         struct {
             GLuint shader_program = 0;
@@ -18,7 +20,6 @@ namespace application::graphics {
             GLuint fragment_shader = 0;
         } shader_variables;
 
-    public:
         shader(const GLchar *vertex_path, const GLchar *fragment_path);
         int use();
     };

@@ -5,7 +5,9 @@
 #include "buffers/ebo.hpp"
 
 int application::graphics::ebo::create() {
+
     glGenBuffers(1, &id);
+
     return 0;
 }
 

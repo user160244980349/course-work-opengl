@@ -3,7 +3,9 @@
 //
 
 #include <base_object.hpp>
-#include "base_object.hpp"
+#include <glm/mat4x4.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <shader.hpp>
 
 int application::objects::base_object::prepare() {
 
@@ -34,6 +36,10 @@ int application::objects::base_object::prepare() {
 
     buffers.ebo.create();
     buffers.ebo.set(order.data());
+
+    buffers.ubo.create();
+    buffers.ubo.set();
+    buffers.ubo.connect(shaders.front().shader_variables.shader_program);
 
     return 0;
 }

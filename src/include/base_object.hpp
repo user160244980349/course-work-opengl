@@ -6,6 +6,7 @@
 #define OPENGL_BASE_OBJECT_HPP
 
 #include <vector>
+#include <buffers/ubo.hpp>
 #include "abstract_object.hpp"
 #include "shader.hpp"
 #include "vertex_3d.hpp"
@@ -22,6 +23,7 @@ namespace application::objects {
             graphics::vao vao;
             graphics::vbo vbo;
             graphics::ebo ebo;
+            graphics::ubo ubo;
         } buffers;
 
         std::vector<graphics::vertex_3d> verices;
