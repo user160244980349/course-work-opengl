@@ -29,7 +29,6 @@ int application::graphics::ubo::set() {
     glm::mat4 projection;
     glm::mat4 view;
     struct {
-        glm::vec4 color = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
         glm::mat4 projection = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
         glm::mat4 view = glm::lookAt(
                 glm::vec3(4,3,3),
