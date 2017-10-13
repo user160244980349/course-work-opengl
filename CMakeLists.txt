@@ -24,7 +24,20 @@ set(SOURCE_FILES
         src/include/base_object.hpp
 
         src/include/vertex_2d.hpp
-        src/include/vertex_3d.hpp src/application/buffers/abstract_buffer.cpp src/include/buffers/abstract_buffer.hpp src/application/buffers/vao.cpp src/include/buffers/vao.hpp src/application/buffers/vbo.cpp src/include/buffers/vbo.hpp src/application/buffers/ebo.cpp src/include/buffers/ebo.hpp)
+        src/include/vertex_3d.hpp
+
+        src/application/buffers/abstract_buffer.cpp
+        src/include/buffers/abstract_buffer.hpp
+
+        src/application/buffers/vao.cpp
+        src/include/buffers/vao.hpp
+
+        src/application/buffers/vbo.cpp
+        src/include/buffers/vbo.hpp
+
+        src/application/buffers/ebo.cpp
+        src/include/buffers/ebo.hpp
+)
 
 # executables
 add_executable(OpenGL   ${SOURCE_FILES})
