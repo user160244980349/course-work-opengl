@@ -23,16 +23,8 @@ set(SOURCE_FILES
         src/objects/base_object.cpp
         src/include/base_object.hpp
 
-        src/application/base_vao_vbo.cpp
-        src/include/base_vao_vbo.hpp
-
-        src/include/buffers_combo.hpp
-
-        src/include/abstract_video_buffers.hpp
-        src/application/abstract_video_buffers.cpp
-
         src/include/vertex_2d.hpp
-        src/include/vertex_3d.hpp)
+        src/include/vertex_3d.hpp src/application/buffers/abstract_buffer.cpp src/include/buffers/abstract_buffer.hpp src/application/buffers/vao.cpp src/include/buffers/vao.hpp src/application/buffers/vbo.cpp src/include/buffers/vbo.hpp src/application/buffers/ebo.cpp src/include/buffers/ebo.hpp)
 
 # executables
 add_executable(OpenGL   ${SOURCE_FILES})

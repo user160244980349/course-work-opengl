@@ -6,8 +6,6 @@
 #define OPENGL_ABSTRACT_OBJECT_HPP
 
 
-#include <base_vao_vbo.hpp>
-
 namespace application::objects {
 
     class abstract_object {

@@ -58,6 +58,8 @@ int application::application::init() {
 
     glewInit();
 
+    glViewport(0, 0, window_parameters.width, window_parameters.height);
+
     return 0;
 }
 
@@ -84,9 +86,11 @@ int application::application::flow() {
 int application::application::draw() {
 
     if (state_variables.warframe == GL_TRUE)
-        objects.base_object.draw_wf();
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     else
-        objects.base_object.draw();
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+    objects.base_object.draw();
 
     return 0;
 }

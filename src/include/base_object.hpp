@@ -9,21 +9,29 @@
 #include "abstract_object.hpp"
 #include "shader.hpp"
 #include "vertex_3d.hpp"
-#include "base_vao_vbo.hpp"
+#include "buffers/vao.hpp"
+#include "buffers/vbo.hpp"
+#include "buffers/ebo.hpp"
 
 namespace application::objects {
 
     class base_object : public abstract_object {
     protected:
-        graphics::base_vao_vbo buffers;
+
+        struct {
+            graphics::vao vao;
+            graphics::vbo vbo;
+            graphics::ebo ebo;
+        } buffers;
+
         std::vector<graphics::vertex_3d> verices;
         std::vector<GLuint> order;
         std::vector<graphics::shader> shaders;
 
     public:
+
         int prepare() override;
         int draw() override;
-        int draw_wf();
     };
 
 }

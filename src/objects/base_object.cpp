@@ -2,6 +2,7 @@
 // Created by user on 09.10.2017.
 //
 
+#include <base_object.hpp>
 #include "base_object.hpp"
 
 int application::objects::base_object::prepare() {
@@ -25,21 +26,21 @@ int application::objects::base_object::prepare() {
     order.emplace_back(3u);
     order.emplace_back(2u);
 
-    buffers.new_buffer_combo(GL_TRIANGLES, verices.data(), order.data());
+    buffers.vao.create();
+    buffers.vao.bind();
+
+    buffers.vbo.create();
+    buffers.vbo.set(verices.data());
+
+    buffers.ebo.create();
+    buffers.ebo.set(order.data());
 
     return 0;
 }
 
 int application::objects::base_object::draw() {
 
-    buffers.bind(0, GL_FALSE);
-
-    return 0;
-}
-
-int application::objects::base_object::draw_wf() {
-
-    buffers.bind(0, GL_TRUE);
+    buffers.vao.bind(GL_TRIANGLES, order.size());
 
     return 0;
 }
