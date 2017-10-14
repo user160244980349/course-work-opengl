@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 # headers
 set(HEADERS
-        src/include/application.hpp
+        src/include/kernel.hpp
         src/include/global_variables.hpp
         src/include/graphics/vertex_2d.hpp
         src/include/graphics/vertex_3d.hpp
@@ -26,8 +26,7 @@ set(HEADERS
 # sources
 set(SOURCES
         src/main.cpp
-        src/application/application.cpp
-        src/application/global_variables.cpp
+        src/application/kernel.cpp
         src/graphics/shader.cpp
         src/objects/abstract_object.cpp
         src/objects/base_object.cpp
@@ -39,7 +38,7 @@ set(SOURCES
         src/time/abstract_timer.cpp
         src/time/interval_timer.cpp
         src/time/timer.cpp
-)
+        src/application/global_variables.cpp)
 
 # executables
 add_executable(OpenGL   ${HEADERS} ${SOURCES})

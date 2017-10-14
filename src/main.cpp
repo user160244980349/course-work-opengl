@@ -1,9 +1,9 @@
 
-#include "application.hpp"
+#include "kernel.hpp"
 
 int main(int argc, char **argv){
 
-    application::application instance;
+    application::kernel instance;
 
     return 0;
 }

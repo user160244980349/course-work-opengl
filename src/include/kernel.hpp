@@ -11,12 +11,12 @@
 #elif _WIN32
 #include <SDL.h>
 #endif
-#include "time/timer.hpp"
-#include "objects/base_object.hpp"
+
+#include "GL/glew.h"
 
 namespace application {
 
-    class application {
+    class kernel {
     private:
 
         struct {
@@ -43,8 +43,8 @@ namespace application {
 
     public:
 
-        application();
-        ~application();
+        kernel();
+        ~kernel();
     };
 
 }

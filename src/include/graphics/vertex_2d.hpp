@@ -11,7 +11,7 @@
 
 namespace application::graphics {
 
-    typedef struct  {
+    typedef struct {
         glm::vec2 position;
         glm::vec3 color;
     } vertex_2d;

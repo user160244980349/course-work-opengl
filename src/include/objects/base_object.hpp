@@ -13,6 +13,8 @@
 #include "graphics/vao.hpp"
 #include "graphics/vbo.hpp"
 #include "graphics/ebo.hpp"
+#include <global_variables.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 namespace application::objects {
 
@@ -26,6 +28,16 @@ namespace application::objects {
             graphics::ubo ubo;
         } buffers;
 
+        struct {
+            glm::mat4 perspective = graphics::perspective;
+            glm::mat4 view = glm::lookAt(
+                    glm::vec3(4,2,3),
+                    glm::vec3(0,0,0),
+                    glm::vec3(0,1,0)
+            );
+            glm::mat4 model = glm::mat4(1.0f);
+        } transform;
+
         std::vector<graphics::vertex_3d> verices;
         std::vector<GLuint> order;
         std::vector<graphics::shader> shaders;
@@ -34,6 +46,7 @@ namespace application::objects {
 
         int prepare() override;
         int draw() override;
+        int rotate();
     };
 
 }

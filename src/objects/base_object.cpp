@@ -3,9 +3,6 @@
 //
 
 #include <objects/base_object.hpp>
-#include <glm/mat4x4.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <graphics/shader.hpp>
 
 int application::objects::base_object::prepare() {
 
@@ -32,9 +29,24 @@ int application::objects::base_object::prepare() {
     order.emplace_back(1u);
     order.emplace_back(2u);
 
-    order.emplace_back(2u);
     order.emplace_back(3u);
-    order.emplace_back(0u);
+    order.emplace_back(4u);
+    order.emplace_back(5u);
+
+    order.emplace_back(6u);
+    order.emplace_back(7u);
+
+//    order.emplace_back(2u);
+//    order.emplace_back(3u);
+//    order.emplace_back(0u);
+//
+//    order.emplace_back(1u);
+//    order.emplace_back(4u);
+//    order.emplace_back(5u);
+//
+//    order.emplace_back(1u);
+//    order.emplace_back(4u);
+//    order.emplace_back(0u);
 
 
     buffers.vao.create();
@@ -47,7 +59,7 @@ int application::objects::base_object::prepare() {
     buffers.ebo.set(order.data());
 
     buffers.ubo.create();
-    buffers.ubo.set();
+    buffers.ubo.set((GLvoid*)&transform, sizeof(transform));
     buffers.ubo.connect(shaders.front().shader_variables.shader_program);
 
     return 0;
@@ -56,8 +68,17 @@ int application::objects::base_object::prepare() {
 int application::objects::base_object::draw() {
 
     glPointSize(6.0f);
-    buffers.ubo.update();
-    buffers.vao.bind(GL_TRIANGLES, order.size());
+    rotate();
+//    buffers.vao.bind(GL_TRIANGLES, order.size());
+    buffers.vao.bind(GL_POINTS, order.size());
+
+    return 0;
+}
+
+int application::objects::base_object::rotate() {
+
+    transform.model = glm::rotate(transform.model, glm::radians(sinf(time::world_time.time/1000.0f)), glm::vec3(0.0f, 1.0f, 0.0f));
+    buffers.ubo.update((GLvoid*)&transform, sizeof(transform));
 
     return 0;
 }

@@ -4,11 +4,11 @@
 
 #include <iostream>
 #include <GL/glew.h>
-#include <application.hpp>
+#include <kernel.hpp>
 #include <global_variables.hpp>
 
 
-application::application::application() {
+application::kernel::kernel() {
 
     init();
     prepare_objects();
@@ -16,14 +16,14 @@ application::application::application() {
 
 }
 
-application::application::~application() {
+application::kernel::~kernel() {
 
     SDL_DestroyWindow(sdl_variables.window);
     SDL_Quit();
 
 }
 
-int application::application::init() {
+int application::kernel::init() {
 
     if ( SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0 ){
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
@@ -60,11 +60,12 @@ int application::application::init() {
     glewInit();
 
     glViewport(0, 0, window_parameters.width, window_parameters.height);
+    glEnable(GL_DEPTH_TEST);
 
     return 0;
 }
 
-int application::application::flow() {
+int application::kernel::flow() {
 
     time::world_time.run();
     time::frame_update.set(0.016);
@@ -85,7 +86,7 @@ int application::application::flow() {
     return 0;
 }
 
-int application::application::draw() {
+int application::kernel::draw() {
 
     if (state_variables.warframe == GL_TRUE)
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -97,14 +98,14 @@ int application::application::draw() {
     return 0;
 }
 
-int application::application::prepare_objects() {
+int application::kernel::prepare_objects() {
 
     scene::base_object.prepare();
 
     return 0;
 }
 
-int application::application::key_caption() {
+int application::kernel::key_caption() {
 
     while(SDL_PollEvent(&sdl_variables.event)) {
         switch (sdl_variables.event.type) {
