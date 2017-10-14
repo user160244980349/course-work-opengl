@@ -16,17 +16,26 @@ int application::objects::base_object::prepare() {
 
     shaders.front().use();
 
-    verices.emplace_back(graphics::vertex_3d{glm::vec4(-0.9f, -0.9f, 0.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
-    verices.emplace_back(graphics::vertex_3d{glm::vec4(-0.9f,  0.9f, 0.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
-    verices.emplace_back(graphics::vertex_3d{glm::vec4( 0.9f,  0.9f, 0.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
-    verices.emplace_back(graphics::vertex_3d{glm::vec4( 0.9f, -0.9f, 0.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+
+    verices.emplace_back(graphics::vertex_3d{glm::vec4( 1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
+    verices.emplace_back(graphics::vertex_3d{glm::vec4(-1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
+    verices.emplace_back(graphics::vertex_3d{glm::vec4(-1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    verices.emplace_back(graphics::vertex_3d{glm::vec4( 1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+
+    verices.emplace_back(graphics::vertex_3d{glm::vec4( 1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
+    verices.emplace_back(graphics::vertex_3d{glm::vec4(-1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
+    verices.emplace_back(graphics::vertex_3d{glm::vec4(-1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    verices.emplace_back(graphics::vertex_3d{glm::vec4( 1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+
 
     order.emplace_back(0u);
     order.emplace_back(1u);
-    order.emplace_back(3u);
-    order.emplace_back(1u);
-    order.emplace_back(3u);
     order.emplace_back(2u);
+
+    order.emplace_back(2u);
+    order.emplace_back(3u);
+    order.emplace_back(0u);
+
 
     buffers.vao.create();
     buffers.vao.bind();
@@ -46,6 +55,7 @@ int application::objects::base_object::prepare() {
 
 int application::objects::base_object::draw() {
 
+    glPointSize(6.0f);
     buffers.vao.bind(GL_TRIANGLES, order.size());
 
     return 0;

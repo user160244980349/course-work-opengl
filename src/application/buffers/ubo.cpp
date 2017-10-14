@@ -25,13 +25,11 @@ int application::graphics::ubo::connect(GLuint program) {
 }
 
 int application::graphics::ubo::set() {
-    glm::mat4 model;
-    glm::mat4 projection;
-    glm::mat4 view;
+
     struct {
         glm::mat4 projection = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
         glm::mat4 view = glm::lookAt(
-                glm::vec3(4,3,3),
+                glm::vec3(3,3,3),
                 glm::vec3(0,0,0),
                 glm::vec3(0,1,0)
         );
