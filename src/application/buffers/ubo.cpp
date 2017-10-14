@@ -18,7 +18,7 @@ int application::graphics::ubo::connect(GLuint program) {
     GLuint block_index = glGetUniformBlockIndex(program, "shader_data");
     glBindBufferBase(GL_UNIFORM_BUFFER, 0, id);
     glUniformBlockBinding(program, block_index, 0);
-
+    counter = 0;
     return 0;
 }
 
@@ -43,7 +43,7 @@ int application::graphics::ubo::set() {
 int application::graphics::ubo::update() {
 
     struct {
-        glm::mat4 projection = glm::perspective(glm::radians(90.0f), 4.0f / 3.0f, 0.1f, 100.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(70.0f), 4.0f / 3.0f, 0.1f, 100.0f);
         glm::mat4 view = glm::lookAt(
                 glm::vec3(4,4,3),
                 glm::vec3(0,0,0),
