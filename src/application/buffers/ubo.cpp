@@ -18,7 +18,7 @@ int application::graphics::ubo::connect(GLuint program) {
     GLuint block_index = glGetUniformBlockIndex(program, "shader_data");
     glBindBufferBase(GL_UNIFORM_BUFFER, 0, id);
     glUniformBlockBinding(program, block_index, 0);
-    counter = 0;
+
     return 0;
 }
 
