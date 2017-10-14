@@ -33,10 +33,10 @@ int application::kernel::init() {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
-    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 10);
-    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 10);
-    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 10);
-    SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 10);
+    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 16);
@@ -96,7 +96,6 @@ int application::kernel::flow() {
             draw();
             SDL_GL_SwapWindow(sdl_variables.window);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            std::cout << time::world_time.time/1000.0f << std::endl;
         }
     }
 
