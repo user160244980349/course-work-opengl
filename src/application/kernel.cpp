@@ -35,7 +35,8 @@ int application::kernel::init() {
            SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
            window_parameters.width,
            window_parameters.height,
-           SDL_WINDOW_OPENGL
+           SDL_WINDOW_OPENGL |
+           SDL_WINDOW_FULLSCREEN_DESKTOP
    );
 
     if(sdl_variables.window == nullptr){
@@ -59,7 +60,7 @@ int application::kernel::init() {
 
     glewInit();
 
-    glViewport(0, 0, window_parameters.width, window_parameters.height);
+//    glViewport(0, 0, window_parameters.width, window_parameters.height);
     glEnable(GL_DEPTH_TEST);
 
     return 0;
