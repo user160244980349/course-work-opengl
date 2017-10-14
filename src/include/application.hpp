@@ -11,8 +11,8 @@
 #elif _WIN32
 #include <SDL.h>
 #endif
-#include "timer.hpp"
-#include "base_object.hpp"
+#include "time/timer.hpp"
+#include "objects/base_object.hpp"
 
 namespace application {
 
@@ -34,12 +34,6 @@ namespace application {
             bool running = true;
             GLboolean warframe = GL_FALSE;
         } state_variables;
-
-        struct {
-            objects::base_object base_object;
-        } objects;
-
-        timer frame_update;
 
         int init();
         int prepare_objects();

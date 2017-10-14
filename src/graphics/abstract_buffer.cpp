@@ -2,7 +2,7 @@
 // Created by user on 13.10.2017.
 //
 
-#include "buffers/abstract_buffer.hpp"
+#include "graphics/abstract_buffer.hpp"
 
 application::graphics::abstract_buffer::~abstract_buffer() {
     glDeleteBuffers(1, &id);

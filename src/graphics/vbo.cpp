@@ -2,8 +2,8 @@
 // Created by user on 13.10.2017.
 //
 
-#include <vertex_3d.hpp>
-#include "buffers/vbo.hpp"
+#include <graphics/vertex_3d.hpp>
+#include "graphics/vbo.hpp"
 
 int application::graphics::vbo::create() {
 

@@ -2,10 +2,10 @@
 // Created by user on 09.10.2017.
 //
 
-#include <base_object.hpp>
+#include <objects/base_object.hpp>
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <shader.hpp>
+#include <graphics/shader.hpp>
 
 int application::objects::base_object::prepare() {
 

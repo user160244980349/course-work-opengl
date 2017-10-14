@@ -6,7 +6,7 @@
 #define OPENGL_EBO_HPP
 
 
-#include <buffers/abstract_buffer.hpp>
+#include <graphics/abstract_buffer.hpp>
 
 namespace application::graphics {
 

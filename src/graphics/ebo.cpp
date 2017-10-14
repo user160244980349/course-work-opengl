@@ -2,7 +2,7 @@
 // Created by user on 13.10.2017.
 //
 
-#include "buffers/ebo.hpp"
+#include "graphics/ebo.hpp"
 
 int application::graphics::ebo::create() {
 

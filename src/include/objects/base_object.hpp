@@ -6,13 +6,13 @@
 #define OPENGL_BASE_OBJECT_HPP
 
 #include <vector>
-#include <buffers/ubo.hpp>
+#include <graphics/ubo.hpp>
 #include "abstract_object.hpp"
-#include "shader.hpp"
-#include "vertex_3d.hpp"
-#include "buffers/vao.hpp"
-#include "buffers/vbo.hpp"
-#include "buffers/ebo.hpp"
+#include "graphics/shader.hpp"
+#include "graphics/vertex_3d.hpp"
+#include "graphics/vao.hpp"
+#include "graphics/vbo.hpp"
+#include "graphics/ebo.hpp"
 
 namespace application::objects {
 

@@ -4,46 +4,45 @@ project(OpenGL)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# sources
-set(SOURCE_FILES
-        src/main.cpp
-
-        src/application/application.cpp
+# headers
+set(HEADERS
         src/include/application.hpp
+        src/include/global_variables.hpp
+        src/include/graphics/vertex_2d.hpp
+        src/include/graphics/vertex_3d.hpp
+        src/include/graphics/shader.hpp
+        src/include/graphics/vao.hpp
+        src/include/graphics/vbo.hpp
+        src/include/graphics/ebo.hpp
+        src/include/graphics/ubo.hpp
+        src/include/graphics/abstract_buffer.hpp
+        src/include/time/abstract_timer.hpp
+        src/include/time/interval_timer.hpp
+        src/include/time/timer.hpp
+        src/include/objects/abstract_object.hpp
+        src/include/objects/base_object.hpp
+)
 
-        src/application/shader.cpp
-        src/include/shader.hpp
-
-        src/application/timer.cpp
-        src/include/timer.hpp
-
+# sources
+set(SOURCES
+        src/main.cpp
+        src/application/application.cpp
+        src/application/global_variables.cpp
+        src/graphics/shader.cpp
         src/objects/abstract_object.cpp
-        src/include/abstract_object.hpp
-
         src/objects/base_object.cpp
-        src/include/base_object.hpp
-
-        src/include/vertex_2d.hpp
-        src/include/vertex_3d.hpp
-
-        src/application/buffers/abstract_buffer.cpp
-        src/include/buffers/abstract_buffer.hpp
-
-        src/application/buffers/vao.cpp
-        src/include/buffers/vao.hpp
-
-        src/application/buffers/vbo.cpp
-        src/include/buffers/vbo.hpp
-
-        src/application/buffers/ebo.cpp
-        src/include/buffers/ebo.hpp
-
-        src/application/buffers/ubo.cpp
-        src/include/buffers/ubo.hpp
+        src/graphics/abstract_buffer.cpp
+        src/graphics/vao.cpp
+        src/graphics/vbo.cpp
+        src/graphics/ebo.cpp
+        src/graphics/ubo.cpp
+        src/time/abstract_timer.cpp
+        src/time/interval_timer.cpp
+        src/time/timer.cpp
 )
 
 # executables
-add_executable(OpenGL   ${SOURCE_FILES})
+add_executable(OpenGL   ${HEADERS} ${SOURCES})
 
 if (WIN32)
 
