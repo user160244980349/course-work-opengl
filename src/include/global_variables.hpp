@@ -25,6 +25,7 @@ namespace application {
     namespace objects {
 
         class abstract_object;
+        class drawable;
         class base_object;
 
     }

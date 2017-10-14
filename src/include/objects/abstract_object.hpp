@@ -12,8 +12,7 @@ namespace application::objects {
     protected:
 
     public:
-        virtual int prepare();
-        virtual int draw();
+
     };
 
 }

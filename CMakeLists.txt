@@ -21,7 +21,7 @@ set(HEADERS
         src/include/time/timer.hpp
         src/include/objects/abstract_object.hpp
         src/include/objects/base_object.hpp
-)
+        src/include/objects/drawable.hpp)
 
 # sources
 set(SOURCES
@@ -38,7 +38,8 @@ set(SOURCES
         src/time/abstract_timer.cpp
         src/time/interval_timer.cpp
         src/time/timer.cpp
-        src/application/global_variables.cpp)
+        src/application/global_variables.cpp
+        src/objects/drawable.cpp)
 
 # executables
 add_executable(OpenGL   ${HEADERS} ${SOURCES})

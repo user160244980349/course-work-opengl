@@ -39,7 +39,7 @@ int application::kernel::init() {
     SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 16);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
     SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
    sdl_variables.window = SDL_CreateWindow(
@@ -63,12 +63,8 @@ int application::kernel::init() {
         exit(6);
     }
 
-    glewInit();
-
-
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_MULTISAMPLE);
-
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
     glEnable(GL_POINT_SMOOTH);
@@ -78,13 +74,15 @@ int application::kernel::init() {
     glEnable(GL_POLYGON_SMOOTH);
     glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
 
+    glewInit();
+
     return 0;
 }
 
 int application::kernel::flow() {
 
     time::world_time.run();
-    time::frame_update.set(0.016);
+    time::frame_update.set(0.015);
     time::frame_update.run();
 
     while(state_variables.running){
@@ -137,10 +135,10 @@ int application::kernel::key_caption() {
                             state_variables.running = false;
                         break;
                     case SDLK_w:
-                        time::world_time.stop();
+                        time::frame_update.stop();
                         break;
                     case SDLK_e:
-                        time::world_time.run();
+                        time::frame_update.run();
                         break;
                     case SDLK_r:
                         if (state_variables.warframe == GL_TRUE)
