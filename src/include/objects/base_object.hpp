@@ -38,7 +38,7 @@ namespace application::objects {
             glm::mat4 model = glm::mat4(1.0f);
         } transform;
 
-        std::vector<graphics::vertex_3d> verices;
+        std::vector<graphics::vertex_3d> vertices;
         std::vector<GLuint> order;
         std::vector<graphics::shader> shaders;
 

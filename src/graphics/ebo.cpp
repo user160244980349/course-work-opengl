@@ -11,10 +11,10 @@ int application::graphics::ebo::create() {
     return 0;
 }
 
-int application::graphics::ebo::set(GLuint *o) {
+int application::graphics::ebo::set(GLuint *o, GLuint size) {
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * sizeof(o), o, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * size, o, GL_STATIC_DRAW);
 
     return 0;
 }

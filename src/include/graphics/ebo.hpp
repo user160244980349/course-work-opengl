@@ -16,7 +16,7 @@ namespace application::graphics {
     public:
 
         int create() override;
-        int set(GLuint *v);
+        int set(GLuint *o, GLuint size);
     };
 
 }
