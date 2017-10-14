@@ -56,6 +56,7 @@ int application::objects::base_object::prepare() {
 int application::objects::base_object::draw() {
 
     glPointSize(6.0f);
+    buffers.ubo.update();
     buffers.vao.bind(GL_TRIANGLES, order.size());
 
     return 0;
