@@ -7,6 +7,8 @@
 #include "objects/base_object.hpp"
 #include "glm/mat4x4.hpp"
 
+#ifndef OPENGL_GLOBAL_VARIABLES_HPP
+#define OPENGL_GLOBAL_VARIABLES_HPP
 
 namespace application {
 
@@ -50,3 +52,4 @@ namespace application {
     }
 }
 
+#endif //OPENGL_GLOBAL_VARIABLES_HPP
