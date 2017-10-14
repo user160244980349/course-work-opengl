@@ -49,7 +49,7 @@ if (WIN32)
     set(CMAKE_MODULE_PATH   ${CMAKE_MODULE_PATH} ${OpenGL_SOURCE_DIR}/../cmake-modules)
 
     # SDL path
-    set(SDL2_PATH           ${OpenGL_SOURCE_DIR}/../lib/SDL2-2.0.5/x86_64-w64-mingw32)
+    set(SDL2_PATH           ${OpenGL_SOURCE_DIR}/../lib/SDL2-2.0.6/x86_64-w64-mingw32)
 
     # include paths
     set(GLEW_INCLUDE_DIR    ${OpenGL_SOURCE_DIR}/../lib/glew-2.1.0/include)

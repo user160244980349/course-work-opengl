@@ -30,6 +30,18 @@ int application::kernel::init() {
         exit(1);
     }
 
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
+    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 10);
+    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 10);
+    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 10);
+    SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 10);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 16);
+    SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
+
    sdl_variables.window = SDL_CreateWindow(
            "OpenGL",
            SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
@@ -44,13 +56,6 @@ int application::kernel::init() {
         exit(5);
     }
 
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
-
     SDL_GLContext glcontext = SDL_GL_CreateContext(sdl_variables.window);
 
     if(glcontext == nullptr){
@@ -60,8 +65,18 @@ int application::kernel::init() {
 
     glewInit();
 
-//    glViewport(0, 0, window_parameters.width, window_parameters.height);
+
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_MULTISAMPLE);
+
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
+    glEnable(GL_POINT_SMOOTH);
+    glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+    glEnable(GL_POLYGON_SMOOTH);
+    glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
 
     return 0;
 }
@@ -81,6 +96,7 @@ int application::kernel::flow() {
             draw();
             SDL_GL_SwapWindow(sdl_variables.window);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            std::cout << time::world_time.time/1000.0f << std::endl;
         }
     }
 
@@ -122,10 +138,10 @@ int application::kernel::key_caption() {
                             state_variables.running = false;
                         break;
                     case SDLK_w:
-                        time::frame_update.stop();
+                        time::world_time.stop();
                         break;
                     case SDLK_e:
-                        time::frame_update.run();
+                        time::world_time.run();
                         break;
                     case SDLK_r:
                         if (state_variables.warframe == GL_TRUE)
