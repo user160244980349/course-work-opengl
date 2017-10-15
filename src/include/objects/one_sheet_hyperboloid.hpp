@@ -6,22 +6,22 @@
 #define OPENGL_ONE_SHEET_HYPERBOLOID_HPP
 
 
-#include "abstract_object.hpp"
-#include "drawable.hpp"
+#include "objects/abstract_object.hpp"
+#include "objects/drawable.hpp"
 
 namespace application::objects {
 
-    class one_sheet_hyperboloid : protected abstract_object, drawable {
+    class one_sheet_hyperboloid : public abstract_object, drawable {
     public:
         int prepare() override;
         int draw() override;
 
     protected:
-        float function_x(float y, float a,
+        virtual float function_x(float y, float a,
                       float z, float c, float b);
-        float function_y(float x, float a,
+        virtual float function_y(float x, float a,
                       float z, float c, float b);
-        float function_z(float x, float a,
+        virtual float function_z(float x, float a,
                       float y, float c, float b);
         int rotate();
 
