@@ -22,24 +22,24 @@ namespace application {
         struct {
             int width;
             int height;
-        } window_parameters;
+        } _window_parameters;
 
         struct {
             SDL_Window *window;
             SDL_Event event;
             SDL_Event last_key_pressed;
-        } sdl_variables;
+        } _sdl_variables;
 
         struct {
             bool running = true;
             GLboolean warframe = GL_FALSE;
-        } state_variables;
+        } _state_variables;
 
-        int init();
-        int prepare_objects();
-        int flow();
-        int draw();
-        int key_caption();
+        int _init();
+        int _prepare_objects();
+        int _flow();
+        int _draw();
+        int _key_caption();
 
     public:
 

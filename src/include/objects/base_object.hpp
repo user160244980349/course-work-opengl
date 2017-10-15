@@ -28,7 +28,7 @@ namespace application::objects {
             graphics::vbo vbo;
             graphics::ebo ebo;
             graphics::ubo ubo;
-        } buffers;
+        } _buffers;
 
         struct {
             glm::mat4 perspective = graphics::perspective;
@@ -38,11 +38,11 @@ namespace application::objects {
                     glm::vec3(0,1,0)
             );
             glm::mat4 model = glm::mat4(1.0f);
-        } transform;
+        } _transform;
 
-        std::vector<graphics::vertex_3d> vertices;
-        std::vector<GLuint> order;
-        std::vector<graphics::shader> shaders;
+        std::vector<graphics::vertex_3d> _vertices;
+        std::vector<GLuint> _order;
+        std::vector<graphics::shader> _shaders;
 
     public:
 

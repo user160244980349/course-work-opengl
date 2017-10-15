@@ -7,16 +7,16 @@
 
 int application::time::interval_timer::set(float i) {
 
-    interval = (Uint32)(i * 1000);
+    _interval = (Uint32)(i * 1000);
     fired = false;
 
 }
 
 int application::time::interval_timer::run() {
 
-    if (!running) {
-        running = true;
-        std::thread timer_thread(detach, std::ref(running), std::ref(time), std::ref(fired), interval);
+    if (!_running) {
+        _running = true;
+        std::thread timer_thread(_detach, std::ref(_running), std::ref(time), std::ref(fired), _interval);
         timer_thread.detach();
     }
 
@@ -30,7 +30,7 @@ int application::time::interval_timer::reset() {
 }
 
 int application::time::interval_timer::stop() {
-    running = false;
+    _running = false;
     return 0;
 }
 

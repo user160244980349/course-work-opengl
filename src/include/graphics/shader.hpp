@@ -14,11 +14,7 @@ namespace application::graphics {
 
     public:
 
-        struct {
-            GLuint shader_program = 0;
-            GLuint vertex_shader = 0;
-            GLuint fragment_shader = 0;
-        } shader_variables;
+        GLuint shader_program_id = 0;
 
         shader(const GLchar *vertex_path, const GLchar *fragment_path);
         int use();

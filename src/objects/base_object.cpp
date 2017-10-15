@@ -7,77 +7,77 @@
 
 int application::objects::base_object::prepare() {
 
-    shaders.push_back(graphics::shader(
+    _shaders.emplace_back(graphics::shader(
             "../src/shaders/first_vertex.glsl",
             "../src/shaders/first_fragment.glsl")
     );
 
-    shaders.front().use();
+    _shaders.front().use();
 
-    vertices.push_back(graphics::vertex_3d{glm::vec4( 1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
-    vertices.push_back(graphics::vertex_3d{glm::vec4(-1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
-    vertices.push_back(graphics::vertex_3d{glm::vec4(-1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
-    vertices.push_back(graphics::vertex_3d{glm::vec4( 1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    _vertices.emplace_back(graphics::vertex_3d{glm::vec4( 1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
+    _vertices.emplace_back(graphics::vertex_3d{glm::vec4(-1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
+    _vertices.emplace_back(graphics::vertex_3d{glm::vec4(-1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    _vertices.emplace_back(graphics::vertex_3d{glm::vec4( 1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
 
-    vertices.push_back(graphics::vertex_3d{glm::vec4( 1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
-    vertices.push_back(graphics::vertex_3d{glm::vec4(-1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
-    vertices.push_back(graphics::vertex_3d{glm::vec4(-1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
-    vertices.push_back(graphics::vertex_3d{glm::vec4( 1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    _vertices.emplace_back(graphics::vertex_3d{glm::vec4( 1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
+    _vertices.emplace_back(graphics::vertex_3d{glm::vec4(-1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
+    _vertices.emplace_back(graphics::vertex_3d{glm::vec4(-1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    _vertices.emplace_back(graphics::vertex_3d{glm::vec4( 1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
 
-    order.push_back(1u);
-    order.push_back(3u);
-    order.push_back(0u);
-    order.push_back(1u);
-    order.push_back(3u);
-    order.push_back(2u);
+    _order.emplace_back(1u);
+    _order.emplace_back(3u);
+    _order.emplace_back(0u);
+    _order.emplace_back(1u);
+    _order.emplace_back(3u);
+    _order.emplace_back(2u);
 
-    order.push_back(2u);
-    order.push_back(5u);
-    order.push_back(1u);
-    order.push_back(2u);
-    order.push_back(5u);
-    order.push_back(6u);
+    _order.emplace_back(2u);
+    _order.emplace_back(5u);
+    _order.emplace_back(1u);
+    _order.emplace_back(2u);
+    _order.emplace_back(5u);
+    _order.emplace_back(6u);
 
-    order.push_back(5u);
-    order.push_back(7u);
-    order.push_back(4u);
-    order.push_back(5u);
-    order.push_back(7u);
-    order.push_back(6u);
+    _order.emplace_back(5u);
+    _order.emplace_back(7u);
+    _order.emplace_back(4u);
+    _order.emplace_back(5u);
+    _order.emplace_back(7u);
+    _order.emplace_back(6u);
 
-    order.push_back(3u);
-    order.push_back(4u);
-    order.push_back(0u);
-    order.push_back(3u);
-    order.push_back(4u);
-    order.push_back(7u);
+    _order.emplace_back(3u);
+    _order.emplace_back(4u);
+    _order.emplace_back(0u);
+    _order.emplace_back(3u);
+    _order.emplace_back(4u);
+    _order.emplace_back(7u);
 
-    order.push_back(2u);
-    order.push_back(7u);
-    order.push_back(6u);
-    order.push_back(2u);
-    order.push_back(7u);
-    order.push_back(3u);
+    _order.emplace_back(2u);
+    _order.emplace_back(7u);
+    _order.emplace_back(6u);
+    _order.emplace_back(2u);
+    _order.emplace_back(7u);
+    _order.emplace_back(3u);
 
-    order.push_back(1u);
-    order.push_back(4u);
-    order.push_back(0u);
-    order.push_back(1u);
-    order.push_back(4u);
-    order.push_back(5u);
+    _order.emplace_back(1u);
+    _order.emplace_back(4u);
+    _order.emplace_back(0u);
+    _order.emplace_back(1u);
+    _order.emplace_back(4u);
+    _order.emplace_back(5u);
 
-    buffers.vao.create();
-    buffers.vao.bind();
+    _buffers.vao.create();
+    _buffers.vao.bind();
 
-    buffers.vbo.create();
-    buffers.vbo.set(vertices.data());
+    _buffers.vbo.create();
+    _buffers.vbo.set(_vertices.data());
 
-    buffers.ebo.create();
-    buffers.ebo.set(order.data(), order.size());
+    _buffers.ebo.create();
+    _buffers.ebo.set(_order.data(), (GLuint)_order.size());
 
-    buffers.ubo.create();
-    buffers.ubo.set((GLvoid*)&transform, sizeof(transform));
-    buffers.ubo.connect(shaders.front().shader_variables.shader_program);
+    _buffers.ubo.create();
+    _buffers.ubo.set((GLvoid*)&_transform, sizeof(_transform));
+    _buffers.ubo.connect(_shaders.front().shader_program_id);
 
     return 0;
 }
@@ -85,15 +85,15 @@ int application::objects::base_object::prepare() {
 int application::objects::base_object::draw() {
 
     rotate();
-    buffers.vao.bind(GL_TRIANGLES, order.size());
+    _buffers.vao.bind(GL_TRIANGLES, (GLuint)_order.size());
 
     return 0;
 }
 
 int application::objects::base_object::rotate() {
 
-    transform.model = glm::rotate(transform.model, glm::radians(sinf(time::world_time.time/1000.0f)*3.14f), glm::vec3(0.0f, 1.0f, 0.0f));
-    buffers.ubo.update((GLvoid*)&transform, sizeof(transform));
+    _transform.model = glm::rotate(_transform.model, glm::radians(sinf(time::world_time.time/1000.0f)*3.14f), glm::vec3(0.0f, 1.0f, 0.0f));
+    _buffers.ubo.update((GLvoid*)&_transform, sizeof(_transform));
 
     return 0;
 }

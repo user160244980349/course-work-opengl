@@ -13,10 +13,10 @@ namespace application::time {
     class timer : public abstract_timer {
 
     protected:
-        bool running;
+        bool _running;
 
-        static int detach(bool &running, Uint32 &time){
-            while (running)
+        static int _detach(bool &_running, Uint32 &time){
+            while (_running)
                 time = SDL_GetTicks();
             return 0;
         };

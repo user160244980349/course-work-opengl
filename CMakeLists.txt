@@ -8,7 +8,6 @@ set(CMAKE_CXX_STANDARD 17)
 set(HEADERS
         src/include/kernel.hpp
         src/include/global_variables.hpp
-        src/include/graphics/vertex_2d.hpp
         src/include/graphics/vertex_3d.hpp
         src/include/graphics/shader.hpp
         src/include/graphics/vao.hpp

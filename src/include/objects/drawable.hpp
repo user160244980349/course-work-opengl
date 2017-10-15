@@ -6,6 +6,8 @@
 #define OPENGL_DRAWABLE_HPP
 
 
+#include "abstract_object.hpp"
+
 namespace application::objects {
 
     class drawable {

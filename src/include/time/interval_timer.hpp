@@ -13,13 +13,13 @@ namespace application::time {
     class interval_timer : public abstract_timer {
 
     protected:
-        Uint32 interval;
-        bool running;
+        Uint32 _interval;
+        bool _running;
 
-        static int detach(bool &running, Uint32 &time, bool &fired, Uint32 interval){
+        static int _detach(bool &_running, Uint32 &time, bool &fired, Uint32 interval){
             time = SDL_GetTicks();
             Uint32 last_time = time;
-            while (running) {
+            while (_running) {
                 if (!fired) {
                     time = SDL_GetTicks();
                     if (interval < time - last_time) {

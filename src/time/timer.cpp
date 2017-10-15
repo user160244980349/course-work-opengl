@@ -7,9 +7,9 @@
 
 int application::time::timer::run() {
 
-    if (!running) {
-        running = true;
-        std::thread timer_thread(detach, std::ref(running), std::ref(time));
+    if (!_running) {
+        _running = true;
+        std::thread timer_thread(_detach, std::ref(_running), std::ref(time));
         timer_thread.detach();
     }
 
@@ -22,6 +22,6 @@ int application::time::timer::reset() {
 }
 
 int application::time::timer::stop() {
-    running = false;
+    _running = false;
     return 0;
 }

@@ -13,22 +13,22 @@
 
 application::kernel::kernel(int width, int height) {
 
-    window_parameters.width = width;
-    window_parameters.height = height;
-    init();
-    prepare_objects();
-    flow();
+    _window_parameters.width = width;
+    _window_parameters.height = height;
+    _init();
+    _prepare_objects();
+    _flow();
 
 }
 
 application::kernel::~kernel() {
 
-    SDL_DestroyWindow(sdl_variables.window);
+    SDL_DestroyWindow(_sdl_variables.window);
     SDL_Quit();
 
 }
 
-int application::kernel::init() {
+int application::kernel::_init() {
 
     if ( SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0 ){
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
@@ -47,21 +47,21 @@ int application::kernel::init() {
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
     SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
-   sdl_variables.window = SDL_CreateWindow(
+   _sdl_variables.window = SDL_CreateWindow(
            "OpenGL",
            SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-           window_parameters.width,
-           window_parameters.height,
+           _window_parameters.width,
+           _window_parameters.height,
            SDL_WINDOW_OPENGL |
            SDL_WINDOW_FULLSCREEN
    );
 
-    if(sdl_variables.window == nullptr){
+    if(_sdl_variables.window == nullptr){
         std::cout << "Unable to create window, error: " << SDL_GetError() << std::endl;
         exit(5);
     }
 
-    SDL_GLContext glcontext = SDL_GL_CreateContext(sdl_variables.window);
+    SDL_GLContext glcontext = SDL_GL_CreateContext(_sdl_variables.window);
 
     if(glcontext == nullptr){
         std::cout << "Unable to create OpenGL context, error: " << SDL_GetError() << std::endl;
@@ -84,20 +84,20 @@ int application::kernel::init() {
     return 0;
 }
 
-int application::kernel::flow() {
+int application::kernel::_flow() {
 
     time::world_time.run();
     time::frame_update.set(0.015);
     time::frame_update.run();
 
-    while(state_variables.running){
+    while(_state_variables.running){
 
-        key_caption();
+        _key_caption();
 
         if (time::frame_update.fired) {
             time::frame_update.reset();
-            draw();
-            SDL_GL_SwapWindow(sdl_variables.window);
+            _draw();
+            SDL_GL_SwapWindow(_sdl_variables.window);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         }
     }
@@ -105,9 +105,9 @@ int application::kernel::flow() {
     return 0;
 }
 
-int application::kernel::draw() {
+int application::kernel::_draw() {
 
-    if (state_variables.warframe == GL_TRUE)
+    if (_state_variables.warframe == GL_TRUE)
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     else
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -117,27 +117,27 @@ int application::kernel::draw() {
     return 0;
 }
 
-int application::kernel::prepare_objects() {
+int application::kernel::_prepare_objects() {
 
     scene::base_object.prepare();
 
     return 0;
 }
 
-int application::kernel::key_caption() {
+int application::kernel::_key_caption() {
 
-    while(SDL_PollEvent(&sdl_variables.event)) {
-        switch (sdl_variables.event.type) {
+    while(SDL_PollEvent(&_sdl_variables.event)) {
+        switch (_sdl_variables.event.type) {
             case SDL_QUIT:
-                state_variables.running = false;
+                _state_variables.running = false;
                 break;
 
             case SDL_KEYDOWN:
-                switch (sdl_variables.event.key.keysym.sym) {
+                switch (_sdl_variables.event.key.keysym.sym) {
                     case SDLK_q:
-                        if (sdl_variables.last_key_pressed.type == SDL_KEYDOWN &&
-                            sdl_variables.last_key_pressed.key.keysym.sym == SDLK_LCTRL)
-                            state_variables.running = false;
+                        if (_sdl_variables.last_key_pressed.type == SDL_KEYDOWN &&
+                            _sdl_variables.last_key_pressed.key.keysym.sym == SDLK_LCTRL)
+                            _state_variables.running = false;
                         break;
                     case SDLK_w:
                         time::frame_update.stop();
@@ -146,10 +146,10 @@ int application::kernel::key_caption() {
                         time::frame_update.run();
                         break;
                     case SDLK_r:
-                        if (state_variables.warframe == GL_TRUE)
-                            state_variables.warframe = GL_FALSE;
+                        if (_state_variables.warframe == GL_TRUE)
+                            _state_variables.warframe = GL_FALSE;
                         else
-                            state_variables.warframe = GL_TRUE;
+                            _state_variables.warframe = GL_TRUE;
                         break;
                     default:
                         break;
@@ -158,7 +158,7 @@ int application::kernel::key_caption() {
             default:
                 break;
         }
-        sdl_variables.last_key_pressed = sdl_variables.event;
+        _sdl_variables.last_key_pressed = _sdl_variables.event;
     }
 
     return 0;
