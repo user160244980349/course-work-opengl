@@ -3,6 +3,7 @@
 //
 
 #include <objects/base_object.hpp>
+#include "time/timer.hpp"
 
 int application::objects::base_object::prepare() {
 
@@ -91,7 +92,7 @@ int application::objects::base_object::draw() {
 
 int application::objects::base_object::rotate() {
 
-    transform.model = glm::rotate(transform.model, glm::radians(sinf(time::world_time.time/1000.0f)*3.14f), glm::vec3(0.0f, 1.0f, 0.0f));
+    transform.model = glm::rotate(transform.model, glm::radians(sinf(time::world_time->time/1000.0f)*3.14f), glm::vec3(0.0f, 1.0f, 0.0f));
     buffers.ubo.update((GLvoid*)&transform, sizeof(transform));
 
     return 0;

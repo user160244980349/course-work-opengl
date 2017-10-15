@@ -6,6 +6,9 @@
 #include <GL/glew.h>
 #include <kernel.hpp>
 #include <global_variables.hpp>
+#include "time/timer.hpp"
+#include "time/interval_timer.hpp"
+#include "objects/base_object.hpp"
 
 
 application::kernel::kernel() {
@@ -81,16 +84,16 @@ int application::kernel::init() {
 
 int application::kernel::flow() {
 
-    time::world_time.run();
-    time::frame_update.set(0.015);
-    time::frame_update.run();
+    time::world_time->run();
+    time::frame_update->set(0.015);
+    time::frame_update->run();
 
     while(state_variables.running){
 
         key_caption();
 
-        if (time::frame_update.fired) {
-            time::frame_update.reset();
+        if (time::frame_update->fired) {
+            time::frame_update->reset();
             draw();
             SDL_GL_SwapWindow(sdl_variables.window);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -107,14 +110,14 @@ int application::kernel::draw() {
     else
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-    scene::base_object.draw();
+    scene::base_object->draw();
 
     return 0;
 }
 
 int application::kernel::prepare_objects() {
 
-    scene::base_object.prepare();
+    scene::base_object->prepare();
 
     return 0;
 }
@@ -135,10 +138,10 @@ int application::kernel::key_caption() {
                             state_variables.running = false;
                         break;
                     case SDLK_w:
-                        time::frame_update.stop();
+                        time::frame_update->stop();
                         break;
                     case SDLK_e:
-                        time::frame_update.run();
+                        time::frame_update->run();
                         break;
                     case SDLK_r:
                         if (state_variables.warframe == GL_TRUE)

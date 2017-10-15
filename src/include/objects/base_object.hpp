@@ -17,6 +17,7 @@
 #include <global_variables.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+
 namespace application::objects {
 
     class base_object : public abstract_object, drawable {
