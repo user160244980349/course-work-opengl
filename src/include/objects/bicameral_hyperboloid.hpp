@@ -20,7 +20,6 @@ namespace application::objects {
                          float z, float c, float b) override;
         float function_z(float x, float a,
                          float y, float c, float b) override;
-        int rotate();
 
     };
 
