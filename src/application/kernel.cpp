@@ -11,8 +11,10 @@
 #include "objects/base_object.hpp"
 
 
-application::kernel::kernel() {
+application::kernel::kernel(int width, int height) {
 
+    window_parameters.width = width;
+    window_parameters.height = height;
     init();
     prepare_objects();
     flow();
@@ -51,7 +53,7 @@ int application::kernel::init() {
            window_parameters.width,
            window_parameters.height,
            SDL_WINDOW_OPENGL |
-           SDL_WINDOW_FULLSCREEN_DESKTOP
+           SDL_WINDOW_FULLSCREEN
    );
 
     if(sdl_variables.window == nullptr){

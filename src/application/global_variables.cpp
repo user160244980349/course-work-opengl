@@ -2,12 +2,12 @@
 // Created by user on 14.10.2017.
 //
 
+#include "global_variables.hpp"
 #include <time/timer.hpp>
 #include <time/interval_timer.hpp>
 #include <glm/trigonometric.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <objects/base_object.hpp>
-#include "global_variables.hpp"
 
 namespace application {
 
@@ -26,7 +26,7 @@ namespace application {
 
     namespace graphics {
 
-        glm::mat4 perspective = glm::perspective(glm::radians(45.0f), 16.0f / 9.0f, 0.1f, 100.0f);
+        glm::mat4 perspective = glm::perspective(glm::radians(50.0f), 16.0f / 9.0f, 0.1f, 100.0f);
 
     }
 

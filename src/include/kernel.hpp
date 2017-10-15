@@ -20,8 +20,8 @@ namespace application {
     private:
 
         struct {
-            const int width = 800;
-            const int height = 600;
+            int width;
+            int height;
         } window_parameters;
 
         struct {
@@ -43,7 +43,7 @@ namespace application {
 
     public:
 
-        kernel();
+        kernel(int width, int height);
         ~kernel();
     };
 
