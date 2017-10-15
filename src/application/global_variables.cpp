@@ -8,10 +8,14 @@
 #include <glm/trigonometric.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <objects/base_object.hpp>
+#include <objects/one_sheet_hyperboloid.hpp>
+#include <objects/bicameral_hyperboloid.hpp>
 
 namespace application {
 
     class kernel;
+
+
 
     namespace time {
 
@@ -20,9 +24,13 @@ namespace application {
 
     }
 
+
+
     namespace objects {
 
     }
+
+
 
     namespace graphics {
 
@@ -30,9 +38,14 @@ namespace application {
 
     }
 
+
+
     namespace scene {
 
         objects::base_object&& base_object = objects::base_object();
+        objects::one_sheet_hyperboloid&& one_sheet_hyperboloid = objects::one_sheet_hyperboloid();
+        objects::bicameral_hyperboloid&& bicameral_hyperboloid = objects::bicameral_hyperboloid();
 
     }
+
 }

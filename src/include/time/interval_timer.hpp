@@ -11,6 +11,13 @@
 namespace application::time {
 
     class interval_timer : public abstract_timer {
+    public:
+        bool fired;
+
+        int set(float i);
+        int reset();
+        int run() override;
+        int stop() override;
 
     protected:
         Uint32 _interval;
@@ -30,14 +37,6 @@ namespace application::time {
             }
             return 0;
         };
-
-    public:
-        bool fired;
-
-        int set(float i);
-        int reset();
-        int run() override;
-        int stop() override;
     };
 
 }

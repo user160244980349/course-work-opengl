@@ -11,6 +11,8 @@ int application::graphics::ebo::create() {
     return 0;
 }
 
+
+
 int application::graphics::ebo::set(GLuint *o, GLuint size) {
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);

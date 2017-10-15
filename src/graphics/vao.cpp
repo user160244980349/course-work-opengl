@@ -11,12 +11,16 @@ int application::graphics::vao::create() {
     return 0;
 }
 
+
+
 int application::graphics::vao::bind() {
 
     glBindVertexArray(id);
 
     return 0;
 }
+
+
 
 int application::graphics::vao::bind(GLuint draw_style, GLuint used_vertices) {
 
@@ -27,11 +31,15 @@ int application::graphics::vao::bind(GLuint draw_style, GLuint used_vertices) {
     return 0;
 }
 
+
+
 application::graphics::vao::~vao() {
 
     glDeleteVertexArrays(1, &id);
 
 }
+
+
 
 int application::graphics::vao::unbind() {
 

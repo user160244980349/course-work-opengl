@@ -10,14 +10,14 @@
 namespace application::graphics {
 
     class shader {
-    protected:
-
     public:
-
         GLuint shader_program_id = 0;
 
         shader(const GLchar *vertex_path, const GLchar *fragment_path);
         int use();
+
+    protected:
+
     };
 
 }

@@ -4,6 +4,7 @@
 
 #include <objects/base_object.hpp>
 #include "time/timer.hpp"
+#include "graphics/shader.hpp"
 
 int application::objects::base_object::prepare() {
 
@@ -70,7 +71,7 @@ int application::objects::base_object::prepare() {
     _buffers.vao.bind();
 
     _buffers.vbo.create();
-    _buffers.vbo.set(_vertices.data());
+    _buffers.vbo.set(_vertices.data(), _vertices.size());
 
     _buffers.ebo.create();
     _buffers.ebo.set(_order.data(), (GLuint)_order.size());
@@ -82,6 +83,8 @@ int application::objects::base_object::prepare() {
     return 0;
 }
 
+
+
 int application::objects::base_object::draw() {
 
     rotate();
@@ -89,6 +92,8 @@ int application::objects::base_object::draw() {
 
     return 0;
 }
+
+
 
 int application::objects::base_object::rotate() {
 

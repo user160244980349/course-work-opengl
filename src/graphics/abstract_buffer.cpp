@@ -8,6 +8,8 @@ application::graphics::abstract_buffer::~abstract_buffer() {
     glDeleteBuffers(1, &id);
 }
 
+
+
 int application::graphics::abstract_buffer::create() {
     return 0;
 }

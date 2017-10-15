@@ -12,6 +12,8 @@ int application::time::interval_timer::set(float i) {
 
 }
 
+
+
 int application::time::interval_timer::run() {
 
     if (!_running) {
@@ -23,11 +25,15 @@ int application::time::interval_timer::run() {
     return 0;
 }
 
+
+
 int application::time::interval_timer::reset() {
     time = 0;
     fired = false;
     return 0;
 }
+
+
 
 int application::time::interval_timer::stop() {
     _running = false;

@@ -12,6 +12,8 @@ int application::graphics::ubo::create() {
     return 0;
 }
 
+
+
 int application::graphics::ubo::connect(GLuint program) {
 
     GLuint block_index = glGetUniformBlockIndex(program, "shader_data");
@@ -21,6 +23,8 @@ int application::graphics::ubo::connect(GLuint program) {
     return 0;
 }
 
+
+
 int application::graphics::ubo::set(GLvoid *data, GLuint size) {
 
     glBindBuffer(GL_UNIFORM_BUFFER, id);
@@ -28,6 +32,8 @@ int application::graphics::ubo::set(GLvoid *data, GLuint size) {
 
     return 0;
 }
+
+
 
 int application::graphics::ubo::update(GLvoid *data, GLuint size) {
 

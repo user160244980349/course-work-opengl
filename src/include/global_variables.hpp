@@ -11,6 +11,8 @@ namespace application {
 
     class kernel;
 
+
+
     namespace time {
 
         class timer;
@@ -21,13 +23,19 @@ namespace application {
 
     }
 
+
+
     namespace objects {
 
         class abstract_object;
         class drawable;
         class base_object;
+        class one_sheet_hyperboloid;
+        class bicameral_hyperboloid;
 
     }
+
+
 
     namespace graphics {
 
@@ -42,9 +50,13 @@ namespace application {
 
     }
 
+
+
     namespace scene {
 
         extern objects::base_object&& base_object;
+        extern objects::one_sheet_hyperboloid&& one_sheet_hyperboloid;
+        extern objects::bicameral_hyperboloid&& bicameral_hyperboloid;
 
     }
 }

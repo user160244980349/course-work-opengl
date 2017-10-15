@@ -7,7 +7,6 @@
 #include <sstream>
 #include "graphics/shader.hpp"
 
-
 application::graphics::shader::shader(const GLchar *vertex_path, const GLchar *fragment_path) {
 
     std::string vertex_code;
@@ -79,6 +78,8 @@ application::graphics::shader::shader(const GLchar *vertex_path, const GLchar *f
     }
 
 }
+
+
 
 int application::graphics::shader::use() {
 

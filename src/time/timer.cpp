@@ -16,10 +16,14 @@ int application::time::timer::run() {
     return 0;
 }
 
+
+
 int application::time::timer::reset() {
     time = 0;
     return 0;
 }
+
+
 
 int application::time::timer::stop() {
     _running = false;

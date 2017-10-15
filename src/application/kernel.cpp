@@ -9,6 +9,8 @@
 #include "time/timer.hpp"
 #include "time/interval_timer.hpp"
 #include "objects/base_object.hpp"
+#include "objects/one_sheet_hyperboloid.hpp"
+#include "objects/bicameral_hyperboloid.hpp"
 
 
 application::kernel::kernel(int width, int height) {
@@ -21,12 +23,16 @@ application::kernel::kernel(int width, int height) {
 
 }
 
+
+
 application::kernel::~kernel() {
 
     SDL_DestroyWindow(_sdl_variables.window);
     SDL_Quit();
 
 }
+
+
 
 int application::kernel::_init() {
 
@@ -84,6 +90,8 @@ int application::kernel::_init() {
     return 0;
 }
 
+
+
 int application::kernel::_flow() {
 
     time::world_time.run();
@@ -105,6 +113,8 @@ int application::kernel::_flow() {
     return 0;
 }
 
+
+
 int application::kernel::_draw() {
 
     if (_state_variables.warframe == GL_TRUE)
@@ -112,17 +122,34 @@ int application::kernel::_draw() {
     else
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-    scene::base_object.draw();
+    switch(_state_variables.n) {
+        case 0:
+            scene::base_object.draw();
+            break;
+        case 1:
+            scene::one_sheet_hyperboloid.draw();
+            break;
+        case 2:
+            scene::bicameral_hyperboloid.draw();
+            break;
+
+    }
 
     return 0;
 }
+
+
 
 int application::kernel::_prepare_objects() {
 
     scene::base_object.prepare();
+    scene::one_sheet_hyperboloid.prepare();
+    scene::bicameral_hyperboloid.prepare();
 
     return 0;
 }
+
+
 
 int application::kernel::_key_caption() {
 
@@ -140,16 +167,26 @@ int application::kernel::_key_caption() {
                             _state_variables.running = false;
                         break;
                     case SDLK_w:
-                        time::frame_update.stop();
+                        time::world_time.stop();
                         break;
                     case SDLK_e:
-                        time::frame_update.run();
+                        time::world_time.run();
                         break;
                     case SDLK_r:
                         if (_state_variables.warframe == GL_TRUE)
                             _state_variables.warframe = GL_FALSE;
                         else
                             _state_variables.warframe = GL_TRUE;
+                        break;
+                    case SDLK_LEFT:
+                        _state_variables.n--;
+                        if (_state_variables.n < 0)
+                            _state_variables.n = 2;
+                        break;
+                    case SDLK_RIGHT:
+                        _state_variables.n++;
+                        if (_state_variables.n > 2)
+                            _state_variables.n = 0;
                         break;
                     default:
                         break;

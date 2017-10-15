@@ -11,6 +11,10 @@
 namespace application::time {
 
     class timer : public abstract_timer {
+    public:
+        int reset();
+        int run() override;
+        int stop() override;
 
     protected:
         bool _running;
@@ -20,12 +24,6 @@ namespace application::time {
                 time = SDL_GetTicks();
             return 0;
         };
-
-    public:
-
-        int reset();
-        int run() override;
-        int stop() override;
     };
 
 }

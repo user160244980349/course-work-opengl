@@ -6,16 +6,44 @@
 #define OPENGL_DRAWABLE_HPP
 
 
-#include "abstract_object.hpp"
+#include <graphics/vao.hpp>
+#include <graphics/vbo.hpp>
+#include <graphics/ebo.hpp>
+#include <graphics/ubo.hpp>
+#include <global_variables.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <graphics/vertex_3d.hpp>
+#include <vector>
+#include <graphics/shader.hpp>
 
 namespace application::objects {
 
     class drawable {
-    protected:
-
     public:
         virtual int prepare();
         virtual int draw();
+
+    protected:
+        struct {
+            graphics::vao vao;
+            graphics::vbo vbo;
+            graphics::ebo ebo;
+            graphics::ubo ubo;
+        } _buffers;
+
+        struct {
+            glm::mat4 perspective = graphics::perspective;
+            glm::mat4 view = glm::lookAt(
+                    glm::vec3(4,2,3),
+                    glm::vec3(0,0,0),
+                    glm::vec3(0,1,0)
+            );
+            glm::mat4 model = glm::mat4(1.0f);
+        } _transform;
+
+        std::vector<graphics::vertex_3d> _vertices;
+        std::vector<GLuint> _order;
+        std::vector<graphics::shader> _shaders;
     };
 
 }

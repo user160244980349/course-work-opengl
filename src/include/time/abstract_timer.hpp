@@ -12,13 +12,15 @@
 #endif
 
 class abstract_timer {
-
 public:
     Uint32 time;
 
     virtual int reset();
     virtual int run();
     virtual int stop();
+
+protected:
+
 };
 
 

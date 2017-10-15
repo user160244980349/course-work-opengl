@@ -17,8 +17,11 @@
 namespace application {
 
     class kernel {
-    private:
+    public:
+        kernel(int width, int height);
+        ~kernel();
 
+    private:
         struct {
             int width;
             int height;
@@ -33,6 +36,7 @@ namespace application {
         struct {
             bool running = true;
             GLboolean warframe = GL_FALSE;
+            int n = 0;
         } _state_variables;
 
         int _init();
@@ -40,11 +44,6 @@ namespace application {
         int _flow();
         int _draw();
         int _key_caption();
-
-    public:
-
-        kernel(int width, int height);
-        ~kernel();
     };
 
 }

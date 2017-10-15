@@ -7,16 +7,17 @@
 
 
 #include <graphics/abstract_buffer.hpp>
+#include "graphics/vertex_3d.hpp"
 
 namespace application::graphics {
 
     class vbo : public abstract_buffer {
+    public:
+        int create() override;
+        int set(vertex_3d *v, GLuint size);
+
     protected:
 
-    public:
-
-        int create() override;
-        int set(vertex_3d *v);
     };
 
 }

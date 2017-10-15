@@ -11,13 +11,14 @@
 namespace application::graphics {
 
     class abstract_buffer {
-    protected:
-
     public:
         GLuint id;
 
         virtual int create();
         ~abstract_buffer();
+
+    protected:
+
     };
 
 }

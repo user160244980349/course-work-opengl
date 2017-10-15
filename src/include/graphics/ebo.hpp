@@ -11,12 +11,12 @@
 namespace application::graphics {
 
     class ebo : public abstract_buffer {
-    protected:
-
     public:
-
         int create() override;
         int set(GLuint *o, GLuint size);
+
+    protected:
+
     };
 
 }
