@@ -16,8 +16,8 @@ namespace application {
         class timer;
         class interval_timer;
 
-        extern timer *world_time;
-        extern interval_timer *frame_update;
+        extern timer&& world_time;
+        extern interval_timer&& frame_update;
 
     }
 
@@ -44,7 +44,7 @@ namespace application {
 
     namespace scene {
 
-        extern objects::base_object *base_object;
+        extern objects::base_object&& base_object;
 
     }
 }

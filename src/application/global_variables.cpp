@@ -15,8 +15,8 @@ namespace application {
 
     namespace time {
 
-        timer *world_time = new timer;
-        interval_timer *frame_update = new interval_timer;
+        timer&& world_time = time::timer();
+        interval_timer&& frame_update = time::interval_timer();
 
     }
 
@@ -32,7 +32,7 @@ namespace application {
 
     namespace scene {
 
-        objects::base_object *base_object = new objects::base_object;
+        objects::base_object&& base_object = objects::base_object();
 
     }
 }
