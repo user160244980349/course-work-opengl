@@ -11,13 +11,10 @@
 namespace application::objects {
 
     class bicameral_hyperboloid : public one_sheet_hyperboloid {
-    public:
-
     protected:
         float function_x(float y, float a, float z, float c, float b) override;
         float function_y(float x, float a, float z, float c, float b) override;
         float function_z(float x, float a, float y, float c, float b) override;
-
     };
 
 }

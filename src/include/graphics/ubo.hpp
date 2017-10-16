@@ -17,9 +17,6 @@ namespace application::graphics {
         int set(GLvoid *data, GLuint size);
         int update(GLvoid *data, GLuint size);
         int connect(GLuint program);
-
-    protected:
-
     };
 
 }

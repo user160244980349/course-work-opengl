@@ -16,9 +16,6 @@ namespace application::graphics {
         int create() override;
         int bind();
         int bind(GLuint draw_style, GLuint used_vertices);
-
-    protected:
-
     };
 
 }

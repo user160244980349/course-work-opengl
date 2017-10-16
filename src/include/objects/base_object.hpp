@@ -16,9 +16,6 @@ namespace application::objects {
         int prepare() override;
         int draw() override;
         int rotate();
-
-    protected:
-
     };
 
 }

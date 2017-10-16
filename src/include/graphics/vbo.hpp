@@ -16,9 +16,6 @@ namespace application::graphics {
         ~vbo();
         int create() override;
         int set(vertex_3d *v, GLuint size);
-
-    protected:
-
     };
 
 }

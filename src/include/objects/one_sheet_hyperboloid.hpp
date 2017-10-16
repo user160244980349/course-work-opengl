@@ -24,7 +24,6 @@ namespace application::objects {
         virtual float function_z(float x, float a,
                       float y, float c, float b);
         int rotate();
-
     };
 
 }

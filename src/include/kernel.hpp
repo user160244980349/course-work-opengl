@@ -27,7 +27,7 @@ namespace application {
         kernel(int width, int height);
         ~kernel();
 
-    private:
+    protected:
         struct {
             int width;
             int height;
