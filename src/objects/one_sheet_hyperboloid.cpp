@@ -88,7 +88,7 @@ int application::objects::one_sheet_hyperboloid::draw() {
 
 int application::objects::one_sheet_hyperboloid::rotate() {
 
-    _transform.model = glm::rotate(_transform.model, glm::radians(sinf(time::world_time.time/1000.0f)*3.14f), glm::vec3(0.0f, 1.0f, 0.0f));
+//    _transform.model = glm::rotate(_transform.model, glm::radians(sinf(time::world_time.time/1000.0f)*3.14f), glm::vec3(0.0f, 1.0f, 0.0f));
     _buffers.ubo.update((GLvoid*)&_transform, sizeof(_transform));
 
     return 0;

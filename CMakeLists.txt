@@ -7,7 +7,6 @@ set(CMAKE_CXX_STANDARD 17)
 # headers
 set(HEADERS
         src/include/kernel.hpp
-        src/include/global_variables.hpp
         src/include/graphics/vertex_3d.hpp
         src/include/graphics/shader.hpp
         src/include/graphics/vao.hpp
@@ -38,7 +37,6 @@ set(SOURCES
         src/time/abstract_timer.cpp
         src/time/interval_timer.cpp
         src/time/timer.cpp
-        src/application/global_variables.cpp
         src/objects/drawable.cpp
         src/include/objects/one_sheet_hyperboloid.hpp src/objects/bicameral_hyperboloid.cpp src/include/objects/bicameral_hyperboloid.hpp)
 

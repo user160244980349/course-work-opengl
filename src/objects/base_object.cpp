@@ -71,7 +71,7 @@ int application::objects::base_object::prepare() {
     _buffers.vao.bind();
 
     _buffers.vbo.create();
-    _buffers.vbo.set(_vertices.data(), _vertices.size());
+    _buffers.vbo.set(_vertices.data(), (GLuint)_vertices.size());
 
     _buffers.ebo.create();
     _buffers.ebo.set(_order.data(), (GLuint)_order.size());
@@ -97,7 +97,7 @@ int application::objects::base_object::draw() {
 
 int application::objects::base_object::rotate() {
 
-    _transform.model = glm::rotate(_transform.model, glm::radians(sinf(time::world_time.time/1000.0f)*3.14f), glm::vec3(0.0f, 1.0f, 0.0f));
+//    _transform.model = glm::rotate(_transform.model, glm::radians(sinf(time::world_time.time/1000.0f)*3.14f), glm::vec3(0.0f, 1.0f, 0.0f));
     _buffers.ubo.update((GLvoid*)&_transform, sizeof(_transform));
 
     return 0;

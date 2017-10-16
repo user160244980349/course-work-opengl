@@ -5,7 +5,6 @@
 #include <iostream>
 #include <GL/glew.h>
 #include <kernel.hpp>
-#include <global_variables.hpp>
 #include "time/timer.hpp"
 #include "time/interval_timer.hpp"
 #include "objects/base_object.hpp"
@@ -94,16 +93,16 @@ int application::kernel::_init() {
 
 int application::kernel::_flow() {
 
-    time::world_time.run();
-    time::frame_update.set(0.015);
-    time::frame_update.run();
+    _state_variables.world_time.run();
+    _state_variables.frame_update.set(0.015);
+    _state_variables.frame_update.run();
 
     while(_state_variables.running){
 
         _key_caption();
 
-        if (time::frame_update.fired) {
-            time::frame_update.reset();
+        if (_state_variables.frame_update.fired) {
+            _state_variables.frame_update.reset();
             _draw();
             SDL_GL_SwapWindow(_sdl_variables.window);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -124,13 +123,13 @@ int application::kernel::_draw() {
 
     switch(_state_variables.n) {
         case 0:
-            scene::base_object.draw();
+            objects.base_object.draw();
             break;
         case 1:
-            scene::one_sheet_hyperboloid.draw();
+            objects.one_sheet_hyperboloid.draw();
             break;
         case 2:
-            scene::bicameral_hyperboloid.draw();
+            objects.bicameral_hyperboloid.draw();
             break;
 
     }
@@ -142,9 +141,9 @@ int application::kernel::_draw() {
 
 int application::kernel::_prepare_objects() {
 
-    scene::base_object.prepare();
-    scene::one_sheet_hyperboloid.prepare();
-    scene::bicameral_hyperboloid.prepare();
+    objects.base_object.prepare();
+    objects.one_sheet_hyperboloid.prepare();
+    objects.bicameral_hyperboloid.prepare();
 
     return 0;
 }
@@ -167,10 +166,10 @@ int application::kernel::_key_caption() {
                             _state_variables.running = false;
                         break;
                     case SDLK_w:
-                        time::world_time.stop();
+                        _state_variables.world_time.stop();
                         break;
                     case SDLK_e:
-                        time::world_time.run();
+                        _state_variables.world_time.run();
                         break;
                     case SDLK_r:
                         if (_state_variables.warframe == GL_TRUE)

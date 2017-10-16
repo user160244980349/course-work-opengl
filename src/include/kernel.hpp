@@ -10,6 +10,12 @@
 #include <SDL2/SDL.h>
 #elif _WIN32
 #include <SDL.h>
+#include <objects/base_object.hpp>
+#include <objects/one_sheet_hyperboloid.hpp>
+#include <objects/bicameral_hyperboloid.hpp>
+#include <time/interval_timer.hpp>
+#include <time/timer.hpp>
+
 #endif
 
 #include "GL/glew.h"
@@ -34,7 +40,15 @@ namespace application {
         } _sdl_variables;
 
         struct {
+            objects::base_object base_object;
+            objects::one_sheet_hyperboloid one_sheet_hyperboloid;
+            objects::bicameral_hyperboloid bicameral_hyperboloid;
+        } objects;
+
+        struct {
             bool running = true;
+            time::timer world_time ;
+            time::interval_timer frame_update;
             GLboolean warframe = GL_FALSE;
             int n = 0;
         } _state_variables;

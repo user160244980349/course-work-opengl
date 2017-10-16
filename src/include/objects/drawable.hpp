@@ -10,7 +10,6 @@
 #include <graphics/vbo.hpp>
 #include <graphics/ebo.hpp>
 #include <graphics/ubo.hpp>
-#include <global_variables.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <graphics/vertex_3d.hpp>
 #include <vector>
@@ -32,7 +31,7 @@ namespace application::objects {
         } _buffers;
 
         struct {
-            glm::mat4 perspective = graphics::perspective;
+            glm::mat4 perspective = glm::perspective(glm::radians(50.0f), 16.0f / 9.0f, 0.1f, 100.0f);
             glm::mat4 view = glm::lookAt(
                     glm::vec3(4,2,3),
                     glm::vec3(0,0,0),

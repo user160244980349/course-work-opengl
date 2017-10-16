@@ -14,12 +14,9 @@ namespace application::objects {
     public:
 
     protected:
-        float function_x(float y, float a,
-                         float z, float c, float b) override;
-        float function_y(float x, float a,
-                         float z, float c, float b) override;
-        float function_z(float x, float a,
-                         float y, float c, float b) override;
+        float function_x(float y, float a, float z, float c, float b) override;
+        float function_y(float x, float a, float z, float c, float b) override;
+        float function_z(float x, float a, float y, float c, float b) override;
 
     };
 
