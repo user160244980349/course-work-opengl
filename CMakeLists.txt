@@ -20,16 +20,15 @@ set(HEADERS
         src/include/objects/abstract_object.hpp
         src/include/objects/base_object.hpp
         src/include/objects/drawable.hpp
-        src/objects/one_sheet_hyperboloid.cpp src/objects/bicameral_hyperboloid.cpp src/include/objects/bicameral_hyperboloid.hpp)
+        src/include/objects/bicameral_hyperboloid.hpp
+        src/include/environment.hpp)
 
 # sources
 set(SOURCES
         src/main.cpp
         src/application/kernel.cpp
+        src/application/environment.cpp
         src/graphics/shader.cpp
-        src/objects/abstract_object.cpp
-        src/objects/base_object.cpp
-        src/graphics/abstract_buffer.cpp
         src/graphics/vao.cpp
         src/graphics/vbo.cpp
         src/graphics/ebo.cpp
@@ -37,8 +36,9 @@ set(SOURCES
         src/time/abstract_timer.cpp
         src/time/interval_timer.cpp
         src/time/timer.cpp
-        src/objects/drawable.cpp
-        src/include/objects/one_sheet_hyperboloid.hpp src/objects/bicameral_hyperboloid.cpp src/include/objects/bicameral_hyperboloid.hpp)
+        src/objects/base_object.cpp
+        src/objects/bicameral_hyperboloid.cpp
+        src/objects/one_sheet_hyperboloid.cpp)
 
 # executables
 add_executable(OpenGL   ${HEADERS} ${SOURCES})

@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <objects/drawable.hpp>
+#include <environment.hpp>
 #include "objects/one_sheet_hyperboloid.hpp"
 #include "graphics/shader.hpp"
 #include "time/timer.hpp"
@@ -61,10 +62,10 @@ int application::objects::one_sheet_hyperboloid::prepare() {
     _buffers.vao.bind();
 
     _buffers.vbo.create();
-    _buffers.vbo.set(_vertices.data(), _vertices.size());
+    _buffers.vbo.set(_vertices.data(), (GLuint)_vertices.size());
 
     _buffers.ebo.create();
-    _buffers.ebo.set(_order.data(), _order.size());
+    _buffers.ebo.set(_order.data(), (GLuint)_order.size());
 
     _buffers.ubo.create();
     _buffers.ubo.set((GLvoid*)&_transform, sizeof(_transform));
@@ -88,7 +89,7 @@ int application::objects::one_sheet_hyperboloid::draw() {
 
 int application::objects::one_sheet_hyperboloid::rotate() {
 
-//    _transform.model = glm::rotate(_transform.model, glm::radians(sinf(time::world_time.time/1000.0f)*3.14f), glm::vec3(0.0f, 1.0f, 0.0f));
+    _transform.model = glm::rotate(_transform.model, glm::radians(sinf(environment::world_time.time/1000.0f)*3.14f), glm::vec3(0.0f, 1.0f, 0.0f));
     _buffers.ubo.update((GLvoid*)&_transform, sizeof(_transform));
 
     return 0;

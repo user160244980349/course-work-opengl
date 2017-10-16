@@ -12,6 +12,7 @@ namespace application::graphics {
 
     class ebo : public abstract_buffer {
     public:
+        ~ebo();
         int create() override;
         int set(GLuint *o, GLuint size);
 

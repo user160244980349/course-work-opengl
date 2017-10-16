@@ -4,6 +4,15 @@
 
 #include "graphics/ebo.hpp"
 
+
+application::graphics::ebo::~ebo() {
+
+    glDeleteBuffers(1, &id);
+
+}
+
+
+
 int application::graphics::ebo::create() {
 
     glGenBuffers(1, &id);

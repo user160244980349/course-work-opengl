@@ -9,9 +9,6 @@
 namespace application::objects {
 
     class abstract_object {
-    public:
-
-    protected:
 
     };
 

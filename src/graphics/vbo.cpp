@@ -5,6 +5,15 @@
 #include <graphics/vertex_3d.hpp>
 #include "graphics/vbo.hpp"
 
+
+application::graphics::vbo::~vbo() {
+
+    glDeleteBuffers(1, &id);
+
+}
+
+
+
 int application::graphics::vbo::create() {
 
     glGenBuffers(1, &id);

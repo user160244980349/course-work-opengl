@@ -14,8 +14,7 @@ namespace application::graphics {
     public:
         GLuint id;
 
-        virtual int create();
-        ~abstract_buffer();
+        virtual int create() = 0;
 
     protected:
 

@@ -13,6 +13,7 @@ namespace application::graphics {
 
     class vbo : public abstract_buffer {
     public:
+        ~vbo();
         int create() override;
         int set(vertex_3d *v, GLuint size);
 

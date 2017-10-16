@@ -5,6 +5,15 @@
 #include "graphics/ubo.hpp"
 #include <cstring>
 
+
+application::graphics::ubo::~ubo() {
+
+    glDeleteBuffers(1, &id);
+
+}
+
+
+
 int application::graphics::ubo::create() {
 
     glGenBuffers(1, &id);

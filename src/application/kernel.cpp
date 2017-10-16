@@ -5,6 +5,7 @@
 #include <iostream>
 #include <GL/glew.h>
 #include <kernel.hpp>
+#include <environment.hpp>
 #include "time/timer.hpp"
 #include "time/interval_timer.hpp"
 #include "objects/base_object.hpp"
@@ -16,9 +17,9 @@ application::kernel::kernel(int width, int height) {
 
     _window_parameters.width = width;
     _window_parameters.height = height;
-    _init();
-    _prepare_objects();
-    _flow();
+    init();
+    prepare_objects();
+    flow();
 
 }
 
@@ -33,7 +34,7 @@ application::kernel::~kernel() {
 
 
 
-int application::kernel::_init() {
+int application::kernel::init() {
 
     if ( SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0 ){
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
@@ -91,19 +92,19 @@ int application::kernel::_init() {
 
 
 
-int application::kernel::_flow() {
+int application::kernel::flow() {
 
-    _state_variables.world_time.run();
+    environment::world_time.run();
     _state_variables.frame_update.set(0.015);
     _state_variables.frame_update.run();
 
     while(_state_variables.running){
 
-        _key_caption();
+        key_caption();
 
         if (_state_variables.frame_update.fired) {
             _state_variables.frame_update.reset();
-            _draw();
+            draw();
             SDL_GL_SwapWindow(_sdl_variables.window);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         }
@@ -114,7 +115,7 @@ int application::kernel::_flow() {
 
 
 
-int application::kernel::_draw() {
+int application::kernel::draw() {
 
     if (_state_variables.warframe == GL_TRUE)
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -139,7 +140,7 @@ int application::kernel::_draw() {
 
 
 
-int application::kernel::_prepare_objects() {
+int application::kernel::prepare_objects() {
 
     objects.base_object.prepare();
     objects.one_sheet_hyperboloid.prepare();
@@ -150,7 +151,7 @@ int application::kernel::_prepare_objects() {
 
 
 
-int application::kernel::_key_caption() {
+int application::kernel::key_caption() {
 
     while(SDL_PollEvent(&_sdl_variables.event)) {
         switch (_sdl_variables.event.type) {
@@ -166,10 +167,10 @@ int application::kernel::_key_caption() {
                             _state_variables.running = false;
                         break;
                     case SDLK_w:
-                        _state_variables.world_time.stop();
+                        environment::world_time.stop();
                         break;
                     case SDLK_e:
-                        _state_variables.world_time.run();
+                        environment::world_time.run();
                         break;
                     case SDLK_r:
                         if (_state_variables.warframe == GL_TRUE)

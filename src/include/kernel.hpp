@@ -47,17 +47,16 @@ namespace application {
 
         struct {
             bool running = true;
-            time::timer world_time ;
             time::interval_timer frame_update;
             GLboolean warframe = GL_FALSE;
             int n = 0;
         } _state_variables;
 
-        int _init();
-        int _prepare_objects();
-        int _flow();
-        int _draw();
-        int _key_caption();
+        int init();
+        int prepare_objects();
+        int flow();
+        int draw();
+        int key_caption();
     };
 
 }

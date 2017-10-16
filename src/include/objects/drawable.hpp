@@ -19,8 +19,8 @@ namespace application::objects {
 
     class drawable {
     public:
-        virtual int prepare();
-        virtual int draw();
+        virtual int prepare() = 0;
+        virtual int draw() = 0;
 
     protected:
         struct {
