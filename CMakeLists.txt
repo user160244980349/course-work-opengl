@@ -21,7 +21,7 @@ set(HEADERS
         src/include/objects/base_object.hpp
         src/include/objects/drawable.hpp
         src/include/objects/bicameral_hyperboloid.hpp
-        src/include/environment.hpp)
+        )
 
 # sources
 set(SOURCES
@@ -38,7 +38,9 @@ set(SOURCES
         src/time/timer.cpp
         src/objects/base_object.cpp
         src/objects/bicameral_hyperboloid.cpp
-        src/objects/one_sheet_hyperboloid.cpp)
+        src/objects/one_sheet_hyperboloid.cpp
+
+        )
 
 # executables
 add_executable(OpenGL   ${HEADERS} ${SOURCES})

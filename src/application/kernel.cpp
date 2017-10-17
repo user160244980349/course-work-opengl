@@ -41,6 +41,8 @@ int application::kernel::init() {
         exit(1);
     }
 
+    SDL_SetRelativeMouseMode(SDL_TRUE); // захват курсора в окне
+    SDL_ShowCursor(SDL_DISABLE); // показ курсора
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
@@ -192,6 +194,12 @@ int application::kernel::key_caption() {
                         break;
                 }
                 break;
+
+            case SDL_MOUSEMOTION:
+                environment::mouse_x += _sdl_variables.event.motion.xrel * environment::sensetivety;
+                environment::mouse_y -= _sdl_variables.event.motion.yrel * environment::sensetivety;
+                break;
+
             default:
                 break;
         }

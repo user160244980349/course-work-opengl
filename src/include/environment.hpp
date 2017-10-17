@@ -12,6 +12,9 @@ namespace environment {
 
     extern application::time::timer&& world_time;
 
+    extern float sensetivety;
+    extern float mouse_x;
+    extern float mouse_y;
 }
 
 

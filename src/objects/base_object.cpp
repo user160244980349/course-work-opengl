@@ -4,6 +4,8 @@
 
 #include <objects/base_object.hpp>
 #include <environment.hpp>
+#include <iostream>
+#include <objects/drawable.hpp>
 #include "time/timer.hpp"
 #include "graphics/shader.hpp"
 
@@ -87,6 +89,24 @@ int application::objects::base_object::prepare() {
 
 
 int application::objects::base_object::draw() {
+
+    glm::vec3 cameraPos   = glm::vec3(-6.0f, 3.0f,  0.0f);
+    glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
+
+    if(environment::mouse_y > 89.0f)
+        environment::mouse_y =  89.0f;
+    if(environment::mouse_y < -89.0f)
+        environment::mouse_y = -89.0f;
+
+    glm::vec3 front;
+
+    front.x = cos(glm::radians(environment::mouse_y)) * cos(glm::radians(environment::mouse_x));
+    front.y = sin(glm::radians(environment::mouse_y));
+    front.z = cos(glm::radians(environment::mouse_y)) * sin(glm::radians(environment::mouse_x));
+
+    glm::vec3 cameraFront = glm::normalize(front);
+
+    _transform.view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 
     rotate();
     _buffers.vao.bind(GL_TRIANGLES, (GLuint)_order.size());
