@@ -8,21 +8,15 @@
 
 #ifdef __linux__
 #include <SDL2/SDL.h>
-#include <objects/base_object.hpp>
-#include <objects/one_sheet_hyperboloid.hpp>
-#include <objects/bicameral_hyperboloid.hpp>
-#include <time/interval_timer.hpp>
-
 #elif _WIN32
 #include <SDL.h>
+#endif
+
 #include <objects/base_object.hpp>
 #include <objects/one_sheet_hyperboloid.hpp>
 #include <objects/bicameral_hyperboloid.hpp>
 #include <time/interval_timer.hpp>
 #include <time/timer.hpp>
-
-#endif
-
 #include "GL/glew.h"
 
 namespace application {
