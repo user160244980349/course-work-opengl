@@ -2,12 +2,12 @@
 // Created by user on 15.10.2017.
 //
 
-#ifndef OPENGL_ONE_SHEET_HYPERBOLOID_HPP
-#define OPENGL_ONE_SHEET_HYPERBOLOID_HPP
+#ifndef OPENGL_ONE_SHEET_HYPERBOLOID_H
+#define OPENGL_ONE_SHEET_HYPERBOLOID_H
 
 
-#include "objects/abstract_object.hpp"
-#include "objects/drawable.hpp"
+#include "objects/abstract_object.h"
+#include "objects/drawable.h"
 
 namespace application::objects {
 
@@ -29,4 +29,4 @@ namespace application::objects {
 }
 
 
-#endif //OPENGL_ONE_SHEET_HYPERBOLOID_HPP
+#endif //OPENGL_ONE_SHEET_HYPERBOLOID_H

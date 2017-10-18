@@ -2,7 +2,7 @@
 // Created by user on 13.10.2017.
 //
 
-#include "graphics/vao.hpp"
+#include "graphics/vao.h"
 
 
 application::graphics::vao::~vao() {

@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "graphics/shader.hpp"
+#include "graphics/shader.h"
 
 application::graphics::shader::shader(const GLchar *vertex_path, const GLchar *fragment_path) {
 

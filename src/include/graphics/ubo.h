@@ -2,11 +2,11 @@
 // Created by user on 14.10.2017.
 //
 
-#ifndef OPENGL_UBO_HPP
-#define OPENGL_UBO_HPP
+#ifndef OPENGL_UBO_H
+#define OPENGL_UBO_H
 
 
-#include <graphics/abstract_buffer.hpp>
+#include <graphics/abstract_buffer.h>
 
 namespace application::graphics {
 
@@ -22,4 +22,4 @@ namespace application::graphics {
 }
 
 
-#endif //OPENGL_UBO_HPP
+#endif //OPENGL_UBO_H

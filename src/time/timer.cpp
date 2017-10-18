@@ -2,7 +2,7 @@
 // Created by user on 08.10.2017.
 //
 
-#include "time/timer.hpp"
+#include "time/timer.h"
 #include <thread>
 
 int application::time::timer::run() {

@@ -2,12 +2,12 @@
 // Created by user on 13.10.2017.
 //
 
-#ifndef OPENGL_VBO_HPP
-#define OPENGL_VBO_HPP
+#ifndef OPENGL_VBO_H
+#define OPENGL_VBO_H
 
 
-#include <graphics/abstract_buffer.hpp>
-#include "graphics/vertex_3d.hpp"
+#include <graphics/abstract_buffer.h>
+#include "graphics/vertex_3d.h"
 
 namespace application::graphics {
 
@@ -21,4 +21,4 @@ namespace application::graphics {
 }
 
 
-#endif //OPENGL_VBO_HPP
+#endif //OPENGL_VBO_H

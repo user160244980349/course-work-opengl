@@ -2,11 +2,11 @@
 // Created by user on 08.10.2017.
 //
 
-#ifndef OPENGL_INTERVAL_TIMER_HPP
-#define OPENGL_INTERVAL_TIMER_HPP
+#ifndef OPENGL_INTERVAL_TIMER_H
+#define OPENGL_INTERVAL_TIMER_H
 
 
-#include "abstract_timer.hpp"
+#include "abstract_timer.h"
 
 namespace application::time {
 
@@ -41,4 +41,4 @@ namespace application::time {
 
 }
 
-#endif //OPENGL_TIMER_HPP
+#endif //OPENGL_TIMER_H

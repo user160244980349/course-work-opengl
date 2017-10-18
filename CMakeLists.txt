@@ -4,27 +4,24 @@ project(OpenGL)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# headers
-set(HEADERS
-        src/include/kernel.hpp
-        src/include/graphics/vertex_3d.hpp
-        src/include/graphics/shader.hpp
-        src/include/graphics/vao.hpp
-        src/include/graphics/vbo.hpp
-        src/include/graphics/ebo.hpp
-        src/include/graphics/ubo.hpp
-        src/include/graphics/abstract_buffer.hpp
-        src/include/time/abstract_timer.hpp
-        src/include/time/interval_timer.hpp
-        src/include/time/timer.hpp
-        src/include/objects/abstract_object.hpp
-        src/include/objects/base_object.hpp
-        src/include/objects/drawable.hpp
-        src/include/objects/bicameral_hyperboloid.hpp
-        )
 
 # sources
 set(SOURCES
+
+        src/include/kernel.h
+        src/include/environment.h
+        src/include/graphics/shader.h
+        src/include/graphics/vao.h
+        src/include/graphics/vbo.h
+        src/include/graphics/ebo.h
+        src/include/graphics/ubo.h
+        src/include/time/abstract_timer.h
+        src/include/time/interval_timer.h
+        src/include/time/timer.h
+        src/include/objects/base_object.h
+        src/include/objects/bicameral_hyperboloid.h
+        src/include/objects/one_sheet_hyperboloid.h
+
         src/main.cpp
         src/application/kernel.cpp
         src/application/environment.cpp
@@ -39,8 +36,7 @@ set(SOURCES
         src/objects/base_object.cpp
         src/objects/bicameral_hyperboloid.cpp
         src/objects/one_sheet_hyperboloid.cpp
-
-        )
+)
 
 # executables
 add_executable(OpenGL   ${HEADERS} ${SOURCES})

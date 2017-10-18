@@ -2,11 +2,11 @@
 // Created by user on 16.10.2017.
 //
 
-#ifndef OPENGL_ENVIRONMENT_HPP
-#define OPENGL_ENVIRONMENT_HPP
+#ifndef OPENGL_ENVIRONMENT_H
+#define OPENGL_ENVIRONMENT_H
 
 
-#include <time/timer.hpp>
+#include <time/timer.h>
 
 namespace environment {
 
@@ -18,4 +18,4 @@ namespace environment {
 }
 
 
-#endif //OPENGL_ENVIRONMENT_HPP
+#endif //OPENGL_ENVIRONMENT_H

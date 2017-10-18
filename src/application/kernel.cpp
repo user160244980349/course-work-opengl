@@ -4,13 +4,13 @@
 
 #include <iostream>
 #include <GL/glew.h>
-#include <kernel.hpp>
-#include <environment.hpp>
-#include "time/timer.hpp"
-#include "time/interval_timer.hpp"
-#include "objects/base_object.hpp"
-#include "objects/one_sheet_hyperboloid.hpp"
-#include "objects/bicameral_hyperboloid.hpp"
+#include <kernel.h>
+#include <environment.h>
+#include "time/timer.h"
+#include "time/interval_timer.h"
+#include "objects/base_object.h"
+#include "objects/one_sheet_hyperboloid.h"
+#include "objects/bicameral_hyperboloid.h"
 
 
 application::kernel::kernel(int width, int height) {

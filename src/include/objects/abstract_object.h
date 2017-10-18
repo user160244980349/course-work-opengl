@@ -2,8 +2,8 @@
 // Created by user on 11.10.2017.
 //
 
-#ifndef OPENGL_ABSTRACT_OBJECT_HPP
-#define OPENGL_ABSTRACT_OBJECT_HPP
+#ifndef OPENGL_ABSTRACT_OBJECT_H
+#define OPENGL_ABSTRACT_OBJECT_H
 
 
 namespace application::objects {
@@ -15,4 +15,4 @@ namespace application::objects {
 }
 
 
-#endif //OPENGL_ABSTRACT_OBJECT_HPP
+#endif //OPENGL_ABSTRACT_OBJECT_H

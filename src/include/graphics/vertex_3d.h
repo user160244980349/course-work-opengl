@@ -2,8 +2,8 @@
 // Created by user on 09.10.2017.
 //
 
-#ifndef OPENGL_VERTEX_2D_HPP
-#define OPENGL_VERTEX_2D_HPP
+#ifndef OPENGL_VERTEX_2D_H
+#define OPENGL_VERTEX_2D_H
 
 
 #include <glm/vec4.hpp>
@@ -17,4 +17,4 @@ namespace application::graphics {
 
 }
 
-#endif //OPENGL_VERTEX_HPP
+#endif //OPENGL_VERTEX_H

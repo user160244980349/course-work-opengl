@@ -2,8 +2,8 @@
 // Created by user on 14.10.2017.
 //
 
-#ifndef OPENGL_ABSTRACT_TIMER_HPP
-#define OPENGL_ABSTRACT_TIMER_HPP
+#ifndef OPENGL_ABSTRACT_TIMER_H
+#define OPENGL_ABSTRACT_TIMER_H
 
 #ifdef __linux__
 #include <SDL2/SDL_timer.h>
@@ -24,4 +24,4 @@ protected:
 };
 
 
-#endif //OPENGL_ABSTRACT_TIMER_HPP
+#endif //OPENGL_ABSTRACT_TIMER_H

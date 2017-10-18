@@ -2,12 +2,8 @@
 // Created by user on 09.10.2017.
 //
 
-#include <objects/base_object.hpp>
-#include <environment.hpp>
-#include <iostream>
-#include <objects/drawable.hpp>
-#include "time/timer.hpp"
-#include "graphics/shader.hpp"
+#include <objects/base_object.h>
+#include <environment.h>
 
 int application::objects::base_object::prepare() {
 

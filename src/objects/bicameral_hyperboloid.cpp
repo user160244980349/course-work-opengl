@@ -2,7 +2,7 @@
 // Created by user on 15.10.2017.
 //
 
-#include "objects/bicameral_hyperboloid.hpp"
+#include "objects/bicameral_hyperboloid.h"
 
 
 float application::objects::bicameral_hyperboloid::function_x(float y, float a,

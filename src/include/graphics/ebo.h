@@ -2,11 +2,11 @@
 // Created by user on 13.10.2017.
 //
 
-#ifndef OPENGL_EBO_HPP
-#define OPENGL_EBO_HPP
+#ifndef OPENGL_EBO_H
+#define OPENGL_EBO_H
 
 
-#include <graphics/abstract_buffer.hpp>
+#include <graphics/abstract_buffer.h>
 
 namespace application::graphics {
 
@@ -23,4 +23,4 @@ namespace application::graphics {
 }
 
 
-#endif //OPENGL_EBO_HPP
+#endif //OPENGL_EBO_H

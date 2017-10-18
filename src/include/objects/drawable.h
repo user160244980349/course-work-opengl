@@ -2,18 +2,18 @@
 // Created by user on 15.10.2017.
 //
 
-#ifndef OPENGL_DRAWABLE_HPP
-#define OPENGL_DRAWABLE_HPP
+#ifndef OPENGL_DRAWABLE_H
+#define OPENGL_DRAWABLE_H
 
 
-#include <graphics/vao.hpp>
-#include <graphics/vbo.hpp>
-#include <graphics/ebo.hpp>
-#include <graphics/ubo.hpp>
+#include <graphics/vao.h>
+#include <graphics/vbo.h>
+#include <graphics/ebo.h>
+#include <graphics/ubo.h>
 #include <glm/gtc/matrix_transform.hpp>
-#include <graphics/vertex_3d.hpp>
+#include <graphics/vertex_3d.h>
 #include <vector>
-#include <graphics/shader.hpp>
+#include <graphics/shader.h>
 
 namespace application::objects {
 
@@ -44,4 +44,4 @@ namespace application::objects {
 }
 
 
-#endif //OPENGL_DRAWABLE_HPP
+#endif //OPENGL_DRAWABLE_H
