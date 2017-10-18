@@ -15,9 +15,6 @@ namespace application::graphics {
         ~ebo();
         int create() override;
         int set(GLuint *o, GLuint size);
-
-    protected:
-
     };
 
 }

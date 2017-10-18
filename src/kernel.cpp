@@ -43,6 +43,7 @@ int application::kernel::init() {
 
     SDL_SetRelativeMouseMode(SDL_TRUE); // захват курсора в окне
     SDL_ShowCursor(SDL_DISABLE); // показ курсора
+
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
@@ -133,8 +134,8 @@ int application::kernel::draw() {
             break;
         case 2:
             objects.bicameral_hyperboloid.draw();
+        default:
             break;
-
     }
 
     return 0;

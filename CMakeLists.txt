@@ -8,29 +8,32 @@ set(CMAKE_CXX_STANDARD 17)
 # sources
 set(SOURCES
 
-        src/include/kernel.h
-        src/include/environment.h
-        src/include/graphics/shader.h
-        src/include/graphics/vao.h
-        src/include/graphics/vbo.h
-        src/include/graphics/ebo.h
-        src/include/graphics/ubo.h
-        src/include/time/abstract_timer.h
-        src/include/time/interval_timer.h
-        src/include/time/timer.h
-        src/include/objects/base_object.h
-        src/include/objects/bicameral_hyperboloid.h
-        src/include/objects/one_sheet_hyperboloid.h
+        include/kernel.h
+        include/environment.h
+        include/graphics/shader.h
+        include/graphics/vao.h
+        include/graphics/vbo.h
+        include/graphics/ebo.h
+        include/graphics/ubo.h
+        include/graphics/abstract_buffer.h
+        include/objects/abstract_object.h
+        include/objects/drawable.h
+        include/time/abstract_timer.h
+        include/time/interval_timer.h
+        include/time/timer.h
+        include/objects/base_object.h
+        include/objects/bicameral_hyperboloid.h
+        include/objects/one_sheet_hyperboloid.h
+        include/graphics/vertex_3d.h
 
         src/main.cpp
-        src/application/kernel.cpp
-        src/application/environment.cpp
+        src/kernel.cpp
+        src/environment.cpp
         src/graphics/shader.cpp
         src/graphics/vao.cpp
         src/graphics/vbo.cpp
         src/graphics/ebo.cpp
         src/graphics/ubo.cpp
-        src/time/abstract_timer.cpp
         src/time/interval_timer.cpp
         src/time/timer.cpp
         src/objects/base_object.cpp
@@ -39,7 +42,7 @@ set(SOURCES
 )
 
 # executables
-add_executable(OpenGL   ${HEADERS} ${SOURCES})
+add_executable(OpenGL ${SOURCES})
 
 if (WIN32)
 
@@ -62,7 +65,7 @@ if (WIN32)
 
     # include directories
     include_directories(
-            src/include
+            include
             ${SDL2_INCLUDE_DIR}
             ${OPENGL_INCLUDE_DIRS}
             ${GLEW_INCLUDE_DIR}
@@ -87,7 +90,7 @@ elseif(UNIX)
 
     # include directories
     include_directories(
-            src/include
+            include
             ${SDL2_INCLUDE_DIR}
             ${OPENGL_INCLUDE_DIRS}
             ${GLEW_INCLUDE_DIR}

@@ -15,9 +15,6 @@ namespace application::graphics {
 
         shader(const GLchar *vertex_path, const GLchar *fragment_path);
         int use();
-
-    protected:
-
     };
 
 }

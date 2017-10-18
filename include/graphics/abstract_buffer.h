@@ -15,9 +15,6 @@ namespace application::graphics {
         GLuint id;
 
         virtual int create() = 0;
-
-    protected:
-
     };
 
 }
