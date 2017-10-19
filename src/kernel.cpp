@@ -6,11 +6,13 @@
 #include <GL/glew.h>
 #include <kernel.h>
 #include <environment.h>
+#include <test/ClientInput.h>
 #include "time/timer.h"
 #include "time/interval_timer.h"
 #include "objects/base_object.h"
 #include "objects/one_sheet_hyperboloid.h"
 #include "objects/bicameral_hyperboloid.h"
+#include "test/KeyLogger.h"
 
 
 application::kernel::kernel(int width, int height) {
@@ -61,8 +63,8 @@ int application::kernel::init() {
            SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
            _window_parameters.width,
            _window_parameters.height,
-           SDL_WINDOW_OPENGL |
-           SDL_WINDOW_FULLSCREEN
+           SDL_WINDOW_OPENGL //|
+//           SDL_WINDOW_FULLSCREEN
    );
 
     if(_sdl_variables.window == nullptr){
@@ -101,10 +103,18 @@ int application::kernel::flow() {
     _state_variables.frame_update.set(0.015);
     _state_variables.frame_update.run();
 
+    application::test::ClientInput input;
+
+    application::test::KeyLogger klog1((application::test::Subject*)&input);
+    application::test::KeyLogger klog2((application::test::Subject*)&input);
+
     while(_state_variables.running){
 
-        key_caption();
 
+        input.perform();
+
+//        key_caption();
+//
         if (_state_variables.frame_update.fired) {
             _state_variables.frame_update.reset();
             draw();
@@ -166,7 +176,7 @@ int application::kernel::key_caption() {
                 switch (_sdl_variables.event.key.keysym.sym) {
                     case SDLK_q:
                         if (_sdl_variables.last_key_pressed.type == SDL_KEYDOWN &&
-                            _sdl_variables.last_key_pressed.key.keysym.sym == SDLK_LCTRL)
+                            _sdl_variables.last_key_pressed.keysym.sym == SDLK_LCTRL)
                             _state_variables.running = false;
                         break;
                     case SDLK_w:
@@ -204,7 +214,7 @@ int application::kernel::key_caption() {
             default:
                 break;
         }
-        _sdl_variables.last_key_pressed = _sdl_variables.event;
+        _sdl_variables.last_key_pressed = _sdl_variables.event.key;
     }
 
     return 0;

@@ -39,7 +39,13 @@ set(SOURCES
         src/objects/base_object.cpp
         src/objects/bicameral_hyperboloid.cpp
         src/objects/one_sheet_hyperboloid.cpp
-        include/test/notifier.h include/test/observer.h include/test/notifier.cpp include/test/test_notifier.cpp include/test/test_notifier.h include/test/test_observer.cpp include/test/test_observer.h)
+
+        include/test/InputInterface.h
+        src/test/Subject.cpp
+        include/test/Subject.h
+        include/test/ObserverInterface.h
+        src/test/ClientInput.cpp
+        include/test/ClientInput.h src/test/KeyLogger.cpp include/test/KeyLogger.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

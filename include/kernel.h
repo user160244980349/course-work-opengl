@@ -41,7 +41,7 @@ namespace application {
         struct {
             SDL_Window *window;
             SDL_Event event;
-            SDL_Event last_key_pressed;
+            SDL_KeyboardEvent last_key_pressed;
         } _sdl_variables;
 
         struct {
