@@ -12,7 +12,7 @@ int application::objects::one_sheet_hyperboloid::prepare() {
     float b = 25.0;
     float c = 25.0;
 
-    _transform.model = glm::scale(_transform.model, glm::vec3(0.1f, 0.1f, 0.1f));
+    _transform.model = glm::scale(_transform.model, glm::vec3(0.02f, 0.02f, 0.02f));
 
     _shaders.emplace_back(graphics::shader(
             "../src/shaders/first_vertex.glsl",
