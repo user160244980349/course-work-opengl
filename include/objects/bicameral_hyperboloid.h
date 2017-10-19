@@ -2,11 +2,11 @@
 // Created by user on 15.10.2017.
 //
 
-#ifndef OPENGL_BICAMERAL_HYPERBOLOID_HPP
-#define OPENGL_BICAMERAL_HYPERBOLOID_HPP
+#ifndef OPENGL_BICAMERAL_HYPERBOLOID_H
+#define OPENGL_BICAMERAL_HYPERBOLOID_H
 
 
-#include "objects/one_sheet_hyperboloid.hpp"
+#include "objects/one_sheet_hyperboloid.h"
 
 namespace application::objects {
 
@@ -20,4 +20,4 @@ namespace application::objects {
 }
 
 
-#endif //OPENGL_BICAMERAL_HYPERBOLOID_HPP
+#endif //OPENGL_BICAMERAL_HYPERBOLOID_H

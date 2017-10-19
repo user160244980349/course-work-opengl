@@ -2,12 +2,12 @@
 // Created by user on 09.10.2017.
 //
 
-#ifndef OPENGL_BASE_OBJECT_HPP
-#define OPENGL_BASE_OBJECT_HPP
+#ifndef OPENGL_BASE_OBJECT_H
+#define OPENGL_BASE_OBJECT_H
 
 
-#include "abstract_object.hpp"
-#include "drawable.hpp"
+#include "abstract_object.h"
+#include "drawable.h"
 
 namespace application::objects {
 

@@ -2,7 +2,7 @@
 // Created by user on 14.10.2017.
 //
 
-#include "graphics/ubo.hpp"
+#include "graphics/ubo.h"
 #include <cstring>
 
 

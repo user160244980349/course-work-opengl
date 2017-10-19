@@ -2,18 +2,18 @@
 // Created by user on 15.10.2017.
 //
 
-#ifndef OPENGL_DRAWABLE_HPP
-#define OPENGL_DRAWABLE_HPP
+#ifndef OPENGL_DRAWABLE_H
+#define OPENGL_DRAWABLE_H
 
 
-#include <graphics/vao.hpp>
-#include <graphics/vbo.hpp>
-#include <graphics/ebo.hpp>
-#include <graphics/ubo.hpp>
+#include <graphics/vao.h>
+#include <graphics/vbo.h>
+#include <graphics/ebo.h>
+#include <graphics/ubo.h>
 #include <glm/gtc/matrix_transform.hpp>
-#include <graphics/vertex_3d.hpp>
+#include <graphics/vertex_3d.h>
 #include <vector>
-#include <graphics/shader.hpp>
+#include <graphics/shader.h>
 
 namespace application::objects {
 
@@ -32,11 +32,7 @@ namespace application::objects {
 
         struct {
             glm::mat4 perspective = glm::perspective(glm::radians(50.0f), 16.0f / 9.0f, 0.1f, 100.0f);
-            glm::mat4 view = glm::lookAt(
-                    glm::vec3(4,2,3),
-                    glm::vec3(0,0,0),
-                    glm::vec3(0,1,0)
-            );
+            glm::mat4 view;
             glm::mat4 model = glm::mat4(1.0f);
         } _transform;
 
@@ -48,4 +44,4 @@ namespace application::objects {
 }
 
 
-#endif //OPENGL_DRAWABLE_HPP
+#endif //OPENGL_DRAWABLE_H

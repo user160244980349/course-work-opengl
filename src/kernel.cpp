@@ -4,13 +4,13 @@
 
 #include <iostream>
 #include <GL/glew.h>
-#include <kernel.hpp>
-#include <environment.hpp>
-#include "time/timer.hpp"
-#include "time/interval_timer.hpp"
-#include "objects/base_object.hpp"
-#include "objects/one_sheet_hyperboloid.hpp"
-#include "objects/bicameral_hyperboloid.hpp"
+#include <kernel.h>
+#include <environment.h>
+#include "time/timer.h"
+#include "time/interval_timer.h"
+#include "objects/base_object.h"
+#include "objects/one_sheet_hyperboloid.h"
+#include "objects/bicameral_hyperboloid.h"
 
 
 application::kernel::kernel(int width, int height) {
@@ -40,6 +40,9 @@ int application::kernel::init() {
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
         exit(1);
     }
+
+    SDL_SetRelativeMouseMode(SDL_TRUE); // захват курсора в окне
+    SDL_ShowCursor(SDL_DISABLE); // показ курсора
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
@@ -131,8 +134,8 @@ int application::kernel::draw() {
             break;
         case 2:
             objects.bicameral_hyperboloid.draw();
+        default:
             break;
-
     }
 
     return 0;
@@ -192,6 +195,12 @@ int application::kernel::key_caption() {
                         break;
                 }
                 break;
+
+            case SDL_MOUSEMOTION:
+                environment::mouse_x += _sdl_variables.event.motion.xrel * environment::sensetivety;
+                environment::mouse_y -= _sdl_variables.event.motion.yrel * environment::sensetivety;
+                break;
+
             default:
                 break;
         }

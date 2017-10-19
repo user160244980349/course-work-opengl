@@ -2,12 +2,9 @@
 // Created by user on 15.10.2017.
 //
 
-#include <iostream>
-#include <objects/drawable.hpp>
-#include <environment.hpp>
-#include "objects/one_sheet_hyperboloid.hpp"
-#include "graphics/shader.hpp"
-#include "time/timer.hpp"
+#include <objects/drawable.h>
+#include <environment.h>
+#include "objects/one_sheet_hyperboloid.h"
 
 int application::objects::one_sheet_hyperboloid::prepare() {
 

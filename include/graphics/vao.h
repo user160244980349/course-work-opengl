@@ -2,11 +2,11 @@
 // Created by user on 13.10.2017.
 //
 
-#ifndef OPENGL_VAO_HPP
-#define OPENGL_VAO_HPP
+#ifndef OPENGL_VAO_H
+#define OPENGL_VAO_H
 
 
-#include "abstract_buffer.hpp"
+#include "abstract_buffer.h"
 
 namespace application::graphics {
 
@@ -21,4 +21,4 @@ namespace application::graphics {
 }
 
 
-#endif //OPENGL_VAO_HPP
+#endif //OPENGL_VAO_H

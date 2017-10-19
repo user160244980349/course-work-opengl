@@ -2,21 +2,22 @@
 // Created by user on 07.10.2017.
 //
 
-#ifndef OPENGL_APPLICATION_HPP
-#define OPENGL_APPLICATION_HPP
+#ifndef OPENGL_APPLICATION_H
+#define OPENGL_APPLICATION_H
 
 
 #ifdef __linux__
 #include <SDL2/SDL.h>
 #elif _WIN32
 #include <SDL.h>
+#include <objects/base_object.h>
+#include <objects/one_sheet_hyperboloid.h>
+#include <objects/bicameral_hyperboloid.h>
+#include <time/interval_timer.h>
+#include <time/timer.h>
+
 #endif
 
-#include <objects/base_object.hpp>
-#include <objects/one_sheet_hyperboloid.hpp>
-#include <objects/bicameral_hyperboloid.hpp>
-#include <time/interval_timer.hpp>
-#include <time/timer.hpp>
 #include "GL/glew.h"
 
 namespace application {
@@ -60,4 +61,4 @@ namespace application {
 
 }
 
-#endif //OPENGL_APPLICATION_HPP
+#endif //OPENGL_APPLICATION_H

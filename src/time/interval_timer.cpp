@@ -2,7 +2,7 @@
 // Created by user on 08.10.2017.
 //
 
-#include "time/interval_timer.hpp"
+#include "time/interval_timer.h"
 #include <thread>
 
 int application::time::interval_timer::set(float i) {
