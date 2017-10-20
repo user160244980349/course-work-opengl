@@ -8,8 +8,6 @@ set(CMAKE_CXX_STANDARD 17)
 # sources
 set(SOURCES
 
-        include/kernel.h
-        include/environment.h
         include/graphics/shader.h
         include/graphics/vao.h
         include/graphics/vbo.h
@@ -22,13 +20,9 @@ set(SOURCES
         include/time/interval_timer.h
         include/time/timer.h
         include/objects/base_object.h
-        include/objects/bicameral_hyperboloid.h
-        include/objects/one_sheet_hyperboloid.h
         include/graphics/vertex_3d.h
 
         src/main.cpp
-        src/kernel.cpp
-        src/environment.cpp
         src/graphics/shader.cpp
         src/graphics/vao.cpp
         src/graphics/vbo.cpp
@@ -37,15 +31,22 @@ set(SOURCES
         src/time/interval_timer.cpp
         src/time/timer.cpp
         src/objects/base_object.cpp
-        src/objects/bicameral_hyperboloid.cpp
-        src/objects/one_sheet_hyperboloid.cpp
 
         include/test/InputInterface.h
         src/test/Subject.cpp
         include/test/Subject.h
         include/test/ObserverInterface.h
         src/test/ClientInput.cpp
-        include/test/ClientInput.h src/test/KeyLogger.cpp include/test/KeyLogger.h)
+        include/test/ClientInput.h
+        src/test/KeyLogger.cpp
+        include/test/KeyLogger.h
+        include/test/AbstractScene.h
+        include/test/ObjectInterface.h
+        src/test/Scene.cpp
+        include/test/Scene.h
+        src/test/Graphics.cpp
+        include/test/Graphics.h
+        include/test/ClientInputInterface.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

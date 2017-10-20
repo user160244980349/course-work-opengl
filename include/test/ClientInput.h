@@ -7,14 +7,14 @@
 
 
 #include <SDL_events.h>
-#include "InputInterface.h"
-#include "Subject.h"
+#include "ClientInputInterface.h"
 
 namespace application::test {
 
-    class ClientInput : public InputInterface, Subject {
+    class ClientInput : public ClientInputInterface {
     public:
         int perform() override;
+        int notify() override;
     protected:
         SDL_Event _event{};
     };

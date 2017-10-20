@@ -14,7 +14,7 @@ namespace application::test {
     public:
         int subscribe(ObserverInterface* observer);
         int unsubscribe(ObserverInterface* observer);
-        virtual int perform() = 0;
+        virtual int notify() = 0;
     protected:
         std::list<ObserverInterface*> _observers{};
     };
