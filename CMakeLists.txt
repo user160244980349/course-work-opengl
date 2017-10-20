@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD 17)
 # sources
 set(SOURCES
 
+        include/Kernel.h
         include/graphics/shader.h
         include/graphics/vao.h
         include/graphics/vbo.h
@@ -23,6 +24,7 @@ set(SOURCES
         include/graphics/vertex_3d.h
 
         src/main.cpp
+        src/Kernel.cpp
         src/graphics/shader.cpp
         src/graphics/vao.cpp
         src/graphics/vbo.cpp
