@@ -6,13 +6,13 @@
 #define OPENGL_EBO_H
 
 
-#include <graphics/abstract_buffer.h>
+#include <graphics/AbstractBuffer.h>
 
 namespace application::graphics {
 
-    class ebo : public abstract_buffer {
+    class Ebo : public AbstractBuffer {
     public:
-        ~ebo();
+        ~Ebo();
         int create() override;
         int set(GLuint *o, GLuint size);
     };

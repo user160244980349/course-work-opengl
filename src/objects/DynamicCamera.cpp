@@ -3,6 +3,7 @@
 //
 
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/rotate_vector.hpp>
 #include "objects/DynamicCamera.h"
 
 
@@ -58,6 +59,12 @@ int application::objects::DynamicCamera::controlResponse(SDL_Event event) {
                     break;
                 case SDLK_s:
                     _cameraPos -= _cameraFront;
+                    break;
+                case SDLK_a:
+                    _cameraPos += _cameraFront * _cameraUp;
+                    break;
+                case SDLK_d:
+                    _cameraPos -= _cameraUp + _cameraFront;
                     break;
                 case SDLK_q:
                     _cameraPos += _cameraUp;

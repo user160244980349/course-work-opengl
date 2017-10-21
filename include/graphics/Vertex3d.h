@@ -10,7 +10,7 @@
 
 namespace application::graphics {
 
-    struct vertex_3d {
+    struct Vertex3d {
         glm::vec4 position;
         glm::vec4 color;
     };

@@ -11,7 +11,7 @@
 #include <SDL_timer.h>
 #endif
 
-class abstract_timer {
+class AbstractTimer {
 public:
     Uint32 time;
 

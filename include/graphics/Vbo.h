@@ -6,14 +6,14 @@
 #define OPENGL_VBO_H
 
 
-#include <graphics/abstract_buffer.h>
+#include <graphics/AbstractBuffer.h>
 #include "graphics/vertex_3d.h"
 
 namespace application::graphics {
 
-    class vbo : public abstract_buffer {
+    class Vbo : public AbstractBuffer {
     public:
-        ~vbo();
+        ~Vbo();
         int create() override;
         int set(vertex_3d *v, GLuint size);
     };

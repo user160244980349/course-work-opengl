@@ -9,11 +9,11 @@
 
 namespace application::graphics {
 
-    class shader {
+    class Shader {
     public:
-        GLuint shader_program_id = 0;
+        GLuint ShaderProgramId = 0;
 
-        shader(const GLchar *vertex_path, const GLchar *fragment_path);
+        Shader(const GLchar *vertex_path, const GLchar *fragment_path);
         int use();
     };
 

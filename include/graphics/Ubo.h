@@ -6,14 +6,14 @@
 #define OPENGL_UBO_H
 
 
-#include <graphics/abstract_buffer.h>
+#include <graphics/AbstractBuffer.h>
 #include <string>
 
 namespace application::graphics {
 
-    class ubo : public abstract_buffer {
+    class Ubo : public AbstractBuffer {
     public:
-        ~ubo();
+        ~Ubo();
         int create() override;
         int set(GLvoid *data, GLuint size);
         int update(GLvoid *data, GLuint size);

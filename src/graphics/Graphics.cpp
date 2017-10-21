@@ -38,8 +38,8 @@ application::graphics::Graphics::Graphics(Uint32 width, Uint32 height) {
             SDL_WINDOWPOS_CENTERED,
             _width,
             _height,
-            SDL_WINDOW_OPENGL //|
-//            SDL_WINDOW_FULLSCREEN_DESKTOP
+            SDL_WINDOW_OPENGL |
+            SDL_WINDOW_FULLSCREEN_DESKTOP
     );
 
     if(_window == nullptr){
@@ -54,6 +54,7 @@ application::graphics::Graphics::Graphics(Uint32 width, Uint32 height) {
         exit(6);
     }
 
+//    glEnable(GL_CULL_FACE);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_MULTISAMPLE);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

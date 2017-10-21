@@ -10,15 +10,6 @@ set(SOURCES
 
         include/Kernel.h
         include/graphics/shader.h
-        include/graphics/vao.h
-        include/graphics/vbo.h
-        include/graphics/ebo.h
-        include/graphics/ubo.h
-        include/graphics/abstract_buffer.h
-        include/time/abstract_timer.h
-        include/time/interval_timer.h
-        include/time/timer.h
-        include/graphics/vertex_3d.h
 
         src/main.cpp
         src/Kernel.cpp

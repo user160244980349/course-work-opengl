@@ -6,13 +6,13 @@
 #define OPENGL_VAO_H
 
 
-#include "abstract_buffer.h"
+#include "AbstractBuffer.h"
 
 namespace application::graphics {
 
-    class vao : public abstract_buffer {
+    class Vao : public AbstractBuffer {
     public:
-        ~vao();
+        ~Vao();
         int create() override;
         int bind();
         int bind(GLuint draw_style, GLuint used_vertices);

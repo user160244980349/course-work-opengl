@@ -86,7 +86,6 @@ int application::objects::Cube::prepare() {
 int application::objects::Cube::draw(AbstractCamera *camera) {
 
     camera->use(_shaders.front().shader_program_id);
-    _buffers.ubo.set((GLvoid*)&_transform, sizeof(_transform));
     _buffers.vao.bind(GL_TRIANGLES, (GLuint)_order.size());
 
     return 0;
