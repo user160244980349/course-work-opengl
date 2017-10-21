@@ -6,17 +6,14 @@
 #define OPENGL_SUBJECT_H
 
 #include "Interfaces&Abstractions/ObserverInterface.h"
-#include <list>
 
 namespace application::templates {
 
-    class Subject {
+    class SubjectInterface {
     public:
-        int subscribe(ObserverInterface* observer);
-        int unsubscribe(ObserverInterface* observer);
+        virtual int subscribe(ObserverInterface* observer) = 0;
+        virtual int unsubscribe(ObserverInterface* observer) = 0;
         virtual int notify() = 0;
-    protected:
-        std::list<ObserverInterface*> _observers{};
     };
 
 }

@@ -5,10 +5,66 @@ project(OpenGL)
 set(CMAKE_CXX_STANDARD 17)
 
 # sources
-aux_source_directory(${OpenGL_SOURCE_DIR} SUB_SOURCES)
+set(SOURCES
+
+        # HEADERS
+        include/graphics/Graphics.h
+        include/graphics/AbstractBuffer.h
+        include/graphics/Ebo.h
+        include/graphics/Shader.h
+        include/graphics/Scene.h
+        include/graphics/Ubo.h
+        include/graphics/Vao.h
+        include/graphics/Vbo.h
+        include/graphics/Vertex3d.h
+
+        include/input/ClientInput.h
+        include/input/KeyLogger.h
+
+        include/Interfaces&Abstractions/AbstractCamera.h
+        include/Interfaces&Abstractions/AbstractObject.h
+        include/Interfaces&Abstractions/AbstractScene.h
+        include/Interfaces&Abstractions/ClientInputInterface.h
+        include/Interfaces&Abstractions/ControlableInterface.h
+        include/Interfaces&Abstractions/DrawableInterface.h
+        include/Interfaces&Abstractions/DynamicCameraInterface.h
+        include/Interfaces&Abstractions/InputInterface.h
+        include/Interfaces&Abstractions/ObserverInterface.h
+        include/Interfaces&Abstractions/SubjectInterface.h
+
+        include/objects/Cube.h
+        include/objects/DynamicCamera.h
+
+        include/time/AbstractTimer.h
+        include/time/IntervalTimer.h
+        include/time/Timer.h
+
+        include/Kernel.h
+
+        # SOURCES
+        src/graphics/Ebo.cpp
+        src/graphics/Graphics.cpp
+        src/graphics/Scene.cpp
+        src/graphics/Shader.cpp
+        src/graphics/Ubo.cpp
+        src/graphics/Vao.cpp
+        src/graphics/Vbo.cpp
+
+        src/input/ClientInput.cpp
+        src/input/KeyLogger.cpp
+
+        src/objects/Cube.cpp
+        src/objects/DynamicCamera.cpp
+
+        src/time/IntervalTimer.cpp
+        src/time/Timer.cpp
+
+        src/Kernel.cpp
+        src/main.cpp
+        include/graphics/UboBindIndexes.h)
 
 # executables
-set(OpenGL ${SOURCES})
+add_executable(OpenGL ${SOURCES})
 
 if (WIN32)
 

@@ -5,7 +5,7 @@
 #include "graphics/Ubo.h"
 
 
-application::graphics::Ubo::~ubo() {
+application::graphics::Ubo::~Ubo() {
 
     glDeleteBuffers(1, &id);
 
@@ -22,8 +22,9 @@ int application::graphics::Ubo::create() {
 
 
 
-int application::graphics::Ubo::connect(GLuint program, GLuint bindIndex, std::string blockName) {
+int application::graphics::Ubo::connect(GLuint program, UboBindIndex bindIndex, std::string blockName) {
 
+    glBindBuffer(GL_UNIFORM_BUFFER, id);
     GLuint blockIndex = glGetUniformBlockIndex(program, blockName.c_str());
     glBindBufferBase(GL_UNIFORM_BUFFER, bindIndex, id);
     glUniformBlockBinding(program, blockIndex, bindIndex);

@@ -7,7 +7,7 @@
 
 
 #include <graphics/AbstractBuffer.h>
-#include "graphics/vertex_3d.h"
+#include "graphics/Vertex3d.h"
 
 namespace application::graphics {
 
@@ -15,7 +15,7 @@ namespace application::graphics {
     public:
         ~Vbo();
         int create() override;
-        int set(vertex_3d *v, GLuint size);
+        int set(Vertex3d *v, GLuint size);
     };
 
 }

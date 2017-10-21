@@ -10,7 +10,7 @@
 
 namespace application::time {
 
-    class Timer : public abstract_timer {
+    class Timer : public AbstractTimer {
     public:
         int reset();
         int run() override;

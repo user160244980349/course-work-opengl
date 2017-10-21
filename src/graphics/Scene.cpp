@@ -27,7 +27,7 @@ int application::graphics::Scene::draw() {
     return 0;
 }
 
-application::graphics::Scene::Scene(templates::Subject* subject) {
+application::graphics::Scene::Scene(templates::SubjectInterface* subject) {
 
     _subject = subject;
     _camera = new objects::DynamicCamera;

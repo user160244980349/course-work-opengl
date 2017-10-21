@@ -7,7 +7,9 @@
 
 
 #include <SDL_events.h>
+#include <Interfaces&Abstractions/ObserverInterface.h>
 #include "Interfaces&Abstractions/ClientInputInterface.h"
+#include <list>
 
 namespace application::input {
 
@@ -15,7 +17,10 @@ namespace application::input {
     public:
         int perform() override;
         int notify() override;
+        int subscribe(templates::ObserverInterface* observer) override;
+        int unsubscribe(templates::ObserverInterface* observer) override;
     protected:
+        std::list<templates::ObserverInterface*> _observers{};
         SDL_Event _event{};
     };
 

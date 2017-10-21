@@ -8,8 +8,8 @@
 int application::objects::Cube::prepare() {
 
     _shaders.emplace_back(graphics::Shader(
-            "../src/shaders/first_vertex.glsl",
-            "../src/shaders/first_fragment.glsl")
+            "../src/shaders/FirstVertex.glsl",
+            "../src/shaders/FirstFragment.glsl")
     );
 
     _shaders.front().use();
@@ -77,7 +77,7 @@ int application::objects::Cube::prepare() {
 
     _buffers.ubo.create();
     _buffers.ubo.set((GLvoid*)&_transform, sizeof(_transform));
-    _buffers.ubo.connect(_shaders.front().shader_program_id, 1, "object");
+    _buffers.ubo.connect(_shaders.front().shaderProgramId, TRANSFORM_BIND_INDEX, "object");
 
     return 0;
 }

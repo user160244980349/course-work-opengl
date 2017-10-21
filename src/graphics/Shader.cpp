@@ -7,7 +7,7 @@
 #include <sstream>
 #include "graphics/Shader.h"
 
-application::graphics::Shader::shader(const GLchar *vertex_path, const GLchar *fragment_path) {
+application::graphics::Shader::Shader(const GLchar *vertexPath, const GLchar *fragmentPath) {
 
     std::string vertex_code;
     std::string fragment_code;
@@ -27,8 +27,8 @@ application::graphics::Shader::shader(const GLchar *vertex_path, const GLchar *f
 
 
     try {
-        vertex_shader_file.open(vertex_path);
-        fragment_shader_file.open(fragment_path);
+        vertex_shader_file.open(vertexPath);
+        fragment_shader_file.open(fragmentPath);
 
         vertex_shader_stream << vertex_shader_file.rdbuf();
         fragment_shader_stream << fragment_shader_file.rdbuf();
@@ -66,13 +66,13 @@ application::graphics::Shader::shader(const GLchar *vertex_path, const GLchar *f
         exit(12);
     }
 
-    shader_program_id = glCreateProgram();
-    glAttachShader(shader_program_id, vertex_shader);
-    glAttachShader(shader_program_id, fragment_shader);
-    glLinkProgram(shader_program_id);
-    glGetProgramiv(shader_program_id, GL_LINK_STATUS, &success);
+    shaderProgramId = glCreateProgram();
+    glAttachShader(shaderProgramId, vertex_shader);
+    glAttachShader(shaderProgramId, fragment_shader);
+    glLinkProgram(shaderProgramId);
+    glGetProgramiv(shaderProgramId, GL_LINK_STATUS, &success);
     if(!success) {
-        glGetProgramInfoLog(shader_program_id, 512, nullptr, info_log);
+        glGetProgramInfoLog(shaderProgramId, 512, nullptr, info_log);
         std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << info_log << std::endl;
         exit(13);
     }
@@ -83,7 +83,7 @@ application::graphics::Shader::shader(const GLchar *vertex_path, const GLchar *f
 
 int application::graphics::Shader::use() {
 
-    glUseProgram(shader_program_id);
+    glUseProgram(shaderProgramId);
 
     return 0;
 }

@@ -6,7 +6,6 @@
 #define OPENGL_KEYLOGGER_H
 
 #include <Interfaces&Abstractions/ObserverInterface.h>
-#include <Interfaces&Abstractions/Subject.h>
 
 namespace application::input {
 

@@ -5,7 +5,7 @@
 #include "graphics/Vao.h"
 
 
-application::graphics::Vao::~vao() {
+application::graphics::Vao::~Vao() {
 
     glDeleteVertexArrays(1, &id);
 

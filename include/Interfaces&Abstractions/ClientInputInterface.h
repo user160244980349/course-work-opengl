@@ -6,11 +6,11 @@
 #define OPENGL_CLIENTINPUTINTERFACE_H
 
 #include "InputInterface.h"
-#include "Subject.h"
+#include "SubjectInterface.h"
 
 namespace application::input {
 
-    class ClientInputInterface : public InputInterface, public templates::Subject {
+    class ClientInputInterface : public InputInterface, public templates::SubjectInterface {
 
     };
 

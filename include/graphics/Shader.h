@@ -11,7 +11,7 @@ namespace application::graphics {
 
     class Shader {
     public:
-        GLuint ShaderProgramId = 0;
+        GLuint shaderProgramId = 0;
 
         Shader(const GLchar *vertexPath, const GLchar *fragmentPath);
         int use();

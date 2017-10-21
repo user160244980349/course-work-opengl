@@ -4,6 +4,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/rotate_vector.hpp>
+#include <graphics/UboBindIndexes.h>
 #include "objects/DynamicCamera.h"
 
 
@@ -29,7 +30,7 @@ application::objects::DynamicCamera::DynamicCamera() {
 
 int application::objects::DynamicCamera::use(GLuint shaderProgramId) {
 
-    _ubo.connect(shaderProgramId, 0, "camera");
+    _ubo.connect(shaderProgramId, CAMERA_BIND_INDEX, "camera");
 
     return 0;
 }

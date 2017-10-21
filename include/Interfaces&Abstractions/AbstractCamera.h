@@ -18,10 +18,12 @@ namespace application::objects {
         virtual int use(GLuint shaderProgramId) = 0;
     protected:
         graphics::Ubo _ubo;
+
         struct {
             glm::mat4 projection;
             glm::mat4 viewPoint;
         } _transform;
+
         glm::vec3 _cameraPos;
         glm::vec3 _cameraUp;
         glm::vec3 _cameraFront;

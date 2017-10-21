@@ -5,7 +5,7 @@
 #include "graphics/Ebo.h"
 
 
-application::graphics::Ebo::~ebo() {
+application::graphics::Ebo::~Ebo() {
 
     glDeleteBuffers(1, &id);
 

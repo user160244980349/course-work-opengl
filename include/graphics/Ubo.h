@@ -7,6 +7,7 @@
 
 
 #include <graphics/AbstractBuffer.h>
+#include <graphics/UboBindIndexes.h>
 #include <string>
 
 namespace application::graphics {
@@ -17,10 +18,9 @@ namespace application::graphics {
         int create() override;
         int set(GLvoid *data, GLuint size);
         int update(GLvoid *data, GLuint size);
-        int connect(GLuint program, GLuint bindIndex, std::string blockName);
+        int connect(GLuint program, UboBindIndex bindIndex, std::string blockName);
     };
 
 }
-
 
 #endif //OPENGL_UBO_H
