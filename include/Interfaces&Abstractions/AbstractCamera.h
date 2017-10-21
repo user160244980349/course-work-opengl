@@ -11,7 +11,7 @@
 #include <glm/detail/type_mat4x4.hpp>
 #include <graphics/ubo.h>
 
-namespace application::test {
+namespace application::objects {
 
     class AbstractCamera {
     public:

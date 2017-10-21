@@ -16,10 +16,10 @@
 #elif _WIN32
 
 #include <SDL.h>
-#include <test/ClientInput.h>
-#include <test/Scene.h>
-#include <test/Graphics.h>
-#include <test/KeyLogger.h>
+#include <input/ClientInput.h>
+#include <graphics/Scene.h>
+#include <graphics/Graphics.h>
+#include <Interfaces&Abstractions/ControlableInterface.h>
 
 #endif
 
@@ -27,7 +27,7 @@
 
 namespace application {
 
-    class Kernel : public test::ObserverInterface {
+    class Kernel : public input::ControlableInterface {
     public:
         Kernel(Uint32 width, Uint32 height);
         ~Kernel();
@@ -35,12 +35,13 @@ namespace application {
     protected:
 
         bool _running;
-        application::test::Graphics* _graphics;
-        application::test::ClientInputInterface* _input;
-        application::test::Scene* _scene;
+        graphics::Graphics* _graphics;
+        input::ClientInputInterface* _input;
+        graphics::Scene* _scene;
 
         int flow();
         int update(SDL_Event event) override;
+        int controlResponse(SDL_Event event) override;
     };
 
 }

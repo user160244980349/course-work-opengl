@@ -5,9 +5,9 @@
 #include <SDL.h>
 #include <iostream>
 #include <GL/glew.h>
-#include "test/Graphics.h"
+#include "graphics/Graphics.h"
 
-application::test::Graphics::Graphics(Uint32 width, Uint32 height) {
+application::graphics::Graphics::Graphics(Uint32 width, Uint32 height) {
 
     _width = width;
     _height = height;
@@ -68,14 +68,14 @@ application::test::Graphics::Graphics(Uint32 width, Uint32 height) {
     glewInit();
 }
 
-application::test::Graphics::~Graphics() {
+application::graphics::Graphics::~Graphics() {
 
     SDL_DestroyWindow(_window);
     SDL_Quit();
 
 }
 
-int application::test::Graphics::swapWindow() {
+int application::graphics::Graphics::swapWindow() {
 
     SDL_GL_SwapWindow(_window);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

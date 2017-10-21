@@ -3,14 +3,14 @@
 //
 
 #include <Kernel.h>
-#include <test/KeyLogger.h>
+#include <input/KeyLogger.h>
 
 
 application::Kernel::Kernel(Uint32 width, Uint32 height) {
 
-    _graphics = new test::Graphics(width, height);
-    _input = new test::ClientInput();
-    _scene = new test::Scene(nullptr);
+    _graphics = new graphics::Graphics(width, height);
+    _input = new input::ClientInput();
+    _scene = new graphics::Scene(nullptr);
 
     _input->subscribe(this);
 
@@ -48,6 +48,13 @@ int application::Kernel::flow() {
 
 
 int application::Kernel::update(SDL_Event event) {
+
+    controlResponse(event);
+
+    return 0;
+}
+
+int application::Kernel::controlResponse(SDL_Event event) {
 
     static bool ctrl_pressed;
     if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_LCTRL)

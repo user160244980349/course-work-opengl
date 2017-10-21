@@ -22,11 +22,11 @@ int application::graphics::ubo::create() {
 
 
 
-int application::graphics::ubo::connect(GLuint program, GLuint bindIndex, std::string blockName) {
+int application::graphics::ubo::connect(GLuint program, std::string blockName) {
 
-    GLuint block_index = glGetUniformBlockIndex(program, blockName.c_str());
-    glBindBufferBase(GL_UNIFORM_BUFFER, bindIndex, id);
-    glUniformBlockBinding(program, block_index, id);
+    GLuint blockIndex = glGetUniformBlockIndex(program, blockName.c_str());
+    glBindBufferBase(GL_UNIFORM_BUFFER, id, id);
+    glUniformBlockBinding(program, blockIndex, id);
 
     return 0;
 }

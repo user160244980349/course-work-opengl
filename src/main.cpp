@@ -1,8 +1,6 @@
 
 #include <cstdlib>
-#include <test/ClientInput.h>
 #include "kernel.h"
-#include "test/KeyLogger.h"
 
 int main(int argc, char **argv){
 

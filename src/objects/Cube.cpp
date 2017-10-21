@@ -2,9 +2,10 @@
 // Created by user on 21.10.2017.
 //
 
-#include "test/Cube.h"
+#include <Interfaces&Abstractions/AbstractObject.h>
+#include "objects/Cube.h"
 
-int application::test::Cube::prepare() {
+int application::objects::Cube::prepare() {
 
     _shaders.emplace_back(graphics::shader(
             "../src/shaders/first_vertex.glsl",
@@ -76,14 +77,13 @@ int application::test::Cube::prepare() {
 
     _buffers.ubo.create();
     _buffers.ubo.set(&_transform, sizeof(_transform));
-    _buffers.ubo.connect(_shaders.front().shader_program_id, 1, "object");
+    _buffers.ubo.connect(_shaders.front().shader_program_id, "object");
 
     return 0;
 }
 
 
-
-int application::test::Cube::draw(application::test::AbstractCamera *camera) {
+int application::objects::Cube::draw(AbstractCamera *camera) {
 
     _shaders.front().use();
     camera->use(_shaders.front().shader_program_id);
@@ -91,4 +91,3 @@ int application::test::Cube::draw(application::test::AbstractCamera *camera) {
 
     return 0;
 }
-

@@ -8,7 +8,7 @@
 
 #include <SDL_events.h>
 
-namespace application::test {
+namespace application::templates {
 
     class ObserverInterface {
     public:

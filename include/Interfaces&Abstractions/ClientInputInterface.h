@@ -8,9 +8,9 @@
 #include "InputInterface.h"
 #include "Subject.h"
 
-namespace application::test {
+namespace application::input {
 
-    class ClientInputInterface : public InputInterface, public Subject {
+    class ClientInputInterface : public InputInterface, public templates::Subject {
 
     };
 

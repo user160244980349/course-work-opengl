@@ -7,11 +7,11 @@
 
 #include "AbstractCamera.h"
 
-namespace application::test {
+namespace application::graphics {
 
     class DrawableInterface {
     public:
-        virtual int draw(AbstractCamera* camera) = 0;
+        virtual int draw(objects::AbstractCamera* camera) = 0;
         virtual int prepare() = 0;
     };
 

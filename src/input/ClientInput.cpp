@@ -3,16 +3,16 @@
 //
 
 #include <iostream>
-#include "test/ClientInput.h"
+#include "input/ClientInput.h"
 
-int application::test::ClientInput::perform() {
+int application::input::ClientInput::perform() {
 
     notify();
 
     return 0;
 }
 
-int application::test::ClientInput::notify() {
+int application::input::ClientInput::notify() {
     while(SDL_PollEvent(&_event)) {
 
         for (auto &_observer : _observers)

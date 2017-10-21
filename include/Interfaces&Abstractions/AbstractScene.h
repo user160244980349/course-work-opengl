@@ -7,9 +7,8 @@
 
 #include "DrawableInterface.h"
 #include <list>
-#include <objects/base_object.h>
 
-namespace application::test {
+namespace application::graphics {
 
     class AbstractScene {
     public:

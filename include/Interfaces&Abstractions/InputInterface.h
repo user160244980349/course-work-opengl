@@ -5,7 +5,7 @@
 #ifndef OPENGL_INPUTINTERFACE_H
 #define OPENGL_INPUTINTERFACE_H
 
-namespace application::test {
+namespace application::input {
 
     class InputInterface {
     public:

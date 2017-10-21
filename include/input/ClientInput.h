@@ -7,9 +7,9 @@
 
 
 #include <SDL_events.h>
-#include "ClientInputInterface.h"
+#include "Interfaces&Abstractions/ClientInputInterface.h"
 
-namespace application::test {
+namespace application::input {
 
     class ClientInput : public ClientInputInterface {
     public:

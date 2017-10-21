@@ -14,7 +14,7 @@
 #include <vector>
 #include <graphics/shader.h>
 
-namespace application::test {
+namespace application::objects {
 
     class AbstractObject {
     protected:
@@ -25,7 +25,9 @@ namespace application::test {
             graphics::ubo ubo;
         } _buffers;
 
-        glm::mat4 _transform = glm::mat4(1.0f);
+        struct {
+            glm::mat4 model = glm::mat4(1.0f);
+        } _transform;
 
         std::vector <graphics::vertex_3d> _vertices;
         std::vector <GLuint> _order;

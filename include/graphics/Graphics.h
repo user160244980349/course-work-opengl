@@ -5,7 +5,7 @@
 #ifndef OPENGL_GRAPHICS_H
 #define OPENGL_GRAPHICS_H
 
-namespace application::test {
+namespace application::graphics {
 
     class Graphics {
     public:

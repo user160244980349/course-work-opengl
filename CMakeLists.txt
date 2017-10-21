@@ -15,12 +15,9 @@ set(SOURCES
         include/graphics/ebo.h
         include/graphics/ubo.h
         include/graphics/abstract_buffer.h
-        include/objects/abstract_object.h
-        include/objects/drawable.h
         include/time/abstract_timer.h
         include/time/interval_timer.h
         include/time/timer.h
-        include/objects/base_object.h
         include/graphics/vertex_3d.h
 
         src/main.cpp
@@ -32,22 +29,30 @@ set(SOURCES
         src/graphics/ubo.cpp
         src/time/interval_timer.cpp
         src/time/timer.cpp
-        src/objects/base_object.cpp
 
-        include/test/InputInterface.h
-        src/test/Subject.cpp
-        include/test/Subject.h
-        include/test/ObserverInterface.h
-        src/test/ClientInput.cpp
-        include/test/ClientInput.h
-        src/test/KeyLogger.cpp
-        include/test/KeyLogger.h
-        include/test/AbstractScene.h
-        src/test/Scene.cpp
-        include/test/Scene.h
-        src/test/Graphics.cpp
-        include/test/Graphics.h
-        include/test/ClientInputInterface.h include/test/DrawableInterface.h src/test/Cube.cpp include/test/Cube.h include/test/AbstractObject.h include/test/AbstractCamera.h src/test/Camera.cpp include/test/Camera.h)
+        include/Interfaces&Abstractions/InputInterface.h
+        src/abstractions/Subject.cpp
+        include/Interfaces&Abstractions/Subject.h
+        include/Interfaces&Abstractions/ObserverInterface.h
+        src/input/ClientInput.cpp
+        include/input/ClientInput.h
+        src/input/KeyLogger.cpp
+        include/input/KeyLogger.h
+        include/Interfaces&Abstractions/AbstractScene.h
+        src/graphics/Scene.cpp
+        include/graphics/Scene.h
+        src/graphics/Graphics.cpp
+        include/graphics/Graphics.h
+        include/Interfaces&Abstractions/ClientInputInterface.h
+        include/Interfaces&Abstractions/DrawableInterface.h
+        src/objects/Cube.cpp
+        include/objects/Cube.h
+        include/Interfaces&Abstractions/AbstractObject.h
+        include/Interfaces&Abstractions/AbstractCamera.h
+        include/Interfaces&Abstractions/ControlableInterface.h
+        include/Interfaces&Abstractions/DynamicCameraInterface.h
+        src/objects/DynamicCamera.cpp
+        include/objects/DynamicCamera.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

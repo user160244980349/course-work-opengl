@@ -3,9 +3,9 @@
 //
 
 #include <iostream>
-#include "test/KeyLogger.h"
+#include "input/KeyLogger.h"
 
-int application::test::KeyLogger::update(SDL_Event event) {
+int application::input::KeyLogger::update(SDL_Event event) {
 
     std::cout << event.key.keysym.sym << std::endl;
 

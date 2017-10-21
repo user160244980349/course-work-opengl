@@ -5,10 +5,10 @@
 #ifndef OPENGL_SUBJECT_H
 #define OPENGL_SUBJECT_H
 
-#include "ObserverInterface.h"
+#include "Interfaces&Abstractions/ObserverInterface.h"
 #include <list>
 
-namespace application::test {
+namespace application::templates {
 
     class Subject {
     public:
