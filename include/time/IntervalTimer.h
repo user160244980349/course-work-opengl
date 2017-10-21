@@ -6,11 +6,11 @@
 #define OPENGL_INTERVAL_TIMER_H
 
 
-#include "abstract_timer.h"
+#include "AbstractTimer.h"
 
 namespace application::time {
 
-    class interval_timer : public abstract_timer {
+    class IntervalTimer : public AbstractTimer {
     public:
         bool fired;
 

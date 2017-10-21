@@ -2,11 +2,11 @@
 // Created by user on 13.10.2017.
 //
 
-#include <graphics/vertex_3d.h>
-#include "graphics/vbo.h"
+#include <graphics/Vertex3d.h>
+#include "graphics/Vbo.h"
 
 
-application::graphics::vbo::~vbo() {
+application::graphics::Vbo::~vbo() {
 
     glDeleteBuffers(1, &id);
 
@@ -14,7 +14,7 @@ application::graphics::vbo::~vbo() {
 
 
 
-int application::graphics::vbo::create() {
+int application::graphics::Vbo::create() {
 
     glGenBuffers(1, &id);
 
@@ -23,7 +23,7 @@ int application::graphics::vbo::create() {
 
 
 
-int application::graphics::vbo::set(vertex_3d *v, GLuint size) {
+int application::graphics::Vbo::set(vertex_3d *v, GLuint size) {
 
     glBindBuffer(GL_ARRAY_BUFFER, id);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertex_3d) * size, v, GL_STATIC_DRAW);

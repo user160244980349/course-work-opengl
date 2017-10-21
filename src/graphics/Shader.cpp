@@ -5,9 +5,9 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "graphics/shader.h"
+#include "graphics/Shader.h"
 
-application::graphics::shader::shader(const GLchar *vertex_path, const GLchar *fragment_path) {
+application::graphics::Shader::shader(const GLchar *vertex_path, const GLchar *fragment_path) {
 
     std::string vertex_code;
     std::string fragment_code;
@@ -81,7 +81,7 @@ application::graphics::shader::shader(const GLchar *vertex_path, const GLchar *f
 
 
 
-int application::graphics::shader::use() {
+int application::graphics::Shader::use() {
 
     glUseProgram(shader_program_id);
 

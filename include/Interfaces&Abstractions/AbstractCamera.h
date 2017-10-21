@@ -17,7 +17,7 @@ namespace application::objects {
     public:
         virtual int use(GLuint shaderProgramId) = 0;
     protected:
-        graphics::ubo _ubo;
+        graphics::Ubo _ubo;
         struct {
             glm::mat4 projection;
             glm::mat4 viewPoint;

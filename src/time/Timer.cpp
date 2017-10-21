@@ -2,10 +2,10 @@
 // Created by user on 08.10.2017.
 //
 
-#include "time/timer.h"
+#include "time/Timer.h"
 #include <thread>
 
-int application::time::timer::run() {
+int application::time::Timer::run() {
 
     if (!_running) {
         _running = true;
@@ -18,14 +18,14 @@ int application::time::timer::run() {
 
 
 
-int application::time::timer::reset() {
+int application::time::Timer::reset() {
     time = 0;
     return 0;
 }
 
 
 
-int application::time::timer::stop() {
+int application::time::Timer::stop() {
     _running = false;
     return 0;
 }

@@ -4,49 +4,11 @@ project(OpenGL)
 
 set(CMAKE_CXX_STANDARD 17)
 
-
 # sources
-set(SOURCES
-
-        include/Kernel.h
-        include/graphics/shader.h
-
-        src/main.cpp
-        src/Kernel.cpp
-        src/graphics/shader.cpp
-        src/graphics/vao.cpp
-        src/graphics/vbo.cpp
-        src/graphics/ebo.cpp
-        src/graphics/ubo.cpp
-        src/time/interval_timer.cpp
-        src/time/timer.cpp
-
-        include/Interfaces&Abstractions/InputInterface.h
-        src/abstractions/Subject.cpp
-        include/Interfaces&Abstractions/Subject.h
-        include/Interfaces&Abstractions/ObserverInterface.h
-        src/input/ClientInput.cpp
-        include/input/ClientInput.h
-        src/input/KeyLogger.cpp
-        include/input/KeyLogger.h
-        include/Interfaces&Abstractions/AbstractScene.h
-        src/graphics/Scene.cpp
-        include/graphics/Scene.h
-        src/graphics/Graphics.cpp
-        include/graphics/Graphics.h
-        include/Interfaces&Abstractions/ClientInputInterface.h
-        include/Interfaces&Abstractions/DrawableInterface.h
-        src/objects/Cube.cpp
-        include/objects/Cube.h
-        include/Interfaces&Abstractions/AbstractObject.h
-        include/Interfaces&Abstractions/AbstractCamera.h
-        include/Interfaces&Abstractions/ControlableInterface.h
-        include/Interfaces&Abstractions/DynamicCameraInterface.h
-        src/objects/DynamicCamera.cpp
-        include/objects/DynamicCamera.h)
+aux_source_directory(${OpenGL_SOURCE_DIR} SUB_SOURCES)
 
 # executables
-add_executable(OpenGL ${SOURCES})
+set(OpenGL ${SOURCES})
 
 if (WIN32)
 

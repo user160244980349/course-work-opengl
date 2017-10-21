@@ -1,6 +1,6 @@
 
 #include <cstdlib>
-#include "kernel.h"
+#include "Kernel.h"
 
 int main(int argc, char **argv){
 

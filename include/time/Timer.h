@@ -6,11 +6,11 @@
 #define OPENGL_TIMER_H
 
 
-#include "abstract_timer.h"
+#include "AbstractTimer.h"
 
 namespace application::time {
 
-    class timer : public abstract_timer {
+    class Timer : public abstract_timer {
     public:
         int reset();
         int run() override;

@@ -11,7 +11,7 @@ application::Kernel::Kernel(Uint32 width, Uint32 height) {
     _graphics = new graphics::Graphics(width, height);
     _input = new input::ClientInput;
     _scene = new graphics::Scene(_input);
-    _frameUpdate = new time::interval_timer;
+    _frameUpdate = new time::IntervalTimer;
 
     _input->subscribe(this);
 

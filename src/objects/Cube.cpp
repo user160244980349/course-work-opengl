@@ -7,22 +7,22 @@
 
 int application::objects::Cube::prepare() {
 
-    _shaders.emplace_back(graphics::shader(
+    _shaders.emplace_back(graphics::Shader(
             "../src/shaders/first_vertex.glsl",
             "../src/shaders/first_fragment.glsl")
     );
 
     _shaders.front().use();
 
-    _vertices.emplace_back(graphics::vertex_3d{glm::vec4( 1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
-    _vertices.emplace_back(graphics::vertex_3d{glm::vec4(-1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
-    _vertices.emplace_back(graphics::vertex_3d{glm::vec4(-1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
-    _vertices.emplace_back(graphics::vertex_3d{glm::vec4( 1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    _vertices.emplace_back(graphics::Vertex3d{glm::vec4( 1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
+    _vertices.emplace_back(graphics::Vertex3d{glm::vec4(-1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
+    _vertices.emplace_back(graphics::Vertex3d{glm::vec4(-1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    _vertices.emplace_back(graphics::Vertex3d{glm::vec4( 1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
 
-    _vertices.emplace_back(graphics::vertex_3d{glm::vec4( 1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
-    _vertices.emplace_back(graphics::vertex_3d{glm::vec4(-1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
-    _vertices.emplace_back(graphics::vertex_3d{glm::vec4(-1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
-    _vertices.emplace_back(graphics::vertex_3d{glm::vec4( 1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    _vertices.emplace_back(graphics::Vertex3d{glm::vec4( 1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
+    _vertices.emplace_back(graphics::Vertex3d{glm::vec4(-1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
+    _vertices.emplace_back(graphics::Vertex3d{glm::vec4(-1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    _vertices.emplace_back(graphics::Vertex3d{glm::vec4( 1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
 
     _order.emplace_back(1u);
     _order.emplace_back(3u);
@@ -85,7 +85,7 @@ int application::objects::Cube::prepare() {
 
 int application::objects::Cube::draw(AbstractCamera *camera) {
 
-    camera->use(_shaders.front().shader_program_id);
+    camera->use(_shaders.front().shaderProgramId);
     _buffers.vao.bind(GL_TRIANGLES, (GLuint)_order.size());
 
     return 0;

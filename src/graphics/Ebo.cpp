@@ -2,10 +2,10 @@
 // Created by user on 13.10.2017.
 //
 
-#include "graphics/ebo.h"
+#include "graphics/Ebo.h"
 
 
-application::graphics::ebo::~ebo() {
+application::graphics::Ebo::~ebo() {
 
     glDeleteBuffers(1, &id);
 
@@ -13,7 +13,7 @@ application::graphics::ebo::~ebo() {
 
 
 
-int application::graphics::ebo::create() {
+int application::graphics::Ebo::create() {
 
     glGenBuffers(1, &id);
 
@@ -22,7 +22,7 @@ int application::graphics::ebo::create() {
 
 
 
-int application::graphics::ebo::set(GLuint *o, GLuint size) {
+int application::graphics::Ebo::set(GLuint *o, GLuint size) {
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * size, o, GL_STATIC_DRAW);

@@ -2,10 +2,10 @@
 // Created by user on 13.10.2017.
 //
 
-#include "graphics/vao.h"
+#include "graphics/Vao.h"
 
 
-application::graphics::vao::~vao() {
+application::graphics::Vao::~vao() {
 
     glDeleteVertexArrays(1, &id);
 
@@ -13,7 +13,7 @@ application::graphics::vao::~vao() {
 
 
 
-int application::graphics::vao::create() {
+int application::graphics::Vao::create() {
 
     glGenVertexArrays(1, &id);
 
@@ -22,7 +22,7 @@ int application::graphics::vao::create() {
 
 
 
-int application::graphics::vao::bind() {
+int application::graphics::Vao::bind() {
 
     glBindVertexArray(id);
 
@@ -31,7 +31,7 @@ int application::graphics::vao::bind() {
 
 
 
-int application::graphics::vao::bind(GLuint draw_style, GLuint used_vertices) {
+int application::graphics::Vao::bind(GLuint draw_style, GLuint used_vertices) {
 
     glBindVertexArray(id);
     glDrawElements(draw_style, used_vertices, GL_UNSIGNED_INT, nullptr);

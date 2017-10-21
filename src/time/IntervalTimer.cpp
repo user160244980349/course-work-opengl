@@ -2,10 +2,10 @@
 // Created by user on 08.10.2017.
 //
 
-#include "time/interval_timer.h"
+#include "time/IntervalTimer.h"
 #include <thread>
 
-int application::time::interval_timer::set(float i) {
+int application::time::IntervalTimer::set(float i) {
 
     _interval = (Uint32)(i * 1000);
     fired = false;
@@ -14,7 +14,7 @@ int application::time::interval_timer::set(float i) {
 
 
 
-int application::time::interval_timer::run() {
+int application::time::IntervalTimer::run() {
 
     if (!_running) {
         _running = true;
@@ -27,7 +27,7 @@ int application::time::interval_timer::run() {
 
 
 
-int application::time::interval_timer::reset() {
+int application::time::IntervalTimer::reset() {
     time = 0;
     fired = false;
     return 0;
@@ -35,7 +35,7 @@ int application::time::interval_timer::reset() {
 
 
 
-int application::time::interval_timer::stop() {
+int application::time::IntervalTimer::stop() {
     _running = false;
     return 0;
 }
