@@ -8,6 +8,7 @@
 #include "AbstractScene.h"
 #include "ObserverInterface.h"
 #include "Subject.h"
+#include "Camera.h"
 
 namespace application::test {
 
@@ -19,6 +20,7 @@ namespace application::test {
 
     protected:
         Subject* _subject;
+        AbstractCamera* _camera;
     };
 
 }

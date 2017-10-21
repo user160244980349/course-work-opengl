@@ -7,6 +7,7 @@
 
 
 #include <graphics/abstract_buffer.h>
+#include <string>
 
 namespace application::graphics {
 
@@ -16,7 +17,7 @@ namespace application::graphics {
         int create() override;
         int set(GLvoid *data, GLuint size);
         int update(GLvoid *data, GLuint size);
-        int connect(GLuint program);
+        int connect(GLuint program, GLuint bindIndex, std::string blockName);
     };
 
 }

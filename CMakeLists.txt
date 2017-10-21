@@ -43,12 +43,11 @@ set(SOURCES
         src/test/KeyLogger.cpp
         include/test/KeyLogger.h
         include/test/AbstractScene.h
-        include/test/ObjectInterface.h
         src/test/Scene.cpp
         include/test/Scene.h
         src/test/Graphics.cpp
         include/test/Graphics.h
-        include/test/ClientInputInterface.h)
+        include/test/ClientInputInterface.h include/test/DrawableInterface.h src/test/Cube.cpp include/test/Cube.h include/test/AbstractObject.h include/test/AbstractCamera.h src/test/Camera.cpp include/test/Camera.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

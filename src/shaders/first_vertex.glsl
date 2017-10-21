@@ -1,18 +1,20 @@
 #version 450 core
 
-layout (location = 0) in vec4 in_position;
-layout (location = 1) in vec4 in_color;
+layout (location = 0) in vec4 inPosition;
+layout (location = 1) in vec4 inColor;
 
-smooth out vec4 current_color;
+smooth out vec4 currentColor;
 
-uniform shader_data
-{
+layout(std140, binding = 0) uniform camera {
     mat4 projection;
-    mat4 view;
+    mat4 viewPoint;
+};
+
+layout(std140, binding = 1) uniform object {
     mat4 model;
 };
 
 void main() {
-   current_color = in_color;
-   gl_Position = projection * view * model * vec4(in_position);
+   currentColor = inColor;
+   gl_Position = projection * viewPoint * model * vec4(inPosition);
 }

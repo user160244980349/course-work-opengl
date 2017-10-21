@@ -19,6 +19,7 @@
 #include <test/ClientInput.h>
 #include <test/Scene.h>
 #include <test/Graphics.h>
+#include <test/KeyLogger.h>
 
 #endif
 

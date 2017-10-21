@@ -12,7 +12,6 @@ namespace application::test {
 
     class KeyLogger : public ObserverInterface {
     public:
-        explicit KeyLogger(Subject* subject);
         int update(SDL_Event event) override;
     };
 

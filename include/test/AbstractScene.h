@@ -5,7 +5,7 @@
 #ifndef OPENGL_ABSTRACTSCENE_H
 #define OPENGL_ABSTRACTSCENE_H
 
-#include "ObjectInterface.h"
+#include "DrawableInterface.h"
 #include <list>
 #include <objects/base_object.h>
 
@@ -16,8 +16,7 @@ namespace application::test {
         virtual int prepare() = 0;
         virtual int draw() = 0;
     protected:
-//        std::list<ObjectInterface*> _objects{};
-        std::list<application::objects::base_object*> _objects{};
+        std::list<DrawableInterface*> _objects{};
     };
 
 }

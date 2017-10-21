@@ -3,6 +3,7 @@
 //
 
 #include <Kernel.h>
+#include <test/KeyLogger.h>
 
 
 application::Kernel::Kernel(Uint32 width, Uint32 height) {
@@ -31,6 +32,7 @@ application::Kernel::~Kernel() {
 
 int application::Kernel::flow() {
 
+    _scene->prepare();
 
     while(_running){
 

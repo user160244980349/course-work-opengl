@@ -1,9 +1,9 @@
 #version 450 core
 
-out vec4 output_color;
+out vec4 outputColor;
 
-smooth in vec4 current_color;
+smooth in vec4 currentColor;
 
 void main() {
-   output_color = vec4(current_color);
+   outputColor = vec4(currentColor);
 }

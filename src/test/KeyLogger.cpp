@@ -11,7 +11,3 @@ int application::test::KeyLogger::update(SDL_Event event) {
 
     return 0;
 }
-
-application::test::KeyLogger::KeyLogger(Subject* subject) {
-    subject->subscribe(this);
-}

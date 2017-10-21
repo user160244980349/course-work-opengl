@@ -3,7 +3,6 @@
 //
 
 #include "graphics/ubo.h"
-#include <cstring>
 
 
 application::graphics::ubo::~ubo() {
@@ -23,11 +22,11 @@ int application::graphics::ubo::create() {
 
 
 
-int application::graphics::ubo::connect(GLuint program) {
+int application::graphics::ubo::connect(GLuint program, GLuint bindIndex, std::string blockName) {
 
-    GLuint block_index = glGetUniformBlockIndex(program, "shader_data");
-    glBindBufferBase(GL_UNIFORM_BUFFER, 0, id);
-    glUniformBlockBinding(program, block_index, 0);
+    GLuint block_index = glGetUniformBlockIndex(program, blockName.c_str());
+    glBindBufferBase(GL_UNIFORM_BUFFER, bindIndex, id);
+    glUniformBlockBinding(program, block_index, id);
 
     return 0;
 }

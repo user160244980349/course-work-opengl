@@ -1,10 +1,10 @@
 //
-// Created by user on 09.10.2017.
+// Created by user on 21.10.2017.
 //
 
-#include <objects/base_object.h>
+#include "test/Cube.h"
 
-int application::objects::base_object::prepare() {
+int application::test::Cube::prepare() {
 
     _shaders.emplace_back(graphics::shader(
             "../src/shaders/first_vertex.glsl",
@@ -74,36 +74,21 @@ int application::objects::base_object::prepare() {
     _buffers.ebo.create();
     _buffers.ebo.set(_order.data(), (GLuint)_order.size());
 
-//    _buffers.ubo.create();
-//    _buffers.ubo.set((GLvoid*)&_transform, sizeof(_transform));
-//    _buffers.ubo.connect(_shaders.front().shader_program_id, );
+    _buffers.ubo.create();
+    _buffers.ubo.set(&_transform, sizeof(_transform));
+    _buffers.ubo.connect(_shaders.front().shader_program_id, 1, "object");
 
     return 0;
 }
 
 
 
-int application::objects::base_object::draw() {
+int application::test::Cube::draw(application::test::AbstractCamera *camera) {
 
-    glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::vec3 cameraUp    = glm::vec3(0.0f, 0.0f, 0.0f);
-
-//    if(environment::mouse_y > 89.0f)
-//        environment::mouse_y =  89.0f;
-//    if(environment::mouse_y < -89.0f)
-//        environment::mouse_y = -89.0f;
-
-    glm::vec3 front = glm::vec3(0.0f, 0.0f, 0.0f);
-
-//    front.x = cos(glm::radians(environment::mouse_y)) * cos(glm::radians(environment::mouse_x));
-//    front.y = sin(glm::radians(environment::mouse_y));
-//    front.z = cos(glm::radians(environment::mouse_y)) * sin(glm::radians(environment::mouse_x));
-
-    glm::vec3 cameraFront = glm::normalize(front);
-
-    _transform.view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-
+    _shaders.front().use();
+    camera->use(_shaders.front().shader_program_id);
     _buffers.vao.bind(GL_TRIANGLES, (GLuint)_order.size());
 
     return 0;
 }
+
