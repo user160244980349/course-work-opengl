@@ -16,6 +16,11 @@ namespace application::objects {
         int use(GLuint shaderProgramId) override;
         int controlResponse(SDL_Event event) override;
         int update(SDL_Event event) override;
+
+    protected:
+        GLfloat _sensitivity;
+        GLfloat _mouse_x;
+        GLfloat _mouse_y;
     };
 
 }

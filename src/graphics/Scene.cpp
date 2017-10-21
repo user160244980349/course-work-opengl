@@ -8,9 +8,9 @@
 
 int application::graphics::Scene::prepare() {
 
-//    _subject->subscribe(_camera);
+    _subject->subscribe(_camera);
 
-    _objects.emplace_back(new objects::Cube);
+    _objects.push_back(new objects::Cube);
 
     for (auto &object : _objects) {
         object->prepare();

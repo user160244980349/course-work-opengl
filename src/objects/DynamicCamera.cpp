@@ -8,9 +8,13 @@
 
 application::objects::DynamicCamera::DynamicCamera() {
 
+    GLfloat _mouse_x = 0.0f;
+    GLfloat _mouse_y = 0.0f;
+    GLfloat _sensitivity = 0.2f;
+
     glm::vec3 front = glm::vec3(1.0f, 0.0f, 0.0f);
 
-    _cameraPos   = glm::vec3(-6.0f, 0.0f,  0.0f);
+    _cameraPos   = glm::vec3(-6.0f, 1.0f,  2.0f);
     _cameraUp    = glm::vec3(0.0f, 1.0f, 0.0f);
     _cameraFront = glm::normalize(front);
 
@@ -31,24 +35,30 @@ int application::objects::DynamicCamera::use(GLuint shaderProgramId) {
 
 int application::objects::DynamicCamera::controlResponse(SDL_Event event) {
 
-    glm::vec3 front;
-    GLfloat mouse_x = event.motion.xrel;
-    GLfloat mouse_y = event.motion.yrel;
+    if (event.type == SDL_MOUSEMOTION) {
 
-    if(mouse_y > 89.0f)
-        mouse_y =  89.0f;
-    if(mouse_y < -89.0f)
-        mouse_y = -89.0f;
+        glm::vec3 front;
+        _mouse_x += event.motion.xrel;
+        _mouse_y -= event.motion.yrel;
 
-    front.x = cosf(glm::radians(mouse_y)) * cosf(glm::radians(mouse_x));
-    front.y = sinf(glm::radians(mouse_y));
-    front.z = cosf(glm::radians(mouse_y)) * sinf(glm::radians(mouse_x));
+        _mouse_x *= _sensitivity;
+        _mouse_y *= _sensitivity;
 
-    _cameraFront = glm::normalize(front);
+        if (_mouse_y > 89.0f)
+            _mouse_y = 89.0f;
+        if (_mouse_y < -89.0f)
+            _mouse_y = -89.0f;
 
-    _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
+        front.x = cosf(glm::radians(_mouse_y)) * cosf(glm::radians(_mouse_x));
+        front.y = sinf(glm::radians(_mouse_y));
+        front.z = cosf(glm::radians(_mouse_y)) * sinf(glm::radians(_mouse_x));
 
-    _ubo.update(&_transform, sizeof(_transform));
+        _cameraFront = glm::normalize(front);
+
+        _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
+
+        _ubo.update(&_transform, sizeof(_transform));
+    }
 
     return 0;
 }

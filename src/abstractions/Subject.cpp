@@ -5,7 +5,7 @@
 #include "Interfaces&Abstractions/Subject.h"
 
 int application::templates::Subject::subscribe(ObserverInterface* observer) {
-    _observers.emplace_back(observer);
+    _observers.push_back(observer);
     return 0;
 }
 

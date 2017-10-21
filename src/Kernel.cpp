@@ -10,7 +10,7 @@ application::Kernel::Kernel(Uint32 width, Uint32 height) {
 
     _graphics = new graphics::Graphics(width, height);
     _input = new input::ClientInput();
-    _scene = new graphics::Scene(nullptr);
+    _scene = new graphics::Scene(_input);
 
     _input->subscribe(this);
 
