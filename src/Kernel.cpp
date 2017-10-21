@@ -9,8 +9,9 @@
 application::Kernel::Kernel(Uint32 width, Uint32 height) {
 
     _graphics = new graphics::Graphics(width, height);
-    _input = new input::ClientInput();
+    _input = new input::ClientInput;
     _scene = new graphics::Scene(_input);
+    _frameUpdate = new time::interval_timer;
 
     _input->subscribe(this);
 
@@ -25,6 +26,7 @@ application::Kernel::~Kernel() {
     delete(_scene);
     delete(_input);
     delete(_graphics);
+    delete(_frameUpdate);
 
 }
 
@@ -34,11 +36,20 @@ int application::Kernel::flow() {
 
     _scene->prepare();
 
+    _frameUpdate->set(0.017);
+    _frameUpdate->run();
+
     while(_running){
 
         _input->perform();
-        _scene->draw();
-        _graphics->swapWindow();
+
+        if (_frameUpdate->fired) {
+            _frameUpdate->reset();
+
+            _scene->draw();
+            _graphics->swapWindow();
+
+        }
 
     }
 
@@ -54,10 +65,13 @@ int application::Kernel::update(SDL_Event event) {
     return 0;
 }
 
+
+
 int application::Kernel::controlResponse(SDL_Event event) {
 
-    static bool ctrl_pressed;
-    if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_LCTRL)
+    static bool ctrl_pressed = false;
+
+    if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_LCTRL && !ctrl_pressed)
         ctrl_pressed = true;
 
     if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LCTRL)

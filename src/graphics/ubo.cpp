@@ -22,11 +22,11 @@ int application::graphics::ubo::create() {
 
 
 
-int application::graphics::ubo::connect(GLuint program, std::string blockName) {
+int application::graphics::ubo::connect(GLuint program, GLuint bindIndex, std::string blockName) {
 
     GLuint blockIndex = glGetUniformBlockIndex(program, blockName.c_str());
-    glBindBufferBase(GL_UNIFORM_BUFFER, id, id);
-    glUniformBlockBinding(program, blockIndex, id);
+    glBindBufferBase(GL_UNIFORM_BUFFER, bindIndex, id);
+    glUniformBlockBinding(program, blockIndex, bindIndex);
 
     return 0;
 }
@@ -45,6 +45,7 @@ int application::graphics::ubo::set(GLvoid *data, GLuint size) {
 
 int application::graphics::ubo::update(GLvoid *data, GLuint size) {
 
+    glBindBuffer(GL_UNIFORM_BUFFER, id);
     GLvoid* p = glMapBuffer(GL_UNIFORM_BUFFER, GL_WRITE_ONLY);
     memcpy(p, data, size);
     glUnmapBuffer(GL_UNIFORM_BUFFER);

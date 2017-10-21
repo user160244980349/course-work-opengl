@@ -76,8 +76,8 @@ int application::objects::Cube::prepare() {
     _buffers.ebo.set(_order.data(), (GLuint)_order.size());
 
     _buffers.ubo.create();
-    _buffers.ubo.set(&_transform, sizeof(_transform));
-    _buffers.ubo.connect(_shaders.front().shader_program_id, "object");
+    _buffers.ubo.set((GLvoid*)&_transform, sizeof(_transform));
+    _buffers.ubo.connect(_shaders.front().shader_program_id, 1, "object");
 
     return 0;
 }
@@ -85,8 +85,8 @@ int application::objects::Cube::prepare() {
 
 int application::objects::Cube::draw(AbstractCamera *camera) {
 
-    _shaders.front().use();
     camera->use(_shaders.front().shader_program_id);
+    _buffers.ubo.set((GLvoid*)&_transform, sizeof(_transform));
     _buffers.vao.bind(GL_TRIANGLES, (GLuint)_order.size());
 
     return 0;

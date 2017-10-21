@@ -39,7 +39,7 @@ application::graphics::Graphics::Graphics(Uint32 width, Uint32 height) {
             _width,
             _height,
             SDL_WINDOW_OPENGL //|
-//            SDL_WINDOW_FULLSCREEN
+//            SDL_WINDOW_FULLSCREEN_DESKTOP
     );
 
     if(_window == nullptr){
