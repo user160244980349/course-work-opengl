@@ -5,17 +5,14 @@
 #ifndef OPENGL_ABSTRACTSCENE_H
 #define OPENGL_ABSTRACTSCENE_H
 
-#include "DrawableInterface.h"
 #include <list>
 
 namespace application::graphics {
 
-    class AbstractScene {
+    class IScene {
     public:
         virtual int prepare() = 0;
         virtual int draw() = 0;
-    protected:
-        std::list<DrawableInterface*> _objects{};
     };
 
 }

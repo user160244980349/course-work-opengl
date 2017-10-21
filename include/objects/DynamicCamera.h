@@ -6,11 +6,14 @@
 #define OPENGL_DYNAMICCAMERA_H
 
 
-#include <Interfaces&Abstractions/DynamicCameraInterface.h>
+#include <interfaces&abstractions/IDynamicCamera.h>
+#include <SDL_events.h>
+#include <GL/glew.h>
+#include <graphics/Ubo.h>
 
 namespace application::objects {
 
-    class DynamicCamera : public DynamicCameraInterface {
+    class DynamicCamera : public IDynamicCamera {
     public:
         DynamicCamera();
         int use(GLuint shaderProgramId) override;
@@ -18,6 +21,17 @@ namespace application::objects {
         int update(SDL_Event event) override;
 
     protected:
+        graphics::Ubo _ubo;
+
+        struct {
+            glm::mat4 projection;
+            glm::mat4 viewPoint;
+        } _transform;
+
+        glm::vec3 _cameraPos;
+        glm::vec3 _cameraUp;
+        glm::vec3 _cameraFront;
+
         GLfloat _sensitivity;
         GLfloat _mouse_x;
         GLfloat _mouse_y;

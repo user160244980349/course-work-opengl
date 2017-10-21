@@ -10,7 +10,7 @@
 
 namespace application::templates {
 
-    class ObserverInterface {
+    class IObserver {
     public:
         virtual int update(SDL_Event event) = 0;
     };

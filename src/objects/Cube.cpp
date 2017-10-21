@@ -2,7 +2,7 @@
 // Created by user on 21.10.2017.
 //
 
-#include <Interfaces&Abstractions/AbstractObject.h>
+
 #include "objects/Cube.h"
 
 int application::objects::Cube::prepare() {
@@ -83,7 +83,7 @@ int application::objects::Cube::prepare() {
 }
 
 
-int application::objects::Cube::draw(AbstractCamera *camera) {
+int application::objects::Cube::draw(ICamera* camera) {
 
     camera->use(_shaders.front().shaderProgramId);
     _buffers.vao.bind(GL_TRIANGLES, (GLuint)_order.size());

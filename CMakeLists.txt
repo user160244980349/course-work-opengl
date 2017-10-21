@@ -18,19 +18,18 @@ set(SOURCES
         include/graphics/Vbo.h
         include/graphics/Vertex3d.h
 
+        include/interfaces&abstractions/IScene.h
+        include/interfaces&abstractions/ICamera.h
+        include/interfaces&abstractions/IClientInput.h
+        include/interfaces&abstractions/IControlable.h
+        include/interfaces&abstractions/IDrawable.h
+        include/interfaces&abstractions/IDynamicCamera.h
+        include/interfaces&abstractions/IObject.h
+        include/interfaces&abstractions/IObserver.h
+        include/interfaces&abstractions/ISubject.h
+
         include/input/ClientInput.h
         include/input/KeyLogger.h
-
-        include/Interfaces&Abstractions/AbstractCamera.h
-        include/Interfaces&Abstractions/AbstractObject.h
-        include/Interfaces&Abstractions/AbstractScene.h
-        include/Interfaces&Abstractions/ClientInputInterface.h
-        include/Interfaces&Abstractions/ControlableInterface.h
-        include/Interfaces&Abstractions/DrawableInterface.h
-        include/Interfaces&Abstractions/DynamicCameraInterface.h
-        include/Interfaces&Abstractions/InputInterface.h
-        include/Interfaces&Abstractions/ObserverInterface.h
-        include/Interfaces&Abstractions/SubjectInterface.h
 
         include/objects/Cube.h
         include/objects/DynamicCamera.h
@@ -61,7 +60,7 @@ set(SOURCES
 
         src/Kernel.cpp
         src/main.cpp
-        include/graphics/UboBindIndexes.h)
+        include/graphics/UboBindIndexes.h include/interfaces&abstractions/IInput.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

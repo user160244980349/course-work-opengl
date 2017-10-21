@@ -6,13 +6,12 @@
 #define OPENGL_DYNAMICCAMERAINTERFACE_H
 
 
-#include "AbstractCamera.h"
-#include "ControlableInterface.h"
-#include "ObserverInterface.h"
+#include "ICamera.h"
+#include "IControlable.h"
 
 namespace application::objects {
 
-    class DynamicCameraInterface : public AbstractCamera, public input::ControlableInterface {
+    class IDynamicCamera : public ICamera, public input::IControlable {
 
     };
 

@@ -5,11 +5,13 @@
 #ifndef OPENGL_KEYLOGGER_H
 #define OPENGL_KEYLOGGER_H
 
-#include <Interfaces&Abstractions/ObserverInterface.h>
+
+#include <SDL_events.h>
+#include <interfaces&abstractions/IObserver.h>
 
 namespace application::input {
 
-    class KeyLogger : public templates::ObserverInterface {
+    class KeyLogger : public templates::IObserver {
     public:
         int update(SDL_Event event) override;
     };

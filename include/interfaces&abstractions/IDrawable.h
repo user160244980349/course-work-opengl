@@ -5,13 +5,14 @@
 #ifndef OPENGL_DRAWABLEINTERFACE_H
 #define OPENGL_DRAWABLEINTERFACE_H
 
-#include "AbstractCamera.h"
+
+#include "ICamera.h"
 
 namespace application::graphics {
 
-    class DrawableInterface {
+    class IDrawable {
     public:
-        virtual int draw(objects::AbstractCamera* camera) = 0;
+        virtual int draw(objects::ICamera* camera) = 0;
         virtual int prepare() = 0;
     };
 

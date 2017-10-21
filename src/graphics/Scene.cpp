@@ -4,6 +4,7 @@
 
 #include <objects/Cube.h>
 #include <objects/DynamicCamera.h>
+#include <interfaces&abstractions/ISubject.h>
 #include "graphics/Scene.h"
 
 int application::graphics::Scene::prepare() {
@@ -27,7 +28,7 @@ int application::graphics::Scene::draw() {
     return 0;
 }
 
-application::graphics::Scene::Scene(templates::SubjectInterface* subject) {
+application::graphics::Scene::Scene(templates::ISubject* subject) {
 
     _subject = subject;
     _camera = new objects::DynamicCamera;

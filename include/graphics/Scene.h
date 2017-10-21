@@ -5,22 +5,23 @@
 #ifndef OPENGL_SCENE_H
 #define OPENGL_SCENE_H
 
-#include <Interfaces&Abstractions/DynamicCameraInterface.h>
-#include <Interfaces&Abstractions/SubjectInterface.h>
-#include "Interfaces&Abstractions/AbstractScene.h"
-#include "Interfaces&Abstractions/ObserverInterface.h"
+
+#include <interfaces&abstractions/IDynamicCamera.h>
+#include <interfaces&abstractions/IScene.h>
+#include <interfaces&abstractions/IDrawable.h>
 
 namespace application::graphics {
 
-    class Scene : public AbstractScene {
+    class Scene : public IScene {
     public:
-        explicit Scene(templates::SubjectInterface* subject);
+        explicit Scene(templates::ISubject* subject);
         int prepare() override;
         int draw() override;
 
     protected:
-        templates::SubjectInterface* _subject;
-        objects::DynamicCameraInterface* _camera;
+        templates::ISubject* _subject;
+        objects::IDynamicCamera* _camera;
+        std::list<IDrawable*> _objects{};
     };
 
 }

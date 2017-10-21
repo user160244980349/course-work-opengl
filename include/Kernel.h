@@ -19,7 +19,6 @@
 #include <input/ClientInput.h>
 #include <graphics/Scene.h>
 #include <graphics/Graphics.h>
-#include <Interfaces&Abstractions/ControlableInterface.h>
 #include <time/IntervalTimer.h>
 
 #endif
@@ -28,7 +27,7 @@
 
 namespace application {
 
-    class Kernel : public input::ControlableInterface {
+    class Kernel : public input::IControlable {
     public:
         Kernel(Uint32 width, Uint32 height);
         ~Kernel();
@@ -37,7 +36,7 @@ namespace application {
 
         bool _running;
         graphics::Graphics* _graphics;
-        input::ClientInputInterface* _input;
+        input::IClientInput* _input;
         graphics::Scene* _scene;
         time::IntervalTimer* _frameUpdate;
 

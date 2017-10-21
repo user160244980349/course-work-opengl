@@ -10,8 +10,10 @@
 
 namespace application::time {
 
-    class Timer : public AbstractTimer {
+    class Timer : public ITimer {
     public:
+        Uint32 time;
+
         int reset();
         int run() override;
         int stop() override;

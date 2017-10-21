@@ -5,12 +5,13 @@
 #ifndef OPENGL_CLIENTINPUTINTERFACE_H
 #define OPENGL_CLIENTINPUTINTERFACE_H
 
-#include "InputInterface.h"
-#include "SubjectInterface.h"
+
+#include "ISubject.h"
+#include "IInput.h"
 
 namespace application::input {
 
-    class ClientInputInterface : public InputInterface, public templates::SubjectInterface {
+    class IClientInput : public IInput, public templates::ISubject {
 
     };
 

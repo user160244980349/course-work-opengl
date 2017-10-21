@@ -22,12 +22,12 @@ int application::input::ClientInput::notify() {
     return 0;
 }
 
-int application::input::ClientInput::subscribe(application::templates::ObserverInterface *observer) {
+int application::input::ClientInput::subscribe(application::templates::IObserver *observer) {
     _observers.push_back(observer);
     return 0;
 }
 
-int application::input::ClientInput::unsubscribe(application::templates::ObserverInterface *observer) {
+int application::input::ClientInput::unsubscribe(application::templates::IObserver *observer) {
     _observers.remove(observer);
     return 0;
 }

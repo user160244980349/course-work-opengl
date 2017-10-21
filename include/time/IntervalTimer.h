@@ -10,9 +10,10 @@
 
 namespace application::time {
 
-    class IntervalTimer : public AbstractTimer {
+    class IntervalTimer : public ITimer {
     public:
         bool fired;
+        Uint32 time;
 
         int set(float i);
         int reset();

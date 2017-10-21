@@ -11,10 +11,8 @@
 #include <SDL_timer.h>
 #endif
 
-class AbstractTimer {
+class ITimer {
 public:
-    Uint32 time;
-
     virtual int reset() = 0;
     virtual int run() = 0;
     virtual int stop() = 0;
