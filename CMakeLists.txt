@@ -8,6 +8,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(SOURCES
 
         # HEADERS
+        include/graphics/UboBindIndexes.h
+
         include/graphics/Graphics.h
         include/graphics/AbstractBuffer.h
         include/graphics/Ebo.h
@@ -18,15 +20,13 @@ set(SOURCES
         include/graphics/Vbo.h
         include/graphics/Vertex3d.h
 
-        include/interfaces&abstractions/IScene.h
-        include/interfaces&abstractions/ICamera.h
-        include/interfaces&abstractions/IClientInput.h
-        include/interfaces&abstractions/IControlable.h
-        include/interfaces&abstractions/IDrawable.h
-        include/interfaces&abstractions/IDynamicCamera.h
-        include/interfaces&abstractions/IObject.h
-        include/interfaces&abstractions/IObserver.h
-        include/interfaces&abstractions/ISubject.h
+        include/interfaces/IInput.h
+        include/interfaces/IScene.h
+        include/interfaces/ICamera.h
+        include/interfaces/IControlable.h
+        include/interfaces/IDrawable.h
+        include/interfaces/IDynamicCamera.h
+        include/interfaces/IObject.h
 
         include/input/ClientInput.h
         include/input/KeyLogger.h
@@ -59,8 +59,7 @@ set(SOURCES
         src/time/Timer.cpp
 
         src/Kernel.cpp
-        src/main.cpp
-        include/graphics/UboBindIndexes.h include/interfaces&abstractions/IInput.h)
+        src/main.cpp)
 
 # executables
 add_executable(OpenGL ${SOURCES})

@@ -6,9 +6,9 @@
 #define OPENGL_CUBE_H
 
 
-#include <interfaces&abstractions/IDrawable.h>
-#include <interfaces&abstractions/IObject.h>
-#include <interfaces&abstractions/ICamera.h>
+#include <interfaces/IDrawable.h>
+#include <interfaces/IObject.h>
+#include <interfaces/ICamera.h>
 
 namespace application::objects {
 

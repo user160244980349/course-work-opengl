@@ -5,11 +5,16 @@
 #ifndef OPENGL_IINPUT_H
 #define OPENGL_IINPUT_H
 
+#include "IControlable.h"
+
 namespace application::input {
 
     class IInput {
     public:
         virtual int perform() = 0;
+        virtual int subscribe(IControlable* observer) = 0;
+        virtual int unsubscribe(IControlable* observer) = 0;
+        virtual int notify() = 0;
     };
 
 }

@@ -8,19 +8,19 @@
 
 #include <SDL_events.h>
 #include <list>
-#include <interfaces&abstractions/IClientInput.h>
-#include <interfaces&abstractions/IObserver.h>
+#include <interfaces/IInput.h>
+#include <interfaces/IControlable.h>
 
 namespace application::input {
 
-    class ClientInput : public IClientInput {
+    class ClientInput : public IInput {
     public:
         int perform() override;
         int notify() override;
-        int subscribe(templates::IObserver* observer) override;
-        int unsubscribe(templates::IObserver* observer) override;
+        int subscribe(IControlable* observer) override;
+        int unsubscribe(IControlable* observer) override;
     protected:
-        std::list<templates::IObserver*> _observers{};
+        std::list<IControlable*> _observers{};
         SDL_Event _event{};
     };
 

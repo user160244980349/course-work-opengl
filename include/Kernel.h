@@ -36,12 +36,11 @@ namespace application {
 
         bool _running;
         graphics::Graphics* _graphics;
-        input::IClientInput* _input;
+        input::IInput* _input;
         graphics::Scene* _scene;
         time::IntervalTimer* _frameUpdate;
 
         int flow();
-        int update(SDL_Event event) override;
         int controlResponse(SDL_Event event) override;
     };
 

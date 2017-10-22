@@ -7,13 +7,13 @@
 
 
 #include <SDL_events.h>
-#include <interfaces&abstractions/IObserver.h>
+#include <interfaces/IControlable.h>
 
 namespace application::input {
 
-    class KeyLogger : public templates::IObserver {
+    class KeyLogger : public input::IControlable {
     public:
-        int update(SDL_Event event) override;
+        int controlResponse(SDL_Event event) override;
     };
 
 }

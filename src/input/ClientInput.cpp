@@ -16,18 +16,18 @@ int application::input::ClientInput::notify() {
     while(SDL_PollEvent(&_event)) {
 
         for (auto &_observer : _observers)
-            _observer->update(_event);
+            _observer->controlResponse(_event);
 
     }
     return 0;
 }
 
-int application::input::ClientInput::subscribe(application::templates::IObserver *observer) {
+int application::input::ClientInput::subscribe(IControlable* observer) {
     _observers.push_back(observer);
     return 0;
 }
 
-int application::input::ClientInput::unsubscribe(application::templates::IObserver *observer) {
+int application::input::ClientInput::unsubscribe(IControlable* observer) {
     _observers.remove(observer);
     return 0;
 }

@@ -7,11 +7,10 @@
 
 
 #include <SDL_events.h>
-#include "IObserver.h"
 
 namespace application::input {
 
-    class IControlable : public templates::IObserver {
+    class IControlable {
     public:
         virtual int controlResponse(SDL_Event event) = 0;
     };

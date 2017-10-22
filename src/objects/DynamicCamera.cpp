@@ -94,10 +94,3 @@ int application::objects::DynamicCamera::controlResponse(SDL_Event event) {
 
     return 0;
 }
-
-int application::objects::DynamicCamera::update(SDL_Event event) {
-
-    controlResponse(event);
-
-    return 0;
-}

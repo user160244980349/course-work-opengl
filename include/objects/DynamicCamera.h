@@ -6,7 +6,7 @@
 #define OPENGL_DYNAMICCAMERA_H
 
 
-#include <interfaces&abstractions/IDynamicCamera.h>
+#include <interfaces/IDynamicCamera.h>
 #include <SDL_events.h>
 #include <GL/glew.h>
 #include <graphics/Ubo.h>
@@ -18,7 +18,6 @@ namespace application::objects {
         DynamicCamera();
         int use(GLuint shaderProgramId) override;
         int controlResponse(SDL_Event event) override;
-        int update(SDL_Event event) override;
 
     protected:
         graphics::Ubo _ubo;

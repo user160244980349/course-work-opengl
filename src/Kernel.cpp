@@ -58,15 +58,6 @@ int application::Kernel::flow() {
 
 
 
-int application::Kernel::update(SDL_Event event) {
-
-    controlResponse(event);
-
-    return 0;
-}
-
-
-
 int application::Kernel::controlResponse(SDL_Event event) {
 
     static bool ctrl_pressed = false;
