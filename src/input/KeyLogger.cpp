@@ -5,7 +5,7 @@
 #include <iostream>
 #include "input/KeyLogger.h"
 
-int application::input::KeyLogger::controlResponse(SDL_Event event) {
+int application::input::KeyLogger::control(SDL_Event event) {
 
     std::cout << event.key.keysym.sym << std::endl;
 

@@ -23,8 +23,8 @@ application::Kernel::Kernel(Uint32 width, Uint32 height) {
 application::Kernel::~Kernel() {
 
     delete(_scene);
-    delete(_input);
     delete(_graphics);
+    delete(_input);
     delete(_frameUpdate);
 
 }
@@ -57,9 +57,7 @@ int application::Kernel::flow() {
 
 
 
-int application::Kernel::controlResponse(SDL_Event event) {
-
-    static SDL_KeyboardEvent lastEvent{};
+int application::Kernel::control(SDL_Event event) {
 
     switch (event.type) {
 
@@ -70,8 +68,7 @@ int application::Kernel::controlResponse(SDL_Event event) {
         case SDL_KEYDOWN:
             switch (event.key.keysym.sym) {
 
-                case SDLK_q:
-                    if (lastEvent.keysym.sym == SDLK_LCTRL && lastEvent.type == SDL_KEYDOWN)
+                case SDLK_ESCAPE:
                         _running = false;
                     break;
                 default: break;
@@ -80,8 +77,10 @@ int application::Kernel::controlResponse(SDL_Event event) {
         default: break;
     }
 
-    lastEvent = event.key;
+    return 0;
+}
 
+int application::Kernel::update() {
     return 0;
 }
 

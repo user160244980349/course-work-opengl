@@ -12,7 +12,8 @@ namespace application::input {
 
     class IControlable {
     public:
-        virtual int controlResponse(SDL_Event event) = 0;
+        virtual int update() = 0;
+        virtual int control(SDL_Event event) = 0;
     };
 
 };

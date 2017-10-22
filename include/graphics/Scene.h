@@ -15,6 +15,7 @@ namespace application::graphics {
     class Scene : public IScene {
     public:
         explicit Scene(input::IInput* subject);
+        ~Scene();
         int prepare() override;
         int draw() override;
 

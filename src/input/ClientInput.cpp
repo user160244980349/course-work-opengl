@@ -16,7 +16,7 @@ int application::input::ClientInput::notify() {
     while(SDL_PollEvent(&_event)) {
 
         for (auto &_observer : _observers)
-            _observer->controlResponse(_event);
+            _observer->control(_event);
 
     }
     return 0;

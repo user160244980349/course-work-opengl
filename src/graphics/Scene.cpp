@@ -9,8 +9,6 @@
 
 int application::graphics::Scene::prepare() {
 
-    _subject->subscribe(_camera);
-
     _objects.push_back(new objects::Cube);
 
     for (auto &object : _objects) {
@@ -22,6 +20,7 @@ int application::graphics::Scene::prepare() {
 
 int application::graphics::Scene::draw() {
 
+    _camera->update();
     for (auto &object : _objects)
         object->draw(_camera);
 
@@ -32,5 +31,17 @@ application::graphics::Scene::Scene(input::IInput* subject) {
 
     _subject = subject;
     _camera = new objects::DynamicCamera;
+
+    _subject->subscribe(_camera);
+
+}
+
+application::graphics::Scene::~Scene() {
+
+    delete(_camera);
+
+    for (auto &object : _objects) {
+        delete(object);
+    }
 
 }

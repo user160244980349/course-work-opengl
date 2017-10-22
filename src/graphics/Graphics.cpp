@@ -38,8 +38,8 @@ application::graphics::Graphics::Graphics(Uint32 width, Uint32 height) {
             SDL_WINDOWPOS_CENTERED,
             _width,
             _height,
-            SDL_WINDOW_OPENGL |
-            SDL_WINDOW_FULLSCREEN_DESKTOP
+            SDL_WINDOW_OPENGL //|
+//            SDL_WINDOW_FULLSCREEN_DESKTOP
     );
 
     if(_window == nullptr){

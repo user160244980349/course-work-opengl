@@ -37,9 +37,7 @@ int application::objects::DynamicCamera::use(GLuint shaderProgramId) {
     return 0;
 }
 
-int application::objects::DynamicCamera::controlResponse(SDL_Event event) {
-
-    static glm::vec3 movement{};
+int application::objects::DynamicCamera::control(SDL_Event event) {
 
     switch (event.type) {
 
@@ -62,36 +60,75 @@ int application::objects::DynamicCamera::controlResponse(SDL_Event event) {
         case SDL_KEYDOWN:
             switch (event.key.keysym.sym) {
                 case SDLK_w:
-                    movement = _cameraFront * _speedFront;
+                    _keys.w = true;
                     break;
                 case SDLK_s:
-                    movement = -_cameraFront * _speedFront;
+                    _keys.s = true;
                     break;
                 case SDLK_a:
-                    movement = -glm::normalize(glm::cross(_cameraFront, _cameraUp)) * _speedUp;
+                    _keys.a = true;
                     break;
                 case SDLK_d:
-                    movement = glm::normalize(glm::cross(_cameraFront, _cameraUp)) * _speedUp;
+                    _keys.d = true;
                     break;
                 case SDLK_q:
-                    movement = -_cameraUp * _speedFront;
+                    _keys.q = true;
                     break;
                 case SDLK_e:
-                    movement = _cameraUp * _speedFront;
+                    _keys.e = true;
                 default: break;
             }
             break;
 
         case SDL_KEYUP:
-//        case SDLK_DOWN:
-//            if( alien_yvel > 0 )
-//                alien_yvel = 0;
-            movement = glm::vec3(0.0f, 0.0f, 0.0f);
+            switch (event.key.keysym.sym) {
+                case SDLK_w:
+                    _keys.w = false;
+                    break;
+                case SDLK_s:
+                    _keys.s = false;
+                    break;
+                case SDLK_a:
+                    _keys.a = false;
+                    break;
+                case SDLK_d:
+                    _keys.d = false;
+                    break;
+                case SDLK_q:
+                    _keys.q = false;
+                    break;
+                case SDLK_e:
+                    _keys.e = false;
+                default: break;
+            }
             break;
+
         default: break;
     }
 
-    _cameraPos += movement;
+    return 0;
+}
+
+int application::objects::DynamicCamera::update() {
+
+    if (!_keys.w)
+        _cameraPos += -_cameraFront * _speedFront;
+
+    if (!_keys.s)
+        _cameraPos += _cameraFront * _speedFront;
+
+    if (!_keys.a)
+        _cameraPos += glm::normalize(glm::cross(_cameraFront, _cameraUp)) * _speedUp;
+
+    if (!_keys.d)
+        _cameraPos += -glm::normalize(glm::cross(_cameraFront, _cameraUp)) * _speedUp;
+
+    if (!_keys.q)
+        _cameraPos += _cameraUp * _speedFront;
+
+    if (!_keys.e)
+        _cameraPos += -_cameraUp * _speedFront;
+
     _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
     _ubo.update((GLvoid*)&_transform, sizeof(_transform));
 

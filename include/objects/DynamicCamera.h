@@ -17,7 +17,8 @@ namespace application::objects {
     public:
         DynamicCamera();
         int use(GLuint shaderProgramId) override;
-        int controlResponse(SDL_Event event) override;
+        int control(SDL_Event event) override;
+        int update() override;
 
     protected:
         graphics::Ubo _ubo;
@@ -27,9 +28,19 @@ namespace application::objects {
             glm::mat4 viewPoint;
         } _transform;
 
+        struct {
+            bool w = false;
+            bool s = false;
+            bool a = false;
+            bool d = false;
+            bool q = false;
+            bool e = false;
+        } _keys;
+
         glm::vec3 _cameraPos;
         glm::vec3 _cameraUp;
         glm::vec3 _cameraFront;
+        glm::vec3 _movement;
 
         GLfloat _sensitivity;
         GLfloat _mouseX;

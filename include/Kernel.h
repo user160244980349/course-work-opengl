@@ -38,7 +38,8 @@ namespace application {
         time::IntervalTimer* _frameUpdate;
 
         int flow();
-        int controlResponse(SDL_Event event) override;
+        int update() override;
+        int control(SDL_Event event) override;
     };
 
 }

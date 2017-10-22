@@ -13,7 +13,7 @@ namespace application::input {
 
     class KeyLogger : public input::IControlable {
     public:
-        int controlResponse(SDL_Event event) override;
+        int control(SDL_Event event) override;
     };
 
 }
