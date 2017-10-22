@@ -32,8 +32,10 @@ namespace application::objects {
         glm::vec3 _cameraFront;
 
         GLfloat _sensitivity;
-        GLfloat _mouse_x;
-        GLfloat _mouse_y;
+        GLfloat _mouseX;
+        GLfloat _mouseY;
+        GLfloat _speedFront;
+        GLfloat _speedUp;
     };
 
 }

@@ -3,7 +3,6 @@
 //
 
 #include <Kernel.h>
-#include <input/KeyLogger.h>
 
 
 application::Kernel::Kernel(Uint32 width, Uint32 height) {
@@ -60,16 +59,28 @@ int application::Kernel::flow() {
 
 int application::Kernel::controlResponse(SDL_Event event) {
 
-    static bool ctrl_pressed = false;
+    static SDL_KeyboardEvent lastEvent{};
 
-    if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_LCTRL && !ctrl_pressed)
-        ctrl_pressed = true;
+    switch (event.type) {
 
-    if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LCTRL)
-        ctrl_pressed = false;
+        case SDL_QUIT:
+            _running = false;
+            break;
 
-    if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_q && ctrl_pressed || event.type == SDL_QUIT)
-        _running = false;
+        case SDL_KEYDOWN:
+            switch (event.key.keysym.sym) {
+
+                case SDLK_q:
+                    if (lastEvent.keysym.sym == SDLK_LCTRL && lastEvent.type == SDL_KEYDOWN)
+                        _running = false;
+                    break;
+                default: break;
+            }
+            break;
+        default: break;
+    }
+
+    lastEvent = event.key;
 
     return 0;
 }

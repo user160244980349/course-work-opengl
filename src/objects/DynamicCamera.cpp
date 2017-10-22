@@ -10,8 +10,10 @@
 
 application::objects::DynamicCamera::DynamicCamera() {
 
-    _mouse_x = 0.0f;
-    _mouse_y = 0.0f;
+    _mouseX = 0.0f;
+    _mouseY = 0.0f;
+    _speedUp = 0.2f;
+    _speedFront = 0.2f;
     _sensitivity = 0.1f;
 
     glm::vec3 front = glm::vec3(1.0f, 0.0f, 0.0f);
@@ -37,58 +39,51 @@ int application::objects::DynamicCamera::use(GLuint shaderProgramId) {
 
 int application::objects::DynamicCamera::controlResponse(SDL_Event event) {
 
-    switch (event.type) {
-        case SDL_MOUSEMOTION:
-            _mouse_x += event.motion.xrel * _sensitivity;
-            _mouse_y -= event.motion.yrel * _sensitivity;
+    static glm::vec3 movement{};
 
-            if (_mouse_y > 89.0f)
-                _mouse_y = 89.0f;
-            if (_mouse_y < -89.0f)
-                _mouse_y = -89.0f;
+    switch (event.type) {
+
+        case SDL_MOUSEMOTION:
+            _mouseX += event.motion.xrel * _sensitivity;
+            _mouseY -= event.motion.yrel * _sensitivity;
+
+            if (_mouseY > 89.0f)
+                _mouseY = 89.0f;
+            if (_mouseY < -89.0f)
+                _mouseY = -89.0f;
 
             _cameraFront = glm::normalize(glm::vec3(
-                    cosf(glm::radians(_mouse_y)) * cosf(glm::radians(_mouse_x)),
-                    sinf(glm::radians(_mouse_y)),
-                    cosf(glm::radians(_mouse_y)) * sinf(glm::radians(_mouse_x)))
+                    cosf(glm::radians(_mouseY)) * cosf(glm::radians(_mouseX)),
+                    sinf(glm::radians(_mouseY)),
+                    cosf(glm::radians(_mouseY)) * sinf(glm::radians(_mouseX)))
             );
             break;
+
         case SDL_KEYDOWN:
             switch (event.key.keysym.sym) {
                 case SDLK_w:
-                    _cameraPos += _cameraFront;
+                    movement = _cameraFront * _speedFront;
                     break;
                 case SDLK_s:
-                    _cameraPos -= _cameraFront;
-                    break;
-                case SDLK_a:
-                    _cameraPos += _cameraFront * _cameraUp;
-                    break;
-                case SDLK_d:
-                    _cameraPos -= _cameraUp + _cameraFront;
+                    movement = -_cameraFront * _speedFront;
                     break;
                 case SDLK_q:
-                    _cameraPos += _cameraUp;
+                    movement = _cameraUp * _speedUp;
                     break;
                 case SDLK_e:
-                    _cameraPos -= _cameraUp;
+                    movement = -_cameraUp * _speedUp;
                     break;
-                default:
-                    break;
+                default: break;
             }
             break;
+
         case SDL_KEYUP:
-            switch (event.key.keysym.sym) {
-
-
-                default:
-                    break;
-            }
+            movement = glm::vec3(0.0f, 0.0f, 0.0f);
             break;
-        default:
-            break;
+        default: break;
     }
 
+    _cameraPos += movement;
     _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
     _ubo.update((GLvoid*)&_transform, sizeof(_transform));
 
