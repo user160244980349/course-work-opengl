@@ -29,7 +29,6 @@ namespace application {
         ~Kernel();
 
     protected:
-
         bool _running;
         graphics::Graphics* _graphics;
         input::IInput* _input;

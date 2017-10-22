@@ -48,8 +48,6 @@ int application::Kernel::flow() {
 
 int application::Kernel::control(SDL_Event event) {
 
-
-
     switch (event.type) {
 
         case SDL_QUIT:
