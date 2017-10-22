@@ -7,7 +7,7 @@
 
 application::Kernel::Kernel(Uint32 width, Uint32 height) {
 
-    _graphics = new graphics::Graphics(width, height, 60);
+    _graphics = new graphics::Graphics(width, height, 59);
     _input = new input::ClientInput;
     _scene = new graphics::Scene(_input);
 
