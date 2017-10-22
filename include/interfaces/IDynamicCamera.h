@@ -12,7 +12,8 @@
 namespace application::objects {
 
     class IDynamicCamera : public ICamera, public input::IControlable {
-
+    public:
+        virtual int update() = 0;
     };
 
 }

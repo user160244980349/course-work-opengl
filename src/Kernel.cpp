@@ -7,10 +7,9 @@
 
 application::Kernel::Kernel(Uint32 width, Uint32 height) {
 
-    _graphics = new graphics::Graphics(width, height);
+    _graphics = new graphics::Graphics(width, height, 60);
     _input = new input::ClientInput;
     _scene = new graphics::Scene(_input);
-    _frameUpdate = new time::IntervalTimer;
 
     _input->subscribe(this);
 
@@ -25,7 +24,6 @@ application::Kernel::~Kernel() {
     delete(_scene);
     delete(_graphics);
     delete(_input);
-    delete(_frameUpdate);
 
 }
 
@@ -35,20 +33,11 @@ int application::Kernel::flow() {
 
     _scene->prepare();
 
-    _frameUpdate->set(0.017);
-    _frameUpdate->run();
-
     while(_running){
 
         _input->perform();
-
-        if (_frameUpdate->fired) {
-            _frameUpdate->reset();
-
-            _scene->draw();
-            _graphics->swapWindow();
-
-        }
+        _scene->draw();
+        _graphics->swapWindow();
 
     }
 
@@ -77,10 +66,6 @@ int application::Kernel::control(SDL_Event event) {
         default: break;
     }
 
-    return 0;
-}
-
-int application::Kernel::update() {
     return 0;
 }
 

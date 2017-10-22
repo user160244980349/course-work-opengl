@@ -14,8 +14,9 @@ namespace application::objects {
 
     class Cube : public graphics::IDrawable, public objects::IObject {
     public:
+        int draw() override;
         int prepare() override;
-        int draw(ICamera* camera) override;
+        int setCamera(ICamera* camera) override;
 
     protected:
         struct {
@@ -29,9 +30,9 @@ namespace application::objects {
             glm::mat4 model = glm::mat4(1.0f);
         } _transform;
 
+        std::vector <graphics::Shader> _shaders{};
         std::vector <graphics::Vertex3d> _vertices{};
         std::vector <GLuint> _order{};
-        std::vector <graphics::Shader> _shaders{};
     };
 
 }

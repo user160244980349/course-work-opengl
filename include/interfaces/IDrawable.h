@@ -12,8 +12,9 @@ namespace application::graphics {
 
     class IDrawable {
     public:
-        virtual int draw(objects::ICamera* camera) = 0;
+        virtual int draw() = 0;
         virtual int prepare() = 0;
+        virtual int setCamera(objects::ICamera* camera) = 0;
     };
 
 }

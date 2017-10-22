@@ -83,10 +83,16 @@ int application::objects::Cube::prepare() {
 }
 
 
-int application::objects::Cube::draw(ICamera* camera) {
+int application::objects::Cube::draw() {
+
+    _buffers.vao.bind(GL_TRIANGLES, (GLuint)_order.size());
+
+    return 0;
+}
+
+int application::objects::Cube::setCamera(application::objects::ICamera *camera) {
 
     camera->use(_shaders.front().shaderProgramId);
-    _buffers.vao.bind(GL_TRIANGLES, (GLuint)_order.size());
 
     return 0;
 }

@@ -34,10 +34,6 @@ set(SOURCES
         include/objects/Cube.h
         include/objects/DynamicCamera.h
 
-        include/time/AbstractTimer.h
-        include/time/IntervalTimer.h
-        include/time/Timer.h
-
         include/Kernel.h
 
         # SOURCES
@@ -54,9 +50,6 @@ set(SOURCES
 
         src/objects/Cube.cpp
         src/objects/DynamicCamera.cpp
-
-        src/time/IntervalTimer.cpp
-        src/time/Timer.cpp
 
         src/Kernel.cpp
         src/main.cpp)
@@ -100,8 +93,6 @@ if (WIN32)
     )
 
 elseif(UNIX)
-
-    set(CMAKE_CXX_FLAGS  -lpthread)
 
     # find section
     find_package(SDL2 REQUIRED)

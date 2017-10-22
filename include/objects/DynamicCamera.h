@@ -40,7 +40,6 @@ namespace application::objects {
         glm::vec3 _cameraPos;
         glm::vec3 _cameraUp;
         glm::vec3 _cameraFront;
-        glm::vec3 _movement;
 
         GLfloat _sensitivity;
         GLfloat _mouseX;

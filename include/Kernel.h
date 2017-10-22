@@ -20,7 +20,6 @@
 #include <input/ClientInput.h>
 #include <graphics/Scene.h>
 #include <graphics/Graphics.h>
-#include <time/IntervalTimer.h>
 
 namespace application {
 
@@ -35,10 +34,8 @@ namespace application {
         graphics::Graphics* _graphics;
         input::IInput* _input;
         graphics::Scene* _scene;
-        time::IntervalTimer* _frameUpdate;
 
         int flow();
-        int update() override;
         int control(SDL_Event event) override;
     };
 
