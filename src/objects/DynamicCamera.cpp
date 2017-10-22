@@ -18,7 +18,7 @@ application::objects::DynamicCamera::DynamicCamera() {
 
     glm::vec3 front = glm::vec3(1.0f, 0.0f, 0.0f);
 
-    _cameraPos   = glm::vec3(-6.0f, 1.0f,  2.0f);
+    _cameraPos   = glm::vec3(-4.0f, 1.0f,  0.0f);
     _cameraUp    = glm::vec3(0.0f, 1.0f, 0.0f);
     _cameraFront = glm::normalize(front);
 
@@ -67,12 +67,17 @@ int application::objects::DynamicCamera::controlResponse(SDL_Event event) {
                 case SDLK_s:
                     movement = -_cameraFront * _speedFront;
                     break;
+                case SDLK_a:
+                    movement = glm::rotateY(_cameraFront, glm::radians(90.0f)) * _speedUp;
+                    break;
+                case SDLK_d:
+                    movement = glm::rotateY(_cameraFront, glm::radians(-90.0f)) * _speedUp;
+                    break;
                 case SDLK_q:
-                    movement = _cameraUp * _speedUp;
+                    movement = -_cameraUp * _speedFront;
                     break;
                 case SDLK_e:
-                    movement = -_cameraUp * _speedUp;
-                    break;
+                    movement = _cameraUp * _speedFront;
                 default: break;
             }
             break;
