@@ -78,6 +78,9 @@ int application::objects::DynamicCamera::controlResponse(SDL_Event event) {
             break;
 
         case SDL_KEYUP:
+//        case SDLK_DOWN:
+//            if( alien_yvel > 0 )
+//                alien_yvel = 0;
             movement = glm::vec3(0.0f, 0.0f, 0.0f);
             break;
         default: break;
