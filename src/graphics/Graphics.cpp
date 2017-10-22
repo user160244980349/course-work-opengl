@@ -39,8 +39,8 @@ application::graphics::Graphics::Graphics(Uint32 width, Uint32 height, Uint32 fp
             SDL_WINDOWPOS_CENTERED,
             _width,
             _height,
-            SDL_WINDOW_OPENGL |
-            SDL_WINDOW_FULLSCREEN_DESKTOP
+            SDL_WINDOW_OPENGL //|
+//            SDL_WINDOW_FULLSCREEN_DESKTOP
     );
 
     if(_window == nullptr){
@@ -82,6 +82,24 @@ int application::graphics::Graphics::swapWindow() {
     SDL_GL_SwapWindow(_window);
     SDL_Delay(1000.0f / (float)_fps);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    return 0;
+}
+
+int application::graphics::Graphics::showHideCursor() {
+
+    static bool enableMouse = false;
+
+    if (enableMouse) {
+        enableMouse = false;
+        SDL_ShowCursor(SDL_DISABLE);
+        SDL_SetRelativeMouseMode(SDL_TRUE);
+    } else {
+        enableMouse = true;
+        SDL_ShowCursor(SDL_ENABLE);
+        SDL_SetRelativeMouseMode(SDL_FALSE);
+        SDL_WarpMouseInWindow(_window, _width / 2, _height / 2);
+    }
 
     return 0;
 }

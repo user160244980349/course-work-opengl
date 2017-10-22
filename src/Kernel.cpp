@@ -48,6 +48,8 @@ int application::Kernel::flow() {
 
 int application::Kernel::control(SDL_Event event) {
 
+
+
     switch (event.type) {
 
         case SDL_QUIT:
@@ -58,7 +60,7 @@ int application::Kernel::control(SDL_Event event) {
             switch (event.key.keysym.sym) {
 
                 case SDLK_ESCAPE:
-                        _running = false;
+                    _graphics->showHideCursor();
                     break;
                 default: break;
             }

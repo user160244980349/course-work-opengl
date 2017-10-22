@@ -12,6 +12,7 @@ namespace application::graphics {
 
         Graphics(Uint32 width, Uint32 height, Uint32 fps);
         int swapWindow();
+        int showHideCursor();
         ~Graphics();
 
     protected:
