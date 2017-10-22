@@ -68,10 +68,10 @@ int application::objects::DynamicCamera::controlResponse(SDL_Event event) {
                     movement = -_cameraFront * _speedFront;
                     break;
                 case SDLK_a:
-                    movement = glm::rotateY(_cameraFront, glm::radians(90.0f)) * _speedUp;
+                    movement = -glm::normalize(glm::cross(_cameraFront, _cameraUp)) * _speedUp;
                     break;
                 case SDLK_d:
-                    movement = glm::rotateY(_cameraFront, glm::radians(-90.0f)) * _speedUp;
+                    movement = glm::normalize(glm::cross(_cameraFront, _cameraUp)) * _speedUp;
                     break;
                 case SDLK_q:
                     movement = -_cameraUp * _speedFront;
