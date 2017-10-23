@@ -31,6 +31,7 @@ application::graphics::Graphics::Graphics(Uint32 width, Uint32 height) {
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
     SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
+    SDL_GL_SetSwapInterval(0);
 
     _window = SDL_CreateWindow(
             "OpenGL",

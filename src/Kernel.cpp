@@ -3,6 +3,7 @@
 //
 
 #include <Kernel.h>
+#include <iostream>
 
 
 application::Kernel::Kernel(Uint32 width, Uint32 height) {
@@ -33,7 +34,7 @@ int application::Kernel::flow() {
 
     Uint32 start;
     Uint32 duration;
-    Uint32 fps = 1000 / 59;
+    Uint32 fps = 1000 / 60;
 
     _scene->prepare();
 
@@ -43,12 +44,14 @@ int application::Kernel::flow() {
 
         _input->perform();
         _scene->draw();
-        _graphics->swapWindow();
 
         duration = SDL_GetTicks() - start;
 
         if (duration <= fps)
             SDL_Delay(fps - duration);
+
+        _graphics->swapWindow();
+
     }
 
     return 0;
