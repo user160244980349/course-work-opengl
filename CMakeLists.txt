@@ -29,7 +29,6 @@ set(SOURCES
         include/interfaces/IObject.h
 
         include/input/ClientInput.h
-        include/input/KeyLogger.h
 
         include/objects/Cube.h
         include/objects/DynamicCamera.h
@@ -46,13 +45,14 @@ set(SOURCES
         src/graphics/Vbo.cpp
 
         src/input/ClientInput.cpp
-        src/input/KeyLogger.cpp
 
         src/objects/Cube.cpp
         src/objects/DynamicCamera.cpp
 
         src/Kernel.cpp
-        src/main.cpp)
+        src/main.cpp
+
+        )
 
 # executables
 add_executable(OpenGL ${SOURCES})

@@ -10,7 +10,7 @@ namespace application::graphics {
     class Graphics {
     public:
 
-        Graphics(Uint32 width, Uint32 height, Uint32 fps);
+        Graphics(Uint32 width, Uint32 height);
         int swapWindow();
         int showHideCursor();
         ~Graphics();
@@ -19,7 +19,6 @@ namespace application::graphics {
         SDL_Window* _window;
         Uint32 _width;
         Uint32 _height;
-        Uint32 _fps;
     };
 
 }

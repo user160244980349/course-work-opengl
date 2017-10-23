@@ -7,7 +7,7 @@
 
 application::Kernel::Kernel(Uint32 width, Uint32 height) {
 
-    _graphics = new graphics::Graphics(width, height, 59);
+    _graphics = new graphics::Graphics(width, height);
     _input = new input::ClientInput;
     _scene = new graphics::Scene(_input);
 
@@ -31,14 +31,24 @@ application::Kernel::~Kernel() {
 
 int application::Kernel::flow() {
 
+    Uint32 start;
+    Uint32 duration;
+    Uint32 fps = 1000 / 59;
+
     _scene->prepare();
 
     while(_running){
+
+        start = SDL_GetTicks();
 
         _input->perform();
         _scene->draw();
         _graphics->swapWindow();
 
+        duration = SDL_GetTicks() - start;
+
+        if (duration <= fps)
+            SDL_Delay(fps - duration);
     }
 
     return 0;

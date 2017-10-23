@@ -7,11 +7,10 @@
 #include <GL/glew.h>
 #include "graphics/Graphics.h"
 
-application::graphics::Graphics::Graphics(Uint32 width, Uint32 height, Uint32 fps) {
+application::graphics::Graphics::Graphics(Uint32 width, Uint32 height) {
 
     _width = width;
     _height = height;
-    _fps = fps;
 
     if ( SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0 ){
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
@@ -80,7 +79,6 @@ application::graphics::Graphics::~Graphics() {
 int application::graphics::Graphics::swapWindow() {
 
     SDL_GL_SwapWindow(_window);
-    SDL_Delay(1000.0f / (float)_fps);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     return 0;
