@@ -24,47 +24,47 @@ int application::objects::Cube::prepare() {
     _vertices.emplace_back(graphics::Vertex3d{glm::vec4(-1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
     _vertices.emplace_back(graphics::Vertex3d{glm::vec4( 1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
 
-    _order.emplace_back(1u);
-    _order.emplace_back(3u);
-    _order.emplace_back(0u);
-    _order.emplace_back(1u);
-    _order.emplace_back(3u);
-    _order.emplace_back(2u);
-
-    _order.emplace_back(2u);
-    _order.emplace_back(5u);
-    _order.emplace_back(1u);
-    _order.emplace_back(2u);
-    _order.emplace_back(5u);
-    _order.emplace_back(6u);
-
-    _order.emplace_back(5u);
-    _order.emplace_back(7u);
-    _order.emplace_back(4u);
-    _order.emplace_back(5u);
-    _order.emplace_back(7u);
-    _order.emplace_back(6u);
-
-    _order.emplace_back(3u);
-    _order.emplace_back(4u);
     _order.emplace_back(0u);
     _order.emplace_back(3u);
+    _order.emplace_back(1u);
+    _order.emplace_back(1u);
+    _order.emplace_back(3u);
+    _order.emplace_back(2u);
+
+    _order.emplace_back(2u);
+    _order.emplace_back(5u);
+    _order.emplace_back(1u);
+    _order.emplace_back(6u);
+    _order.emplace_back(5u);
+    _order.emplace_back(2u);
+
+    _order.emplace_back(5u);
+    _order.emplace_back(7u);
+    _order.emplace_back(4u);
+    _order.emplace_back(6u);
+    _order.emplace_back(7u);
+    _order.emplace_back(5u);
+
+    _order.emplace_back(0u);
+    _order.emplace_back(4u);
+    _order.emplace_back(3u);
+    _order.emplace_back(3u);
     _order.emplace_back(4u);
     _order.emplace_back(7u);
 
     _order.emplace_back(2u);
     _order.emplace_back(7u);
     _order.emplace_back(6u);
-    _order.emplace_back(2u);
-    _order.emplace_back(7u);
     _order.emplace_back(3u);
+    _order.emplace_back(7u);
+    _order.emplace_back(2u);
 
     _order.emplace_back(1u);
     _order.emplace_back(4u);
     _order.emplace_back(0u);
-    _order.emplace_back(1u);
-    _order.emplace_back(4u);
     _order.emplace_back(5u);
+    _order.emplace_back(4u);
+    _order.emplace_back(1u);
 
     _buffers.vao.create();
     _buffers.vao.bind();
