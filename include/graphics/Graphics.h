@@ -5,20 +5,26 @@
 #ifndef OPENGL_GRAPHICS_H
 #define OPENGL_GRAPHICS_H
 
+#include "IOutput.h"
+#include <list>
+#include <interfaces/IScene.h>
+
 namespace application::graphics {
 
-    class Graphics {
+    class Graphics : public IOutput {
     public:
-
         Graphics(Uint32 width, Uint32 height);
-        int swapWindow();
-        int showHideCursor();
+        int prepare(IScene* scene) override;
+        int draw(IScene* scene) override;
         ~Graphics();
 
     protected:
+        std::list<IScene*> _observers{};
         SDL_Window* _window;
+        SDL_GLContext _glContext;
         Uint32 _width;
         Uint32 _height;
+        Uint32 _fps;
     };
 
 }

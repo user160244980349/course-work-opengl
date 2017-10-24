@@ -14,7 +14,6 @@ namespace application::input {
         virtual int perform() = 0;
         virtual int subscribe(IControlable* observer) = 0;
         virtual int unsubscribe(IControlable* observer) = 0;
-        virtual int notify() = 0;
     };
 
 }

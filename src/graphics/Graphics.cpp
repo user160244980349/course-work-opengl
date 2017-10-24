@@ -9,16 +9,17 @@
 
 application::graphics::Graphics::Graphics(Uint32 width, Uint32 height) {
 
+    _fps = 60;
     _width = width;
     _height = height;
 
-    if ( SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0 ){
+    if ( SDL_Init(SDL_INIT_VIDEO) != 0 ){
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
         exit(1);
     }
 
-    SDL_ShowCursor(SDL_DISABLE); // показ курсора
-    SDL_SetRelativeMouseMode(SDL_TRUE); // захват курсора в окне
+    SDL_ShowCursor(SDL_DISABLE);
+    SDL_SetRelativeMouseMode(SDL_TRUE);
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
@@ -55,7 +56,7 @@ application::graphics::Graphics::Graphics(Uint32 width, Uint32 height) {
         exit(6);
     }
 
-//    glEnable(GL_CULL_FACE);
+    glEnable(GL_CULL_FACE);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_MULTISAMPLE);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -73,32 +74,33 @@ application::graphics::Graphics::Graphics(Uint32 width, Uint32 height) {
 application::graphics::Graphics::~Graphics() {
 
     SDL_DestroyWindow(_window);
+    SDL_GL_DeleteContext(_glContext);
     SDL_Quit();
 
 }
 
-int application::graphics::Graphics::swapWindow() {
+int application::graphics::Graphics::prepare(IScene* scene) {
 
-    SDL_GL_SwapWindow(_window);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    scene->prepare();
 
     return 0;
 }
 
-int application::graphics::Graphics::showHideCursor() {
+int application::graphics::Graphics::draw(IScene* scene) {
 
-    static bool enableMouse = false;
+    static Uint32 start;
+    Uint32 duration;
 
-    if (enableMouse) {
-        enableMouse = false;
-        SDL_ShowCursor(SDL_DISABLE);
-        SDL_SetRelativeMouseMode(SDL_TRUE);
-    } else {
-        enableMouse = true;
-        SDL_ShowCursor(SDL_ENABLE);
-        SDL_SetRelativeMouseMode(SDL_FALSE);
-        SDL_WarpMouseInWindow(_window, _width / 2, _height / 2);
-    }
+    scene->draw();
+    SDL_GL_SwapWindow(_window);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    duration = SDL_GetTicks() - start;
+
+    if (duration <= 1000 / _fps)
+        SDL_Delay(1000 / _fps - duration);
+
+    start = SDL_GetTicks();
 
     return 0;
 }

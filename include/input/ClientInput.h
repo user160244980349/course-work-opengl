@@ -15,8 +15,8 @@ namespace application::input {
 
     class ClientInput : public IInput {
     public:
+        ClientInput();
         int perform() override;
-        int notify() override;
         int subscribe(IControlable* observer) override;
         int unsubscribe(IControlable* observer) override;
     protected:

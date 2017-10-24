@@ -52,7 +52,7 @@ set(SOURCES
         src/Kernel.cpp
         src/main.cpp
 
-        )
+        include/graphics/IOutput.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

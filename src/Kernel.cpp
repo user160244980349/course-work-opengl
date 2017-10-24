@@ -32,25 +32,12 @@ application::Kernel::~Kernel() {
 
 int application::Kernel::flow() {
 
-    Uint32 start;
-    Uint32 duration;
-    Uint32 fps = 1000 / 60;
-
     _scene->prepare();
 
     while(_running){
 
-        start = SDL_GetTicks();
-
         _input->perform();
-        _scene->draw();
-
-        duration = SDL_GetTicks() - start;
-
-        if (duration <= fps)
-            SDL_Delay(fps - duration);
-
-        _graphics->swapWindow();
+        _graphics->draw(_scene);
 
     }
 
@@ -71,7 +58,7 @@ int application::Kernel::control(SDL_Event event) {
             switch (event.key.keysym.sym) {
 
                 case SDLK_ESCAPE:
-                    _graphics->showHideCursor();
+                    _running = false;
                     break;
                 default: break;
             }
