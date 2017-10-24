@@ -9,7 +9,7 @@
 
 application::graphics::Graphics::Graphics(Uint32 width, Uint32 height) {
 
-    _fps = 60;
+    _fps = 59;
     _width = width;
     _height = height;
 
@@ -91,9 +91,9 @@ int application::graphics::Graphics::draw(IScene* scene) {
     static Uint32 start;
     Uint32 duration;
 
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     scene->draw();
     SDL_GL_SwapWindow(_window);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     duration = SDL_GetTicks() - start;
 
