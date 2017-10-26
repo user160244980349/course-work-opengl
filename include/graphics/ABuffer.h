@@ -10,7 +10,7 @@
 
 namespace application::graphics {
 
-    class AbstractBuffer {
+    class ABuffer {
     public:
         GLuint id;
 

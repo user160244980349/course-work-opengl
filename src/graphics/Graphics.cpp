@@ -79,14 +79,14 @@ application::graphics::Graphics::~Graphics() {
 
 }
 
-int application::graphics::Graphics::prepare(IScene* scene) {
+int application::graphics::Graphics::prepare(objects::IScene* scene) {
 
     scene->prepare();
 
     return 0;
 }
 
-int application::graphics::Graphics::draw(IScene* scene) {
+int application::graphics::Graphics::draw(objects::IScene* scene) {
 
     static Uint32 start;
     Uint32 duration;

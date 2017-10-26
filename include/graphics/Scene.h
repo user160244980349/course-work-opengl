@@ -12,7 +12,7 @@
 
 namespace application::graphics {
 
-    class Scene : public IScene {
+    class Scene : public objects::IScene {
     public:
         explicit Scene(input::IInput* subject);
         ~Scene();

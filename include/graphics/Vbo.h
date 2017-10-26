@@ -6,12 +6,12 @@
 #define OPENGL_VBO_H
 
 
-#include <graphics/AbstractBuffer.h>
+#include <graphics/ABuffer.h>
 #include "graphics/Vertex3d.h"
 
 namespace application::graphics {
 
-    class Vbo : public AbstractBuffer {
+    class Vbo : public ABuffer {
     public:
         ~Vbo();
         int create() override;

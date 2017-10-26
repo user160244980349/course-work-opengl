@@ -6,11 +6,11 @@
 #define OPENGL_VAO_H
 
 
-#include "AbstractBuffer.h"
+#include "ABuffer.h"
 
 namespace application::graphics {
 
-    class Vao : public AbstractBuffer {
+    class Vao : public ABuffer {
     public:
         ~Vao();
         int create() override;

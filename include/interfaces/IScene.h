@@ -7,7 +7,7 @@
 
 #include <list>
 
-namespace application::graphics {
+namespace application::objects {
 
     class IScene {
     public:

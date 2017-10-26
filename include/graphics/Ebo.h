@@ -6,11 +6,11 @@
 #define OPENGL_EBO_H
 
 
-#include <graphics/AbstractBuffer.h>
+#include <graphics/ABuffer.h>
 
 namespace application::graphics {
 
-    class Ebo : public AbstractBuffer {
+    class Ebo : public ABuffer {
     public:
         ~Ebo();
         int create() override;

@@ -6,13 +6,13 @@
 #define OPENGL_UBO_H
 
 
-#include <graphics/AbstractBuffer.h>
+#include <graphics/ABuffer.h>
 #include <graphics/UboBindIndexes.h>
 #include <string>
 
 namespace application::graphics {
 
-    class Ubo : public AbstractBuffer {
+    class Ubo : public ABuffer {
     public:
         ~Ubo();
         int create() override;

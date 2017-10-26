@@ -14,12 +14,12 @@ namespace application::graphics {
     class Graphics : public IOutput {
     public:
         Graphics(Uint32 width, Uint32 height);
-        int prepare(IScene* scene) override;
-        int draw(IScene* scene) override;
+        int prepare(objects::IScene* scene) override;
+        int draw(objects::IScene* scene) override;
         ~Graphics();
 
     protected:
-        std::list<IScene*> _observers{};
+        std::list<objects::IScene*> _observers{};
         SDL_Window* _window;
         SDL_GLContext _glContext;
         Uint32 _width;

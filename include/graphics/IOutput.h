@@ -12,8 +12,8 @@ namespace application::graphics {
 
     class IOutput {
     public:
-        virtual int prepare(IScene* scene) = 0;
-        virtual int draw(IScene* scene) = 0;
+        virtual int prepare(objects::IScene* scene) = 0;
+        virtual int draw(objects::IScene* scene) = 0;
     };
 
 }

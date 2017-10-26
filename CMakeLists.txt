@@ -11,7 +11,7 @@ set(SOURCES
         include/graphics/UboBindIndexes.h
 
         include/graphics/Graphics.h
-        include/graphics/AbstractBuffer.h
+        include/graphics/ABuffer.h
         include/graphics/Ebo.h
         include/graphics/Shader.h
         include/graphics/Scene.h
@@ -20,8 +20,8 @@ set(SOURCES
         include/graphics/Vbo.h
         include/graphics/Vertex3d.h
 
-        include/interfaces/IInput.h
         include/interfaces/IScene.h
+        include/interfaces/IInput.h
         include/interfaces/ICamera.h
         include/interfaces/IControlable.h
         include/interfaces/IDrawable.h
@@ -38,7 +38,7 @@ set(SOURCES
         # SOURCES
         src/graphics/Ebo.cpp
         src/graphics/Graphics.cpp
-        src/graphics/Scene.cpp
+        src/objects/Scene.cpp
         src/graphics/Shader.cpp
         src/graphics/Ubo.cpp
         src/graphics/Vao.cpp
