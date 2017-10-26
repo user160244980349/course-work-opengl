@@ -25,12 +25,12 @@ set(SOURCES
         include/interfaces/ICamera.h
         include/interfaces/IControlable.h
         include/interfaces/IDrawable.h
-        include/interfaces/IDynamicCamera.h
         include/interfaces/IObject.h
 
         include/input/ClientInput.h
 
         include/objects/Cube.h
+        include/objects/AObject.h
         include/objects/DynamicCamera.h
 
         include/Kernel.h
@@ -48,6 +48,7 @@ set(SOURCES
 
         src/objects/Cube.cpp
         src/objects/DynamicCamera.cpp
+        src/objects/AObject.cpp
 
         src/Kernel.cpp
         src/main.cpp

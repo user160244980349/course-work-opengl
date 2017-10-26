@@ -16,7 +16,9 @@
 namespace application::objects {
 
     class IObject {
-
+    public:
+        virtual std::string getName() = 0;
+        virtual int getId() = 0;
     };
 
 }

@@ -6,7 +6,6 @@
 #define OPENGL_SCENE_H
 
 
-#include <interfaces/IDynamicCamera.h>
 #include <interfaces/IScene.h>
 #include <interfaces/IDrawable.h>
 
@@ -20,8 +19,8 @@ namespace application::graphics {
         int draw() override;
 
     protected:
-        input::IInput* _subject;
-        objects::IDynamicCamera* _camera;
+        input::IInput* _input;
+        objects::ICamera* _camera;
         std::list<IDrawable*> _objects{};
     };
 

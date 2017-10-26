@@ -6,14 +6,16 @@
 #define OPENGL_DYNAMICCAMERA_H
 
 
-#include <interfaces/IDynamicCamera.h>
+#include <interfaces/ICamera.h>
 #include <SDL_events.h>
 #include <GL/glew.h>
 #include <graphics/Ubo.h>
+#include <interfaces/ICamera.h>
+#include <interfaces/IControlable.h>
 
 namespace application::objects {
 
-    class DynamicCamera : public IDynamicCamera {
+    class DynamicCamera : public ICamera, public input::IControlable  {
     public:
         DynamicCamera();
         int use(GLuint shaderProgramId) override;

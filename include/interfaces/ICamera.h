@@ -16,6 +16,7 @@ namespace application::objects {
     class ICamera {
     public:
         virtual int use(GLuint shaderProgramId) = 0;
+        virtual int update() = 0;
     };
 
 }

@@ -9,7 +9,7 @@
 
 int application::graphics::Scene::prepare() {
 
-    _subject->subscribe(_camera);
+    _input->subscribe(dynamic_cast<input::IControlable*>(_camera));
 
     _objects.push_back(new objects::Cube);
 
@@ -30,9 +30,9 @@ int application::graphics::Scene::draw() {
     return 0;
 }
 
-application::graphics::Scene::Scene(input::IInput* subject) {
+application::graphics::Scene::Scene(input::IInput* input) {
 
-    _subject = subject;
+    _input = input;
     _camera = new objects::DynamicCamera;
 
 }

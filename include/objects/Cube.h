@@ -9,10 +9,11 @@
 #include <interfaces/IDrawable.h>
 #include <interfaces/IObject.h>
 #include <interfaces/ICamera.h>
+#include "AObject.h"
 
 namespace application::objects {
 
-    class Cube : public graphics::IDrawable, public objects::IObject {
+    class Cube : public graphics::IDrawable, public objects::AObject {
     public:
         int draw() override;
         int prepare() override;
