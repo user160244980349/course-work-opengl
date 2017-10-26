@@ -12,7 +12,7 @@ namespace application::graphics {
 
     class ABuffer {
     public:
-        GLuint id;
+        GLuint id{};
 
         virtual int create() = 0;
     };

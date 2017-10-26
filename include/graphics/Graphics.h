@@ -13,7 +13,7 @@ namespace application::graphics {
 
     class Graphics : public IOutput {
     public:
-        Graphics(Uint32 width, Uint32 height);
+        Graphics(GLuint width, GLuint height);
         int prepare(objects::IScene* scene) override;
         int draw(objects::IScene* scene) override;
         ~Graphics();
@@ -22,9 +22,9 @@ namespace application::graphics {
         std::list<objects::IScene*> _observers{};
         SDL_Window* _window;
         SDL_GLContext _glContext;
-        Uint32 _width;
-        Uint32 _height;
-        Uint32 _fps;
+        GLuint _width;
+        GLuint _height;
+        GLuint _fps;
     };
 
 }

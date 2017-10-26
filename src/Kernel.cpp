@@ -3,12 +3,10 @@
 //
 
 #include <Kernel.h>
-#include <iostream>
 
+application::Kernel::Kernel(int width, int height) {
 
-application::Kernel::Kernel(Uint32 width, Uint32 height) {
-
-    _graphics = new graphics::Graphics(width, height);
+    _graphics = new graphics::Graphics(static_cast<GLuint>(width), static_cast<GLuint>(height));
     _input = new input::ClientInput;
     _scene = new graphics::Scene(_input);
 
