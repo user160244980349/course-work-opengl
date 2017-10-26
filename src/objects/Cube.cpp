@@ -3,6 +3,8 @@
 //
 
 
+#include <objects/Cube.h>
+#include <SDL_timer.h>
 #include "objects/Cube.h"
 
 int application::objects::Cube::prepare() {
@@ -85,6 +87,9 @@ int application::objects::Cube::prepare() {
 
 int application::objects::Cube::draw() {
 
+    _transform.model = glm::rotate(_transform.model, 0.05f, glm::vec3(0.0f, 1.0f, 0.0f));
+    _transform.model = glm::translate(_transform.model, glm::vec3(0.0f, sinf((float)SDL_GetTicks() * 0.005f)* 0.1f, 0.0f));
+    _buffers.ubo.update(&_transform, sizeof(_transform));
     _buffers.vao.bind(GL_TRIANGLES, (GLuint)_order.size());
 
     return 0;
