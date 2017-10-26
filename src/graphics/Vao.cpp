@@ -34,7 +34,7 @@ int application::graphics::Vao::bind() {
 int application::graphics::Vao::bind(GLuint draw_style, GLuint used_vertices) {
 
     glBindVertexArray(id);
-    glDrawElements(draw_style, used_vertices, GL_UNSIGNED_INT, nullptr);
+    glDrawElements(draw_style, used_vertices, GL_UNSIGNED_INT, static_cast<GLvoid*>(nullptr));
     glBindVertexArray(0);
 
     return 0;

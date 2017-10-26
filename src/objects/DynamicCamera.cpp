@@ -26,7 +26,7 @@ application::objects::DynamicCamera::DynamicCamera() {
     _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
 
     _ubo.create();
-    _ubo.set((GLvoid*)&_transform, sizeof(_transform));
+    _ubo.set(static_cast<GLvoid*>(&_transform), sizeof(_transform));
 
 }
 
@@ -130,7 +130,7 @@ int application::objects::DynamicCamera::update() {
         _cameraPos += -_cameraUp * _speedFront;
 
     _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
-    _ubo.update((GLvoid*)&_transform, sizeof(_transform));
+    _ubo.update(static_cast<GLvoid*>(&_transform), sizeof(_transform));
 
     return 0;
 }

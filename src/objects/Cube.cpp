@@ -5,7 +5,6 @@
 
 #include <objects/Cube.h>
 #include <SDL_timer.h>
-#include "objects/Cube.h"
 
 int application::objects::Cube::prepare() {
 
@@ -72,13 +71,13 @@ int application::objects::Cube::prepare() {
     _buffers.vao.bind();
 
     _buffers.vbo.create();
-    _buffers.vbo.set(_vertices.data(), (GLuint)_vertices.size());
+    _buffers.vbo.set(_vertices.data(), static_cast<GLuint>(_vertices.size()));
 
     _buffers.ebo.create();
-    _buffers.ebo.set(_order.data(), (GLuint)_order.size());
+    _buffers.ebo.set(_order.data(), static_cast<GLuint>(_order.size()));
 
     _buffers.ubo.create();
-    _buffers.ubo.set((GLvoid*)&_transform, sizeof(_transform));
+    _buffers.ubo.set(static_cast<GLvoid*>(&_transform), sizeof(_transform));
     _buffers.ubo.connect(_shaders.front().shaderProgramId, TRANSFORM_BIND_INDEX, "object");
 
     return 0;
@@ -88,9 +87,9 @@ int application::objects::Cube::prepare() {
 int application::objects::Cube::draw() {
 
     _transform.model = glm::rotate(_transform.model, 0.05f, glm::vec3(0.0f, 1.0f, 0.0f));
-    _transform.model = glm::translate(_transform.model, glm::vec3(0.0f, sinf((float)SDL_GetTicks() * 0.005f)* 0.1f, 0.0f));
-    _buffers.ubo.update(&_transform, sizeof(_transform));
-    _buffers.vao.bind(GL_TRIANGLES, (GLuint)_order.size());
+    _transform.model = glm::translate(_transform.model, glm::vec3(0.0f, sinf(SDL_GetTicks() * 0.005f * 0.1f), 0.0f));
+    _buffers.ubo.update(static_cast<GLvoid*>(&_transform), sizeof(_transform));
+    _buffers.vao.bind(GL_TRIANGLES, static_cast<GLuint>(_order.size()));
 
     return 0;
 }

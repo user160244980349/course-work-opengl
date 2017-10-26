@@ -2,6 +2,8 @@
 // Created by user on 27.10.2017.
 //
 
+#include <utility>
+
 #include "objects/AObject.h"
 
 unsigned int application::objects::AObject::_count = 0;
@@ -15,7 +17,7 @@ application::objects::AObject::AObject() {
 application::objects::AObject::AObject(std::string name) {
     _id = _count;
     _count++;
-    _name = name;
+    _name = std::move(name);
 }
 
 std::string application::objects::AObject::getName() {
