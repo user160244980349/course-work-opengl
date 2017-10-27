@@ -55,7 +55,7 @@ set(SOURCES
         src/objects/AObject.cpp
 
         src/Kernel.cpp
-)
+        src/graphics/OpenGl.cpp include/graphics/OpenGl.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

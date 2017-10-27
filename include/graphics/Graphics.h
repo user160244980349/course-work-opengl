@@ -8,6 +8,7 @@
 #include "IOutput.h"
 #include <list>
 #include <interfaces/IScene.h>
+#include <glcorearb.h>
 
 namespace application::graphics {
 

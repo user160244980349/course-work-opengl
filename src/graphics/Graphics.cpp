@@ -3,9 +3,9 @@
 //
 
 #include <SDL.h>
-#include <sdl_opengl.h>
 #include "graphics/Graphics.h"
 #include <iostream>
+#include <graphics/OpenGl.h>
 
 application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
 
@@ -40,8 +40,8 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
             SDL_WINDOWPOS_CENTERED,
             _width,
             _height,
-            SDL_WINDOW_OPENGL |
-            SDL_WINDOW_FULLSCREEN_DESKTOP
+            SDL_WINDOW_OPENGL //|
+//            SDL_WINDOW_FULLSCREEN_DESKTOP
     );
 
     if(_window == nullptr){
@@ -56,9 +56,9 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
         exit(6);
     }
 
-    glEnable(GL_CULL_FACE);
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_MULTISAMPLE);
+    OpenGl::getInstance().glEnable(GL_CULL_FACE);
+    OpenGl::getInstance().glEnable(GL_DEPTH_TEST);
+    OpenGl::getInstance().glEnable(GL_MULTISAMPLE);
 
 }
 
@@ -82,7 +82,7 @@ int application::graphics::Graphics::draw(objects::IScene* scene) {
     static Uint32 start;
     Uint32 duration;
 
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    OpenGl::getInstance().glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     scene->draw();
     SDL_GL_SwapWindow(_window);
 

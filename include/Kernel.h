@@ -6,7 +6,6 @@
 #define OPENGL_APPLICATION_H
 
 #include <SDL.h>
-#include <sdl_opengl.h>
 #include <input/ClientInput.h>
 #include <graphics/Scene.h>
 #include <graphics/Graphics.h>

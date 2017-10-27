@@ -5,7 +5,8 @@
 #ifndef OPENGL_SHADER_H
 #define OPENGL_SHADER_H
 
-#include <sdl_opengl.h>
+#include <glcorearb.h>
+
 
 namespace application::graphics {
 
