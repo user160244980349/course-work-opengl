@@ -8,7 +8,7 @@ application::Kernel::Kernel(int width, int height) {
 
     _graphics = new graphics::Graphics(static_cast<GLuint>(width), static_cast<GLuint>(height));
     _input = new input::ClientInput;
-    _scene = new graphics::Scene(_input);
+//    _scene = new graphics::Scene(_input);
 
     _input->subscribe(this);
 
@@ -20,7 +20,7 @@ application::Kernel::Kernel(int width, int height) {
 
 application::Kernel::~Kernel() {
 
-    delete(_scene);
+//    delete(_scene);
     delete(_graphics);
     delete(_input);
 
@@ -30,12 +30,12 @@ application::Kernel::~Kernel() {
 
 int application::Kernel::flow() {
 
-    _scene->prepare();
+//    _scene->prepare();
 
     while(_running){
 
         _input->perform();
-        _graphics->draw(_scene);
+//        _graphics->draw(_scene);
 
     }
 
