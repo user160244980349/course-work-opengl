@@ -7,21 +7,21 @@
 
 application::graphics::Ebo::~Ebo() {
 
-    OpenGl::getInstance()->glDeleteBuffers(1, &id);
+    OpenGl::getInstance()->deleteBuffers(1, &id);
 
 }
 
 int application::graphics::Ebo::create() {
 
-    OpenGl::getInstance()->glGenBuffers(1, &id);
+    OpenGl::getInstance()->genBuffers(1, &id);
 
     return 0;
 }
 
 int application::graphics::Ebo::set(GLuint *o, GLuint size) {
 
-    OpenGl::getInstance()->glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
-    OpenGl::getInstance()->glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * size, o, GL_STATIC_DRAW);
+    OpenGl::getInstance()->bindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
+    OpenGl::getInstance()->bufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * size, o, GL_STATIC_DRAW);
 
     return 0;
 }

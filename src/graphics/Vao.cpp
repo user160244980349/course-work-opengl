@@ -7,29 +7,29 @@
 
 application::graphics::Vao::~Vao() {
 
-    OpenGl::getInstance()->glDeleteVertexArrays(1, &id);
+    OpenGl::getInstance()->deleteVertexArrays(1, &id);
 
 }
 
 int application::graphics::Vao::create() {
 
-    OpenGl::getInstance()->glGenVertexArrays(1, &id);
+    OpenGl::getInstance()->genVertexArrays(1, &id);
 
     return 0;
 }
 
 int application::graphics::Vao::bind() {
 
-    OpenGl::getInstance()->glBindVertexArray(id);
+    OpenGl::getInstance()->bindVertexArray(id);
 
     return 0;
 }
 
 int application::graphics::Vao::bind(GLuint draw_style, GLuint used_vertices) {
 
-    OpenGl::getInstance()->glBindVertexArray(id);
-    OpenGl::getInstance()->glDrawElements(draw_style, used_vertices, GL_UNSIGNED_INT, static_cast<GLvoid*>(nullptr));
-    OpenGl::getInstance()->glBindVertexArray(0);
+    OpenGl::getInstance()->bindVertexArray(id);
+    OpenGl::getInstance()->drawElements(draw_style, used_vertices, GL_UNSIGNED_INT, static_cast<GLvoid*>(nullptr));
+    OpenGl::getInstance()->bindVertexArray(0);
 
     return 0;
 }
