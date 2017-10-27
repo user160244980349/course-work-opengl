@@ -18,19 +18,6 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
         exit(1);
     }
 
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 6);
-    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
-    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
-    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
-    SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
-    SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
-    SDL_GL_SetSwapInterval(1);
-
     _window = SDL_CreateWindow(
             "OpenGL",
             SDL_WINDOWPOS_CENTERED,
@@ -40,9 +27,21 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
             SDL_WINDOW_OPENGL |
             SDL_WINDOW_FULLSCREEN_DESKTOP |
             SDL_WINDOW_ALLOW_HIGHDPI |
-            SDL_WINDOW_MOUSE_CAPTURE |
             SDL_WINDOW_SHOWN
     );
+
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 6);
+    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 8);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 16);
+    SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
+    SDL_GL_SetSwapInterval(0);
 
     if(_window == nullptr){
         std::cout << "Unable to create window, error: " << SDL_GetError() << std::endl;
@@ -61,13 +60,13 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
     OpenGl::getInstance().glEnable(GL_MULTISAMPLE);
 
     SDL_ShowCursor(SDL_DISABLE);
-//    SDL_SetRelativeMouseMode(SDL_TRUE);
+    SDL_SetRelativeMouseMode(SDL_TRUE);
 }
 
 application::graphics::Graphics::~Graphics() {
 
-    SDL_DestroyWindow(_window);
     SDL_GL_DeleteContext(_glContext);
+    SDL_DestroyWindow(_window);
     SDL_Quit();
 
 }

@@ -85,9 +85,9 @@ int application::objects::Cube::prepare() {
 
 int application::objects::Cube::draw() {
 
-    _transform.model = glm::rotate(_transform.model, 0.05f, glm::vec3(0.0f, 1.0f, 0.0f));
-    _transform.model = glm::translate(_transform.model, glm::vec3(0.0f, sinf(SDL_GetTicks() * 0.005f) * 0.1f, 0.0f));
-    _buffers.ubo.update(static_cast<GLvoid*>(&_transform), sizeof(_transform));
+//    _transform.model = glm::rotate(_transform.model, 0.05f, glm::vec3(0.0f, 1.0f, 0.0f));
+//    _transform.model = glm::translate(_transform.model, glm::vec3(0.0f, sinf(SDL_GetTicks() * 0.005f) * 0.1f, 0.0f));
+//    _buffers.ubo.update(static_cast<GLvoid*>(&_transform), sizeof(_transform));
     _buffers.vao.bind(GL_TRIANGLES, static_cast<GLuint>(_order.size()));
 
     return 0;
