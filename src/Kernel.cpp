@@ -4,9 +4,9 @@
 
 #include <Kernel.h>
 
-application::Kernel::Kernel(int width, int height) {
+application::Kernel::Kernel() {
 
-    _graphics = new graphics::Graphics(static_cast<GLuint>(width), static_cast<GLuint>(height));
+    _graphics = new graphics::Graphics;
     _input = new input::ClientInput;
     _scene = new graphics::Scene(_input);
 
@@ -16,8 +16,6 @@ application::Kernel::Kernel(int width, int height) {
 
 }
 
-
-
 application::Kernel::~Kernel() {
 
     delete(_scene);
@@ -25,8 +23,6 @@ application::Kernel::~Kernel() {
     delete(_input);
 
 }
-
-
 
 int application::Kernel::flow() {
 
@@ -41,8 +37,6 @@ int application::Kernel::flow() {
 
     return 0;
 }
-
-
 
 int application::Kernel::control(SDL_Event event) {
 

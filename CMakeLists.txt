@@ -7,12 +7,11 @@ set(CMAKE_CXX_STANDARD 17)
 # sources
 set(SOURCES
 
-        #
-        src/main.cpp
-        include/glcorearb.h
+        # HEADERS
+        include/CoreOpenGL.h
 
         include/graphics/UboBindIndexes.h
-
+        include/graphics/OpenGl.h
         include/graphics/Graphics.h
         include/graphics/ABuffer.h
         include/graphics/Ebo.h
@@ -40,6 +39,9 @@ set(SOURCES
         include/Kernel.h
 
         # SOURCES
+        src/main.cpp
+
+        src/graphics/CoreOpenGL.cpp
         src/graphics/Ebo.cpp
         src/graphics/Graphics.cpp
         src/objects/Scene.cpp
@@ -55,67 +57,35 @@ set(SOURCES
         src/objects/AObject.cpp
 
         src/Kernel.cpp
+
 )
 
 # executables
 add_executable(OpenGL ${SOURCES})
 
-if (WIN32)
+# CMake modules path
+set(CMAKE_MODULE_PATH   ${CMAKE_MODULE_PATH} ${OpenGL_SOURCE_DIR}/../cmake-modules)
 
-    # CMake modules path
-    set(CMAKE_MODULE_PATH   ${CMAKE_MODULE_PATH} ${OpenGL_SOURCE_DIR}/../cmake-modules)
+# SDL path
+set(SDL2_PATH           ${OpenGL_SOURCE_DIR}/../lib/SDL2-2.0.6/x86_64-w64-mingw32)
 
-    # SDL path
-    set(SDL2_PATH           ${OpenGL_SOURCE_DIR}/../lib/SDL2-2.0.6/x86_64-w64-mingw32)
+# include paths
+set(GLM_INCLUDE_DIR     ${OpenGL_SOURCE_DIR}/../lib/glm-0.9.8.5/)
 
-    # include paths
-    set(GLEW_INCLUDE_DIR    ${OpenGL_SOURCE_DIR}/../lib/glew-2.1.0/include)
-    set(GLM_INCLUDE_DIR     ${OpenGL_SOURCE_DIR}/../lib/glm-0.9.8.5/)
+# find section
+find_package(SDL2 REQUIRED)
+find_package(OpenGL REQUIRED)
 
-    # libraries binaries
-    set(GLEW_LIBRARY    ${OpenGL_SOURCE_DIR}/../lib/glew-2.1.0/bin/Release/x64/glew32.dll)
+# include directories
+include_directories(
+        include
+        ${SDL2_INCLUDE_DIR}
+        ${OPENGL_INCLUDE_DIRS}
+        ${GLM_INCLUDE_DIR}
+)
 
-    # find section
-    find_package(SDL2 REQUIRED)
-    find_package(OpenGL REQUIRED)
-
-    # include directories
-    include_directories(
-            include
-            ${SDL2_INCLUDE_DIR}
-            ${OPENGL_INCLUDE_DIRS}
-            ${GLEW_INCLUDE_DIR}
-            ${GLM_INCLUDE_DIR}
-    )
-
-    # link libraries
-    target_link_libraries(OpenGL
-            ${SDL2_LIBRARY}
-            ${OPENGL_LIBRARIES}
-            ${GLEW_LIBRARY}
-    )
-
-elseif(UNIX)
-
-    # find section
-    find_package(SDL2 REQUIRED)
-    find_package(OpenGL REQUIRED)
-    find_package(GLEW REQUIRED)
-
-    # include directories
-    include_directories(
-            include
-            ${SDL2_INCLUDE_DIR}
-            ${OPENGL_INCLUDE_DIRS}
-            ${GLEW_INCLUDE_DIR}
-            ${GLM_INCLUDE_DIR}
-    )
-
-    # link libraries
-    target_link_libraries(OpenGL
-            ${SDL2_LIBRARIES}
-            ${OPENGL_LIBRARIES}
-            ${GLEW_LIBRARY}
-    )
-
-endif()
+# link libraries
+target_link_libraries(OpenGL
+        ${SDL2_LIBRARY}
+        ${OPENGL_LIBRARIES}
+)

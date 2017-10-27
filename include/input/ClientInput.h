@@ -5,7 +5,6 @@
 #ifndef OPENGL_CLIENTINPUT_H
 #define OPENGL_CLIENTINPUT_H
 
-
 #include <SDL_events.h>
 #include <list>
 #include <interfaces/IInput.h>

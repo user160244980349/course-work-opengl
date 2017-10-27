@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <graphics/OpenGl.h>
 #include "graphics/Shader.h"
 
 application::graphics::Shader::Shader(const GLchar* vertexPath, const GLchar* fragmentPath) {
@@ -46,44 +47,42 @@ application::graphics::Shader::Shader(const GLchar* vertexPath, const GLchar* fr
     glcharVertexCode = vertexCode.c_str();
     glcharFragmentCode = fragmentCode.c_str();
 
-    vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &glcharVertexCode, nullptr);
-    glCompileShader(vertexShader);
-    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+    vertexShader = OpenGl::getInstance()->createShader(GL_VERTEX_SHADER);
+    OpenGl::getInstance()->shaderSource(vertexShader, 1, &glcharVertexCode, nullptr);
+    OpenGl::getInstance()->compileShader(vertexShader);
+    OpenGl::getInstance()->getShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
     if(!success) {
-        glGetShaderInfoLog(vertexShader, 512, nullptr, infoLog);
+        OpenGl::getInstance()->getShaderInfoLog(vertexShader, 512, nullptr, infoLog);
         std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
         exit(11);
     }
 
-    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &glcharFragmentCode, nullptr);
-    glCompileShader(fragmentShader);
-    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
+    fragmentShader = OpenGl::getInstance()->createShader(GL_FRAGMENT_SHADER);
+    OpenGl::getInstance()->shaderSource(fragmentShader, 1, &glcharFragmentCode, nullptr);
+    OpenGl::getInstance()->compileShader(fragmentShader);
+    OpenGl::getInstance()->getShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
     if(!success) {
-        glGetShaderInfoLog(fragmentShader, 512, nullptr, infoLog);
+        OpenGl::getInstance()->getShaderInfoLog(fragmentShader, 512, nullptr, infoLog);
         std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
         exit(12);
     }
 
-    shaderProgramId = glCreateProgram();
-    glAttachShader(shaderProgramId, vertexShader);
-    glAttachShader(shaderProgramId, fragmentShader);
-    glLinkProgram(shaderProgramId);
-    glGetProgramiv(shaderProgramId, GL_LINK_STATUS, &success);
+    shaderProgramId = OpenGl::getInstance()->createProgram();
+    OpenGl::getInstance()->attachShader(shaderProgramId, vertexShader);
+    OpenGl::getInstance()->attachShader(shaderProgramId, fragmentShader);
+    OpenGl::getInstance()->linkProgram(shaderProgramId);
+    OpenGl::getInstance()->getProgramiv(shaderProgramId, GL_LINK_STATUS, &success);
     if(!success) {
-        glGetProgramInfoLog(shaderProgramId, 512, nullptr, infoLog);
+        OpenGl::getInstance()->getProgramInfoLog(shaderProgramId, 512, nullptr, infoLog);
         std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
         exit(13);
     }
 
 }
 
-
-
 int application::graphics::Shader::use() {
 
-    glUseProgram(shaderProgramId);
+    OpenGl::getInstance()->useProgram(shaderProgramId);
 
     return 0;
 }

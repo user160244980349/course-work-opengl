@@ -5,7 +5,6 @@
 #ifndef OPENGL_VERTEX_2D_H
 #define OPENGL_VERTEX_2D_H
 
-
 #include <glm/vec4.hpp>
 
 namespace application::graphics {

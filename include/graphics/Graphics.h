@@ -8,12 +8,13 @@
 #include "IOutput.h"
 #include <list>
 #include <interfaces/IScene.h>
+#include <CoreOpenGL.h>
 
 namespace application::graphics {
 
     class Graphics : public IOutput {
     public:
-        Graphics(GLuint width, GLuint height);
+        Graphics();
         int prepare(objects::IScene* scene) override;
         int draw(objects::IScene* scene) override;
         ~Graphics();

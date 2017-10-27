@@ -7,7 +7,6 @@
 #include <graphics/UboBindIndexes.h>
 #include "objects/DynamicCamera.h"
 
-
 application::objects::DynamicCamera::DynamicCamera() {
 
     _mouseX = 0.0f;

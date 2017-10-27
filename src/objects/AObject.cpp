@@ -2,8 +2,6 @@
 // Created by user on 27.10.2017.
 //
 
-#include <utility>
-
 #include "objects/AObject.h"
 
 unsigned int application::objects::AObject::_count = 0;

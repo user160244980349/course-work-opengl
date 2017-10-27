@@ -5,7 +5,6 @@
 #ifndef OPENGL_UBO_H
 #define OPENGL_UBO_H
 
-
 #include <graphics/ABuffer.h>
 #include <graphics/UboBindIndexes.h>
 #include <string>
