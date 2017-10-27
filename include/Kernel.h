@@ -14,7 +14,7 @@ namespace application {
 
     class Kernel : public input::IControlable {
     public:
-        Kernel(int width, int height);
+        Kernel();
         ~Kernel();
 
     protected:

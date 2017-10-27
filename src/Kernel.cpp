@@ -4,9 +4,9 @@
 
 #include <Kernel.h>
 
-application::Kernel::Kernel(int width, int height) {
+application::Kernel::Kernel() {
 
-    _graphics = new graphics::Graphics(static_cast<GLuint>(width), static_cast<GLuint>(height));
+    _graphics = new graphics::Graphics;
     _input = new input::ClientInput;
     _scene = new graphics::Scene(_input);
 

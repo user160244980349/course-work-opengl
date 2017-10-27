@@ -4,7 +4,7 @@
 
 int main(int argc, char **argv){
 
-    application::Kernel instance(atoi(argv[1]), atoi(argv[2]));
+    application::Kernel instance;
 
     return 0;
 }

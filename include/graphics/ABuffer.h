@@ -5,7 +5,7 @@
 #ifndef OPENGL_ABSTRACT_BUFFER_H
 #define OPENGL_ABSTRACT_BUFFER_H
 
-#include <glcorearb.h>
+#include <CoreOpenGL.h>
 
 namespace application::graphics {
 

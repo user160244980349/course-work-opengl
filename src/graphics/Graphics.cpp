@@ -7,11 +7,11 @@
 #include <iostream>
 #include <graphics/OpenGl.h>
 
-application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
+application::graphics::Graphics::Graphics() {
 
     _fps = 60;
-    _width = width;
-    _height = height;
+    _width = 3840;
+    _height = 2160;
 
     if ( SDL_Init(SDL_INIT_VIDEO) != 0 ){
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
@@ -26,7 +26,6 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
             _height,
             SDL_WINDOW_OPENGL |
             SDL_WINDOW_FULLSCREEN_DESKTOP |
-            SDL_WINDOW_ALLOW_HIGHDPI |
             SDL_WINDOW_SHOWN
     );
 
@@ -41,7 +40,6 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 8);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 16);
     SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
-    SDL_GL_SetSwapInterval(0);
 
     if(_window == nullptr){
         std::cout << "Unable to create window, error: " << SDL_GetError() << std::endl;
@@ -55,12 +53,14 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
         exit(6);
     }
 
+    SDL_GL_SetSwapInterval(1);
+
     OpenGl::getInstance()->glEnable(GL_CULL_FACE);
     OpenGl::getInstance()->glEnable(GL_DEPTH_TEST);
     OpenGl::getInstance()->glEnable(GL_MULTISAMPLE);
 
-    SDL_ShowCursor(SDL_DISABLE);
     SDL_SetRelativeMouseMode(SDL_TRUE);
+    SDL_ShowCursor(SDL_DISABLE);
 }
 
 application::graphics::Graphics::~Graphics() {

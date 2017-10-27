@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(SOURCES
 
         # HEADERS
-        include/glcorearb.h
+        include/CoreOpenGL.h
 
         include/graphics/UboBindIndexes.h
         include/graphics/OpenGl.h
@@ -41,7 +41,7 @@ set(SOURCES
         # SOURCES
         src/main.cpp
 
-        src/graphics/OpenGl.cpp
+        src/graphics/CoreOpenGL.cpp
         src/graphics/Ebo.cpp
         src/graphics/Graphics.cpp
         src/objects/Scene.cpp
