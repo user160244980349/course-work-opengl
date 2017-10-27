@@ -15,9 +15,9 @@ namespace application::graphics {
     class Graphics : public IOutput {
     public:
         Graphics();
+        ~Graphics();
         int prepare(objects::IScene* scene) override;
         int draw(objects::IScene* scene) override;
-        ~Graphics();
 
     protected:
         std::list<objects::IScene*> _observers{};
