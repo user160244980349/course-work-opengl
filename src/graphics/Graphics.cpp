@@ -55,9 +55,9 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
         exit(6);
     }
 
-    OpenGl::getInstance().glEnable(GL_CULL_FACE);
-    OpenGl::getInstance().glEnable(GL_DEPTH_TEST);
-    OpenGl::getInstance().glEnable(GL_MULTISAMPLE);
+    OpenGl::getInstance()->glEnable(GL_CULL_FACE);
+    OpenGl::getInstance()->glEnable(GL_DEPTH_TEST);
+    OpenGl::getInstance()->glEnable(GL_MULTISAMPLE);
 
     SDL_ShowCursor(SDL_DISABLE);
     SDL_SetRelativeMouseMode(SDL_TRUE);
@@ -65,6 +65,7 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
 
 application::graphics::Graphics::~Graphics() {
 
+    delete(OpenGl::getInstance());
     SDL_GL_DeleteContext(_glContext);
     SDL_DestroyWindow(_window);
     SDL_Quit();
@@ -83,7 +84,7 @@ int application::graphics::Graphics::draw(objects::IScene* scene) {
     static Uint32 start;
     Uint32 duration;
 
-    OpenGl::getInstance().glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    OpenGl::getInstance()->glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     scene->draw();
     SDL_GL_SwapWindow(_window);
 

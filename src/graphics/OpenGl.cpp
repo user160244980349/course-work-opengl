@@ -58,10 +58,10 @@ application::graphics::OpenGl::OpenGl() {
 
 }
 
-application::graphics::OpenGl& application::graphics::OpenGl::getInstance() {
+application::graphics::OpenGl* application::graphics::OpenGl::getInstance() {
 
     if (_instance == nullptr)
         _instance = new OpenGl;
 
-    return *_instance;
+    return _instance;
 }

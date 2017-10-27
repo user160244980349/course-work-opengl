@@ -11,7 +11,7 @@ namespace application::graphics {
 
     class OpenGl {
     public:
-        static OpenGl& getInstance();
+        static OpenGl* getInstance();
 
         PFNGLCLIPCONTROLPROC                    glClipControl;
         PFNGLVIEWPORTINDEXEDFPROC               glViewportIndexedf;
