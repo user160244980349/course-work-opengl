@@ -5,18 +5,8 @@
 #ifndef OPENGL_APPLICATION_H
 #define OPENGL_APPLICATION_H
 
-
-#ifdef __linux__
-
-#include <SDL2/SDL.h>
-
-#elif _WIN32
-
 #include <SDL.h>
-
-#endif
-
-#include "GL/glew.h"
+#include <sdl_opengl.h>
 #include <input/ClientInput.h>
 #include <graphics/Scene.h>
 #include <graphics/Graphics.h>

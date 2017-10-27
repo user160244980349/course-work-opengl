@@ -11,8 +11,6 @@ application::graphics::Vao::~Vao() {
 
 }
 
-
-
 int application::graphics::Vao::create() {
 
     glGenVertexArrays(1, &id);
@@ -20,16 +18,12 @@ int application::graphics::Vao::create() {
     return 0;
 }
 
-
-
 int application::graphics::Vao::bind() {
 
     glBindVertexArray(id);
 
     return 0;
 }
-
-
 
 int application::graphics::Vao::bind(GLuint draw_style, GLuint used_vertices) {
 

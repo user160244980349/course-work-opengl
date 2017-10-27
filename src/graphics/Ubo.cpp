@@ -4,14 +4,11 @@
 
 #include "graphics/Ubo.h"
 
-
 application::graphics::Ubo::~Ubo() {
 
     glDeleteBuffers(1, &id);
 
 }
-
-
 
 int application::graphics::Ubo::create() {
 
@@ -19,8 +16,6 @@ int application::graphics::Ubo::create() {
 
     return 0;
 }
-
-
 
 int application::graphics::Ubo::connect(GLuint program, UboBindIndex bindIndex, std::string blockName) {
 
@@ -32,8 +27,6 @@ int application::graphics::Ubo::connect(GLuint program, UboBindIndex bindIndex, 
     return 0;
 }
 
-
-
 int application::graphics::Ubo::set(GLvoid *data, GLuint size) {
 
     glBindBuffer(GL_UNIFORM_BUFFER, id);
@@ -41,8 +34,6 @@ int application::graphics::Ubo::set(GLvoid *data, GLuint size) {
 
     return 0;
 }
-
-
 
 int application::graphics::Ubo::update(GLvoid *data, GLuint size) {
 

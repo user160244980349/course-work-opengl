@@ -5,7 +5,6 @@
 #ifndef OPENGL_EBO_H
 #define OPENGL_EBO_H
 
-
 #include <graphics/ABuffer.h>
 
 namespace application::graphics {

@@ -5,7 +5,7 @@
 #ifndef OPENGL_SHADER_H
 #define OPENGL_SHADER_H
 
-#include <GL/glew.h>
+#include <sdl_opengl.h>
 
 namespace application::graphics {
 

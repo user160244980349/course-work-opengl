@@ -5,14 +5,11 @@
 #include <graphics/Vertex3d.h>
 #include "graphics/Vbo.h"
 
-
 application::graphics::Vbo::~Vbo() {
 
     glDeleteBuffers(1, &id);
 
 }
-
-
 
 int application::graphics::Vbo::create() {
 
@@ -20,8 +17,6 @@ int application::graphics::Vbo::create() {
 
     return 0;
 }
-
-
 
 int application::graphics::Vbo::set(Vertex3d *v, GLuint size) {
 

@@ -83,7 +83,6 @@ int application::objects::Cube::prepare() {
     return 0;
 }
 
-
 int application::objects::Cube::draw() {
 
     _transform.model = glm::rotate(_transform.model, 0.05f, glm::vec3(0.0f, 1.0f, 0.0f));

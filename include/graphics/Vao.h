@@ -5,7 +5,6 @@
 #ifndef OPENGL_VAO_H
 #define OPENGL_VAO_H
 
-
 #include "ABuffer.h"
 
 namespace application::graphics {

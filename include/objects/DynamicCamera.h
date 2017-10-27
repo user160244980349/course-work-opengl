@@ -5,10 +5,9 @@
 #ifndef OPENGL_DYNAMICCAMERA_H
 #define OPENGL_DYNAMICCAMERA_H
 
-
 #include <interfaces/ICamera.h>
 #include <SDL_events.h>
-#include <GL/glew.h>
+#include <sdl_opengl.h>
 #include <graphics/Ubo.h>
 #include <interfaces/ICamera.h>
 #include <interfaces/IControlable.h>

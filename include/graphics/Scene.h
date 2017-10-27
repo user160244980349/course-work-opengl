@@ -5,7 +5,6 @@
 #ifndef OPENGL_SCENE_H
 #define OPENGL_SCENE_H
 
-
 #include <interfaces/IScene.h>
 #include <interfaces/IDrawable.h>
 

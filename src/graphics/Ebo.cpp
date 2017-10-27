@@ -4,14 +4,11 @@
 
 #include "graphics/Ebo.h"
 
-
 application::graphics::Ebo::~Ebo() {
 
     glDeleteBuffers(1, &id);
 
 }
-
-
 
 int application::graphics::Ebo::create() {
 
@@ -19,8 +16,6 @@ int application::graphics::Ebo::create() {
 
     return 0;
 }
-
-
 
 int application::graphics::Ebo::set(GLuint *o, GLuint size) {
 

@@ -3,9 +3,7 @@
 //
 
 #include <SDL.h>
-//#include <sdl_opengl.h>
-//#include <GL/glew.h>
-#include "glcorearb.h"
+#include <sdl_opengl.h>
 #include "graphics/Graphics.h"
 #include <iostream>
 
@@ -20,14 +18,12 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
         exit(1);
     }
 
-//    const auto context_flags = SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG | (gl_debug ? SDL_GL_CONTEXT_DEBUG_FLAG : 0);
-
     SDL_ShowCursor(SDL_DISABLE);
     SDL_SetRelativeMouseMode(SDL_TRUE);
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 6);
     SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
@@ -60,33 +56,9 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
         exit(6);
     }
 
-
-
-    if (SDL_GL_LoadLibrary(NULL) != 0) {
-        std::cerr << "Error: " << SDL_GetError() << '\n';
-        exit(5);
-    }
-
-    auto glEnable = (PFNGLENABLEPROC)SDL_GL_GetProcAddress("glEnable");
-    auto glClipControl = (PFNGLCLIPCONTROLPROC)SDL_GL_GetProcAddress("glClipControl");
-    auto glViewportIndexedf = (PFNGLVIEWPORTINDEXEDFPROC)SDL_GL_GetProcAddress("glViewportIndexedf");
-    auto glClearNamedFramebufferfv = (PFNGLCLEARNAMEDFRAMEBUFFERFVPROC)SDL_GL_GetProcAddress("glClearNamedFramebufferfv");
-    auto glCreateBuffers = (PFNGLCREATEBUFFERSPROC)SDL_GL_GetProcAddress("glCreateBuffers");
-    auto glNamedBufferData = (PFNGLNAMEDBUFFERDATAPROC)SDL_GL_GetProcAddress("glNamedBufferData");
-    auto glCreateVertexArrays = (PFNGLCREATEVERTEXARRAYSPROC)SDL_GL_GetProcAddress("glCreateVertexArrays");
-    auto glEnableVertexArrayAttrib = (PFNGLENABLEVERTEXARRAYATTRIBPROC)SDL_GL_GetProcAddress("glEnableVertexArrayAttrib");
-    auto glVertexArrayAttribFormat = (PFNGLVERTEXARRAYATTRIBFORMATPROC)SDL_GL_GetProcAddress("glVertexArrayAttribFormat");
-    auto glVertexArrayVertexBuffer = (PFNGLVERTEXARRAYVERTEXBUFFERPROC)SDL_GL_GetProcAddress("glVertexArrayVertexBuffer");
-    auto glBindVertexArray = (PFNGLBINDVERTEXARRAYPROC)SDL_GL_GetProcAddress("glBindVertexArray");
-//    auto glDrawArrays = (PFNGLDRAWARRAYSPROC)SDL_GL_GetProcAddress("glDrawArrays");
-
-    SDL_GL_UnloadLibrary();
-
     glEnable(GL_CULL_FACE);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_MULTISAMPLE);
-
-//    glewInit();
 
 }
 
@@ -109,14 +81,6 @@ int application::graphics::Graphics::draw(objects::IScene* scene) {
 
     static Uint32 start;
     Uint32 duration;
-
-    if (SDL_GL_LoadLibrary(NULL) != 0) {
-        std::cerr << "Error: " << SDL_GetError() << '\n';
-        exit(5);
-    }
-
-    SDL_GL_UnloadLibrary();
-    auto glClear = (PFNGLCLEARPROC)SDL_GL_GetProcAddress("glClear");
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     scene->draw();

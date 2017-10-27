@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <sdl_opengl.h>
 #include "graphics/Shader.h"
 
 application::graphics::Shader::Shader(const GLchar* vertexPath, const GLchar* fragmentPath) {
@@ -78,8 +79,6 @@ application::graphics::Shader::Shader(const GLchar* vertexPath, const GLchar* fr
     }
 
 }
-
-
 
 int application::graphics::Shader::use() {
 

@@ -8,7 +8,6 @@
 #include "IOutput.h"
 #include <list>
 #include <interfaces/IScene.h>
-//#include <GL/glew.h>
 
 namespace application::graphics {
 

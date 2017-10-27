@@ -5,7 +5,6 @@
 #ifndef OPENGL_DRAWABLEINTERFACE_H
 #define OPENGL_DRAWABLEINTERFACE_H
 
-
 #include "ICamera.h"
 
 namespace application::graphics {

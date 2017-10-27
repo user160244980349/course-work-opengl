@@ -5,7 +5,6 @@
 #ifndef OPENGL_IOUTPUT_H
 #define OPENGL_IOUTPUT_H
 
-
 #include <interfaces/IScene.h>
 
 namespace application::graphics {
