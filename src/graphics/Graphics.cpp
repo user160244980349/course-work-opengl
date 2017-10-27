@@ -9,7 +9,7 @@
 
 application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
 
-    _fps = 59;
+    _fps = 60;
     _width = width;
     _height = height;
 
@@ -17,9 +17,6 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
         exit(1);
     }
-
-    SDL_ShowCursor(SDL_DISABLE);
-    SDL_SetRelativeMouseMode(SDL_TRUE);
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
@@ -32,7 +29,7 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
     SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
-    SDL_GL_SetSwapInterval(0);
+    SDL_GL_SetSwapInterval(1);
 
     _window = SDL_CreateWindow(
             "OpenGL",
@@ -40,8 +37,11 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
             SDL_WINDOWPOS_CENTERED,
             _width,
             _height,
-            SDL_WINDOW_OPENGL //|
-//            SDL_WINDOW_FULLSCREEN_DESKTOP
+            SDL_WINDOW_OPENGL |
+            SDL_WINDOW_FULLSCREEN_DESKTOP |
+            SDL_WINDOW_ALLOW_HIGHDPI |
+            SDL_WINDOW_MOUSE_CAPTURE |
+            SDL_WINDOW_SHOWN
     );
 
     if(_window == nullptr){
@@ -60,6 +60,8 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
     OpenGl::getInstance().glEnable(GL_DEPTH_TEST);
     OpenGl::getInstance().glEnable(GL_MULTISAMPLE);
 
+    SDL_ShowCursor(SDL_DISABLE);
+//    SDL_SetRelativeMouseMode(SDL_TRUE);
 }
 
 application::graphics::Graphics::~Graphics() {
