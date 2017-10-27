@@ -7,7 +7,10 @@ set(CMAKE_CXX_STANDARD 17)
 # sources
 set(SOURCES
 
-        # HEADERS
+        #
+        src/main.cpp
+        include/glcorearb.h
+
         include/graphics/UboBindIndexes.h
 
         include/graphics/Graphics.h
@@ -19,6 +22,7 @@ set(SOURCES
         include/graphics/Vao.h
         include/graphics/Vbo.h
         include/graphics/Vertex3d.h
+        include/graphics/IOutput.h
 
         include/interfaces/IScene.h
         include/interfaces/IInput.h
@@ -51,9 +55,7 @@ set(SOURCES
         src/objects/AObject.cpp
 
         src/Kernel.cpp
-        src/main.cpp
-
-        include/graphics/IOutput.h)
+)
 
 # executables
 add_executable(OpenGL ${SOURCES})
