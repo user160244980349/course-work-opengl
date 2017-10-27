@@ -69,6 +69,12 @@ application::graphics::Graphics::Graphics(GLuint width, GLuint height) {
     glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
 
     glewInit();
+
+
+//    if (SDL_GL_LoadLibrary(NULL) != 0) {
+//        cerr << "Error: " << SDL_GetError() << '\n';
+//        return EXIT_FAILURE;
+//    }
 }
 
 application::graphics::Graphics::~Graphics() {
