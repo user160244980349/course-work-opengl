@@ -48,9 +48,9 @@ application::graphics::Graphics::Graphics() {
         exit(5);
     }
 
-    SDL_GLContext glcontext = SDL_GL_CreateContext(_window);
+    _glContext = SDL_GL_CreateContext(_window);
 
-    if(glcontext == nullptr){
+    if(_glContext == nullptr){
         std::cout << "Unable to create OpenGL context, error: " << SDL_GetError() << std::endl;
         exit(6);
     }
