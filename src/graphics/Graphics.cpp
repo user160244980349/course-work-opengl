@@ -10,8 +10,8 @@
 application::graphics::Graphics::Graphics() {
 
     _fps = 60;
-    _width = 3840;
-    _height = 2160;
+    _width = 1366;
+    _height = 768;
 
     if ( SDL_Init(SDL_INIT_VIDEO) != 0 ){
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
@@ -39,8 +39,8 @@ application::graphics::Graphics::Graphics() {
             _width,
             _height,
             SDL_WINDOW_OPENGL
-            | SDL_WINDOW_FULLSCREEN
             | SDL_WINDOW_ALLOW_HIGHDPI
+            | SDL_WINDOW_FULLSCREEN_DESKTOP
     );
 
     if(_window == nullptr){
