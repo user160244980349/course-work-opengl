@@ -61,7 +61,7 @@ application::graphics::Graphics::Graphics() {
     OpenGl::getInstance()->enable(GL_DEPTH_TEST);
     OpenGl::getInstance()->enable(GL_MULTISAMPLE);
     OpenGl::getInstance()->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    OpenGl::getInstance()->clearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    OpenGl::getInstance()->clearColor(0.1f, 0.0f, 0.1f, 1.0f);
     OpenGl::getInstance()->finish();
 }
 
