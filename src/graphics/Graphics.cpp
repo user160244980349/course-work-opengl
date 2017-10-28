@@ -41,7 +41,6 @@ application::graphics::Graphics::Graphics() {
             SDL_WINDOW_OPENGL
             | SDL_WINDOW_FULLSCREEN
             | SDL_WINDOW_ALLOW_HIGHDPI
-            | SDL_WINDOW_SHOWN
     );
 
     if(_window == nullptr){
@@ -61,6 +60,9 @@ application::graphics::Graphics::Graphics() {
     OpenGl::getInstance()->enable(GL_CULL_FACE);
     OpenGl::getInstance()->enable(GL_DEPTH_TEST);
     OpenGl::getInstance()->enable(GL_MULTISAMPLE);
+    OpenGl::getInstance()->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    OpenGl::getInstance()->clearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    OpenGl::getInstance()->finish();
 }
 
 application::graphics::Graphics::~Graphics() {
@@ -84,10 +86,10 @@ int application::graphics::Graphics::draw(objects::IScene* scene) {
     static Uint32 start;
     Uint32 duration;
 
-    scene->draw();
-    SDL_GL_SwapWindow(_window);
     OpenGl::getInstance()->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    scene->draw();
     OpenGl::getInstance()->flush();
+    SDL_GL_SwapWindow(_window);
 
     duration = SDL_GetTicks() - start;
 

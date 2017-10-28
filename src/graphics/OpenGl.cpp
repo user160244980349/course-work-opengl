@@ -44,6 +44,8 @@ application::graphics::OpenGl::OpenGl() {
     genVertexArrays = (PFNGLGENVERTEXARRAYSPROC)SDL_GL_GetProcAddress("glGenVertexArrays");
     drawElements = (PFNGLDRAWELEMENTSPROC)SDL_GL_GetProcAddress("glDrawElements");
     flush = (PFNGLFLUSHPROC)SDL_GL_GetProcAddress("glFlush");
+    finish = (PFNGLFINISHPROC)SDL_GL_GetProcAddress("glFinish");
+    clearColor = (PFNGLCLEARCOLORPROC)SDL_GL_GetProcAddress("glClearColor");
 
     SDL_GL_UnloadLibrary();
 

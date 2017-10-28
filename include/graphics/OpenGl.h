@@ -42,6 +42,8 @@ namespace application::graphics {
         PFNGLGENVERTEXARRAYSPROC                genVertexArrays;
         PFNGLDRAWELEMENTSPROC                   drawElements;
         PFNGLFLUSHPROC                          flush;
+        PFNGLFINISHPROC                         finish;
+        PFNGLCLEARCOLORPROC                     clearColor;
 
     protected:
         static OpenGl* _instance;
