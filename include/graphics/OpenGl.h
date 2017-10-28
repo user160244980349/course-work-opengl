@@ -5,7 +5,7 @@
 #ifndef OPENGL_OPENGL_H
 #define OPENGL_OPENGL_H
 
-#include <CoreOpenGL.h>
+#include <glcorearb.h>
 
 namespace application::graphics {
 
@@ -13,15 +13,6 @@ namespace application::graphics {
     public:
         static OpenGl* getInstance();
 
-        PFNGLCLIPCONTROLPROC                    clipControl;
-        PFNGLVIEWPORTINDEXEDFPROC               viewportIndexedf;
-        PFNGLCLEARNAMEDFRAMEBUFFERFVPROC        clearNamedFramebufferfv;
-        PFNGLCREATEBUFFERSPROC                  createBuffers;
-        PFNGLNAMEDBUFFERDATAPROC                namedBufferData;
-        PFNGLCREATEVERTEXARRAYSPROC             createVertexArrays;
-        PFNGLENABLEVERTEXARRAYATTRIBPROC        enableVertexArrayAttrib;
-        PFNGLVERTEXARRAYATTRIBFORMATPROC        vertexArrayAttribFormat;
-        PFNGLVERTEXARRAYVERTEXBUFFERPROC        vertexArrayVertexBuffer;
         PFNGLBINDVERTEXARRAYPROC                bindVertexArray;
         PFNGLGENBUFFERSPROC                     genBuffers;
         PFNGLDELETEBUFFERSPROC                  deleteBuffers;
@@ -50,6 +41,7 @@ namespace application::graphics {
         PFNGLDELETEVERTEXARRAYSPROC             deleteVertexArrays;
         PFNGLGENVERTEXARRAYSPROC                genVertexArrays;
         PFNGLDRAWELEMENTSPROC                   drawElements;
+        PFNGLFLUSHPROC                          flush;
 
     protected:
         static OpenGl* _instance;

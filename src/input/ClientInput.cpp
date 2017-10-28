@@ -35,4 +35,7 @@ application::input::ClientInput::ClientInput() {
         exit(1);
     }
 
+    SDL_SetRelativeMouseMode(SDL_TRUE);
+    SDL_ShowCursor(SDL_DISABLE);
+
 }

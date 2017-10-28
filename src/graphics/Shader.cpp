@@ -26,7 +26,6 @@ application::graphics::Shader::Shader(const GLchar* vertexPath, const GLchar* fr
     const GLchar* glcharVertexCode;
     const GLchar* glcharFragmentCode;
 
-
     try {
         vertexShaderFile.open(vertexPath);
         fragmentShaderFile.open(fragmentPath);

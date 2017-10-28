@@ -1,11 +1,10 @@
 //
-// Created by user on 27.10.2017.
+// Created by user on 28.10.2017.
 //
-
 
 #include <SDL_video.h>
 #include <iostream>
-#include "graphics/OpenGl.h"
+#include <graphics/OpenGl.h>
 
 application::graphics::OpenGl* application::graphics::OpenGl::_instance = nullptr;
 
@@ -16,15 +15,6 @@ application::graphics::OpenGl::OpenGl() {
         exit(7);
     }
 
-    clipControl = (PFNGLCLIPCONTROLPROC)SDL_GL_GetProcAddress("glClipControl");
-    viewportIndexedf = (PFNGLVIEWPORTINDEXEDFPROC)SDL_GL_GetProcAddress("glViewportIndexedf");
-    clearNamedFramebufferfv = (PFNGLCLEARNAMEDFRAMEBUFFERFVPROC)SDL_GL_GetProcAddress("glClearNamedFramebufferfv");
-    createBuffers = (PFNGLCREATEBUFFERSPROC)SDL_GL_GetProcAddress("glCreateBuffers");
-    namedBufferData = (PFNGLNAMEDBUFFERDATAPROC)SDL_GL_GetProcAddress("glNamedBufferData");
-    createVertexArrays = (PFNGLCREATEVERTEXARRAYSPROC)SDL_GL_GetProcAddress("glCreateVertexArrays");
-    enableVertexArrayAttrib = (PFNGLENABLEVERTEXARRAYATTRIBPROC)SDL_GL_GetProcAddress("glEnableVertexArrayAttrib");
-    vertexArrayAttribFormat = (PFNGLVERTEXARRAYATTRIBFORMATPROC)SDL_GL_GetProcAddress("glVertexArrayAttribFormat");
-    vertexArrayVertexBuffer = (PFNGLVERTEXARRAYVERTEXBUFFERPROC)SDL_GL_GetProcAddress("glVertexArrayVertexBuffer");
     bindVertexArray = (PFNGLBINDVERTEXARRAYPROC)SDL_GL_GetProcAddress("glBindVertexArray");
     genBuffers = (PFNGLGENBUFFERSPROC)SDL_GL_GetProcAddress("glGenBuffers");
     deleteBuffers = (PFNGLDELETEBUFFERSPROC)SDL_GL_GetProcAddress("glDeleteBuffers");
@@ -53,6 +43,7 @@ application::graphics::OpenGl::OpenGl() {
     deleteVertexArrays = (PFNGLDELETEVERTEXARRAYSPROC)SDL_GL_GetProcAddress("glDeleteVertexArrays");
     genVertexArrays = (PFNGLGENVERTEXARRAYSPROC)SDL_GL_GetProcAddress("glGenVertexArrays");
     drawElements = (PFNGLDRAWELEMENTSPROC)SDL_GL_GetProcAddress("glDrawElements");
+    flush = (PFNGLFLUSHPROC)SDL_GL_GetProcAddress("glFlush");
 
     SDL_GL_UnloadLibrary();
 
@@ -65,3 +56,4 @@ application::graphics::OpenGl* application::graphics::OpenGl::getInstance() {
 
     return _instance;
 }
+
