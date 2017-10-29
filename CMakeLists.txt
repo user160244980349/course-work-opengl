@@ -57,34 +57,29 @@ set(SOURCES
         src/objects/AObject.cpp
 
         src/Kernel.cpp
-)
+        )
 
 # executables
 add_executable(OpenGL ${SOURCES})
 
-# CMake modules path
-set(CMAKE_MODULE_PATH   ${CMAKE_MODULE_PATH} ${OpenGL_SOURCE_DIR}/../cmake-modules)
-
-# SDL path
-set(SDL2_PATH           ${OpenGL_SOURCE_DIR}/../lib/SDL2-2.0.6/x86_64-w64-mingw32)
-
-# include paths
-set(GLM_INCLUDE_DIR     ${OpenGL_SOURCE_DIR}/../lib/glm-0.9.8.5/)
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/../cmake-modules)
 
 # find section
 find_package(SDL2 REQUIRED)
+find_package(SDL2_IMAGE REQUIRED)
+find_package(SDL2_TTF REQUIRED)
 find_package(OpenGL REQUIRED)
 
 # include directories
 include_directories(
         include
-        ${SDL2_INCLUDE_DIR}
-        ${OPENGL_INCLUDE_DIRS}
-        ${GLM_INCLUDE_DIR}
 )
 
 # link libraries
 target_link_libraries(OpenGL
         ${SDL2_LIBRARY}
+        ${SDL2_IMAGE_LIBRARIES}
+        ${SDL2_TTF_LIBRARIES}
         ${OPENGL_LIBRARIES}
 )
+

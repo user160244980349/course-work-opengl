@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "input/ClientInput.h"
 
 int application::input::ClientInput::perform() {

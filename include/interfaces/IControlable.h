@@ -5,7 +5,7 @@
 #ifndef OPENGL_CONTROLABLEINTERFACE_H
 #define OPENGL_CONTROLABLEINTERFACE_H
 
-#include <SDL_events.h>
+#include <SDL2/SDL_events.h>
 
 namespace application::input {
 

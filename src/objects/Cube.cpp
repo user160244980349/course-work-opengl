@@ -4,7 +4,7 @@
 
 
 #include <objects/Cube.h>
-#include <SDL_timer.h>
+#include <SDL2/SDL_timer.h>
 
 int application::objects::Cube::prepare() {
 

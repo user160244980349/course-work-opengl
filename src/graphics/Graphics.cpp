@@ -2,7 +2,7 @@
 // Created by user on 20.10.2017.
 //
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "graphics/Graphics.h"
 #include <iostream>
 #include <graphics/OpenGl.h>

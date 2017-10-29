@@ -2,7 +2,7 @@
 // Created by user on 28.10.2017.
 //
 
-#include <SDL_video.h>
+#include <SDL2/SDL_video.h>
 #include <iostream>
 #include <graphics/OpenGl.h>
 
