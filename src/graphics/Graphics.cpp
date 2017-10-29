@@ -9,9 +9,9 @@
 
 application::graphics::Graphics::Graphics() {
 
-    _fps = 60;
-    _width = 1366;
-    _height = 768;
+    _fps = 59;
+    _width = 3840;
+    _height = 2160;
 
     if ( SDL_Init(SDL_INIT_VIDEO) != 0 ){
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
@@ -29,7 +29,7 @@ application::graphics::Graphics::Graphics() {
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 16);
     SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
     _window = SDL_CreateWindow(
@@ -40,7 +40,7 @@ application::graphics::Graphics::Graphics() {
             _height,
             SDL_WINDOW_OPENGL
             | SDL_WINDOW_ALLOW_HIGHDPI
-            | SDL_WINDOW_FULLSCREEN_DESKTOP
+            | SDL_WINDOW_FULLSCREEN
     );
 
     if(_window == nullptr){

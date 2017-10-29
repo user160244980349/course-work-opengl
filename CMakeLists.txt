@@ -62,6 +62,7 @@ set(SOURCES
 # executables
 add_executable(OpenGL ${SOURCES})
 
+# SDL2 paths
 set(SDL2_PATH ${COMPILER_PATH})
 set(SDL2_IMAGE_PATH ${COMPILER_PATH})
 set(SDL2_TTF_PATH ${COMPILER_PATH})
