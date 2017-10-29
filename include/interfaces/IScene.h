@@ -17,5 +17,4 @@ namespace application::objects {
 
 }
 
-
 #endif //OPENGL_ABSTRACTSCENE_H

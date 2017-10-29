@@ -18,5 +18,4 @@ namespace application::graphics {
 
 }
 
-
 #endif //OPENGL_ABSTRACT_BUFFER_H

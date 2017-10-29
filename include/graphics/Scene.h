@@ -25,5 +25,4 @@ namespace application::graphics {
 
 }
 
-
 #endif //OPENGL_SCENE_H

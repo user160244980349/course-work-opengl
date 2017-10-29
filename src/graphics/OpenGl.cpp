@@ -4,7 +4,7 @@
 
 #include <SDL2/SDL_video.h>
 #include <iostream>
-#include <graphics/OpenGl.h>
+#include "graphics/OpenGl.h"
 
 application::graphics::OpenGl* application::graphics::OpenGl::_instance = nullptr;
 

@@ -20,5 +20,4 @@ namespace application::objects {
 
 }
 
-
 #endif //OPENGL_ABSTRACTCAMERA_H

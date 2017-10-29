@@ -17,5 +17,4 @@ namespace application::graphics {
 
 }
 
-
 #endif //OPENGL_IOUTPUT_H

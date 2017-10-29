@@ -18,5 +18,4 @@ namespace application::input {
 
 }
 
-
 #endif //OPENGL_IINPUT_H

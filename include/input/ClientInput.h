@@ -25,5 +25,4 @@ namespace application::input {
 
 }
 
-
 #endif //OPENGL_CLIENTINPUT_H

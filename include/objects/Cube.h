@@ -5,7 +5,6 @@
 #ifndef OPENGL_CUBE_H
 #define OPENGL_CUBE_H
 
-
 #include <interfaces/IDrawable.h>
 #include <interfaces/IObject.h>
 #include <interfaces/ICamera.h>
@@ -37,6 +36,5 @@ namespace application::objects {
     };
 
 }
-
 
 #endif //OPENGL_CUBE_H

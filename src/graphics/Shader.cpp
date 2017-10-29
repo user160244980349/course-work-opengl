@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <graphics/OpenGl.h>
+#include "graphics/OpenGl.h"
 #include "graphics/Shader.h"
 
 application::graphics::Shader::Shader(const GLchar* vertexPath, const GLchar* fragmentPath) {

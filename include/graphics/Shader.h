@@ -7,7 +7,6 @@
 
 #include <glcorearb.h>
 
-
 namespace application::graphics {
 
     class Shader {

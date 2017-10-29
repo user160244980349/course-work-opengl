@@ -18,5 +18,4 @@ namespace application::graphics {
 
 }
 
-
 #endif //OPENGL_EBO_H

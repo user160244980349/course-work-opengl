@@ -19,5 +19,4 @@ namespace application::graphics {
 
 }
 
-
 #endif //OPENGL_VAO_H

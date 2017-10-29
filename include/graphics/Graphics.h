@@ -30,5 +30,4 @@ namespace application::graphics {
 
 }
 
-
 #endif //OPENGL_GRAPHICS_H

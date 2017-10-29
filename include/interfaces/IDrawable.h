@@ -18,5 +18,4 @@ namespace application::graphics {
 
 }
 
-
 #endif //OPENGL_DRAWABLEINTERFACE_H

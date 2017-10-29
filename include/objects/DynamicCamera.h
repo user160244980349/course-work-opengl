@@ -50,5 +50,4 @@ namespace application::objects {
 
 }
 
-
 #endif //OPENGL_DYNAMICCAMERA_H

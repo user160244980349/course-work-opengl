@@ -23,5 +23,4 @@ namespace application::objects {
     };
 }
 
-
 #endif //OPENGL_AOBJECT_H
