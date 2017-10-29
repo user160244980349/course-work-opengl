@@ -8,7 +8,7 @@
 #include "IOutput.h"
 #include <list>
 #include <interfaces/IScene.h>
-#include <glcorearb.h>
+#include <GL/glcorearb.h>
 
 namespace application::graphics {
 
@@ -23,8 +23,8 @@ namespace application::graphics {
         std::list<objects::IScene*> _observers{};
         SDL_Window* _window;
         SDL_GLContext _glContext;
-        int _width;
-        int _height;
+        GLuint _width;
+        GLuint _height;
         GLuint _fps;
     };
 

@@ -5,7 +5,7 @@
 #ifndef OPENGL_OPENGL_H
 #define OPENGL_OPENGL_H
 
-#include <glcorearb.h>
+#include <GL/glcorearb.h>
 
 namespace application::graphics {
 
