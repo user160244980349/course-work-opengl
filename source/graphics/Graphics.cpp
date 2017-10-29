@@ -39,7 +39,8 @@ application::graphics::Graphics::Graphics() {
             _height,
             SDL_WINDOW_OPENGL
             | SDL_WINDOW_ALLOW_HIGHDPI
-            | SDL_WINDOW_FULLSCREEN
+//            | SDL_WINDOW_FULLSCREEN
+            | SDL_WINDOW_FULLSCREEN_DESKTOP
     );
 
     if(_window == nullptr){
@@ -87,7 +88,8 @@ int application::graphics::Graphics::draw(objects::IScene* scene) {
 
     OpenGl::getInstance()->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     scene->draw();
-    OpenGl::getInstance()->flush();
+    OpenGl::getInstance()->finish();
+//    OpenGl::getInstance()->flush(); ?
     SDL_GL_SwapWindow(_window);
 
     duration = SDL_GetTicks() - start;
