@@ -4,6 +4,10 @@ project(OpenGL)
 
 set(CMAKE_CXX_STANDARD 17)
 
+set(COMPILER_PATH "D:/Program\ Files/mingw-w64/x86_64-7.1.0-posix-seh-rt_v5-rev2/mingw64/x86_64-w64-mingw32")
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake-modules)
+
 # sources
 set(SOURCES
 
@@ -62,7 +66,9 @@ set(SOURCES
 # executables
 add_executable(OpenGL ${SOURCES})
 
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/../cmake-modules)
+set(SDL2_PATH ${COMPILER_PATH})
+set(SDL_IMAGE_PATH ${COMPILER_PATH})
+set(SDL_TTF_PATH ${COMPILER_PATH})
 
 # find section
 find_package(SDL2 REQUIRED)
@@ -73,13 +79,17 @@ find_package(OpenGL REQUIRED)
 # include directories
 include_directories(
         include
+        ${SDL2_INCLUDE_DIR}
+        ${SDL2_IMAGE_INCLUDE_DIRS}
+        ${SDL2_TTF_INCLUDE_DIRS}
 )
 
 # link libraries
+
 target_link_libraries(OpenGL
         ${SDL2_LIBRARY}
-        ${SDL2_IMAGE_LIBRARIES}
-        ${SDL2_TTF_LIBRARIES}
+#        ${SDL2_IMAGE_LIBRARIES}
+#        ${SDL2_TTF_LIBRARIES}
         ${OPENGL_LIBRARIES}
 )
 
