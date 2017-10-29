@@ -68,23 +68,20 @@ set(SDL2_TTF_PATH ${COMPILER_PATH})
 
 # find section
 find_package(SDL2 REQUIRED)
-#find_package(SDL2_IMAGE REQUIRED)
-#find_package(SDL2_TTF REQUIRED)
+find_package(SDL2_IMAGE REQUIRED)
+find_package(SDL2_TTF REQUIRED)
 find_package(OpenGL REQUIRED)
 
 # include directories
 include_directories(
         include
-        ${SDL2_INCLUDE_DIR}
-#        ${SDL2_IMAGE_INCLUDE_DIRS}
-#        ${SDL2_TTF_INCLUDE_DIRS}
 )
 
 # link libraries
 target_link_libraries(OpenGL
         ${SDL2_LIBRARY}
-#        ${SDL2_IMAGE_LIBRARIES}
-#        ${SDL2_TTF_LIBRARIES}
+        ${SDL2_IMAGE_LIBRARIES}
+        ${SDL2_TTF_LIBRARIES}
         ${OPENGL_LIBRARIES}
 )
 
