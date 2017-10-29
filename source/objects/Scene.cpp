@@ -9,9 +9,8 @@
 
 int application::graphics::Scene::prepare() {
 
+    _input->subscribe(dynamic_cast<input::IControlable*>(_objects.back()));
     _input->subscribe(dynamic_cast<input::IControlable*>(_camera));
-
-    _objects.push_back(new objects::Cube);
 
     for (auto &object : _objects) {
         object->prepare();
@@ -34,6 +33,7 @@ application::graphics::Scene::Scene(input::IInput* input) {
 
     _input = input;
     _camera = new objects::DynamicCamera;
+    _objects.push_back(new objects::Cube);
 
 }
 

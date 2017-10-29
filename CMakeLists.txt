@@ -8,7 +8,6 @@ set(COMPILER_PATH "D:/Program\ Files/mingw-w64/x86_64-7.1.0-posix-seh-rt_v5-rev2
 set(SOURCES
 
         # HEADERS
-
         include/graphics/UboBindIndexes.h
         include/graphics/OpenGl.h
         include/graphics/Graphics.h

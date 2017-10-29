@@ -46,6 +46,7 @@ application::graphics::OpenGl::OpenGl() {
     flush = (PFNGLFLUSHPROC)SDL_GL_GetProcAddress("glFlush");
     finish = (PFNGLFINISHPROC)SDL_GL_GetProcAddress("glFinish");
     clearColor = (PFNGLCLEARCOLORPROC)SDL_GL_GetProcAddress("glClearColor");
+    polygonMode = (PFNGLPOLYGONMODEPROC)SDL_GL_GetProcAddress("glPolygonMode");
 
     SDL_GL_UnloadLibrary();
 

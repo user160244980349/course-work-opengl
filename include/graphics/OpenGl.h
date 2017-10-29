@@ -44,6 +44,7 @@ namespace application::graphics {
         PFNGLFLUSHPROC                          flush;
         PFNGLFINISHPROC                         finish;
         PFNGLCLEARCOLORPROC                     clearColor;
+        PFNGLPOLYGONMODEPROC                    polygonMode;
 
     protected:
         static OpenGl* _instance;
