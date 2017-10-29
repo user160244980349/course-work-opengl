@@ -9,8 +9,8 @@
 int application::objects::Cube::prepare() {
 
     _shaders.emplace_back(graphics::Shader(
-            "../src/shaders/FirstVertex.glsl",
-            "../src/shaders/FirstFragment.glsl")
+            "../resource/shaders/FirstVertex.glsl",
+            "../resource/shaders/FirstFragment.glsl")
     );
 
     _shaders.front().use();

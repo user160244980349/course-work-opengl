@@ -8,7 +8,6 @@ set(COMPILER_PATH "D:/ProgramFiles/mingw-w64/x86_64-7.1.0-posix-seh-rt_v5-rev2/m
 set(SOURCES
 
         # HEADERS
-        include/glcorearb.h
 
         include/graphics/UboBindIndexes.h
         include/graphics/OpenGl.h
@@ -39,29 +38,30 @@ set(SOURCES
         include/Kernel.h
 
         # SOURCES
-        src/main.cpp
+        source/main.cpp
 
-        src/graphics/OpenGl.cpp
-        src/graphics/Ebo.cpp
-        src/graphics/Graphics.cpp
-        src/objects/Scene.cpp
-        src/graphics/Shader.cpp
-        src/graphics/Ubo.cpp
-        src/graphics/Vao.cpp
-        src/graphics/Vbo.cpp
+        source/graphics/OpenGl.cpp
+        source/graphics/Ebo.cpp
+        source/graphics/Graphics.cpp
+        source/objects/Scene.cpp
+        source/graphics/Shader.cpp
+        source/graphics/Ubo.cpp
+        source/graphics/Vao.cpp
+        source/graphics/Vbo.cpp
 
-        src/input/ClientInput.cpp
+        source/input/ClientInput.cpp
 
-        src/objects/Cube.cpp
-        src/objects/DynamicCamera.cpp
-        src/objects/AObject.cpp
+        source/objects/Cube.cpp
+        source/objects/DynamicCamera.cpp
+        source/objects/AObject.cpp
 
-        src/Kernel.cpp
+        source/Kernel.cpp
 )
 
 # executables
 add_executable(OpenGL ${SOURCES})
 
+# SDL2 paths
 set(SDL2_PATH ${COMPILER_PATH})
 set(SDL2_IMAGE_PATH ${COMPILER_PATH})
 set(SDL2_TTF_PATH ${COMPILER_PATH})
