@@ -9,7 +9,7 @@
 #include <interfaces/IObject.h>
 
 namespace application::objects {
-    class AObject : public IObject {
+    class AObject : public interfaces::IObject {
     public:
         AObject();
         explicit AObject(std::string name);

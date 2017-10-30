@@ -7,7 +7,7 @@
 
 #include "IControlable.h"
 
-namespace application::input {
+namespace application::interfaces {
 
     class IInput {
     public:

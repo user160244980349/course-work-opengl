@@ -13,7 +13,7 @@
 
 namespace application::objects {
 
-    class DynamicCamera : public ICamera, public input::AControlable  {
+    class DynamicCamera : public interfaces::ICamera, public input::AControlable  {
     public:
         DynamicCamera();
         int use(GLuint shaderProgramId) override;

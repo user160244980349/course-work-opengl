@@ -13,9 +13,9 @@
 
 namespace application::objects {
 
-    class Cube : public graphics::IDrawable, public objects::AObject {
+    class Cube : public interfaces::IDrawable, public objects::AObject {
     public:
-        int setCamera(ICamera* camera) override;
+        int setCamera(interfaces::ICamera* camera) override;
         int prepare() override;
         int update() override;
         int draw() override;

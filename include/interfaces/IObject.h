@@ -13,7 +13,7 @@
 #include <vector>
 #include <graphics/Shader.h>
 
-namespace application::objects {
+namespace application::interfaces {
 
     class IObject {
     public:

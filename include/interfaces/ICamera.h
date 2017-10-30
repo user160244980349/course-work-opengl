@@ -10,7 +10,7 @@
 #include <glm/vec3.hpp>
 #include <glm/detail/type_mat4x4.hpp>
 
-namespace application::objects {
+namespace application::interfaces {
 
     class ICamera {
     public:

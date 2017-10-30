@@ -11,17 +11,17 @@
 
 namespace application::graphics {
 
-    class Scene : public objects::IScene {
+    class Scene : public interfaces::IScene {
     public:
-        explicit Scene(input::IInput* input);
+        explicit Scene(interfaces::IInput* input);
         ~Scene();
         int prepare() override;
         int draw() override;
 
     protected:
-        input::IInput* _input;
-        objects::ICamera* _camera;
-        std::list<IDrawable*> _objects{};
+        interfaces::IInput* _input;
+        interfaces::ICamera* _camera;
+        std::list<interfaces::IDrawable*> _objects{};
     };
 
 }

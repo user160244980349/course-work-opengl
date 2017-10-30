@@ -12,7 +12,7 @@
 
 namespace application::input {
 
-    class ClientInput : public IInput {
+    class ClientInput : public interfaces::IInput {
     public:
         ClientInput();
         int perform() override;

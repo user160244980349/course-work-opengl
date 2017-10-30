@@ -16,11 +16,11 @@ namespace application::graphics {
     public:
         Graphics();
         ~Graphics();
-        int prepare(objects::IScene* scene) override;
-        int draw(objects::IScene* scene) override;
+        int prepare(interfaces::IScene* scene) override;
+        int draw(interfaces::IScene* scene) override;
 
     protected:
-        std::list<objects::IScene*> _observers{};
+        std::list<interfaces::IScene*> _observers{};
         SDL_Window* _window;
         SDL_GLContext _glContext;
         GLuint _width;

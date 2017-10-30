@@ -24,7 +24,7 @@ namespace application {
 
     protected:
         graphics::Graphics* _graphics;
-        input::IInput* _input;
+        interfaces::IInput* _input;
         graphics::Scene* _scene;
 
         int flow();

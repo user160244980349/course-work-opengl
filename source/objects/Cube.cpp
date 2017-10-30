@@ -101,7 +101,7 @@ int application::objects::Cube::draw() {
     return 0;
 }
 
-int application::objects::Cube::setCamera(application::objects::ICamera *camera) {
+int application::objects::Cube::setCamera(application::interfaces::ICamera *camera) {
 
     camera->use(_shaders.front().shaderProgramId);
 

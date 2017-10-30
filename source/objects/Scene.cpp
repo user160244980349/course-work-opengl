@@ -28,7 +28,7 @@ int application::graphics::Scene::draw() {
     return 0;
 }
 
-application::graphics::Scene::Scene(input::IInput* input) {
+application::graphics::Scene::Scene(interfaces::IInput* input) {
 
     _input = input;
     _camera = new objects::DynamicCamera;
