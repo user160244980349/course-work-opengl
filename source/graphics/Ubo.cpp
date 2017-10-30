@@ -3,6 +3,7 @@
 //
 
 #include <graphics/OpenGl.h>
+#include <cstring>
 #include "graphics/Ubo.h"
 
 application::graphics::Ubo::~Ubo() {

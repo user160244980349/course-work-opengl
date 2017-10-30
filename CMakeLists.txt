@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.8)
 project(OpenGL)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake-modules)
-set(COMPILER_PATH "D:/Program\ Files/mingw-w64/x86_64-7.1.0-posix-seh-rt_v5-rev2/mingw64/x86_64-w64-mingw32")
 
 # sources
 set(SOURCES
@@ -55,26 +54,51 @@ set(SOURCES
         source/objects/AObject.cpp
 
         source/Kernel.cpp
-        )
+)
 
 # executables
 add_executable(OpenGL ${SOURCES})
 
-# SDL2 paths
-set(SDL2_PATH ${COMPILER_PATH})
-set(SDL2_IMAGE_PATH ${COMPILER_PATH})
-set(SDL2_TTF_PATH ${COMPILER_PATH})
 
-# find section
-find_package(SDL2 REQUIRED)
-find_package(SDL2_IMAGE REQUIRED)
-find_package(SDL2_TTF REQUIRED)
-find_package(OpenGL REQUIRED)
+if (WIN32)
 
-# include directories
-include_directories(
-        include
-)
+    # compiler path
+    set(COMPILER_PATH "D:/Program\ Files/mingw-w64/x86_64-7.1.0-posix-seh-rt_v5-rev2/mingw64/x86_64-w64-mingw32")
+
+    # SDL2 paths
+    set(SDL2_PATH ${COMPILER_PATH})
+    set(SDL2_IMAGE_PATH ${COMPILER_PATH})
+    set(SDL2_TTF_PATH ${COMPILER_PATH})
+
+
+    # include directories
+    include_directories(
+            include
+    )
+
+    # find section
+    find_package(SDL2 REQUIRED)
+    find_package(SDL2_image REQUIRED)
+    find_package(SDL2_ttf REQUIRED)
+    find_package(OpenGL REQUIRED)
+
+elseif (UNIX)
+
+    # find section
+    find_package(SDL2 REQUIRED)
+    find_package(SDL2_image REQUIRED)
+    find_package(SDL2_ttf REQUIRED)
+    find_package(OpenGL REQUIRED)
+
+    # include directories
+    include_directories(
+            include
+            ${SDL2_INCLUDE_DIR}
+            ${SDL2_IMAGE_INCLUDE_DIRS}
+            ${SDL2_TTF_INCLUDE_DIRS}
+    )
+
+endif()
 
 # link libraries
 target_link_libraries(OpenGL
