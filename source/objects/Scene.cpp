@@ -9,8 +9,8 @@
 
 int application::graphics::Scene::prepare() {
 
-    _input->subscribe(dynamic_cast<input::IControlable*>(_objects.back()));
-    _input->subscribe(dynamic_cast<input::IControlable*>(_camera));
+    dynamic_cast<objects::DynamicCamera*>(_camera)->initCommands();
+    _input->addCommands(dynamic_cast<objects::DynamicCamera*>(_camera)->getCommands());
 
     for (auto &object : _objects) {
         object->prepare();

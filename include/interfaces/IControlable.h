@@ -6,12 +6,15 @@
 #define OPENGL_CONTROLABLEINTERFACE_H
 
 #include <SDL2/SDL_events.h>
+#include "IInputCommand.h"
+#include <list>
 
-namespace application::input {
+namespace application::interfaces {
 
     class IControlable {
     public:
-        virtual int control(SDL_Event event) = 0;
+        virtual int initCommands() = 0;
+        virtual std::list<interfaces::IInputCommand*> getCommands() = 0;
     };
 
 };

@@ -7,12 +7,13 @@
 
 #include <interfaces/IScene.h>
 #include <interfaces/IDrawable.h>
+#include <interfaces/IInput.h>
 
 namespace application::graphics {
 
     class Scene : public objects::IScene {
     public:
-        explicit Scene(input::IInput* subject);
+        explicit Scene(input::IInput* input);
         ~Scene();
         int prepare() override;
         int draw() override;

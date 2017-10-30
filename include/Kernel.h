@@ -6,25 +6,28 @@
 #define OPENGL_APPLICATION_H
 
 #include <SDL2/SDL.h>
-#include <input/ClientInput.h>
 #include <graphics/Scene.h>
 #include <graphics/Graphics.h>
+#include <input/AControlable.h>
+#include <interfaces/IInput.h>
 
 namespace application {
 
-    class Kernel : public input::IControlable {
+    class Kernel : public input::AControlable {
     public:
+        bool running;
+
         Kernel();
+        int initCommands() override;
         ~Kernel();
 
+
     protected:
-        bool _running;
         graphics::Graphics* _graphics;
         input::IInput* _input;
         graphics::Scene* _scene;
 
         int flow();
-        int control(SDL_Event event) override;
     };
 
 }

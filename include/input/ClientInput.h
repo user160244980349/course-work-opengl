@@ -16,10 +16,9 @@ namespace application::input {
     public:
         ClientInput();
         int perform() override;
-        int subscribe(IControlable* observer) override;
-        int unsubscribe(IControlable* observer) override;
+        int addCommands(std::list<interfaces::IInputCommand*> commands) override;
     protected:
-        std::list<IControlable*> _observers{};
+        std::list<interfaces::IInputCommand*> _commands;
         SDL_Event _event{};
     };
 

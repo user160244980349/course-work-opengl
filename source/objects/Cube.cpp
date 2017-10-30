@@ -6,7 +6,7 @@
 #include <objects/Cube.h>
 #include <SDL2/SDL_timer.h>
 #include <graphics/OpenGl.h>
-#include <SDL2/SDL.h>
+#include <interfaces/ICommand.h>
 
 int application::objects::Cube::prepare() {
 
@@ -87,16 +87,16 @@ int application::objects::Cube::prepare() {
 
 int application::objects::Cube::draw() {
 
-    if (_warframe)
+    if (_warframe) {
+        graphics::OpenGl::getInstance()->disable(GL_CULL_FACE);
         graphics::OpenGl::getInstance()->polygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
-    _transform.model = glm::rotate(_transform.model, 0.05f, glm::vec3(0.0f, 1.0f, 0.0f));
-    _transform.model = glm::translate(_transform.model, glm::vec3(0.0f, sinf(SDL_GetTicks() * 0.005f) * 0.1f, 0.0f));
-    _buffers.ubo.update(static_cast<GLvoid*>(&_transform), sizeof(_transform));
+    }
     _buffers.vao.bind(GL_TRIANGLES, static_cast<GLuint>(_order.size()));
 
-    if (_warframe)
+    if (_warframe) {
+        graphics::OpenGl::getInstance()->enable(GL_CULL_FACE);
         graphics::OpenGl::getInstance()->polygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    }
 
     return 0;
 }
@@ -108,10 +108,18 @@ int application::objects::Cube::setCamera(application::objects::ICamera *camera)
     return 0;
 }
 
-int application::objects::Cube::control(SDL_Event event) {
+int application::objects::Cube::warframe() {
 
-    if (event.key.keysym.sym == SDLK_t && event.type == SDL_KEYDOWN)
-        _warframe = !_warframe;
+    _warframe = !_warframe;
+
+    return 0;
+}
+
+int application::objects::Cube::update() {
+
+    _transform.model = glm::rotate(_transform.model, 0.05f, glm::vec3(0.0f, 1.0f, 0.0f));
+    _transform.model = glm::translate(_transform.model, glm::vec3(0.0f, sinf(SDL_GetTicks() * 0.005f) * 0.1f, 0.0f));
+    _buffers.ubo.update(static_cast<GLvoid*>(&_transform), sizeof(_transform));
 
     return 0;
 }

@@ -8,17 +8,18 @@
 #include <interfaces/IDrawable.h>
 #include <interfaces/IObject.h>
 #include <interfaces/ICamera.h>
-#include <interfaces/IControlable.h>
+#include <input/AControlable.h>
 #include "AObject.h"
 
 namespace application::objects {
 
-    class Cube : public graphics::IDrawable, public objects::AObject, public input::IControlable {
+    class Cube : public graphics::IDrawable, public objects::AObject {
     public:
-        int draw() override;
-        int prepare() override;
         int setCamera(ICamera* camera) override;
-        int control(SDL_Event event) override;
+        int prepare() override;
+        int update() override;
+        int draw() override;
+        int warframe();
 
     protected:
         struct {

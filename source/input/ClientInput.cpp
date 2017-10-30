@@ -10,21 +10,11 @@ int application::input::ClientInput::perform() {
 
     while(SDL_PollEvent(&_event)) {
 
-        for (auto &_observer : _observers)
-            _observer->control(_event);
+        for (auto &_command : _commands)
+            _command->execute(_event);
 
     }
 
-    return 0;
-}
-
-int application::input::ClientInput::subscribe(IControlable* observer) {
-    _observers.push_back(observer);
-    return 0;
-}
-
-int application::input::ClientInput::unsubscribe(IControlable* observer) {
-    _observers.remove(observer);
     return 0;
 }
 
@@ -38,4 +28,9 @@ application::input::ClientInput::ClientInput() {
     SDL_SetRelativeMouseMode(SDL_TRUE);
     SDL_ShowCursor(SDL_DISABLE);
 
+}
+
+int application::input::ClientInput::addCommands(std::list<application::interfaces::IInputCommand*> commands) {
+    _commands.merge(commands);
+    return 0;
 }

@@ -23,6 +23,7 @@ application::graphics::OpenGl::OpenGl() {
     vertexAttribPointer = (PFNGLVERTEXATTRIBPOINTERPROC)SDL_GL_GetProcAddress("glVertexAttribPointer");
     enableVertexAttribArray = (PFNGLENABLEVERTEXATTRIBARRAYPROC)SDL_GL_GetProcAddress("glEnableVertexAttribArray");
     enable = (PFNGLENABLEPROC)SDL_GL_GetProcAddress("glEnable");
+    disable = (PFNGLDISABLEPROC)SDL_GL_GetProcAddress("glDisable");
     clear = (PFNGLCLEARPROC)SDL_GL_GetProcAddress("glClear");
     createShader = (PFNGLCREATESHADERPROC)SDL_GL_GetProcAddress("glCreateShader");
     shaderSource = (PFNGLSHADERSOURCEPROC)SDL_GL_GetProcAddress("glShaderSource");

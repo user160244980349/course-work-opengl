@@ -5,20 +5,28 @@
 #ifndef OPENGL_DYNAMICCAMERA_H
 #define OPENGL_DYNAMICCAMERA_H
 
-#include <interfaces/ICamera.h>
 #include <SDL2/SDL_events.h>
 #include <graphics/Ubo.h>
 #include <interfaces/ICamera.h>
-#include <interfaces/IControlable.h>
+#include <input/AControlable.h>
+
 
 namespace application::objects {
 
-    class DynamicCamera : public ICamera, public input::IControlable  {
+    class DynamicCamera : public ICamera, public input::AControlable  {
     public:
         DynamicCamera();
         int use(GLuint shaderProgramId) override;
-        int control(SDL_Event event) override;
         int update() override;
+        int initCommands() override;
+
+        int moveForward();
+        int moveBack();
+        int moveRight();
+        int moveLeft();
+
+        int lookVertical(int y);
+        int lookHorizontal(int x);
 
     protected:
         graphics::Ubo _ubo;

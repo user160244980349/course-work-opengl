@@ -13,7 +13,7 @@ application::graphics::Graphics::Graphics() {
     _width = 1366;
     _height = 768;
 
-    if ( SDL_Init(SDL_INIT_VIDEO) != 0 ){
+    if ( SDL_Init(SDL_INIT_VIDEO) != 0 ) {
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
         exit(1);
     }
@@ -43,21 +43,21 @@ application::graphics::Graphics::Graphics() {
 //            | SDL_WINDOW_FULLSCREEN_DESKTOP
     );
 
-    if(_window == nullptr){
+    if(_window == nullptr) {
         std::cout << "Unable to create window, error: " << SDL_GetError() << std::endl;
         exit(5);
     }
 
     _glContext = SDL_GL_CreateContext(_window);
 
-    if(_glContext == nullptr){
+    if(_glContext == nullptr) {
         std::cout << "Unable to create OpenGL context, error: " << SDL_GetError() << std::endl;
         exit(6);
     }
 
     SDL_GL_SetSwapInterval(1);
 
-//    OpenGl::getInstance()->enable(GL_CULL_FACE);
+    OpenGl::getInstance()->enable(GL_CULL_FACE);
     OpenGl::getInstance()->enable(GL_DEPTH_TEST);
     OpenGl::getInstance()->enable(GL_MULTISAMPLE);
     OpenGl::getInstance()->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

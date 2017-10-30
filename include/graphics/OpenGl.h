@@ -21,6 +21,7 @@ namespace application::graphics {
         PFNGLVERTEXATTRIBPOINTERPROC            vertexAttribPointer;
         PFNGLENABLEVERTEXATTRIBARRAYPROC        enableVertexAttribArray;
         PFNGLENABLEPROC                         enable;
+        PFNGLDISABLEPROC                        disable;
         PFNGLCLEARPROC                          clear;
         PFNGLCREATESHADERPROC                   createShader;
         PFNGLSHADERSOURCEPROC                   shaderSource;
