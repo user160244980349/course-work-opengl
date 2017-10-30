@@ -54,7 +54,7 @@ set(SOURCES
         source/objects/AObject.cpp
 
         source/Kernel.cpp
-        include/interfaces/ICommand.h include/input/AControlable.h source/input/AControlable.cpp source/input/commands/QuitCommand.cpp include/input/commands/QuitCommand.h include/interfaces/IInputCommand.h source/input/commands/LookVertical.cpp include/input/commands/LookVertical.h source/input/commands/LookHorizontal.cpp include/input/commands/LookHorizontal.h source/input/commands/MoveForward.cpp include/input/commands/MoveForward.h source/input/commands/MoveBack.cpp include/input/commands/MoveBack.h source/input/commands/MoveRight.cpp include/input/commands/MoveRight.h source/input/commands/MoveLeft.cpp include/input/commands/MoveLeft.h)
+        include/interfaces/ICommand.h include/input/AControlable.h source/input/AControlable.cpp source/commands/QuitCommand.cpp include/commands/QuitCommand.h include/interfaces/IInputCommand.h source/commands/LookVertical.cpp include/commands/LookVertical.h source/commands/LookHorizontal.cpp include/commands/LookHorizontal.h source/commands/MoveForward.cpp include/commands/MoveForward.h source/commands/MoveBack.cpp include/commands/MoveBack.h source/commands/MoveRight.cpp include/commands/MoveRight.h source/commands/MoveLeft.cpp include/commands/MoveLeft.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

@@ -2,7 +2,7 @@
 // Created by user on 31.10.2017.
 //
 
-#include "input/commands/MoveLeft.h"
+#include "commands/MoveLeft.h"
 
 application::input::commands::MoveLeft::MoveLeft(application::objects::DynamicCamera *camera) {
     _camera = camera;

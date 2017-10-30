@@ -2,7 +2,7 @@
 // Created by user on 31.10.2017.
 //
 
-#include "input/commands/MoveForward.h"
+#include "commands/MoveForward.h"
 
 application::input::commands::MoveForward::MoveForward(application::objects::DynamicCamera *camera) {
     _camera = camera;

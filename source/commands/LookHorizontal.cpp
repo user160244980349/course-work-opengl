@@ -2,7 +2,7 @@
 // Created by user on 31.10.2017.
 //
 
-#include "input/commands/LookHorizontal.h"
+#include "commands/LookHorizontal.h"
 
 application::input::commands::LookHorizontal::LookHorizontal(application::objects::DynamicCamera *camera) {
     _camera = camera;

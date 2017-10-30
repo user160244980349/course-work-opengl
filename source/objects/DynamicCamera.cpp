@@ -5,12 +5,12 @@
 #include "objects/DynamicCamera.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/rotate_vector.hpp>
-#include <input/commands/LookVertical.h>
-#include <input/commands/LookHorizontal.h>
-#include <input/commands/MoveForward.h>
-#include <input/commands/MoveBack.h>
-#include <input/commands/MoveRight.h>
-#include <input/commands/MoveLeft.h>
+#include <commands/LookVertical.h>
+#include <commands/LookHorizontal.h>
+#include <commands/MoveForward.h>
+#include <commands/MoveBack.h>
+#include <commands/MoveRight.h>
+#include <commands/MoveLeft.h>
 
 application::objects::DynamicCamera::DynamicCamera() {
 
@@ -31,6 +31,8 @@ application::objects::DynamicCamera::DynamicCamera() {
 
     _ubo.create();
     _ubo.set(static_cast<GLvoid*>(&_transform), sizeof(_transform));
+
+    initCommands();
 
 }
 

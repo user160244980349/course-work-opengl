@@ -2,7 +2,7 @@
 // Created by user on 31.10.2017.
 //
 
-#include "input/commands/MoveRight.h"
+#include "commands/MoveRight.h"
 
 application::input::commands::MoveRight::MoveRight(application::objects::DynamicCamera *camera) {
     _camera = camera;

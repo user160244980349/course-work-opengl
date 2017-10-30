@@ -9,7 +9,6 @@
 
 int application::graphics::Scene::prepare() {
 
-    dynamic_cast<objects::DynamicCamera*>(_camera)->initCommands();
     _input->addCommands(dynamic_cast<objects::DynamicCamera*>(_camera)->getCommands());
 
     for (auto &object : _objects) {

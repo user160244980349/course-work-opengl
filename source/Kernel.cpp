@@ -4,7 +4,7 @@
 
 #include <Kernel.h>
 #include <input/ClientInput.h>
-#include <input/commands/QuitCommand.h>
+#include <commands/QuitCommand.h>
 
 application::Kernel::Kernel() {
 

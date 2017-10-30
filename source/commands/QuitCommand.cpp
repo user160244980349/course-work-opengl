@@ -2,7 +2,7 @@
 // Created by user on 31.10.2017.
 //
 
-#include "input/commands/QuitCommand.h"
+#include "commands/QuitCommand.h"
 
 int application::input::commands::QuitCommand::execute(SDL_Event event) {
 

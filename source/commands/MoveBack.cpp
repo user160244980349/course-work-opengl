@@ -2,7 +2,7 @@
 // Created by user on 31.10.2017.
 //
 
-#include "input/commands/MoveBack.h"
+#include "commands/MoveBack.h"
 
 application::input::commands::MoveBack::MoveBack(application::objects::DynamicCamera *camera) {
     _camera = camera;
