@@ -25,8 +25,8 @@ namespace application::objects {
         int moveRight();
         int moveLeft();
 
-        int lookVertical(int y);
         int lookHorizontal(int x);
+        int lookVertical(int y);
 
     protected:
         graphics::Ubo _ubo;

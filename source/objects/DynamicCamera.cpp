@@ -2,6 +2,7 @@
 // Created by user on 21.10.2017.
 //
 
+#include "objects/DynamicCamera.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/rotate_vector.hpp>
 #include <input/commands/LookVertical.h>
@@ -10,7 +11,6 @@
 #include <input/commands/MoveBack.h>
 #include <input/commands/MoveRight.h>
 #include <input/commands/MoveLeft.h>
-#include "objects/DynamicCamera.h"
 
 application::objects::DynamicCamera::DynamicCamera() {
 
