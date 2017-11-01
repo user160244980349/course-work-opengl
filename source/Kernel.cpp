@@ -44,7 +44,7 @@ int application::Kernel::flow() {
 
 int application::Kernel::initCommands() {
 
-    _commands.push_back(new input::commands::QuitCommand(this));
+    _commands.push_back(new commands::QuitCommand(this));
 
     return 0;
 }

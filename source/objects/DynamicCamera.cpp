@@ -71,12 +71,12 @@ int application::objects::DynamicCamera::update() {
 
 int application::objects::DynamicCamera::initCommands() {
 
-    _commands.push_back(new input::commands::LookVertical(this));
-    _commands.push_back(new input::commands::LookHorizontal(this));
-    _commands.push_back(new input::commands::MoveForward(this));
-    _commands.push_back(new input::commands::MoveBack(this));
-    _commands.push_back(new input::commands::MoveRight(this));
-    _commands.push_back(new input::commands::MoveLeft(this));
+    _commands.push_back(new commands::LookVertical(this));
+    _commands.push_back(new commands::LookHorizontal(this));
+    _commands.push_back(new commands::MoveForward(this));
+    _commands.push_back(new commands::MoveBack(this));
+    _commands.push_back(new commands::MoveRight(this));
+    _commands.push_back(new commands::MoveLeft(this));
 
     return 0;
 }

@@ -6,12 +6,12 @@
 #define OPENGL_LOOKVERTICAL_H
 
 
-#include <interfaces/IInputCommand.h>
+#include <commands/IInputCommand.h>
 #include <objects/DynamicCamera.h>
 #include "LookVertical.h"
 
-namespace application::input::commands {
-    class LookVertical : public interfaces::IInputCommand {
+namespace application::commands {
+    class LookVertical : public commands::IInputCommand {
     public:
         explicit LookVertical(objects::DynamicCamera* camera);
         int execute(SDL_Event event) override;

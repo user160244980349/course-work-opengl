@@ -7,12 +7,12 @@
 
 #include "IControlable.h"
 
-namespace application::interfaces {
+namespace application::input {
 
     class IInput {
     public:
         virtual int perform() = 0;
-        virtual int addCommands(std::list<interfaces::IInputCommand*> commands) = 0;
+        virtual int addCommands(std::list<commands::IInputCommand*> commands) = 0;
     };
 
 }

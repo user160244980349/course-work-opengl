@@ -30,7 +30,7 @@ application::input::ClientInput::ClientInput() {
 
 }
 
-int application::input::ClientInput::addCommands(std::list<application::interfaces::IInputCommand*> commands) {
+int application::input::ClientInput::addCommands(std::list<application::commands::IInputCommand*> commands) {
     _commands.merge(commands);
     return 0;
 }

@@ -5,11 +5,11 @@
 #ifndef OPENGL_QUITCOMMAND_H
 #define OPENGL_QUITCOMMAND_H
 
-#include <interfaces/IInputCommand.h>
+#include <commands/IInputCommand.h>
 #include <Kernel.h>
 
-namespace application::input::commands {
-    class QuitCommand : public interfaces::IInputCommand {
+namespace application::commands {
+    class QuitCommand : public commands::IInputCommand {
     public:
         explicit QuitCommand(Kernel* kernel);
         int execute(SDL_Event event) override;

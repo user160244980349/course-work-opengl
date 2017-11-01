@@ -4,11 +4,11 @@
 
 #include "commands/MoveRight.h"
 
-application::input::commands::MoveRight::MoveRight(application::objects::DynamicCamera *camera) {
+application::commands::MoveRight::MoveRight(application::objects::DynamicCamera *camera) {
     _camera = camera;
 }
 
-int application::input::commands::MoveRight::execute(SDL_Event event) {
+int application::commands::MoveRight::execute(SDL_Event event) {
 
     static bool state = false;
 

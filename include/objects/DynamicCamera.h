@@ -7,13 +7,13 @@
 
 #include <SDL2/SDL_events.h>
 #include <graphics/Ubo.h>
-#include <interfaces/ICamera.h>
+#include <objects/ICamera.h>
 #include <input/AControlable.h>
 
 
 namespace application::objects {
 
-    class DynamicCamera : public interfaces::ICamera, public input::AControlable  {
+    class DynamicCamera : public objects::ICamera, public input::AControlable  {
     public:
         DynamicCamera();
         int use(GLuint shaderProgramId) override;

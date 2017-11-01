@@ -9,7 +9,7 @@
 #include <graphics/Scene.h>
 #include <graphics/Graphics.h>
 #include <input/AControlable.h>
-#include <interfaces/IInput.h>
+#include <input/IInput.h>
 
 namespace application {
 
@@ -24,7 +24,7 @@ namespace application {
 
     protected:
         graphics::Graphics* _graphics;
-        interfaces::IInput* _input;
+        input::IInput* _input;
         graphics::Scene* _scene;
 
         int flow();

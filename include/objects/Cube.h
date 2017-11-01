@@ -5,17 +5,17 @@
 #ifndef OPENGL_CUBE_H
 #define OPENGL_CUBE_H
 
-#include <interfaces/IDrawable.h>
-#include <interfaces/IObject.h>
-#include <interfaces/ICamera.h>
+#include <graphics/IDrawable.h>
+#include <objects/IObject.h>
+#include <objects/ICamera.h>
 #include <input/AControlable.h>
 #include "AObject.h"
 
 namespace application::objects {
 
-    class Cube : public interfaces::IDrawable, public objects::AObject {
+    class Cube : public graphics::IDrawable, public objects::AObject {
     public:
-        int setCamera(interfaces::ICamera* camera) override;
+        int setCamera(objects::ICamera* camera) override;
         int prepare() override;
         int update() override;
         int draw() override;

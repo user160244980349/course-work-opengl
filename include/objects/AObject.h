@@ -6,10 +6,10 @@
 #define OPENGL_AOBJECT_H
 
 #include <string>
-#include <interfaces/IObject.h>
+#include <objects/IObject.h>
 
 namespace application::objects {
-    class AObject : public interfaces::IObject {
+    class AObject : public objects::IObject {
     public:
         AObject();
         explicit AObject(std::string name);

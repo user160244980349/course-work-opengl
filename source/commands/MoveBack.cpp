@@ -4,11 +4,11 @@
 
 #include "commands/MoveBack.h"
 
-application::input::commands::MoveBack::MoveBack(application::objects::DynamicCamera *camera) {
+application::commands::MoveBack::MoveBack(application::objects::DynamicCamera *camera) {
     _camera = camera;
 }
 
-int application::input::commands::MoveBack::execute(SDL_Event event) {
+int application::commands::MoveBack::execute(SDL_Event event) {
 
     static bool state = false;
 

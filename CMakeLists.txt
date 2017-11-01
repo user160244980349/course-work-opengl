@@ -20,12 +20,12 @@ set(SOURCES
         include/graphics/Vertex3d.h
         include/graphics/IOutput.h
 
-        include/interfaces/IScene.h
-        include/interfaces/IInput.h
-        include/interfaces/ICamera.h
-        include/interfaces/IControlable.h
-        include/interfaces/IDrawable.h
-        include/interfaces/IObject.h
+        include/objects/IScene.h
+        include/input/IInput.h
+        include/objects/ICamera.h
+        include/input/IControlable.h
+        include/graphics/IDrawable.h
+        include/objects/IObject.h
 
         include/input/ClientInput.h
 
@@ -54,7 +54,7 @@ set(SOURCES
         source/objects/AObject.cpp
 
         source/Kernel.cpp
-        include/interfaces/ICommand.h include/input/AControlable.h source/input/AControlable.cpp source/commands/QuitCommand.cpp include/commands/QuitCommand.h include/interfaces/IInputCommand.h source/commands/LookVertical.cpp include/commands/LookVertical.h source/commands/LookHorizontal.cpp include/commands/LookHorizontal.h source/commands/MoveForward.cpp include/commands/MoveForward.h source/commands/MoveBack.cpp include/commands/MoveBack.h source/commands/MoveRight.cpp include/commands/MoveRight.h source/commands/MoveLeft.cpp include/commands/MoveLeft.h)
+        include/commands/ICommand.h include/input/AControlable.h source/input/AControlable.cpp source/commands/QuitCommand.cpp include/commands/QuitCommand.h include/commands/IInputCommand.h source/commands/LookVertical.cpp include/commands/LookVertical.h source/commands/LookHorizontal.cpp include/commands/LookHorizontal.h source/commands/MoveForward.cpp include/commands/MoveForward.h source/commands/MoveBack.cpp include/commands/MoveBack.h source/commands/MoveRight.cpp include/commands/MoveRight.h source/commands/MoveLeft.cpp include/commands/MoveLeft.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

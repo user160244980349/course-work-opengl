@@ -7,7 +7,7 @@
 
 #include <SDL2/SDL_events.h>
 
-namespace application::interfaces {
+namespace application::commands {
 
     class IInputCommand {
     public:

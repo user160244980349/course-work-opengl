@@ -5,7 +5,7 @@
 #ifndef OPENGL_ICOMMAND_H
 #define OPENGL_ICOMMAND_H
 
-namespace application::interfaces {
+namespace application::commands {
 
     class ICommand {
     public:

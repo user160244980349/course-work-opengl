@@ -4,7 +4,7 @@
 
 #include <objects/Cube.h>
 #include <objects/DynamicCamera.h>
-#include <interfaces/IInput.h>
+#include <input/IInput.h>
 #include "graphics/Scene.h"
 
 int application::graphics::Scene::prepare() {
@@ -28,7 +28,7 @@ int application::graphics::Scene::draw() {
     return 0;
 }
 
-application::graphics::Scene::Scene(interfaces::IInput* input) {
+application::graphics::Scene::Scene(input::IInput* input) {
 
     _input = input;
     _camera = new objects::DynamicCamera;

@@ -7,7 +7,7 @@
 
 #include "IOutput.h"
 #include <list>
-#include <interfaces/IScene.h>
+#include <objects/IScene.h>
 #include <GL/glcorearb.h>
 
 namespace application::graphics {
@@ -16,11 +16,11 @@ namespace application::graphics {
     public:
         Graphics();
         ~Graphics();
-        int prepare(interfaces::IScene* scene) override;
-        int draw(interfaces::IScene* scene) override;
+        int prepare(objects::IScene* scene) override;
+        int draw(objects::IScene* scene) override;
 
     protected:
-        std::list<interfaces::IScene*> _observers{};
+        std::list<objects::IScene*> _observers{};
         SDL_Window* _window;
         SDL_GLContext _glContext;
         GLuint _width;

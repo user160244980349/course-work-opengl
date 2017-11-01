@@ -5,14 +5,14 @@
 #ifndef OPENGL_IOUTPUT_H
 #define OPENGL_IOUTPUT_H
 
-#include <interfaces/IScene.h>
+#include <objects/IScene.h>
 
 namespace application::graphics {
 
     class IOutput {
     public:
-        virtual int prepare(interfaces::IScene* scene) = 0;
-        virtual int draw(interfaces::IScene* scene) = 0;
+        virtual int prepare(objects::IScene* scene) = 0;
+        virtual int draw(objects::IScene* scene) = 0;
     };
 
 }

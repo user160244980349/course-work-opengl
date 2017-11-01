@@ -5,18 +5,18 @@
 #ifndef OPENGL_ACONTROLABLE_H
 #define OPENGL_ACONTROLABLE_H
 
-#include <interfaces/IInputCommand.h>
-#include <interfaces/IControlable.h>
+#include <commands/IInputCommand.h>
+#include <input/IControlable.h>
 #include <list>
 
 namespace application::input {
 
-    class AControlable : public interfaces::IControlable {
+    class AControlable : public input::IControlable {
     public:
-        std::list<interfaces::IInputCommand*> getCommands() final;
+        std::list<commands::IInputCommand*> getCommands() final;
 
     protected:
-        std::list<interfaces::IInputCommand*> _commands;
+        std::list<commands::IInputCommand*> _commands;
     };
 
 }

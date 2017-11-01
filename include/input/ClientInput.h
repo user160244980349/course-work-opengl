@@ -7,18 +7,18 @@
 
 #include <SDL2/SDL_events.h>
 #include <list>
-#include <interfaces/IInput.h>
-#include <interfaces/IControlable.h>
+#include <input/IInput.h>
+#include <input/IControlable.h>
 
 namespace application::input {
 
-    class ClientInput : public interfaces::IInput {
+    class ClientInput : public input::IInput {
     public:
         ClientInput();
         int perform() override;
-        int addCommands(std::list<interfaces::IInputCommand*> commands) override;
+        int addCommands(std::list<commands::IInputCommand*> commands) override;
     protected:
-        std::list<interfaces::IInputCommand*> _commands;
+        std::list<commands::IInputCommand*> _commands;
         SDL_Event _event{};
     };
 

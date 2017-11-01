@@ -6,11 +6,11 @@
 #define OPENGL_MOVEFORWARD_H
 
 
-#include <interfaces/IInputCommand.h>
+#include <commands/IInputCommand.h>
 #include <objects/DynamicCamera.h>
 
-namespace application::input::commands {
-    class MoveForward : public interfaces::IInputCommand {
+namespace application::commands {
+    class MoveForward : public commands::IInputCommand {
     public:
         explicit MoveForward(objects::DynamicCamera* camera);
         int execute(SDL_Event event) override;

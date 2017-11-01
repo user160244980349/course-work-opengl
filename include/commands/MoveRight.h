@@ -6,11 +6,11 @@
 #define OPENGL_MOVERIGHT_H
 
 
-#include <interfaces/IInputCommand.h>
+#include <commands/IInputCommand.h>
 #include <objects/DynamicCamera.h>
 
-namespace application::input::commands {
-    class MoveRight : public interfaces::IInputCommand {
+namespace application::commands {
+    class MoveRight : public commands::IInputCommand {
     public:
         explicit MoveRight(objects::DynamicCamera* camera);
         int execute(SDL_Event event) override;

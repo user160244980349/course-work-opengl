@@ -4,11 +4,11 @@
 
 #include "commands/MoveLeft.h"
 
-application::input::commands::MoveLeft::MoveLeft(application::objects::DynamicCamera *camera) {
+application::commands::MoveLeft::MoveLeft(application::objects::DynamicCamera *camera) {
     _camera = camera;
 }
 
-int application::input::commands::MoveLeft::execute(SDL_Event event) {
+int application::commands::MoveLeft::execute(SDL_Event event) {
 
     static bool state = false;
 

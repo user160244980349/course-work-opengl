@@ -4,6 +4,6 @@
 
 #include "input/AControlable.h"
 
-std::list<application::interfaces::IInputCommand *> application::input::AControlable::getCommands() {
+std::list<application::commands::IInputCommand*> application::input::AControlable::getCommands() {
     return _commands;
 }

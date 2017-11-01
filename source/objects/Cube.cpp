@@ -6,7 +6,7 @@
 #include <objects/Cube.h>
 #include <SDL2/SDL_timer.h>
 #include <graphics/OpenGl.h>
-#include <interfaces/ICommand.h>
+#include <commands/ICommand.h>
 
 int application::objects::Cube::prepare() {
 
@@ -101,7 +101,7 @@ int application::objects::Cube::draw() {
     return 0;
 }
 
-int application::objects::Cube::setCamera(application::interfaces::ICamera *camera) {
+int application::objects::Cube::setCamera(application::objects::ICamera *camera) {
 
     camera->use(_shaders.front().shaderProgramId);
 

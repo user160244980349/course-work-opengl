@@ -4,11 +4,11 @@
 
 #include "commands/MoveForward.h"
 
-application::input::commands::MoveForward::MoveForward(application::objects::DynamicCamera *camera) {
+application::commands::MoveForward::MoveForward(application::objects::DynamicCamera *camera) {
     _camera = camera;
 }
 
-int application::input::commands::MoveForward::execute(SDL_Event event) {
+int application::commands::MoveForward::execute(SDL_Event event) {
 
     static bool state = false;
 

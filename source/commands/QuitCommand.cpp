@@ -4,7 +4,7 @@
 
 #include "commands/QuitCommand.h"
 
-int application::input::commands::QuitCommand::execute(SDL_Event event) {
+int application::commands::QuitCommand::execute(SDL_Event event) {
 
     if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE))
         _kernel->running = false;
@@ -12,7 +12,7 @@ int application::input::commands::QuitCommand::execute(SDL_Event event) {
     return 0;
 }
 
-application::input::commands::QuitCommand::QuitCommand(application::Kernel *kernel) {
+application::commands::QuitCommand::QuitCommand(application::Kernel *kernel) {
 
     _kernel = kernel;
 
