@@ -10,8 +10,8 @@
 application::graphics::Graphics::Graphics() {
 
     _fps = 59;
-    _width = 1366;
-    _height = 768;
+    _width = 1920;
+    _height = 1080;
 
     if ( SDL_Init(SDL_INIT_VIDEO) != 0 ) {
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
@@ -39,7 +39,7 @@ application::graphics::Graphics::Graphics() {
             _height,
             SDL_WINDOW_OPENGL
             | SDL_WINDOW_ALLOW_HIGHDPI
-            | SDL_WINDOW_FULLSCREEN
+//            | SDL_WINDOW_FULLSCREEN
 //            | SDL_WINDOW_FULLSCREEN_DESKTOP
     );
 
@@ -87,6 +87,7 @@ int application::graphics::Graphics::draw(interfaces::IScene* scene) {
     Uint32 duration;
 
     OpenGl::getInstance()->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    scene->update();
     scene->draw();
     OpenGl::getInstance()->finish();
 //    OpenGl::getInstance()->flush(); ?
