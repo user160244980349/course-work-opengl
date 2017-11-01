@@ -87,7 +87,6 @@ int application::graphics::Graphics::draw(interfaces::IScene* scene) {
     Uint32 duration;
 
     OpenGl::getInstance()->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    scene->update();
     scene->draw();
     OpenGl::getInstance()->finish();
 //    OpenGl::getInstance()->flush(); ?
