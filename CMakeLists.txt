@@ -1,6 +1,7 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.9)
 project(OpenGL)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lmingw32")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake-modules)
 
 # sources
@@ -19,19 +20,29 @@ set(SOURCES
         include/graphics/Vbo.h
         include/graphics/Vertex3d.h
         include/graphics/IOutput.h
-
-        include/objects/IScene.h
-        include/input/IInput.h
-        include/objects/ICamera.h
-        include/input/IControlable.h
         include/graphics/IDrawable.h
-        include/objects/IObject.h
 
+        include/input/IInput.h
+        include/input/IControlable.h
+        include/input/AControlable.h
         include/input/ClientInput.h
 
+        include/objects/IObject.h
+        include/objects/ICamera.h
         include/objects/Cube.h
         include/objects/AObject.h
         include/objects/DynamicCamera.h
+        include/objects/IScene.h
+
+        include/commands/MoveLeft.h
+        include/commands/MoveRight.h
+        include/commands/MoveBack.h
+        include/commands/MoveForward.h
+        include/commands/LookHorizontal.h
+        include/commands/LookVertical.h
+        include/commands/IInputCommand.h
+        include/commands/QuitCommand.h
+        include/commands/ICommand.h
 
         include/Kernel.h
 
@@ -48,13 +59,21 @@ set(SOURCES
         source/graphics/Vbo.cpp
 
         source/input/ClientInput.cpp
+        source/input/AControlable.cpp
 
         source/objects/Cube.cpp
         source/objects/DynamicCamera.cpp
         source/objects/AObject.cpp
 
-        source/Kernel.cpp
-        include/commands/ICommand.h include/input/AControlable.h source/input/AControlable.cpp source/commands/QuitCommand.cpp include/commands/QuitCommand.h include/commands/IInputCommand.h source/commands/LookVertical.cpp include/commands/LookVertical.h source/commands/LookHorizontal.cpp include/commands/LookHorizontal.h source/commands/MoveForward.cpp include/commands/MoveForward.h source/commands/MoveBack.cpp include/commands/MoveBack.h source/commands/MoveRight.cpp include/commands/MoveRight.h source/commands/MoveLeft.cpp include/commands/MoveLeft.h)
+        source/commands/QuitCommand.cpp
+        source/commands/LookVertical.cpp
+        source/commands/LookHorizontal.cpp
+        source/commands/MoveForward.cpp
+        source/commands/MoveBack.cpp
+        source/commands/MoveRight.cpp
+        source/commands/MoveLeft.cpp
+
+        source/Kernel.cpp)
 
 # executables
 add_executable(OpenGL ${SOURCES})
@@ -63,12 +82,12 @@ add_executable(OpenGL ${SOURCES})
 if (WIN32)
 
     # compiler path
-    set(COMPILER_PATH "D:/Program\ Files/mingw-w64/x86_64-7.1.0-posix-seh-rt_v5-rev2/mingw64/x86_64-w64-mingw32")
+    set(COMPILER_PATH "D:/Program\ Files/mingw-w64/x86_64-7.2.0-posix-seh-rt_v5-rev1/mingw64/x86_64-w64-mingw32")
 
     # SDL2 paths
     set(SDL2_PATH ${COMPILER_PATH})
-    set(SDL2_IMAGE_PATH ${COMPILER_PATH})
     set(SDL2_TTF_PATH ${COMPILER_PATH})
+    set(SDL2_IMAGE_PATH ${COMPILER_PATH})
 
 
     # include directories
@@ -78,9 +97,18 @@ if (WIN32)
 
     # find section
     find_package(SDL2 REQUIRED)
-    find_package(SDL2_image REQUIRED)
-    find_package(SDL2_ttf REQUIRED)
+    find_package(SDL2_IMAGE REQUIRED)
+    find_package(SDL2_TTF REQUIRED)
     find_package(OpenGL REQUIRED)
+
+    # link libraries
+    target_link_libraries(
+            OpenGL
+            ${SDL2_LIBRARY}
+            ${SDL2_TTF_LIBRARIES}
+            ${SDL2_IMAGE_LIBRARIES}
+            ${OPENGL_LIBRARIES}
+    )
 
 elseif (UNIX)
 
@@ -94,17 +122,19 @@ elseif (UNIX)
     include_directories(
             include
             ${SDL2_INCLUDE_DIR}
-            ${SDL2_IMAGE_INCLUDE_DIRS}
             ${SDL2_TTF_INCLUDE_DIRS}
+            ${SDL2_IMAGE_INCLUDE_DIRS}
+    )
+
+    # link libraries
+    target_link_libraries(
+            OpenGL
+            ${SDL2_LIBRARIES}
+            ${SDL2_TTF_LIBRARIES}
+            ${SDL2_IMAGE_LIBRARIES}
+            ${OPENGL_LIBRARIES}
     )
 
 endif()
 
-# link libraries
-target_link_libraries(OpenGL
-        ${SDL2_LIBRARY}
-        ${SDL2_IMAGE_LIBRARIES}
-        ${SDL2_TTF_LIBRARIES}
-        ${OPENGL_LIBRARIES}
-)
 
