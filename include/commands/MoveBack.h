@@ -6,18 +6,13 @@
 #define OPENGL_MOVEBACK_H
 
 
-#include <commands/IInputCommand.h>
-#include <SDL2/SDL_events.h>
-#include <objects/DynamicCamera.h>
+#include "AInputCommand.h"
 
 namespace application::commands {
-    class MoveBack : public commands::IInputCommand {
+    class MoveBack : public commands::AInputCommand {
     public:
-        explicit MoveBack(objects::DynamicCamera* camera);
+        explicit MoveBack(input::IControlable* o);
         int execute(SDL_Event event) override;
-
-    protected:
-        objects::DynamicCamera* _camera;
     };
 }
 

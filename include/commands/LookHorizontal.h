@@ -6,17 +6,13 @@
 #define OPENGL_LOOKHORIZONTAL_H
 
 
-#include <commands/IInputCommand.h>
-#include <objects/DynamicCamera.h>
+#include "AInputCommand.h"
 
 namespace application::commands {
-    class LookHorizontal : public commands::IInputCommand {
+    class LookHorizontal : public commands::AInputCommand {
     public:
-        explicit LookHorizontal(objects::DynamicCamera* camera);
+        explicit LookHorizontal(input::IControlable* o);
         int execute(SDL_Event event) override;
-
-    protected:
-        objects::DynamicCamera* _camera;
     };
 }
 

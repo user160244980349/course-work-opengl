@@ -7,6 +7,7 @@
 #include <SDL2/SDL_timer.h>
 #include <graphics/OpenGl.h>
 #include <commands/ICommand.h>
+#include <commands/Warframe.h>
 
 int application::objects::Cube::prepare() {
 
@@ -120,6 +121,13 @@ int application::objects::Cube::update() {
     _transform.model = glm::rotate(_transform.model, 0.05f, glm::vec3(0.0f, 1.0f, 0.0f));
     _transform.model = glm::translate(_transform.model, glm::vec3(0.0f, sinf(SDL_GetTicks() * 0.005f) * 0.1f, 0.0f));
     _buffers.ubo.update(static_cast<GLvoid*>(&_transform), sizeof(_transform));
+
+    return 0;
+}
+
+int application::objects::Cube::initCommands() {
+
+    _commands.push_back(new commands::Warframe(this));
 
     return 0;
 }

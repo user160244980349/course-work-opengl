@@ -2,11 +2,9 @@
 // Created by user on 31.10.2017.
 //
 
+#include <objects/DynamicCamera.h>
 #include "commands/MoveRight.h"
 
-application::commands::MoveRight::MoveRight(application::objects::DynamicCamera *camera) {
-    _camera = camera;
-}
 
 int application::commands::MoveRight::execute(SDL_Event event) {
 
@@ -14,13 +12,17 @@ int application::commands::MoveRight::execute(SDL_Event event) {
 
     if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_d && !state) {
         state = !state;
-        _camera->moveRight();
+        dynamic_cast<objects::DynamicCamera*>(_object)->moveRight();
     }
 
     if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_d) {
         state = !state;
-        _camera->moveRight();
+        dynamic_cast<objects::DynamicCamera*>(_object)->moveRight();
     }
 
     return 0;
+}
+
+application::commands::MoveRight::MoveRight(application::input::IControlable *o) : AInputCommand(o) {
+
 }

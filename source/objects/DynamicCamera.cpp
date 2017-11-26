@@ -32,8 +32,6 @@ application::objects::DynamicCamera::DynamicCamera() {
     _ubo.create();
     _ubo.set(static_cast<GLvoid*>(&_transform), sizeof(_transform));
 
-    initCommands();
-
 }
 
 int application::objects::DynamicCamera::use(GLuint shaderProgramId) {

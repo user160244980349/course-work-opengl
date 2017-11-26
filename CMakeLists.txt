@@ -73,68 +73,38 @@ set(SOURCES
         source/commands/MoveRight.cpp
         source/commands/MoveLeft.cpp
 
-        source/Kernel.cpp)
+        source/Kernel.cpp source/commands/Warframe.cpp include/commands/Warframe.h source/commands/AInputCommand.cpp include/commands/AInputCommand.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})
 
+# compiler path
+set(COMPILER_PATH "D:/Program\ Files/mingw-w64/x86_64-7.2.0-posix-seh-rt_v5-rev1/mingw64/x86_64-w64-mingw32")
 
-if (WIN32)
-
-    # compiler path
-    set(COMPILER_PATH "D:/Program\ Files/mingw-w64/x86_64-7.2.0-posix-seh-rt_v5-rev1/mingw64/x86_64-w64-mingw32")
-
-    # SDL2 paths
-    set(SDL2_PATH ${COMPILER_PATH})
-    set(SDL2_TTF_PATH ${COMPILER_PATH})
-    set(SDL2_IMAGE_PATH ${COMPILER_PATH})
+# SDL2 paths
+set(SDL2_PATH ${COMPILER_PATH})
+#set(SDL2_TTF_PATH ${COMPILER_PATH})
+#set(SDL2_IMAGE_PATH ${COMPILER_PATH})
 
 
-    # include directories
-    include_directories(
-            include
-    )
+# include directories
+include_directories(
+        include
+)
 
-    # find section
-    find_package(SDL2 REQUIRED)
-    find_package(SDL2_IMAGE REQUIRED)
-    find_package(SDL2_TTF REQUIRED)
-    find_package(OpenGL REQUIRED)
+# find section
+find_package(SDL2 REQUIRED)
+#find_package(SDL2_IMAGE REQUIRED)
+#find_package(SDL2_TTF REQUIRED)
+find_package(OpenGL REQUIRED)
 
-    # link libraries
-    target_link_libraries(
-            OpenGL
-            ${SDL2_LIBRARY}
-            ${SDL2_TTF_LIBRARIES}
-            ${SDL2_IMAGE_LIBRARIES}
-            ${OPENGL_LIBRARIES}
-    )
-
-elseif (UNIX)
-
-    # find section
-    find_package(SDL2 REQUIRED)
-    find_package(SDL2_image REQUIRED)
-    find_package(SDL2_ttf REQUIRED)
-    find_package(OpenGL REQUIRED)
-
-    # include directories
-    include_directories(
-            include
-            ${SDL2_INCLUDE_DIR}
-            ${SDL2_TTF_INCLUDE_DIRS}
-            ${SDL2_IMAGE_INCLUDE_DIRS}
-    )
-
-    # link libraries
-    target_link_libraries(
-            OpenGL
-            ${SDL2_LIBRARIES}
-            ${SDL2_TTF_LIBRARIES}
-            ${SDL2_IMAGE_LIBRARIES}
-            ${OPENGL_LIBRARIES}
-    )
-
-endif()
+# link libraries
+target_link_libraries(
+        OpenGL
+        ${SDL2_LIBRARY}
+#        ${SDL2_TTF_LIBRARIES}
+#        ${SDL2_IMAGE_LIBRARIES}
+        ${OPENGL_LIBRARIES}
+)
 
 

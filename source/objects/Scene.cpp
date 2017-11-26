@@ -5,11 +5,13 @@
 #include <objects/Cube.h>
 #include <objects/DynamicCamera.h>
 #include <input/IInput.h>
+#include <iostream>
 #include "graphics/Scene.h"
 
 int application::graphics::Scene::prepare() {
 
-    _input->addCommands(dynamic_cast<objects::DynamicCamera*>(_camera)->getCommands());
+    _input->addCommands(dynamic_cast<input::IControlable*>(_camera)->getCommands());
+    _input->addCommands(dynamic_cast<input::IControlable*>(_objects.back())->getCommands());
 
     for (auto &object : _objects) {
         object->prepare();
@@ -32,7 +34,9 @@ application::graphics::Scene::Scene(input::IInput* input) {
 
     _input = input;
     _camera = new objects::DynamicCamera;
+    dynamic_cast<input::IControlable*>(_camera)->initCommands();
     _objects.push_back(new objects::Cube);
+    dynamic_cast<input::IControlable*>(_objects.back())->initCommands();
 
 }
 

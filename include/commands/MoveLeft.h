@@ -6,17 +6,13 @@
 #define OPENGL_MOVELEFT_H
 
 
-#include <commands/IInputCommand.h>
-#include <objects/DynamicCamera.h>
+#include "AInputCommand.h"
 
 namespace application::commands {
-    class MoveLeft : public commands::IInputCommand {
+    class MoveLeft : public commands::AInputCommand {
     public:
-        explicit MoveLeft(objects::DynamicCamera* camera);
+        explicit MoveLeft(input::IControlable* o);
         int execute(SDL_Event event) override;
-
-    protected:
-        objects::DynamicCamera* _camera;
     };
 }
 

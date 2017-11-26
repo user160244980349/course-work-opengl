@@ -13,13 +13,14 @@
 
 namespace application::objects {
 
-    class Cube : public graphics::IDrawable, public objects::AObject {
+    class Cube : public graphics::IDrawable, public objects::AObject, public input::AControlable {
     public:
         int setCamera(objects::ICamera* camera) override;
         int prepare() override;
         int update() override;
         int draw() override;
         int warframe();
+        int initCommands() override;
 
     protected:
         struct {
