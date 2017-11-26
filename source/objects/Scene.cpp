@@ -10,6 +10,7 @@
 
 int application::graphics::Scene::prepare() {
 
+    std::cout << "qq" << std::endl;
     _input->addCommands(dynamic_cast<input::IControlable*>(_camera)->getCommands());
     _input->addCommands(dynamic_cast<input::IControlable*>(_objects.back())->getCommands());
 

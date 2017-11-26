@@ -1,8 +1,15 @@
 cmake_minimum_required(VERSION 3.9)
 project(OpenGL)
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lmingw32")
+
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lmingw32 -mwindows")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lmingw32 -mconsole")
+
+# cmake modules path
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake-modules)
+
+# compiler path
+set(COMPILER_PATH "D:/Program\ Files/mingw-w64/x86_64-7.2.0-posix-seh-rt_v5-rev1/mingw64/x86_64-w64-mingw32")
 
 # sources
 set(SOURCES
@@ -43,6 +50,8 @@ set(SOURCES
         include/commands/IInputCommand.h
         include/commands/QuitCommand.h
         include/commands/ICommand.h
+        include/commands/Warframe.h
+        include/commands/AInputCommand.h
 
         include/Kernel.h
 
@@ -72,20 +81,19 @@ set(SOURCES
         source/commands/MoveBack.cpp
         source/commands/MoveRight.cpp
         source/commands/MoveLeft.cpp
+        source/commands/Warframe.cpp
+        source/commands/AInputCommand.cpp
 
-        source/Kernel.cpp source/commands/Warframe.cpp include/commands/Warframe.h source/commands/AInputCommand.cpp include/commands/AInputCommand.h)
+        source/Kernel.cpp
+)
 
 # executables
 add_executable(OpenGL ${SOURCES})
 
-# compiler path
-set(COMPILER_PATH "D:/Program\ Files/mingw-w64/x86_64-7.2.0-posix-seh-rt_v5-rev1/mingw64/x86_64-w64-mingw32")
-
 # SDL2 paths
 set(SDL2_PATH ${COMPILER_PATH})
-#set(SDL2_TTF_PATH ${COMPILER_PATH})
-#set(SDL2_IMAGE_PATH ${COMPILER_PATH})
-
+set(SDL2_TTF_PATH ${COMPILER_PATH})
+set(SDL2_IMAGE_PATH ${COMPILER_PATH})
 
 # include directories
 include_directories(
@@ -94,16 +102,16 @@ include_directories(
 
 # find section
 find_package(SDL2 REQUIRED)
-#find_package(SDL2_IMAGE REQUIRED)
-#find_package(SDL2_TTF REQUIRED)
+find_package(SDL2_IMAGE REQUIRED)
+find_package(SDL2_TTF REQUIRED)
 find_package(OpenGL REQUIRED)
 
 # link libraries
 target_link_libraries(
         OpenGL
         ${SDL2_LIBRARY}
-#        ${SDL2_TTF_LIBRARIES}
-#        ${SDL2_IMAGE_LIBRARIES}
+        ${SDL2_TTF_LIBRARIES}
+        ${SDL2_IMAGE_LIBRARIES}
         ${OPENGL_LIBRARIES}
 )
 

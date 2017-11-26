@@ -3,6 +3,8 @@
 //
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_image.h>
 #include "graphics/Graphics.h"
 #include <iostream>
 #include <graphics/OpenGl.h>
@@ -14,6 +16,16 @@ application::graphics::Graphics::Graphics() {
     _height = 1080;
 
     if ( SDL_Init(SDL_INIT_VIDEO) != 0 ) {
+        std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
+        exit(1);
+    }
+
+    if ( TTF_Init() != 0 ) {
+        std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
+        exit(1);
+    }
+
+    if ( IMG_Init(IMG_INIT_PNG) == 0 ) {
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
         exit(1);
     }
