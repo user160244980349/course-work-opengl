@@ -9,17 +9,15 @@
 #include <graphics/UboBindIndexes.h>
 #include <string>
 
-namespace application::graphics {
 
-    class Ubo : public ABuffer {
-    public:
-        ~Ubo();
-        int create() override;
-        int set(GLvoid *data, GLuint size);
-        int update(GLvoid *data, GLuint size);
-        int connect(GLuint program, UboBindIndex bindIndex, std::string blockName);
-    };
+class Ubo : public ABuffer {
+public:
+    ~Ubo();
+    int create() override;
+    int set(GLvoid *data, GLuint size);
+    int update(GLvoid *data, GLuint size);
+    int connect(GLuint program, UboBindIndex bindIndex, std::string blockName);
+};
 
-}
 
 #endif //OPENGL_UBO_H

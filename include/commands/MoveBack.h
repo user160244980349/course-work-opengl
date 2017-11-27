@@ -8,13 +8,12 @@
 
 #include "AInputCommand.h"
 
-namespace application::commands {
-    class MoveBack : public commands::AInputCommand {
-    public:
-        explicit MoveBack(input::IControlable* o);
-        int execute(SDL_Event event) override;
-    };
-}
+
+class MoveBack : public AInputCommand {
+public:
+    explicit MoveBack(IControlable* o);
+    int execute(SDL_Event event) override;
+};
 
 
 #endif //OPENGL_MOVEBACK_H

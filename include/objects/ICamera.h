@@ -10,14 +10,12 @@
 #include <glm/vec3.hpp>
 #include <glm/detail/type_mat4x4.hpp>
 
-namespace application::objects {
 
-    class ICamera {
-    public:
-        virtual int use(GLuint shaderProgramId) = 0;
-        virtual int update() = 0;
-    };
+class ICamera {
+public:
+    virtual int use(GLuint shaderProgramId) = 0;
+    virtual int update() = 0;
+};
 
-}
 
 #endif //OPENGL_ABSTRACTCAMERA_H

@@ -6,23 +6,23 @@
 #include "commands/MoveRight.h"
 
 
-int application::commands::MoveRight::execute(SDL_Event event) {
+int MoveRight::execute(SDL_Event event) {
 
     static bool state = false;
 
     if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_d && !state) {
         state = !state;
-        dynamic_cast<objects::DynamicCamera*>(_object)->moveRight();
+        dynamic_cast<DynamicCamera*>(_object)->moveRight();
     }
 
     if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_d) {
         state = !state;
-        dynamic_cast<objects::DynamicCamera*>(_object)->moveRight();
+        dynamic_cast<DynamicCamera*>(_object)->moveRight();
     }
 
     return 0;
 }
 
-application::commands::MoveRight::MoveRight(application::input::IControlable *o) : AInputCommand(o) {
+MoveRight::MoveRight(IControlable *o) : AInputCommand(o) {
 
 }

@@ -6,20 +6,20 @@
 #include <cstring>
 #include "graphics/Ubo.h"
 
-application::graphics::Ubo::~Ubo() {
+Ubo::~Ubo() {
 
     OpenGl::getInstance()->deleteBuffers(1, &id);
 
 }
 
-int application::graphics::Ubo::create() {
+int Ubo::create() {
 
     OpenGl::getInstance()->genBuffers(1, &id);
 
     return 0;
 }
 
-int application::graphics::Ubo::connect(GLuint program, UboBindIndex bindIndex, std::string blockName) {
+int Ubo::connect(GLuint program, UboBindIndex bindIndex, std::string blockName) {
 
     OpenGl::getInstance()->bindBuffer(GL_UNIFORM_BUFFER, id);
     GLuint blockIndex = OpenGl::getInstance()->getUniformBlockIndex(program, blockName.c_str());
@@ -29,7 +29,7 @@ int application::graphics::Ubo::connect(GLuint program, UboBindIndex bindIndex, 
     return 0;
 }
 
-int application::graphics::Ubo::set(GLvoid *data, GLuint size) {
+int Ubo::set(GLvoid *data, GLuint size) {
 
     OpenGl::getInstance()->bindBuffer(GL_UNIFORM_BUFFER, id);
     OpenGl::getInstance()->bufferData(GL_UNIFORM_BUFFER, size, data, GL_DYNAMIC_DRAW);
@@ -37,7 +37,7 @@ int application::graphics::Ubo::set(GLvoid *data, GLuint size) {
     return 0;
 }
 
-int application::graphics::Ubo::update(GLvoid *data, GLuint size) {
+int Ubo::update(GLvoid *data, GLuint size) {
 
     OpenGl::getInstance()->bindBuffer(GL_UNIFORM_BUFFER, id);
     GLvoid* p = OpenGl::getInstance()->mapBuffer(GL_UNIFORM_BUFFER, GL_WRITE_ONLY);

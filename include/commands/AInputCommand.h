@@ -9,17 +9,15 @@
 #include <input/IControlable.h>
 #include <SDL2/SDL_events.h>
 
-namespace application::commands {
 
-    class AInputCommand : public IInputCommand {
-    public:
-        AInputCommand(input::IControlable* o);
+class AInputCommand : public IInputCommand {
+public:
+    AInputCommand(IControlable* o);
 
-    protected:
-        input::IControlable* _object;
-    };
+protected:
+    IControlable* _object;
+};
 
-}
 
 
 #endif //OPENGL_AINPUTCOMMAND_H

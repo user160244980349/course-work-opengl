@@ -13,15 +13,13 @@
 #include <vector>
 #include <graphics/Shader.h>
 
-namespace application::objects {
 
-    class IObject {
-    public:
-        virtual std::string getName() = 0;
-        virtual int getId() = 0;
-        virtual int update() = 0;
-    };
+class IObject {
+public:
+    virtual std::string getName() = 0;
+    virtual int getId() = 0;
+    virtual int update() = 0;
+};
 
-}
 
 #endif //OPENGL_ABSTRACTOBJECT_H

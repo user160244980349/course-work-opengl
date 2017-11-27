@@ -11,51 +11,48 @@
 #include <input/AControlable.h>
 
 
-namespace application::objects {
+class DynamicCamera : public ICamera, public AControlable  {
+public:
+    DynamicCamera();
+    int use(GLuint shaderProgramId) override;
+    int update() override;
+    int initCommands() override;
 
-    class DynamicCamera : public objects::ICamera, public input::AControlable  {
-    public:
-        DynamicCamera();
-        int use(GLuint shaderProgramId) override;
-        int update() override;
-        int initCommands() override;
+    int moveForward();
+    int moveBack();
+    int moveRight();
+    int moveLeft();
 
-        int moveForward();
-        int moveBack();
-        int moveRight();
-        int moveLeft();
+    int lookHorizontal(int x);
+    int lookVertical(int y);
 
-        int lookHorizontal(int x);
-        int lookVertical(int y);
+protected:
+    Ubo _ubo;
 
-    protected:
-        graphics::Ubo _ubo;
+    struct {
+        glm::mat4 projection;
+        glm::mat4 viewPoint;
+    } _transform;
 
-        struct {
-            glm::mat4 projection;
-            glm::mat4 viewPoint;
-        } _transform;
+    struct {
+        bool w = false;
+        bool s = false;
+        bool a = false;
+        bool d = false;
+        bool q = false;
+        bool e = false;
+    } _keys;
 
-        struct {
-            bool w = false;
-            bool s = false;
-            bool a = false;
-            bool d = false;
-            bool q = false;
-            bool e = false;
-        } _keys;
+    glm::vec3 _cameraPos;
+    glm::vec3 _cameraUp;
+    glm::vec3 _cameraFront;
 
-        glm::vec3 _cameraPos;
-        glm::vec3 _cameraUp;
-        glm::vec3 _cameraFront;
+    GLfloat _sensitivity;
+    GLfloat _mouseX;
+    GLfloat _mouseY;
+    GLfloat _speedFront;
+    GLfloat _speedUp;
+};
 
-        GLfloat _sensitivity;
-        GLfloat _mouseX;
-        GLfloat _mouseY;
-        GLfloat _speedFront;
-        GLfloat _speedUp;
-    };
-
-}
 
 #endif //OPENGL_DYNAMICCAMERA_H

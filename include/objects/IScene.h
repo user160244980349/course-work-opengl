@@ -7,14 +7,12 @@
 
 #include <list>
 
-namespace application::objects {
 
-    class IScene {
-    public:
-        virtual int prepare() = 0;
-        virtual int draw() = 0;
-    };
+class IScene {
+public:
+    virtual int prepare() = 0;
+    virtual int draw() = 0;
+};
 
-}
 
 #endif //OPENGL_ABSTRACTSCENE_H

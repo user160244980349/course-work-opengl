@@ -7,16 +7,14 @@
 
 #include <GL/glcorearb.h>
 
-namespace application::graphics {
 
-    class Shader {
-    public:
-        GLuint shaderProgramId = 0;
+class Shader {
+public:
+    GLuint shaderProgramId = 0;
 
-        Shader(const GLchar* vertexPath, const GLchar* fragmentPath);
-        int use();
-    };
+    Shader(const GLchar* vertexPath, const GLchar* fragmentPath);
+    int use();
+};
 
-}
 
 #endif //OPENGL_SHADER_H

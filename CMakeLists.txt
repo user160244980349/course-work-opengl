@@ -21,7 +21,7 @@ set(SOURCES
         include/graphics/ABuffer.h
         include/graphics/Ebo.h
         include/graphics/Shader.h
-        include/graphics/Scene.h
+        include/objects/Scene.h
         include/graphics/Ubo.h
         include/graphics/Vao.h
         include/graphics/Vbo.h

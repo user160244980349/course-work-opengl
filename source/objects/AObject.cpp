@@ -4,24 +4,24 @@
 
 #include "objects/AObject.h"
 
-unsigned int application::objects::AObject::_count = 0;
+unsigned int AObject::_count = 0;
 
-application::objects::AObject::AObject() {
+AObject::AObject() {
     _id = _count;
     _count++;
     _name = "object" + std::to_string(_id);
 }
 
-application::objects::AObject::AObject(std::string name) {
+AObject::AObject(std::string name) {
     _id = _count;
     _count++;
     _name = std::move(name);
 }
 
-std::string application::objects::AObject::getName() {
+std::string AObject::getName() {
     return _name;
 }
 
-int application::objects::AObject::getId() {
+int AObject::getId() {
     return _id;
 }

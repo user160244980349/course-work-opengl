@@ -6,11 +6,11 @@
 #include <input/ClientInput.h>
 #include <commands/QuitCommand.h>
 
-application::Kernel::Kernel() {
+Kernel::Kernel() {
 
-    _graphics = new graphics::Graphics;
-    _input = new input::ClientInput;
-    _scene = new graphics::Scene(_input);
+    _graphics = new Graphics;
+    _input = new ClientInput;
+    _scene = new Scene(_input);
 
     initCommands();
 
@@ -20,7 +20,7 @@ application::Kernel::Kernel() {
 
 }
 
-application::Kernel::~Kernel() {
+Kernel::~Kernel() {
 
     delete(_scene);
     delete(_graphics);
@@ -28,7 +28,7 @@ application::Kernel::~Kernel() {
 
 }
 
-int application::Kernel::flow() {
+int Kernel::flow() {
 
     _scene->prepare();
 
@@ -42,9 +42,9 @@ int application::Kernel::flow() {
     return 0;
 }
 
-int application::Kernel::initCommands() {
+int Kernel::initCommands() {
 
-    _commands.push_back(new commands::QuitCommand(this));
+    _commands.push_back(new QuitCommand(this));
 
     return 0;
 }

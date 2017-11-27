@@ -5,14 +5,12 @@
 #ifndef OPENGL_ICOMMAND_H
 #define OPENGL_ICOMMAND_H
 
-namespace application::commands {
 
-    class ICommand {
-    public:
-        virtual int execute() = 0;
-    };
+class ICommand {
+public:
+    virtual int execute() = 0;
+};
 
-}
 
 
 #endif //OPENGL_ICOMMAND_H

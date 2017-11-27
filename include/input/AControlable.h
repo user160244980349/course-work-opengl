@@ -9,16 +9,14 @@
 #include <input/IControlable.h>
 #include <list>
 
-namespace application::input {
 
-    class AControlable : public input::IControlable {
-    public:
-        std::list<commands::IInputCommand*> getCommands() final;
+class AControlable : public IControlable {
+public:
+    std::list<IInputCommand*> getCommands() final;
 
-    protected:
-        std::list<commands::IInputCommand*> _commands;
-    };
+protected:
+    std::list<IInputCommand*> _commands;
+};
 
-}
 
 #endif //OPENGL_ACONTROLABLE_H

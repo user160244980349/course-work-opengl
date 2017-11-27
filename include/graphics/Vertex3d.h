@@ -7,13 +7,11 @@
 
 #include <glm/vec4.hpp>
 
-namespace application::graphics {
 
-    struct Vertex3d {
-        glm::vec4 position;
-        glm::vec4 color;
-    };
+struct Vertex3d {
+    glm::vec4 position;
+    glm::vec4 color;
+};
 
-}
 
 #endif //OPENGL_VERTEX_H

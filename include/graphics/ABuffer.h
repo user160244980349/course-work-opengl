@@ -7,15 +7,13 @@
 
 #include <GL/glcorearb.h>
 
-namespace application::graphics {
 
-    class ABuffer {
-    public:
-        GLuint id{};
+class ABuffer {
+public:
+    GLuint id{};
 
-        virtual int create() = 0;
-    };
+    virtual int create() = 0;
+};
 
-}
 
 #endif //OPENGL_ABSTRACT_BUFFER_H

@@ -8,15 +8,13 @@
 #include <graphics/ABuffer.h>
 #include "graphics/Vertex3d.h"
 
-namespace application::graphics {
 
-    class Vbo : public ABuffer {
-    public:
-        ~Vbo();
-        int create() override;
-        int set(Vertex3d *v, GLuint size);
-    };
+class Vbo : public ABuffer {
+public:
+    ~Vbo();
+    int create() override;
+    int set(Vertex3d *v, GLuint size);
+};
 
-}
 
 #endif //OPENGL_VBO_H

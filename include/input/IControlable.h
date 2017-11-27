@@ -9,14 +9,12 @@
 #include "commands/IInputCommand.h"
 #include <list>
 
-namespace application::input {
 
-    class IControlable {
-    public:
-        virtual int initCommands() = 0;
-        virtual std::list<commands::IInputCommand*> getCommands() = 0;
-    };
-
+class IControlable {
+public:
+    virtual int initCommands() = 0;
+    virtual std::list<IInputCommand*> getCommands() = 0;
 };
+
 
 #endif //OPENGL_CONTROLABLEINTERFACE_H

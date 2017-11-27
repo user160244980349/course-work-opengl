@@ -3,7 +3,7 @@
 
 int main(int argc, char **argv){
 
-    application::Kernel instance;
+    Kernel instance;
 
     return 0;
 }

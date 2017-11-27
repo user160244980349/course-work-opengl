@@ -5,23 +5,23 @@
 #include <objects/DynamicCamera.h>
 #include "commands/MoveForward.h"
 
-int application::commands::MoveForward::execute(SDL_Event event) {
+int MoveForward::execute(SDL_Event event) {
 
     static bool state = false;
 
     if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_w && !state) {
         state = !state;
-        dynamic_cast<objects::DynamicCamera*>(_object)->moveForward();
+        dynamic_cast<DynamicCamera*>(_object)->moveForward();
     }
 
     if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_w) {
         state = !state;
-        dynamic_cast<objects::DynamicCamera*>(_object)->moveForward();
+        dynamic_cast<DynamicCamera*>(_object)->moveForward();
     }
 
     return 0;
 }
 
-application::commands::MoveForward::MoveForward(application::input::IControlable *o) : AInputCommand(o) {
+MoveForward::MoveForward(IControlable *o) : AInputCommand(o) {
 
 }

@@ -9,24 +9,24 @@
 #include <commands/ICommand.h>
 #include <commands/Warframe.h>
 
-int application::objects::Cube::prepare() {
+int Cube::prepare() {
 
-    _shaders.emplace_back(graphics::Shader(
+    _shaders.emplace_back(Shader(
             "../resource/shaders/FirstVertex.glsl",
             "../resource/shaders/FirstFragment.glsl")
     );
 
     _shaders.front().use();
 
-    _vertices.emplace_back(graphics::Vertex3d{glm::vec4( 1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
-    _vertices.emplace_back(graphics::Vertex3d{glm::vec4(-1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
-    _vertices.emplace_back(graphics::Vertex3d{glm::vec4(-1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
-    _vertices.emplace_back(graphics::Vertex3d{glm::vec4( 1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    _vertices.emplace_back(Vertex3d{glm::vec4( 1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
+    _vertices.emplace_back(Vertex3d{glm::vec4(-1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
+    _vertices.emplace_back(Vertex3d{glm::vec4(-1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    _vertices.emplace_back(Vertex3d{glm::vec4( 1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
 
-    _vertices.emplace_back(graphics::Vertex3d{glm::vec4( 1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
-    _vertices.emplace_back(graphics::Vertex3d{glm::vec4(-1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
-    _vertices.emplace_back(graphics::Vertex3d{glm::vec4(-1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
-    _vertices.emplace_back(graphics::Vertex3d{glm::vec4( 1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    _vertices.emplace_back(Vertex3d{glm::vec4( 1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
+    _vertices.emplace_back(Vertex3d{glm::vec4(-1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
+    _vertices.emplace_back(Vertex3d{glm::vec4(-1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    _vertices.emplace_back(Vertex3d{glm::vec4( 1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
 
     _order.emplace_back(0u);
     _order.emplace_back(3u);
@@ -86,37 +86,37 @@ int application::objects::Cube::prepare() {
     return 0;
 }
 
-int application::objects::Cube::draw() {
+int Cube::draw() {
 
     if (_warframe) {
-        graphics::OpenGl::getInstance()->disable(GL_CULL_FACE);
-        graphics::OpenGl::getInstance()->polygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        OpenGl::getInstance()->disable(GL_CULL_FACE);
+        OpenGl::getInstance()->polygonMode(GL_FRONT_AND_BACK, GL_LINE);
     }
     _buffers.vao.bind(GL_TRIANGLES, static_cast<GLuint>(_order.size()));
 
     if (_warframe) {
-        graphics::OpenGl::getInstance()->enable(GL_CULL_FACE);
-        graphics::OpenGl::getInstance()->polygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        OpenGl::getInstance()->enable(GL_CULL_FACE);
+        OpenGl::getInstance()->polygonMode(GL_FRONT_AND_BACK, GL_FILL);
     }
 
     return 0;
 }
 
-int application::objects::Cube::setCamera(application::objects::ICamera *camera) {
+int Cube::setCamera(ICamera *camera) {
 
     camera->use(_shaders.front().shaderProgramId);
 
     return 0;
 }
 
-int application::objects::Cube::warframe() {
+int Cube::warframe() {
 
     _warframe = !_warframe;
 
     return 0;
 }
 
-int application::objects::Cube::update() {
+int Cube::update() {
 
     _transform.model = glm::rotate(_transform.model, 0.05f, glm::vec3(0.0f, 1.0f, 0.0f));
     _transform.model = glm::translate(_transform.model, glm::vec3(0.0f, sinf(SDL_GetTicks() * 0.005f) * 0.1f, 0.0f));
@@ -125,9 +125,9 @@ int application::objects::Cube::update() {
     return 0;
 }
 
-int application::objects::Cube::initCommands() {
+int Cube::initCommands() {
 
-    _commands.push_back(new commands::Warframe(this));
+    _commands.push_back(new Warframe(this));
 
     return 0;
 }

@@ -6,20 +6,20 @@
 #include <graphics/OpenGl.h>
 #include "graphics/Vbo.h"
 
-application::graphics::Vbo::~Vbo() {
+Vbo::~Vbo() {
 
     OpenGl::getInstance()->deleteBuffers(1, &id);
 
 }
 
-int application::graphics::Vbo::create() {
+int Vbo::create() {
 
     OpenGl::getInstance()->genBuffers(1, &id);
 
     return 0;
 }
 
-int application::graphics::Vbo::set(Vertex3d *v, GLuint size) {
+int Vbo::set(Vertex3d *v, GLuint size) {
 
     OpenGl::getInstance()->bindBuffer(GL_ARRAY_BUFFER, id);
     OpenGl::getInstance()->bufferData(GL_ARRAY_BUFFER, sizeof(Vertex3d) * size, v, GL_STATIC_DRAW);

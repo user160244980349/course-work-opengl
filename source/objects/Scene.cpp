@@ -6,12 +6,12 @@
 #include <objects/DynamicCamera.h>
 #include <input/IInput.h>
 #include <iostream>
-#include "graphics/Scene.h"
+#include "objects/Scene.h"
 
-int application::graphics::Scene::prepare() {
+int Scene::prepare() {
 
-    _input->addCommands(dynamic_cast<input::IControlable*>(_camera)->getCommands());
-    _input->addCommands(dynamic_cast<input::IControlable*>(_objects.back())->getCommands());
+    _input->addCommands(dynamic_cast<IControlable*>(_camera)->getCommands());
+    _input->addCommands(dynamic_cast<IControlable*>(_objects.back())->getCommands());
 
     for (auto &object : _objects) {
         object->prepare();
@@ -21,7 +21,7 @@ int application::graphics::Scene::prepare() {
     return 0;
 }
 
-int application::graphics::Scene::draw() {
+int Scene::draw() {
 
     _camera->update();
     for (auto &object : _objects)
@@ -30,17 +30,17 @@ int application::graphics::Scene::draw() {
     return 0;
 }
 
-application::graphics::Scene::Scene(input::IInput* input) {
+Scene::Scene(IInput* input) {
 
     _input = input;
-    _camera = new objects::DynamicCamera;
-    dynamic_cast<input::IControlable*>(_camera)->initCommands();
-    _objects.push_back(new objects::Cube);
-    dynamic_cast<input::IControlable*>(_objects.back())->initCommands();
+    _camera = new DynamicCamera;
+    dynamic_cast<IControlable*>(_camera)->initCommands();
+    _objects.push_back(new Cube);
+    dynamic_cast<IControlable*>(_objects.back())->initCommands();
 
 }
 
-application::graphics::Scene::~Scene() {
+Scene::~Scene() {
 
     delete(_camera);
 

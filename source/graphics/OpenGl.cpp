@@ -6,9 +6,9 @@
 #include <iostream>
 #include "graphics/OpenGl.h"
 
-application::graphics::OpenGl* application::graphics::OpenGl::_instance = nullptr;
+OpenGl* OpenGl::_instance = nullptr;
 
-application::graphics::OpenGl::OpenGl() {
+OpenGl::OpenGl() {
 
     if (SDL_GL_LoadLibrary(nullptr) != 0) {
         std::cerr << "Error: " << SDL_GetError() << '\n';
@@ -53,7 +53,7 @@ application::graphics::OpenGl::OpenGl() {
 
 }
 
-application::graphics::OpenGl* application::graphics::OpenGl::getInstance() {
+OpenGl* OpenGl::getInstance() {
 
     if (_instance == nullptr)
         _instance = new OpenGl;

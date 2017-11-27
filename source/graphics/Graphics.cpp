@@ -9,7 +9,7 @@
 #include <iostream>
 #include <graphics/OpenGl.h>
 
-application::graphics::Graphics::Graphics() {
+Graphics::Graphics() {
 
     _fps = 59;
     _width = 1920;
@@ -77,7 +77,7 @@ application::graphics::Graphics::Graphics() {
     OpenGl::getInstance()->finish();
 }
 
-application::graphics::Graphics::~Graphics() {
+Graphics::~Graphics() {
 
     delete(OpenGl::getInstance());
     SDL_GL_DeleteContext(_glContext);
@@ -86,14 +86,14 @@ application::graphics::Graphics::~Graphics() {
 
 }
 
-int application::graphics::Graphics::prepare(objects::IScene* scene) {
+int Graphics::prepare(IScene* scene) {
 
     scene->prepare();
 
     return 0;
 }
 
-int application::graphics::Graphics::draw(objects::IScene* scene) {
+int Graphics::draw(IScene* scene) {
 
     static Uint32 start;
     Uint32 duration;
@@ -101,7 +101,6 @@ int application::graphics::Graphics::draw(objects::IScene* scene) {
     OpenGl::getInstance()->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     scene->draw();
     OpenGl::getInstance()->finish();
-//    OpenGl::getInstance()->flush(); ?
     SDL_GL_SwapWindow(_window);
 
     duration = SDL_GetTicks() - start;

@@ -8,16 +8,15 @@
 #include <commands/IInputCommand.h>
 #include <Kernel.h>
 
-namespace application::commands {
-    class QuitCommand : public commands::IInputCommand {
-    public:
-        explicit QuitCommand(Kernel* kernel);
-        int execute(SDL_Event event) override;
 
-    protected:
-        Kernel* _kernel;
-    };
-}
+class QuitCommand : public IInputCommand {
+public:
+    explicit QuitCommand(Kernel* kernel);
+    int execute(SDL_Event event) override;
+
+protected:
+    Kernel* _kernel;
+};
 
 
 #endif //OPENGL_QUITCOMMAND_H

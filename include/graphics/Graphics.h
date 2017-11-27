@@ -10,17 +10,16 @@
 #include <objects/IScene.h>
 #include <GL/glcorearb.h>
 
-namespace application::graphics {
 
     class Graphics : public IOutput {
     public:
         Graphics();
         ~Graphics();
-        int prepare(objects::IScene* scene) override;
-        int draw(objects::IScene* scene) override;
+        int prepare(IScene* scene) override;
+        int draw(IScene* scene) override;
 
     protected:
-        std::list<objects::IScene*> _observers{};
+        std::list<IScene*> _observers{};
         SDL_Window* _window;
         SDL_GLContext _glContext;
         GLuint _width;
@@ -28,6 +27,5 @@ namespace application::graphics {
         GLuint _fps;
     };
 
-}
 
 #endif //OPENGL_GRAPHICS_H

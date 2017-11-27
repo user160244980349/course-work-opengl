@@ -12,7 +12,7 @@
 #include <commands/MoveRight.h>
 #include <commands/MoveLeft.h>
 
-application::objects::DynamicCamera::DynamicCamera() {
+DynamicCamera::DynamicCamera() {
 
     _mouseX = 0.0f;
     _mouseY = 0.0f;
@@ -34,14 +34,14 @@ application::objects::DynamicCamera::DynamicCamera() {
 
 }
 
-int application::objects::DynamicCamera::use(GLuint shaderProgramId) {
+int DynamicCamera::use(GLuint shaderProgramId) {
 
     _ubo.connect(shaderProgramId, CAMERA_BIND_INDEX, "camera");
 
     return 0;
 }
 
-int application::objects::DynamicCamera::update() {
+int DynamicCamera::update() {
 
     _cameraFront = glm::normalize(glm::vec3(
             cosf(glm::radians(_mouseY)) * cosf(glm::radians(_mouseX)),
@@ -67,39 +67,39 @@ int application::objects::DynamicCamera::update() {
     return 0;
 }
 
-int application::objects::DynamicCamera::initCommands() {
+int DynamicCamera::initCommands() {
 
-    _commands.push_back(new commands::LookVertical(this));
-    _commands.push_back(new commands::LookHorizontal(this));
-    _commands.push_back(new commands::MoveForward(this));
-    _commands.push_back(new commands::MoveBack(this));
-    _commands.push_back(new commands::MoveRight(this));
-    _commands.push_back(new commands::MoveLeft(this));
+    _commands.push_back(new LookVertical(this));
+    _commands.push_back(new LookHorizontal(this));
+    _commands.push_back(new MoveForward(this));
+    _commands.push_back(new MoveBack(this));
+    _commands.push_back(new MoveRight(this));
+    _commands.push_back(new MoveLeft(this));
 
     return 0;
 }
 
-int application::objects::DynamicCamera::moveForward() {
+int DynamicCamera::moveForward() {
     _keys.w = !_keys.w;
     return 0;
 }
 
-int application::objects::DynamicCamera::moveBack() {
+int DynamicCamera::moveBack() {
     _keys.s = !_keys.s;
     return 0;
 }
 
-int application::objects::DynamicCamera::moveRight() {
+int DynamicCamera::moveRight() {
     _keys.d = !_keys.d;
     return 0;
 }
 
-int application::objects::DynamicCamera::moveLeft() {
+int DynamicCamera::moveLeft() {
     _keys.a = !_keys.a;
     return 0;
 }
 
-int application::objects::DynamicCamera::lookVertical(int y) {
+int DynamicCamera::lookVertical(int y) {
     _mouseY -= y * _sensitivity;
     if (_mouseY > 89.0f)
         _mouseY = 89.0f;
@@ -108,7 +108,7 @@ int application::objects::DynamicCamera::lookVertical(int y) {
     return 0;
 }
 
-int application::objects::DynamicCamera::lookHorizontal(int x) {
+int DynamicCamera::lookHorizontal(int x) {
     _mouseX += x * _sensitivity;
     return 0;
 }

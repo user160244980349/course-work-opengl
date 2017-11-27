@@ -7,15 +7,13 @@
 
 #include <graphics/ABuffer.h>
 
-namespace application::graphics {
 
-    class Ebo : public ABuffer {
-    public:
-        ~Ebo();
-        int create() override;
-        int set(GLuint *o, GLuint size);
-    };
+class Ebo : public ABuffer {
+public:
+    ~Ebo();
+    int create() override;
+    int set(GLuint *o, GLuint size);
+};
 
-}
 
 #endif //OPENGL_EBO_H

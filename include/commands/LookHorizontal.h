@@ -8,13 +8,12 @@
 
 #include "AInputCommand.h"
 
-namespace application::commands {
-    class LookHorizontal : public commands::AInputCommand {
-    public:
-        explicit LookHorizontal(input::IControlable* o);
-        int execute(SDL_Event event) override;
-    };
-}
+
+class LookHorizontal : public AInputCommand {
+public:
+    explicit LookHorizontal(IControlable* o);
+    int execute(SDL_Event event) override;
+};
 
 
 #endif //OPENGL_LOOKHORIZONTAL_H

@@ -8,13 +8,12 @@
 
 #include "AInputCommand.h"
 
-namespace application::commands {
-    class Warframe : public commands::AInputCommand {
-    public:
-        explicit Warframe(input::IControlable* o);
-        int execute(SDL_Event event) override;
-    };
-}
+
+class Warframe : public AInputCommand {
+public:
+    explicit Warframe(IControlable* o);
+    int execute(SDL_Event event) override;
+};
 
 
 #endif //OPENGL_WARFRAME_H

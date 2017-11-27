@@ -4,6 +4,6 @@
 
 #include "commands/AInputCommand.h"
 
-application::commands::AInputCommand::AInputCommand(application::input::IControlable *o) {
+AInputCommand::AInputCommand(IControlable *o) {
     _object = o;
 }

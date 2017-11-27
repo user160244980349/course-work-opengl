@@ -6,7 +6,7 @@
 #include <SDL2/SDL.h>
 #include "input/ClientInput.h"
 
-int application::input::ClientInput::perform() {
+int ClientInput::perform() {
 
     while(SDL_PollEvent(&_event)) {
 
@@ -18,7 +18,7 @@ int application::input::ClientInput::perform() {
     return 0;
 }
 
-application::input::ClientInput::ClientInput() {
+ClientInput::ClientInput() {
 
     if ( SDL_Init(SDL_INIT_EVENTS) != 0 ){
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
@@ -30,7 +30,7 @@ application::input::ClientInput::ClientInput() {
 
 }
 
-int application::input::ClientInput::addCommands(std::list<application::commands::IInputCommand*> commands) {
+int ClientInput::addCommands(std::list<IInputCommand*> commands) {
     _commands.merge(commands);
     return 0;
 }

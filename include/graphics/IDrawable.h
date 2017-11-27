@@ -7,15 +7,13 @@
 
 #include "objects/ICamera.h"
 
-namespace application::graphics {
 
-    class IDrawable {
-    public:
-        virtual int draw() = 0;
-        virtual int prepare() = 0;
-        virtual int setCamera(objects::ICamera* camera) = 0;
-    };
+class IDrawable {
+public:
+    virtual int draw() = 0;
+    virtual int prepare() = 0;
+    virtual int setCamera(ICamera* camera) = 0;
+};
 
-}
 
 #endif //OPENGL_DRAWABLEINTERFACE_H

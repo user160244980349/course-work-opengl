@@ -8,13 +8,12 @@
 
 #include "AInputCommand.h"
 
-namespace application::commands {
-    class MoveRight : public commands::AInputCommand {
-    public:
-        explicit MoveRight(input::IControlable* o);
-        int execute(SDL_Event event) override;
-    };
-}
+
+class MoveRight : public AInputCommand {
+public:
+    explicit MoveRight(IControlable* o);
+    int execute(SDL_Event event) override;
+};
 
 
 #endif //OPENGL_MOVERIGHT_H

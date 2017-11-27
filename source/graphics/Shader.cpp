@@ -8,7 +8,7 @@
 #include "graphics/OpenGl.h"
 #include "graphics/Shader.h"
 
-application::graphics::Shader::Shader(const GLchar* vertexPath, const GLchar* fragmentPath) {
+Shader::Shader(const GLchar* vertexPath, const GLchar* fragmentPath) {
 
     std::string vertexCode;
     std::string fragmentCode;
@@ -79,7 +79,7 @@ application::graphics::Shader::Shader(const GLchar* vertexPath, const GLchar* fr
 
 }
 
-int application::graphics::Shader::use() {
+int Shader::use() {
 
     OpenGl::getInstance()->useProgram(shaderProgramId);
 

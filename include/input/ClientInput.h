@@ -10,18 +10,16 @@
 #include <input/IInput.h>
 #include <input/IControlable.h>
 
-namespace application::input {
 
-    class ClientInput : public input::IInput {
-    public:
-        ClientInput();
-        int perform() override;
-        int addCommands(std::list<commands::IInputCommand*> commands) override;
-    protected:
-        std::list<commands::IInputCommand*> _commands;
-        SDL_Event _event{};
-    };
+class ClientInput : public IInput {
+public:
+    ClientInput();
+    int perform() override;
+    int addCommands(std::list<IInputCommand*> commands) override;
+protected:
+    std::list<IInputCommand*> _commands;
+    SDL_Event _event{};
+};
 
-}
 
 #endif //OPENGL_CLIENTINPUT_H

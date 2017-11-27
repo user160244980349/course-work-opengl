@@ -8,19 +8,19 @@
 #include <string>
 #include <objects/IObject.h>
 
-namespace application::objects {
-    class AObject : public objects::IObject {
-    public:
-        AObject();
-        explicit AObject(std::string name);
-        std::string getName() override;
-        int getId() override;
 
-    protected:
-        static unsigned int _count;
-        unsigned int _id;
-        std::string _name;
-    };
-}
+class AObject : public IObject {
+public:
+    AObject();
+    explicit AObject(std::string name);
+    std::string getName() override;
+    int getId() override;
+
+protected:
+    static unsigned int _count;
+    unsigned int _id;
+    std::string _name;
+};
+
 
 #endif //OPENGL_AOBJECT_H

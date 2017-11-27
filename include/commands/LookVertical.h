@@ -8,13 +8,12 @@
 
 #include "AInputCommand.h"
 
-namespace application::commands {
-    class LookVertical : public commands::AInputCommand {
-    public:
-        explicit LookVertical(input::IControlable* o);
-        int execute(SDL_Event event) override;
-    };
-}
+
+class LookVertical : public AInputCommand {
+public:
+    explicit LookVertical(IControlable* o);
+    int execute(SDL_Event event) override;
+};
 
 
 #endif //OPENGL_LOOKVERTICAL_H
