@@ -6,7 +6,6 @@
 #include <objects/Cube.h>
 #include <SDL2/SDL_timer.h>
 #include <graphics/OpenGl.h>
-#include <commands/ICommand.h>
 #include <commands/Warframe.h>
 
 int Cube::prepare() {
