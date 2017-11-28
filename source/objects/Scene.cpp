@@ -5,7 +5,6 @@
 #include <objects/Cube.h>
 #include <objects/DynamicCamera.h>
 #include <input/IInput.h>
-#include <iostream>
 #include "objects/Scene.h"
 
 int Scene::prepare() {
