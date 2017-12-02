@@ -13,8 +13,8 @@
 
 class ICamera {
 public:
-    virtual int use(GLuint shaderProgramId) = 0;
-    virtual int update() = 0;
+    virtual int use(GLuint shaderProgramId) {};
+    virtual int update() {};
 };
 
 

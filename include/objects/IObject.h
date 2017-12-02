@@ -16,9 +16,10 @@
 
 class IObject {
 public:
-    virtual std::string getName() = 0;
-    virtual int getId() = 0;
-    virtual int update() = 0;
+    virtual ~IObject() {};
+    virtual std::string getName() {};
+    virtual int getId() {};
+    virtual int update() {};
 };
 
 

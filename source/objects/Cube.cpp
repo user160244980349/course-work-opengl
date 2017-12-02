@@ -6,6 +6,8 @@
 #include <objects/Cube.h>
 #include <SDL2/SDL_timer.h>
 
+Cube::~Cube() = default;
+
 Cube::Cube() : AObject() {
     _shaders.emplace_back(Shader(
             "../resource/shaders/FirstVertex.glsl",
@@ -80,8 +82,6 @@ Cube::Cube() : AObject() {
     _buffers.ubo.connect(_shaders.front().shaderProgramId, TRANSFORM_BIND_INDEX, "object");
 }
 
-Cube::~Cube() {}
-
 int Cube::draw() {
     _buffers.vao.bind(GL_TRIANGLES, static_cast<GLuint>(_order.size()));
     _buffers.ubo.connect(_shaders.front().shaderProgramId, TRANSFORM_BIND_INDEX, "object");
@@ -104,3 +104,4 @@ int Cube::translate(glm::vec3 position) {
     _transform.model = glm::translate(_transform.model, position);
     return 0;
 }
+

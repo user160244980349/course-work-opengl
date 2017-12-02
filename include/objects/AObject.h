@@ -12,8 +12,9 @@
 class AObject : public IObject {
 public:
     AObject();
-    ~AObject();
     explicit AObject(std::string name);
+    virtual ~AObject() override;
+
     std::string getName() override;
     int getId() override;
 

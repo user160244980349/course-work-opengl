@@ -10,8 +10,8 @@
 
 class IDrawable {
 public:
-    virtual int draw() = 0;
-    virtual int setCamera(ICamera& camera) = 0;
+    virtual int draw() {};
+    virtual int setCamera(ICamera& camera) {};
 };
 
 

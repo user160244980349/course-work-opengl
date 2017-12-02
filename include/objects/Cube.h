@@ -14,7 +14,8 @@
 class Cube : public IDrawable, public AObject {
 public:
     Cube();
-    ~Cube();
+    virtual ~Cube() override;
+
     int setCamera(ICamera& camera) override;
     int update() override;
     int draw() override;

@@ -26,4 +26,4 @@ int AObject::getId() {
     return _id;
 }
 
-AObject::~AObject() {}
+AObject::~AObject() = default;
