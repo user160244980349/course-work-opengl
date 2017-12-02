@@ -5,8 +5,6 @@
 
 #include <objects/Cube.h>
 #include <SDL2/SDL_timer.h>
-#include <graphics/OpenGl.h>
-#include <commands/Warframe.h>
 
 int Cube::prepare() {
 
@@ -86,47 +84,18 @@ int Cube::prepare() {
 }
 
 int Cube::draw() {
-
-    if (_warframe) {
-        OpenGl::getInstance()->disable(GL_CULL_FACE);
-        OpenGl::getInstance()->polygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    }
     _buffers.vao.bind(GL_TRIANGLES, static_cast<GLuint>(_order.size()));
-
-    if (_warframe) {
-        OpenGl::getInstance()->enable(GL_CULL_FACE);
-        OpenGl::getInstance()->polygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    }
-
     return 0;
 }
 
 int Cube::setCamera(ICamera *camera) {
-
     camera->use(_shaders.front().shaderProgramId);
-
-    return 0;
-}
-
-int Cube::warframe() {
-
-    _warframe = !_warframe;
-
     return 0;
 }
 
 int Cube::update() {
-
     _transform.model = glm::rotate(_transform.model, 0.05f, glm::vec3(0.0f, 1.0f, 0.0f));
     _transform.model = glm::translate(_transform.model, glm::vec3(0.0f, sinf(SDL_GetTicks() * 0.005f) * 0.1f, 0.0f));
     _buffers.ubo.update(static_cast<GLvoid*>(&_transform), sizeof(_transform));
-
-    return 0;
-}
-
-int Cube::initCommands() {
-
-    _commands.push_back(new Warframe(this));
-
     return 0;
 }

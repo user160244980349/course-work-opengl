@@ -9,8 +9,8 @@
 
 int Scene::prepare() {
 
+    dynamic_cast<IControlable*>(_camera)->initCommands();
     _input->addCommands(dynamic_cast<IControlable*>(_camera)->getCommands());
-    _input->addCommands(dynamic_cast<IControlable*>(_objects.back())->getCommands());
 
     for (auto &object : _objects) {
         object->prepare();
@@ -33,9 +33,8 @@ Scene::Scene(IInput* input) {
 
     _input = input;
     _camera = new DynamicCamera;
-    dynamic_cast<IControlable*>(_camera)->initCommands();
+
     _objects.push_back(new Cube);
-    dynamic_cast<IControlable*>(_objects.back())->initCommands();
 
 }
 

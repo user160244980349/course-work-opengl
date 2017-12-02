@@ -50,7 +50,6 @@ set(SOURCES
         include/commands/IInputCommand.h
         include/commands/QuitCommand.h
         include/commands/ICommand.h
-        include/commands/Warframe.h
         include/commands/AInputCommand.h
 
         include/Kernel.h
@@ -81,7 +80,6 @@ set(SOURCES
         source/commands/MoveBack.cpp
         source/commands/MoveRight.cpp
         source/commands/MoveLeft.cpp
-        source/commands/Warframe.cpp
         source/commands/AInputCommand.cpp
 
         source/Kernel.cpp
