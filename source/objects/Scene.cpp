@@ -35,6 +35,15 @@ Scene::Scene(IInput* input) {
     _camera = new DynamicCamera;
 
     _objects.push_back(new Cube);
+    dynamic_cast<Cube*>(_objects.back())->translate({8,0,3});
+    _objects.push_back(new Cube);
+    dynamic_cast<Cube*>(_objects.back())->translate({1,0,3});
+    _objects.push_back(new Cube);
+    dynamic_cast<Cube*>(_objects.back())->translate({4,0,3});
+    _objects.push_back(new Cube);
+    dynamic_cast<Cube*>(_objects.back())->translate({4,0,0});
+    _objects.push_back(new Cube);
+    dynamic_cast<Cube*>(_objects.back())->translate({4,0,-3});
 
 }
 

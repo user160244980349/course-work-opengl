@@ -18,6 +18,7 @@ public:
     int prepare() override;
     int update() override;
     int draw() override;
+    int translate(glm::vec3 position);
 
 protected:
     struct {
