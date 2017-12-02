@@ -3,7 +3,6 @@
 //
 
 #include <objects/DynamicCamera.h>
-#include "commands/MoveRight.h"
 
 
 MoveRight::MoveRight(IControlable *o) : AInputCommand(o) {}
@@ -24,3 +23,5 @@ int MoveRight::execute(SDL_Event event) {
 
     return 0;
 }
+
+MoveRight::~MoveRight() {}

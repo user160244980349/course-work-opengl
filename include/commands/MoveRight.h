@@ -11,6 +11,7 @@
 
 class MoveRight : public AInputCommand {
 public:
+    virtual ~MoveRight() override;
     explicit MoveRight(IControlable* o);
     int execute(SDL_Event event) override;
 };

@@ -12,3 +12,5 @@ int QuitCommand::execute(SDL_Event event) {
     return 0;
 }
 
+QuitCommand::~QuitCommand() {}
+

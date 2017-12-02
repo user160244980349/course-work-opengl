@@ -3,7 +3,6 @@
 //
 
 #include <objects/DynamicCamera.h>
-#include "commands/MoveBack.h"
 
 
 MoveBack::MoveBack(IControlable *o) : AInputCommand(o) {}
@@ -24,3 +23,5 @@ int MoveBack::execute(SDL_Event event) {
 
     return 0;
 }
+
+MoveBack::~MoveBack() {}

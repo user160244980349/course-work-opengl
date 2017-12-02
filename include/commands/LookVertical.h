@@ -11,6 +11,7 @@
 
 class LookVertical : public AInputCommand {
 public:
+    virtual ~LookVertical() override;
     explicit LookVertical(IControlable* o);
     int execute(SDL_Event event) override;
 };

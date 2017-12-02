@@ -11,6 +11,7 @@
 
 class MoveBack : public AInputCommand {
 public:
+    virtual ~MoveBack() override;
     explicit MoveBack(IControlable* o);
     int execute(SDL_Event event) override;
 };

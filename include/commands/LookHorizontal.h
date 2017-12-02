@@ -11,6 +11,7 @@
 
 class LookHorizontal : public AInputCommand {
 public:
+    virtual ~LookHorizontal() override;
     explicit LookHorizontal(IControlable* o);
     int execute(SDL_Event event) override;
 };

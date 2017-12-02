@@ -10,6 +10,7 @@
 
 class MoveUp : public AInputCommand {
 public:
+    virtual ~MoveUp() override;
     explicit MoveUp(IControlable* o);
     int execute(SDL_Event event) override;
 };

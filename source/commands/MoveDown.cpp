@@ -3,7 +3,6 @@
 //
 
 #include <objects/DynamicCamera.h>
-#include "commands/MoveDown.h"
 
 MoveDown::MoveDown(IControlable *o) : AInputCommand(o) {}
 
@@ -23,3 +22,5 @@ int MoveDown::execute(SDL_Event event) {
 
     return 0;
 }
+
+MoveDown::~MoveDown() {}

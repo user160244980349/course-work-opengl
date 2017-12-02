@@ -11,6 +11,7 @@
 
 class MoveForward : public AInputCommand {
 public:
+    virtual ~MoveForward() override;
     explicit MoveForward(IControlable* o);
     int execute(SDL_Event event) override;
 };

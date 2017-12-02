@@ -3,7 +3,6 @@
 //
 
 #include <objects/DynamicCamera.h>
-#include "commands/LookVertical.h"
 
 LookVertical::LookVertical(IControlable *o) : AInputCommand(o) {}
 
@@ -14,3 +13,5 @@ int LookVertical::execute(SDL_Event event) {
 
     return 0;
 }
+
+LookVertical::~LookVertical() {}

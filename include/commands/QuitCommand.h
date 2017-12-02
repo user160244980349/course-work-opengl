@@ -11,6 +11,7 @@
 
 class QuitCommand : public IInputCommand {
 public:
+    virtual ~QuitCommand() override;
     int execute(SDL_Event event) override;
 };
 
