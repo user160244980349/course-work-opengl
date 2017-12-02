@@ -89,8 +89,8 @@ int Cube::draw() {
     return 0;
 }
 
-int Cube::setCamera(ICamera *camera) {
-    camera->use(_shaders.front().shaderProgramId);
+int Cube::setCamera(ICamera& camera) {
+    camera.use(_shaders.front().shaderProgramId);
     return 0;
 }
 

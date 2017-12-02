@@ -10,7 +10,7 @@
 
 class OpenGl {
 public:
-    static OpenGl* getInstance();
+    static OpenGl& getInstance();
 
     PFNGLBINDVERTEXARRAYPROC                bindVertexArray;
     PFNGLGENBUFFERSPROC                     genBuffers;
@@ -47,8 +47,6 @@ public:
     PFNGLPOLYGONMODEPROC                    polygonMode;
 
 protected:
-    static OpenGl* _instance;
-
     OpenGl();
 };
 

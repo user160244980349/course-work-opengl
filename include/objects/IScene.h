@@ -10,7 +10,6 @@
 
 class IScene {
 public:
-    virtual int prepare() = 0;
     virtual int draw() = 0;
 };
 

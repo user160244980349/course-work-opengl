@@ -6,21 +6,19 @@
 #define OPENGL_SCENE_H
 
 #include <objects/IScene.h>
-#include <graphics/IDrawable.h>
-#include <input/IInput.h>
+#include <objects/IObject.h>
+#include <objects/DynamicCamera.h>
 
 
 class Scene : public IScene {
 public:
-    explicit Scene(IInput* input);
+    explicit Scene();
     ~Scene();
-    int prepare() override;
     int draw() override;
 
 protected:
-    IInput* _input;
-    ICamera* _camera;
-    std::list<IDrawable*> _objects{};
+    DynamicCamera _camera;
+    std::list<IObject*> _objects{};
 };
 
 

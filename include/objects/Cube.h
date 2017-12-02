@@ -14,7 +14,7 @@
 
 class Cube : public IDrawable, public AObject {
 public:
-    int setCamera(ICamera* camera) override;
+    int setCamera(ICamera& camera) override;
     int prepare() override;
     int update() override;
     int draw() override;

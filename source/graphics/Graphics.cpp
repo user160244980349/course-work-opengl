@@ -69,28 +69,20 @@ Graphics::Graphics() {
 
     SDL_GL_SetSwapInterval(1);
 
-    OpenGl::getInstance()->enable(GL_CULL_FACE);
-    OpenGl::getInstance()->enable(GL_DEPTH_TEST);
-    OpenGl::getInstance()->enable(GL_MULTISAMPLE);
-    OpenGl::getInstance()->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    OpenGl::getInstance()->clearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    OpenGl::getInstance()->finish();
+    OpenGl::getInstance().enable(GL_CULL_FACE);
+    OpenGl::getInstance().enable(GL_DEPTH_TEST);
+    OpenGl::getInstance().enable(GL_MULTISAMPLE);
+    OpenGl::getInstance().clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    OpenGl::getInstance().clearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    OpenGl::getInstance().finish();
 }
 
 Graphics::~Graphics() {
 
-    delete(OpenGl::getInstance());
     SDL_GL_DeleteContext(_glContext);
     SDL_DestroyWindow(_window);
     SDL_Quit();
 
-}
-
-int Graphics::prepare(IScene* scene) {
-
-    scene->prepare();
-
-    return 0;
 }
 
 int Graphics::draw(IScene* scene) {
@@ -98,9 +90,9 @@ int Graphics::draw(IScene* scene) {
     static Uint32 start;
     Uint32 duration;
 
-    OpenGl::getInstance()->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    OpenGl::getInstance().clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     scene->draw();
-    OpenGl::getInstance()->finish();
+    OpenGl::getInstance().finish();
     SDL_GL_SwapWindow(_window);
 
     duration = SDL_GetTicks() - start;
@@ -111,4 +103,9 @@ int Graphics::draw(IScene* scene) {
     start = SDL_GetTicks();
 
     return 0;
+}
+
+Graphics& Graphics::getInstance() {
+    static Graphics instance;
+    return instance;
 }

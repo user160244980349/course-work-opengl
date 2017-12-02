@@ -3,7 +3,7 @@
 
 int main(int argc, char **argv){
 
-    Kernel instance;
+    Kernel::getInstance().run();
 
     return 0;
 }

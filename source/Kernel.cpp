@@ -3,49 +3,33 @@
 //
 
 #include <Kernel.h>
-#include <input/ClientInput.h>
 #include <commands/QuitCommand.h>
+#include <graphics/OpenGl.h>
 
 Kernel::Kernel() {
+    Graphics::getInstance();
+    ClientInput::getInstance().addCommand(new QuitCommand);
+};
 
-    _graphics = new Graphics;
-    _input = new ClientInput;
-    _scene = new Scene(_input);
+int Kernel::run() {
 
-    initCommands();
+    _scene = new Scene();
 
-    _input->addCommands(getCommands());
-
-    flow();
-
-}
-
-Kernel::~Kernel() {
-
-    delete(_scene);
-    delete(_graphics);
-    delete(_input);
-
-}
-
-int Kernel::flow() {
-
-    _scene->prepare();
-
-    while(running){
-
-        _input->perform();
-        _graphics->draw(_scene);
-
+    while(_running){
+        ClientInput::getInstance().perform();
+        Graphics::getInstance().draw(_scene);
     }
+    delete(_scene);
 
     return 0;
 }
 
-int Kernel::initCommands() {
+int Kernel::stop() {
+    _running = false;
+}
 
-    _commands.push_back(new QuitCommand(this));
-
-    return 0;
+Kernel &Kernel::getInstance() {
+    static Kernel instance;
+    return instance;
 }
 

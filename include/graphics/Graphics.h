@@ -5,21 +5,19 @@
 #ifndef OPENGL_GRAPHICS_H
 #define OPENGL_GRAPHICS_H
 
-#include "IOutput.h"
 #include <list>
 #include <objects/IScene.h>
 #include <GL/glcorearb.h>
 
 
-    class Graphics : public IOutput {
+    class Graphics {
     public:
-        Graphics();
+        static Graphics& getInstance();
         ~Graphics();
-        int prepare(IScene* scene) override;
-        int draw(IScene* scene) override;
+        int draw(IScene* scene);
 
     protected:
-        std::list<IScene*> _observers{};
+        Graphics();
         SDL_Window* _window;
         SDL_GLContext _glContext;
         GLuint _width;

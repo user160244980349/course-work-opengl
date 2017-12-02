@@ -7,16 +7,19 @@
 
 #include <SDL2/SDL_events.h>
 #include <list>
-#include <input/IInput.h>
 #include <input/IControlable.h>
 
 
-class ClientInput : public IInput {
+class ClientInput {
 public:
-    ClientInput();
-    int perform() override;
-    int addCommands(std::list<IInputCommand*> commands) override;
+    static ClientInput& getInstance();
+    int perform();
+    int addCommand(IInputCommand* command);
+    int addCommands(std::list<IInputCommand*> commands);
+
 protected:
+    ClientInput();
+
     std::list<IInputCommand*> _commands;
     SDL_Event _event{};
 };

@@ -11,11 +11,7 @@
 
 class QuitCommand : public IInputCommand {
 public:
-    explicit QuitCommand(Kernel* kernel);
     int execute(SDL_Event event) override;
-
-protected:
-    Kernel* _kernel;
 };
 
 

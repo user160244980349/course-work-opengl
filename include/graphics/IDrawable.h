@@ -12,7 +12,7 @@ class IDrawable {
 public:
     virtual int draw() = 0;
     virtual int prepare() = 0;
-    virtual int setCamera(ICamera* camera) = 0;
+    virtual int setCamera(ICamera& camera) = 0;
 };
 
 

@@ -6,8 +6,6 @@
 #include <iostream>
 #include "graphics/OpenGl.h"
 
-OpenGl* OpenGl::_instance = nullptr;
-
 OpenGl::OpenGl() {
 
     if (SDL_GL_LoadLibrary(nullptr) != 0) {
@@ -53,11 +51,8 @@ OpenGl::OpenGl() {
 
 }
 
-OpenGl* OpenGl::getInstance() {
-
-    if (_instance == nullptr)
-        _instance = new OpenGl;
-
-    return _instance;
+OpenGl& OpenGl::getInstance() {
+    static OpenGl instance;
+    return instance;
 }
 

@@ -26,10 +26,8 @@ set(SOURCES
         include/graphics/Vao.h
         include/graphics/Vbo.h
         include/graphics/Vertex3d.h
-        include/graphics/IOutput.h
         include/graphics/IDrawable.h
 
-        include/input/IInput.h
         include/input/IControlable.h
         include/input/AControlable.h
         include/input/ClientInput.h

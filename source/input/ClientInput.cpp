@@ -30,7 +30,17 @@ ClientInput::ClientInput() {
 
 }
 
+int ClientInput::addCommand(IInputCommand *command) {
+    _commands.push_back(command);
+    return 0;
+}
+
 int ClientInput::addCommands(std::list<IInputCommand*> commands) {
     _commands.merge(commands);
     return 0;
+}
+
+ClientInput &ClientInput::getInstance() {
+    static ClientInput instance;
+    return instance;
 }

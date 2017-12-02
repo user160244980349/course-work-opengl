@@ -9,24 +9,20 @@
 #include <objects/Scene.h>
 #include <graphics/Graphics.h>
 #include <input/AControlable.h>
-#include <input/IInput.h>
+#include <input/ClientInput.h>
 
 
-class Kernel : public AControlable {
+class Kernel {
 public:
-    bool running;
-
-    Kernel();
-    int initCommands() override;
-    ~Kernel();
-
+    static Kernel& getInstance();
+    int run();
+    int stop();
 
 protected:
-    Graphics* _graphics;
-    IInput* _input;
-    Scene* _scene;
+    Kernel();
 
-    int flow();
+    bool _running;
+    Scene* _scene;
 };
 
 
