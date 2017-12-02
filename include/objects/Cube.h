@@ -35,8 +35,6 @@ protected:
     std::vector <Shader> _shaders{};
     std::vector <Vertex3d> _vertices{};
     std::vector <GLuint> _order{};
-
-    bool _warframe = true;
 };
 
 
