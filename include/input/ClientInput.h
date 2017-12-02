@@ -15,7 +15,6 @@ public:
     static ClientInput& getInstance();
     int perform();
     int addCommand(IInputCommand* command);
-    int addCommands(std::list<IInputCommand*> commands);
 
 protected:
     ClientInput();

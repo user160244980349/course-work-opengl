@@ -6,15 +6,15 @@
 #define OPENGL_GRAPHICS_H
 
 #include <list>
-#include <objects/IScene.h>
 #include <GL/glcorearb.h>
+#include <objects/Scene.h>
 
 
-    class Graphics {
+class Graphics {
     public:
         static Graphics& getInstance();
         ~Graphics();
-        int draw(IScene* scene);
+        int draw(Scene* scene);
 
     protected:
         Graphics();

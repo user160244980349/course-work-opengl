@@ -4,7 +4,6 @@
 
 #include <Kernel.h>
 #include <commands/QuitCommand.h>
-#include <graphics/OpenGl.h>
 
 Kernel::Kernel() {
     Graphics::getInstance();
@@ -12,14 +11,13 @@ Kernel::Kernel() {
 };
 
 int Kernel::run() {
+    _running = true;
+    Scene* scene = new Scene;
 
-    _scene = new Scene();
-
-    while(_running){
+    while(_running) {
         ClientInput::getInstance().perform();
-        Graphics::getInstance().draw(_scene);
+        Graphics::getInstance().draw(scene);
     }
-    delete(_scene);
 
     return 0;
 }

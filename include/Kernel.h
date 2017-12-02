@@ -21,7 +21,6 @@ protected:
     Kernel();
 
     bool _running;
-    Scene* _scene;
 };
 
 

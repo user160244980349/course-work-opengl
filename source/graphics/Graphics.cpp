@@ -3,8 +3,6 @@
 //
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_image.h>
 #include "graphics/Graphics.h"
 #include <iostream>
 #include <graphics/OpenGl.h>
@@ -16,16 +14,6 @@ Graphics::Graphics() {
     _height = 1080;
 
     if ( SDL_Init(SDL_INIT_VIDEO) != 0 ) {
-        std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
-        exit(1);
-    }
-
-    if ( TTF_Init() != 0 ) {
-        std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
-        exit(1);
-    }
-
-    if ( IMG_Init(IMG_INIT_PNG) == 0 ) {
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
         exit(1);
     }
@@ -42,6 +30,7 @@ Graphics::Graphics() {
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 16);
     SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
+
 
     _window = SDL_CreateWindow(
             "OpenGL",
@@ -85,7 +74,7 @@ Graphics::~Graphics() {
 
 }
 
-int Graphics::draw(IScene* scene) {
+int Graphics::draw(Scene* scene) {
 
     static Uint32 start;
     Uint32 duration;

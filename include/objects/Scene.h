@@ -5,16 +5,15 @@
 #ifndef OPENGL_SCENE_H
 #define OPENGL_SCENE_H
 
-#include <objects/IScene.h>
 #include <objects/IObject.h>
 #include <objects/DynamicCamera.h>
 
 
-class Scene : public IScene {
+class Scene {
 public:
-    explicit Scene();
+    Scene();
     ~Scene();
-    int draw() override;
+    int draw();
 
 protected:
     DynamicCamera _camera;

@@ -36,7 +36,6 @@ set(SOURCES
         include/objects/Cube.h
         include/objects/AObject.h
         include/objects/DynamicCamera.h
-        include/objects/IScene.h
 
         include/commands/MoveLeft.h
         include/commands/MoveRight.h
