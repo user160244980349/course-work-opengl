@@ -5,6 +5,8 @@
 #include <objects/DynamicCamera.h>
 #include "commands/MoveForward.h"
 
+MoveForward::MoveForward(IControlable *o) : AInputCommand(o) {}
+
 int MoveForward::execute(SDL_Event event) {
 
     static bool state = false;
@@ -20,8 +22,4 @@ int MoveForward::execute(SDL_Event event) {
     }
 
     return 0;
-}
-
-MoveForward::MoveForward(IControlable *o) : AInputCommand(o) {
-
 }

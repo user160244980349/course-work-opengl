@@ -5,9 +5,7 @@
 #include <objects/DynamicCamera.h>
 #include "commands/LookHorizontal.h"
 
-LookHorizontal::LookHorizontal(IControlable *o) : AInputCommand(o) {
-
-}
+LookHorizontal::LookHorizontal(IControlable *o) : AInputCommand(o) {}
 
 int LookHorizontal::execute(SDL_Event event) {
 

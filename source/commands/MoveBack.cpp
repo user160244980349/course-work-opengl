@@ -6,6 +6,8 @@
 #include "commands/MoveBack.h"
 
 
+MoveBack::MoveBack(IControlable *o) : AInputCommand(o) {}
+
 int MoveBack::execute(SDL_Event event) {
 
     static bool state = false;
@@ -21,8 +23,4 @@ int MoveBack::execute(SDL_Event event) {
     }
 
     return 0;
-}
-
-MoveBack::MoveBack(IControlable *o) : AInputCommand(o) {
-
 }

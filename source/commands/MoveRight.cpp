@@ -6,6 +6,8 @@
 #include "commands/MoveRight.h"
 
 
+MoveRight::MoveRight(IControlable *o) : AInputCommand(o) {}
+
 int MoveRight::execute(SDL_Event event) {
 
     static bool state = false;
@@ -21,8 +23,4 @@ int MoveRight::execute(SDL_Event event) {
     }
 
     return 0;
-}
-
-MoveRight::MoveRight(IControlable *o) : AInputCommand(o) {
-
 }

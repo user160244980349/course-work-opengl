@@ -5,14 +5,12 @@
 #include <objects/DynamicCamera.h>
 #include "commands/LookVertical.h"
 
+LookVertical::LookVertical(IControlable *o) : AInputCommand(o) {}
+
 int LookVertical::execute(SDL_Event event) {
 
     if (event.type == SDL_MOUSEMOTION)
         dynamic_cast<DynamicCamera*>(_object)->lookVertical(event.motion.yrel);
 
     return 0;
-}
-
-LookVertical::LookVertical(IControlable *o) : AInputCommand(o) {
-
 }
