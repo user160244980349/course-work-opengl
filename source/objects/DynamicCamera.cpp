@@ -5,14 +5,6 @@
 #include "objects/DynamicCamera.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/rotate_vector.hpp>
-#include <commands/LookVertical.h>
-#include <commands/LookHorizontal.h>
-#include <commands/MoveForward.h>
-#include <commands/MoveBack.h>
-#include <commands/MoveRight.h>
-#include <commands/MoveLeft.h>
-#include <commands/MoveUp.h>
-#include <commands/MoveDown.h>
 
 DynamicCamera::DynamicCamera() {
 
@@ -35,6 +27,18 @@ DynamicCamera::DynamicCamera() {
     _ubo.set(static_cast<GLvoid*>(&_transform), sizeof(_transform));
 
     initCommands();
+}
+
+int DynamicCamera::initCommands() {
+    _commands.lh = LookHorizontal(this);
+    _commands.lv = LookVertical(this);
+    _commands.mb = MoveBack(this);
+    _commands.md = MoveDown(this);
+    _commands.mf = MoveForward(this);
+    _commands.ml = MoveLeft(this);
+    _commands.mr = MoveRight(this);
+    _commands.mu = MoveUp(this);
+    return 0;
 }
 
 int DynamicCamera::use(GLuint shaderProgramId) {
@@ -72,20 +76,6 @@ int DynamicCamera::update() {
 
     _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
     _ubo.update(static_cast<GLvoid*>(&_transform), sizeof(_transform));
-
-    return 0;
-}
-
-int DynamicCamera::initCommands() {
-
-    new LookVertical(this);
-    new LookHorizontal(this);
-    new MoveForward(this);
-    new MoveBack(this);
-    new MoveRight(this);
-    new MoveLeft(this);
-    new MoveUp(this);
-    new MoveDown(this);
 
     return 0;
 }

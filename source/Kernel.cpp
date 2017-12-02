@@ -7,7 +7,7 @@
 
 Kernel::Kernel() {
     Graphics::getInstance();
-    ClientInput::getInstance().addCommand(new QuitCommand);
+    UserInput::getInstance().addCommand(new QuitCommand);
 };
 
 int Kernel::run() {
@@ -15,10 +15,11 @@ int Kernel::run() {
     Scene* scene = new Scene;
 
     while(_running) {
-        ClientInput::getInstance().perform();
+        UserInput::getInstance().perform();
         Graphics::getInstance().draw(scene);
     }
 
+    delete(scene);
     return 0;
 }
 

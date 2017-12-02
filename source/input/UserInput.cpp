@@ -4,9 +4,9 @@
 
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "input/ClientInput.h"
+#include "input/UserInput.h"
 
-int ClientInput::perform() {
+int UserInput::perform() {
 
     while(SDL_PollEvent(&_event)) {
 
@@ -18,7 +18,7 @@ int ClientInput::perform() {
     return 0;
 }
 
-ClientInput::ClientInput() {
+UserInput::UserInput() {
 
     if ( SDL_Init(SDL_INIT_EVENTS) != 0 ){
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
@@ -30,12 +30,12 @@ ClientInput::ClientInput() {
 
 }
 
-int ClientInput::addCommand(IInputCommand *command) {
+int UserInput::addCommand(IInputCommand *command) {
     _commands.push_back(command);
     return 0;
 }
 
-ClientInput &ClientInput::getInstance() {
-    static ClientInput instance;
+UserInput &UserInput::getInstance() {
+    static UserInput instance;
     return instance;
 }

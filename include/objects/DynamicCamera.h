@@ -9,6 +9,14 @@
 #include <graphics/Ubo.h>
 #include <objects/ICamera.h>
 #include <input/IControlable.h>
+#include <commands/LookVertical.h>
+#include <commands/LookHorizontal.h>
+#include <commands/MoveForward.h>
+#include <commands/MoveBack.h>
+#include <commands/MoveRight.h>
+#include <commands/MoveLeft.h>
+#include <commands/MoveUp.h>
+#include <commands/MoveDown.h>
 
 
 class DynamicCamera : public ICamera , public IControlable {
@@ -44,6 +52,17 @@ protected:
         bool q = false;
         bool e = false;
     } _keys;
+
+    struct {
+        LookVertical lv;
+        LookHorizontal lh;
+        MoveForward mf;
+        MoveBack mb;
+        MoveRight mr;
+        MoveLeft  ml;
+        MoveUp mu;
+        MoveDown md;
+    } _commands;
 
     glm::vec3 _cameraPos;
     glm::vec3 _cameraUp;

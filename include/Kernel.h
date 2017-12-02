@@ -8,7 +8,7 @@
 #include <SDL2/SDL.h>
 #include <objects/Scene.h>
 #include <graphics/Graphics.h>
-#include <input/ClientInput.h>
+#include <input/UserInput.h>
 
 
 class Kernel {
