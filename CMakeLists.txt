@@ -78,7 +78,7 @@ set(SOURCES
         source/commands/AInputCommand.cpp
 
         source/Kernel.cpp
-)
+        source/commands/MoveUp.cpp include/commands/MoveUp.h source/commands/MoveDown.cpp include/commands/MoveDown.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

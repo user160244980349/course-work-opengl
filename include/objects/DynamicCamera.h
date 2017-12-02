@@ -22,6 +22,8 @@ public:
     int moveBack();
     int moveRight();
     int moveLeft();
+    int moveUp();
+    int moveDown();
 
     int lookHorizontal(int x);
     int lookVertical(int y);

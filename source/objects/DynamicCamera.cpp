@@ -11,6 +11,8 @@
 #include <commands/MoveBack.h>
 #include <commands/MoveRight.h>
 #include <commands/MoveLeft.h>
+#include <commands/MoveUp.h>
+#include <commands/MoveDown.h>
 
 DynamicCamera::DynamicCamera() {
 
@@ -51,16 +53,22 @@ int DynamicCamera::update() {
     );
 
     if (!_keys.w)
-        _cameraPos += -_cameraFront * _speedFront;
+        _cameraPos += -glm::normalize(_cameraFront) * _speedFront;
 
     if (!_keys.s)
-        _cameraPos += _cameraFront * _speedFront;
+        _cameraPos += glm::normalize(_cameraFront) * _speedFront;
 
     if (!_keys.a)
         _cameraPos += glm::normalize(glm::cross(_cameraFront, _cameraUp)) * _speedUp;
 
     if (!_keys.d)
         _cameraPos += -glm::normalize(glm::cross(_cameraFront, _cameraUp)) * _speedUp;
+
+    if (!_keys.e)
+        _cameraPos += -glm::normalize(_cameraUp) * _speedUp;
+
+    if (!_keys.q)
+        _cameraPos += glm::normalize(_cameraUp) * _speedUp;
 
     _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
     _ubo.update(static_cast<GLvoid*>(&_transform), sizeof(_transform));
@@ -76,6 +84,8 @@ int DynamicCamera::initCommands() {
     new MoveBack(this);
     new MoveRight(this);
     new MoveLeft(this);
+    new MoveUp(this);
+    new MoveDown(this);
 
     return 0;
 }
@@ -97,6 +107,16 @@ int DynamicCamera::moveRight() {
 
 int DynamicCamera::moveLeft() {
     _keys.a = !_keys.a;
+    return 0;
+}
+
+int DynamicCamera::moveUp() {
+    _keys.e = !_keys.e;
+    return 0;
+}
+
+int DynamicCamera::moveDown() {
+    _keys.q = !_keys.q;
     return 0;
 }
 
