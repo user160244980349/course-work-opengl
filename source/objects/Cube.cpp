@@ -6,8 +6,7 @@
 #include <objects/Cube.h>
 #include <SDL2/SDL_timer.h>
 
-int Cube::prepare() {
-
+Cube::Cube() : AObject() {
     _shaders.emplace_back(Shader(
             "../resource/shaders/FirstVertex.glsl",
             "../resource/shaders/FirstFragment.glsl")
@@ -79,9 +78,9 @@ int Cube::prepare() {
     _buffers.ubo.create();
     _buffers.ubo.set(static_cast<GLvoid*>(&_transform), sizeof(_transform));
     _buffers.ubo.connect(_shaders.front().shaderProgramId, TRANSFORM_BIND_INDEX, "object");
-
-    return 0;
 }
+
+Cube::~Cube() {}
 
 int Cube::draw() {
     _buffers.vao.bind(GL_TRIANGLES, static_cast<GLuint>(_order.size()));

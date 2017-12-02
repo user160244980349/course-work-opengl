@@ -15,6 +15,7 @@ public:
     static UserInput& getInstance();
     int perform();
     int addCommand(IInputCommand* command);
+    ~UserInput();
 
 protected:
     UserInput();

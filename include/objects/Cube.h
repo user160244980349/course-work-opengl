@@ -13,8 +13,9 @@
 
 class Cube : public IDrawable, public AObject {
 public:
+    Cube();
+    ~Cube();
     int setCamera(ICamera& camera) override;
-    int prepare() override;
     int update() override;
     int draw() override;
     int translate(glm::vec3 position);

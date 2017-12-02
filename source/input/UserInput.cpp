@@ -39,3 +39,10 @@ UserInput &UserInput::getInstance() {
     static UserInput instance;
     return instance;
 }
+
+UserInput::~UserInput() {
+    for (auto &command : _commands) {
+        delete(command);
+    }
+    _commands.clear();
+}

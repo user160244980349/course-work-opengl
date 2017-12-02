@@ -12,6 +12,7 @@
 class AObject : public IObject {
 public:
     AObject();
+    ~AObject();
     explicit AObject(std::string name);
     std::string getName() override;
     int getId() override;

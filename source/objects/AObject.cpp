@@ -25,3 +25,5 @@ std::string AObject::getName() {
 int AObject::getId() {
     return _id;
 }
+
+AObject::~AObject() {}

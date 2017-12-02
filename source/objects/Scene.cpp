@@ -8,6 +8,10 @@
 
 int Scene::draw() {
 
+    for (auto &object : _objects) {
+        object->update();
+    }
+
     _camera.update();
     for (auto &object : _objects) {
         auto drawableObject = dynamic_cast<IDrawable *>(object);
@@ -22,20 +26,29 @@ int Scene::draw() {
 Scene::Scene() {
 
     _objects.push_back(new Cube);
-    dynamic_cast<Cube*>(_objects.back())->translate({8,0,3});
+    dynamic_cast<Cube*>(_objects.back())->translate({9,0,0});
     _objects.push_back(new Cube);
-    dynamic_cast<Cube*>(_objects.back())->translate({1,0,3});
+    dynamic_cast<Cube*>(_objects.back())->translate({6,0,0});
     _objects.push_back(new Cube);
-    dynamic_cast<Cube*>(_objects.back())->translate({4,0,3});
+    dynamic_cast<Cube*>(_objects.back())->translate({3,0,0});
+
     _objects.push_back(new Cube);
-    dynamic_cast<Cube*>(_objects.back())->translate({4,0,0});
+    dynamic_cast<Cube*>(_objects.back())->translate({9,0,3});
     _objects.push_back(new Cube);
-    dynamic_cast<Cube*>(_objects.back())->translate({4,0,-3});
+    dynamic_cast<Cube*>(_objects.back())->translate({6,0,3});
+    _objects.push_back(new Cube);
+    dynamic_cast<Cube*>(_objects.back())->translate({3,0,3});
+
+    _objects.push_back(new Cube);
+    dynamic_cast<Cube*>(_objects.back())->translate({9,0,6});
+    _objects.push_back(new Cube);
+    dynamic_cast<Cube*>(_objects.back())->translate({6,0,6});
+    _objects.push_back(new Cube);
+    dynamic_cast<Cube*>(_objects.back())->translate({3,0,6});
 
     for (auto &object : _objects) {
         auto drawableObject = dynamic_cast<IDrawable*>(object);
         if (drawableObject != nullptr) {
-            drawableObject->prepare();
             drawableObject->setCamera(_camera);
         }
     }
