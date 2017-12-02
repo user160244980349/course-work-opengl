@@ -63,7 +63,7 @@ Graphics::Graphics() {
     OpenGl::getInstance().enable(GL_MULTISAMPLE);
     OpenGl::getInstance().clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     OpenGl::getInstance().clearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    OpenGl::getInstance().finish();
+    OpenGl::getInstance().flush();
 }
 
 Graphics::~Graphics() {

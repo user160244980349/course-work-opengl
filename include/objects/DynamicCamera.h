@@ -17,7 +17,7 @@ public:
     int use(GLuint shaderProgramId) override;
     int update() override;
 
-    int initCommands();
+    int initCommands() override;
     int moveForward();
     int moveBack();
     int moveRight();

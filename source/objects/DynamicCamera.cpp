@@ -11,7 +11,6 @@
 #include <commands/MoveBack.h>
 #include <commands/MoveRight.h>
 #include <commands/MoveLeft.h>
-#include <input/ClientInput.h>
 
 DynamicCamera::DynamicCamera() {
 
@@ -71,12 +70,12 @@ int DynamicCamera::update() {
 
 int DynamicCamera::initCommands() {
 
-    ClientInput::getInstance().addCommand(new LookVertical(this));
-    ClientInput::getInstance().addCommand(new LookHorizontal(this));
-    ClientInput::getInstance().addCommand(new MoveForward(this));
-    ClientInput::getInstance().addCommand(new MoveBack(this));
-    ClientInput::getInstance().addCommand(new MoveRight(this));
-    ClientInput::getInstance().addCommand(new MoveLeft(this));
+    new LookVertical(this);
+    new LookHorizontal(this);
+    new MoveForward(this);
+    new MoveBack(this);
+    new MoveRight(this);
+    new MoveLeft(this);
 
     return 0;
 }

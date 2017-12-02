@@ -12,7 +12,7 @@
 
 class AInputCommand : public IInputCommand {
 public:
-    AInputCommand(IControlable* o);
+    explicit AInputCommand(IControlable* o);
 
 protected:
     IControlable* _object;
