@@ -8,7 +8,6 @@
 #include <SDL2/SDL.h>
 #include <objects/Scene.h>
 #include <graphics/Graphics.h>
-#include <input/AControlable.h>
 #include <input/ClientInput.h>
 
 

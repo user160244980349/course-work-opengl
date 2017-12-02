@@ -13,7 +13,6 @@
 class IControlable {
 public:
     virtual int initCommands() = 0;
-    virtual std::list<IInputCommand*> getCommands() = 0;
 };
 
 

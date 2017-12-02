@@ -8,16 +8,16 @@
 #include <SDL2/SDL_events.h>
 #include <graphics/Ubo.h>
 #include <objects/ICamera.h>
-#include <input/AControlable.h>
+#include <input/IControlable.h>
 
 
-class DynamicCamera : public ICamera, public AControlable  {
+class DynamicCamera : public ICamera , public IControlable {
 public:
     DynamicCamera();
     int use(GLuint shaderProgramId) override;
     int update() override;
-    int initCommands() override;
 
+    int initCommands();
     int moveForward();
     int moveBack();
     int moveRight();

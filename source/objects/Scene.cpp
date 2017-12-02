@@ -4,7 +4,6 @@
 
 #include <objects/Cube.h>
 #include <objects/DynamicCamera.h>
-#include <input/ClientInput.h>
 #include "objects/Scene.h"
 
 int Scene::draw() {
@@ -40,9 +39,6 @@ Scene::Scene() {
             drawableObject->setCamera(_camera);
         }
     }
-
-    dynamic_cast<IControlable*>(&_camera)->initCommands();
-    ClientInput::getInstance().addCommands(dynamic_cast<IControlable*>(&_camera)->getCommands());
 }
 
 Scene::~Scene() {

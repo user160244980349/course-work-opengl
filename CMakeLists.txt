@@ -29,7 +29,6 @@ set(SOURCES
         include/graphics/IDrawable.h
 
         include/input/IControlable.h
-        include/input/AControlable.h
         include/input/ClientInput.h
 
         include/objects/IObject.h
@@ -65,7 +64,6 @@ set(SOURCES
         source/graphics/Vbo.cpp
 
         source/input/ClientInput.cpp
-        source/input/AControlable.cpp
 
         source/objects/Cube.cpp
         source/objects/DynamicCamera.cpp

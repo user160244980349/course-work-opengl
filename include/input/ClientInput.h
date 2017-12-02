@@ -20,7 +20,7 @@ public:
 protected:
     ClientInput();
 
-    std::list<IInputCommand*> _commands;
+    std::list<IInputCommand*> _commands{};
     SDL_Event _event{};
 };
 

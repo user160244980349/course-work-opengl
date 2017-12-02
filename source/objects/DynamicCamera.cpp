@@ -11,6 +11,7 @@
 #include <commands/MoveBack.h>
 #include <commands/MoveRight.h>
 #include <commands/MoveLeft.h>
+#include <input/ClientInput.h>
 
 DynamicCamera::DynamicCamera() {
 
@@ -32,6 +33,7 @@ DynamicCamera::DynamicCamera() {
     _ubo.create();
     _ubo.set(static_cast<GLvoid*>(&_transform), sizeof(_transform));
 
+    initCommands();
 }
 
 int DynamicCamera::use(GLuint shaderProgramId) {
@@ -69,12 +71,12 @@ int DynamicCamera::update() {
 
 int DynamicCamera::initCommands() {
 
-    _commands.push_back(new LookVertical(this));
-    _commands.push_back(new LookHorizontal(this));
-    _commands.push_back(new MoveForward(this));
-    _commands.push_back(new MoveBack(this));
-    _commands.push_back(new MoveRight(this));
-    _commands.push_back(new MoveLeft(this));
+    ClientInput::getInstance().addCommand(new LookVertical(this));
+    ClientInput::getInstance().addCommand(new LookHorizontal(this));
+    ClientInput::getInstance().addCommand(new MoveForward(this));
+    ClientInput::getInstance().addCommand(new MoveBack(this));
+    ClientInput::getInstance().addCommand(new MoveRight(this));
+    ClientInput::getInstance().addCommand(new MoveLeft(this));
 
     return 0;
 }
