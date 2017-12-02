@@ -30,14 +30,14 @@ DynamicCamera::DynamicCamera() {
 }
 
 int DynamicCamera::initCommands() {
-    _commands.lh = LookHorizontal(this);
-    _commands.lv = LookVertical(this);
-    _commands.mb = MoveBack(this);
-    _commands.md = MoveDown(this);
-    _commands.mf = MoveForward(this);
-    _commands.ml = MoveLeft(this);
-    _commands.mr = MoveRight(this);
-    _commands.mu = MoveUp(this);
+    new LookHorizontal(this);
+    new LookVertical(this);
+    new MoveBack(this);
+    new MoveDown(this);
+    new MoveForward(this);
+    new MoveLeft(this);
+    new MoveRight(this);
+    new MoveUp(this);
     return 0;
 }
 

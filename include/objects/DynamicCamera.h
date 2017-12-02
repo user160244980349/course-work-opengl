@@ -53,17 +53,6 @@ protected:
         bool e = false;
     } _keys;
 
-    struct {
-        LookVertical lv;
-        LookHorizontal lh;
-        MoveForward mf;
-        MoveBack mb;
-        MoveRight mr;
-        MoveLeft  ml;
-        MoveUp mu;
-        MoveDown md;
-    } _commands;
-
     glm::vec3 _cameraPos;
     glm::vec3 _cameraUp;
     glm::vec3 _cameraFront;
