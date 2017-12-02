@@ -25,26 +25,12 @@ int Scene::draw() {
 
 Scene::Scene() {
 
-    _objects.push_back(new Cube);
-    dynamic_cast<Cube*>(_objects.back())->translate({9,0,0});
-    _objects.push_back(new Cube);
-    dynamic_cast<Cube*>(_objects.back())->translate({6,0,0});
-    _objects.push_back(new Cube);
-    dynamic_cast<Cube*>(_objects.back())->translate({3,0,0});
-
-    _objects.push_back(new Cube);
-    dynamic_cast<Cube*>(_objects.back())->translate({9,0,3});
-    _objects.push_back(new Cube);
-    dynamic_cast<Cube*>(_objects.back())->translate({6,0,3});
-    _objects.push_back(new Cube);
-    dynamic_cast<Cube*>(_objects.back())->translate({3,0,3});
-
-    _objects.push_back(new Cube);
-    dynamic_cast<Cube*>(_objects.back())->translate({9,0,6});
-    _objects.push_back(new Cube);
-    dynamic_cast<Cube*>(_objects.back())->translate({6,0,6});
-    _objects.push_back(new Cube);
-    dynamic_cast<Cube*>(_objects.back())->translate({3,0,6});
+    for (int i = -20; i < 20; i++) {
+        for (int j = -20; j < 20; j++) {
+            _objects.push_back(new Cube);
+            dynamic_cast<Cube *>(_objects.back())->translate({i*3, 0, j*3});
+        }
+    }
 
     for (auto &object : _objects) {
         auto drawableObject = dynamic_cast<IDrawable*>(object);
