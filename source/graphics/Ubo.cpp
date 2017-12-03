@@ -21,7 +21,6 @@ int Ubo::create() {
 
 int Ubo::connect(GLuint program, UboBindIndex bindIndex, std::string blockName) {
 
-    OpenGl::getInstance().bindBuffer(GL_UNIFORM_BUFFER, id);
     GLuint blockIndex = OpenGl::getInstance().getUniformBlockIndex(program, blockName.c_str());
     OpenGl::getInstance().bindBufferBase(GL_UNIFORM_BUFFER, bindIndex, id);
     OpenGl::getInstance().uniformBlockBinding(program, blockIndex, bindIndex);

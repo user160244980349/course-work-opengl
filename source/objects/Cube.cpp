@@ -82,8 +82,8 @@ Cube::Cube() : AObject() {
 }
 
 int Cube::draw() {
-    _buffers.vao.bind(GL_TRIANGLES, static_cast<GLuint>(_order.size()));
     _buffers.ubo.connect(_shaders.front().shaderProgramId, TRANSFORM_BIND_INDEX, "object");
+    _buffers.vao.bind(GL_TRIANGLES, static_cast<GLuint>(_order.size()));
     return 0;
 }
 
