@@ -4,15 +4,17 @@
 
 #include <objects/Cube.h>
 #include <objects/DynamicCamera.h>
+#include <iostream>
 #include "objects/Scene.h"
 
 int Scene::draw() {
+
+    _camera.update();
 
     for (auto &object : _objects) {
         object->update();
     }
 
-    _camera.update();
     for (auto &object : _objects) {
         auto drawableObject = dynamic_cast<IDrawable *>(object);
         if (drawableObject != nullptr) {
@@ -38,6 +40,7 @@ Scene::Scene() {
             drawableObject->setCamera(_camera);
         }
     }
+    std::cout << typeid(_objects.back()).name() << std::endl;
 }
 
 Scene::~Scene() {

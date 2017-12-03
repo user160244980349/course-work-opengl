@@ -20,7 +20,7 @@ DynamicCamera::DynamicCamera() {
     _cameraUp    = glm::vec3(0.0f, 1.0f, 0.0f);
     _cameraFront = glm::normalize(front);
 
-    _transform.projection = glm::perspective(glm::radians(50.0f), 16.0f / 9.0f, 0.1f, 100.0f);
+    _transform.projection = glm::perspective(glm::radians(50.0f), 16.0f / 9.0f, 0.1f, 500.0f);
     _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
 
     _ubo.create();

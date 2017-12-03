@@ -78,8 +78,7 @@ Cube::Cube() : AObject() {
     _buffers.ebo.set(_order.data(), static_cast<GLuint>(_order.size()));
 
     _buffers.ubo.create();
-    _buffers.ubo.set(static_cast<GLvoid*>(&_transform), sizeof(_transform));
-    _buffers.ubo.connect(_shaders.front().shaderProgramId, TRANSFORM_BIND_INDEX, "object");
+    _buffers.ubo.set(static_cast<GLvoid*>(&_transform.model), sizeof(_transform.model));
 }
 
 int Cube::draw() {
@@ -96,12 +95,13 @@ int Cube::setCamera(ICamera& camera) {
 int Cube::update() {
     _transform.model = glm::rotate(_transform.model, 0.05f, glm::vec3(0.0f, 1.0f, 0.0f));
     _transform.model = glm::translate(_transform.model, glm::vec3(0.0f, sinf((SDL_GetTicks() + _id) * 0.005f) * 0.5f, 0.0f));
-    _buffers.ubo.update(static_cast<GLvoid*>(&_transform), sizeof(_transform));
+    _buffers.ubo.update(static_cast<GLvoid*>(&_transform.model), sizeof(_transform.model));
     return 0;
 }
 
 int Cube::translate(glm::vec3 position) {
     _transform.model = glm::translate(_transform.model, position);
+    _buffers.ubo.update(static_cast<GLvoid*>(&_transform.model), sizeof(_transform.model));
     return 0;
 }
 

@@ -12,7 +12,7 @@
 
 class IControlable {
 public:
-    virtual int initCommands() = 0;
+    virtual int initCommands() {};
 };
 
 

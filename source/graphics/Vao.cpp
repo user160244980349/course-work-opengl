@@ -29,7 +29,6 @@ int Vao::bind(GLuint draw_style, GLuint used_vertices) {
 
     OpenGl::getInstance().bindVertexArray(id);
     OpenGl::getInstance().drawElements(draw_style, used_vertices, GL_UNSIGNED_INT, static_cast<GLvoid*>(nullptr));
-    OpenGl::getInstance().bindVertexArray(0);
 
     return 0;
 }
