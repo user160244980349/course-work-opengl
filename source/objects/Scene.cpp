@@ -4,7 +4,6 @@
 
 #include <objects/Cube.h>
 #include <objects/DynamicCamera.h>
-#include <iostream>
 #include "objects/Scene.h"
 
 int Scene::draw() {
@@ -40,7 +39,6 @@ Scene::Scene() {
             drawableObject->setCamera(_camera);
         }
     }
-    std::cout << typeid(_objects.back()).name() << std::endl;
 }
 
 Scene::~Scene() {
