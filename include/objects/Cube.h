@@ -34,7 +34,7 @@ protected:
     } _transform;
 
     std::vector <Shader> _shaders{};
-    std::vector <Vertex3d> _vertices{};
+    std::vector <glm::vec3> _vertices{};
     std::vector <GLuint> _order{};
 };
 

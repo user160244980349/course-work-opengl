@@ -16,15 +16,15 @@ Cube::Cube() : AObject() {
 
     _shaders.front().use();
 
-    _vertices.emplace_back(Vertex3d{glm::vec4( 1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
-    _vertices.emplace_back(Vertex3d{glm::vec4(-1.0f, 1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
-    _vertices.emplace_back(Vertex3d{glm::vec4(-1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
-    _vertices.emplace_back(Vertex3d{glm::vec4( 1.0f,-1.0f,-1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    _vertices.emplace_back(glm::vec3( 1.0f, 1.0f,-1.0f));
+    _vertices.emplace_back(glm::vec3(-1.0f, 1.0f,-1.0f));
+    _vertices.emplace_back(glm::vec3(-1.0f,-1.0f,-1.0f));
+    _vertices.emplace_back(glm::vec3( 1.0f,-1.0f,-1.0f));
 
-    _vertices.emplace_back(Vertex3d{glm::vec4( 1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)});
-    _vertices.emplace_back(Vertex3d{glm::vec4(-1.0f, 1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)});
-    _vertices.emplace_back(Vertex3d{glm::vec4(-1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
-    _vertices.emplace_back(Vertex3d{glm::vec4( 1.0f,-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)});
+    _vertices.emplace_back(glm::vec3( 1.0f, 1.0f, 1.0f));
+    _vertices.emplace_back(glm::vec3(-1.0f, 1.0f, 1.0f));
+    _vertices.emplace_back(glm::vec3(-1.0f,-1.0f, 1.0f));
+    _vertices.emplace_back(glm::vec3( 1.0f,-1.0f, 1.0f));
 
     _order.emplace_back(0u);
     _order.emplace_back(3u);

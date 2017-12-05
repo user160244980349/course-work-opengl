@@ -25,7 +25,6 @@ set(SOURCES
         include/graphics/Ubo.h
         include/graphics/Vao.h
         include/graphics/Vbo.h
-        include/graphics/Vertex3d.h
         include/graphics/IDrawable.h
 
         include/input/IControlable.h

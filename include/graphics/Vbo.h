@@ -6,14 +6,13 @@
 #define OPENGL_VBO_H
 
 #include <graphics/ABuffer.h>
-#include "graphics/Vertex3d.h"
-
+#include <glm/vec3.hpp>
 
 class Vbo : public ABuffer {
 public:
     ~Vbo();
     int create() override;
-    int set(Vertex3d *v, GLuint size);
+    int set(glm::vec3* v, GLuint size);
 };
 
 

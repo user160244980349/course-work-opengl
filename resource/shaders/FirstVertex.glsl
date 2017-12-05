@@ -1,9 +1,7 @@
 #version 450 core
 
-layout (location = 0) in vec4 inPosition;
-layout (location = 1) in vec4 inColor;
-
-smooth out vec4 currentColor;
+in vec3 vertexPosition;
+smooth out vec4 vertexColor;
 
 uniform camera {
     mat4 projection;
@@ -15,6 +13,6 @@ uniform object {
 };
 
 void main() {
-   currentColor = inColor;
-   gl_Position = projection * viewPoint * model * vec4(inPosition);
+   vertexColor = vec4(vertexPosition, 0.5f);
+   gl_Position = projection * viewPoint * model * vec4(vertexPosition, 1.0f);
 }

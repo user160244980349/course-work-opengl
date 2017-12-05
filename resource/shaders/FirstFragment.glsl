@@ -1,9 +1,8 @@
 #version 450 core
 
-out vec4 outputColor;
-
-smooth in vec4 currentColor;
+smooth in vec4 vertexColor;
+out vec4 finalColor;
 
 void main() {
-   outputColor = vec4(currentColor);
+   finalColor = vertexColor;
 }
