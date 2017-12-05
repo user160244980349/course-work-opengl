@@ -56,6 +56,9 @@ public:
     PFNGLUNIFORM1FPROC                      uniform1f;
     PFNGLUNIFORM1IPROC                      uniform1i;
     PFNGLUNIFORM1UIPROC                     uniform1ui;
+    PFNGLGETPROGRAMINTERFACEIVPROC          getProgramInterfaceiv;
+    PFNGLGETPROGRAMRESOURCEIVPROC           getProgramResourceiv;
+    PFNGLGETPROGRAMRESOURCENAMEPROC         getProgramResourceName;
 
 protected:
     OpenGl();

@@ -12,6 +12,8 @@ Cube::Cube() : AObject() {
 
     _shaderProgram.compileShader("../resource/shaders/FirstVertex.glsl", VERTEX);
     _shaderProgram.compileShader("../resource/shaders/FirstFragment.glsl", FRAGMENT);
+    _shaderProgram.link();
+    _shaderProgram.use();
 
     _vertices.emplace_back(glm::vec3( 1.0f, 1.0f,-1.0f));
     _vertices.emplace_back(glm::vec3(-1.0f, 1.0f,-1.0f));

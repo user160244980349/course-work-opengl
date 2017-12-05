@@ -31,13 +31,13 @@ public:
     int moveLeft();
     int moveUp();
     int moveDown();
+    int accelerate();
 
     int lookHorizontal(int x);
     int lookVertical(int y);
 
 protected:
     ShaderProgram* _shaderProgram;
-
     struct {
         glm::mat4 projection;
         glm::mat4 viewPoint;
@@ -50,6 +50,7 @@ protected:
         bool d = false;
         bool q = false;
         bool e = false;
+        bool shift = false;
     } _keys;
 
     glm::vec3 _cameraPos;
@@ -59,6 +60,7 @@ protected:
     GLfloat _sensitivity;
     GLfloat _mouseX;
     GLfloat _mouseY;
+    GLfloat _acceleration;
     GLfloat _speedFront;
     GLfloat _speedUp;
 };

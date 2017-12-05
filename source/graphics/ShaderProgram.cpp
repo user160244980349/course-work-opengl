@@ -38,6 +38,7 @@ void ShaderProgram::compileShader(const std::string &filename, ShaderTypes type)
     if(!success) {
         GLchar infoLog[512];
         OpenGl::getInstance().getShaderInfoLog(shaderId, 512, nullptr, infoLog);
+        std::cout << infoLog << std::endl;
         exit(122);
     }
     OpenGl::getInstance().attachShader(_id, shaderId);
@@ -47,15 +48,10 @@ GLuint ShaderProgram::getId() {
     return _id;
 }
 
-bool ShaderProgram::isLinked() {
-    return _linked;
-}
-
 ShaderProgram::ShaderProgram() {
     _id = OpenGl::getInstance().createProgram();
     if (_id <= 0)
         exit(123);
-    _linked = false;
 }
 
 void ShaderProgram::link() {
@@ -67,9 +63,9 @@ void ShaderProgram::link() {
     if(!success) {
         GLchar infoLog[512];
         OpenGl::getInstance().getProgramInfoLog(_id, 512, nullptr, infoLog);
+        std::cout << infoLog << std::endl;
         exit(124);
     }
-    _linked = true;
 }
 
 void ShaderProgram::bindAttribLocation(unsigned int  location, const std::string& name) {
@@ -82,21 +78,21 @@ void ShaderProgram::bindFragDataLocation(unsigned int location, const std::strin
 
 void ShaderProgram::setUniform(const char* name, float x, float y, float z) {
     GLint loc = OpenGl::getInstance().getUniformLocation(_id, name);
-    OpenGl::getInstance().uniform3f(loc,x,y,z);
+    OpenGl::getInstance().uniform3f(loc, x, y, z);
 }
 
 void ShaderProgram::setUniform(const char* name, const glm::vec3& v) {
-    setUniform(name,v.x,v.y,v.z);
+    setUniform(name, v.x, v.y, v.z);
 }
 
 void ShaderProgram::setUniform(const char* name, const glm::vec4& v) {
     GLint loc = OpenGl::getInstance().getUniformLocation(_id, name);
-    OpenGl::getInstance().uniform4f(loc,v.x,v.y,v.z,v.w);
+    OpenGl::getInstance().uniform4f(loc, v.x, v.y, v.z, v.w);
 }
 
 void ShaderProgram::setUniform(const char* name, const glm::vec2& v) {
     GLint loc = OpenGl::getInstance().getUniformLocation(_id, name);
-    OpenGl::getInstance().uniform2f(loc,v.x,v.y);
+    OpenGl::getInstance().uniform2f(loc, v.x, v.y);
 }
 
 void ShaderProgram::setUniform(const char* name, const glm::mat4& m) {
@@ -131,4 +127,82 @@ void ShaderProgram::setUniform(const char* name, bool val ) {
 
 void ShaderProgram::use() {
     OpenGl::getInstance().useProgram(_id);
+}
+
+void ShaderProgram::printActiveUniforms() {
+    // For OpenGL 4.3 and above, use glGetProgramResource
+    GLint numUniforms = 0;
+    OpenGl::getInstance().getProgramInterfaceiv(_id, GL_UNIFORM, GL_ACTIVE_RESOURCES, &numUniforms);
+
+    GLenum properties[] = {GL_NAME_LENGTH, GL_TYPE, GL_LOCATION, GL_BLOCK_INDEX};
+
+    printf("Active uniforms:\n");
+    for( int i = 0; i < numUniforms; ++i ) {
+        GLint results[4];
+        OpenGl::getInstance().getProgramResourceiv(_id, GL_UNIFORM, i, 4, properties, 4, NULL, results);
+
+        if( results[3] != -1 ) continue;  // Skip uniforms in blocks
+        GLint nameBufSize = results[0] + 1;
+        char * name = new char[nameBufSize];
+        OpenGl::getInstance().getProgramResourceName(_id, GL_UNIFORM, i, nameBufSize, NULL, name);
+        printf("%-5d %s\n", results[2], name);
+        delete [] name;
+    }
+}
+
+void ShaderProgram::printActiveUniformBlocks() {
+    GLint numBlocks = 0;
+
+    OpenGl::getInstance().getProgramInterfaceiv(_id, GL_UNIFORM_BLOCK, GL_ACTIVE_RESOURCES, &numBlocks);
+    GLenum blockProps[] = {GL_NUM_ACTIVE_VARIABLES, GL_NAME_LENGTH};
+    GLenum blockIndex[] = {GL_ACTIVE_VARIABLES};
+    GLenum props[] = {GL_NAME_LENGTH, GL_TYPE, GL_BLOCK_INDEX};
+
+    for(int block = 0; block < numBlocks; ++block) {
+        GLint blockInfo[2];
+        OpenGl::getInstance().getProgramResourceiv(_id, GL_UNIFORM_BLOCK, block, 2, blockProps, 2, NULL, blockInfo);
+        GLint numUnis = blockInfo[0];
+
+        char * blockName = new char[blockInfo[1]+1];
+        OpenGl::getInstance().getProgramResourceName(_id, GL_UNIFORM_BLOCK, block, blockInfo[1]+1, NULL, blockName);
+        printf("Uniform block \"%s\":\n", blockName);
+        delete [] blockName;
+
+        GLint * unifIndexes = new GLint[numUnis];
+        OpenGl::getInstance().getProgramResourceiv(_id, GL_UNIFORM_BLOCK, block, 1, blockIndex, numUnis, NULL, unifIndexes);
+
+        for( int unif = 0; unif < numUnis; ++unif ) {
+            GLint uniIndex = unifIndexes[unif];
+            GLint results[3];
+            OpenGl::getInstance().getProgramResourceiv(_id, GL_UNIFORM, uniIndex, 3, props, 3, NULL, results);
+
+            GLint nameBufSize = results[0] + 1;
+            char * name = new char[nameBufSize];
+            OpenGl::getInstance().getProgramResourceName(_id, GL_UNIFORM, uniIndex, nameBufSize, NULL, name);
+            printf("    %s\n", name);
+            delete [] name;
+        }
+
+        delete [] unifIndexes;
+    }
+}
+
+void ShaderProgram::printActiveAttribs() {
+    // >= OpenGL 4.3, use glGetProgramResource
+    GLint numAttribs;
+    OpenGl::getInstance().getProgramInterfaceiv(_id, GL_PROGRAM_INPUT, GL_ACTIVE_RESOURCES, &numAttribs);
+
+    GLenum properties[] = {GL_NAME_LENGTH, GL_TYPE, GL_LOCATION};
+
+    printf("Active attributes:\n");
+    for( int i = 0; i < numAttribs; ++i ) {
+        GLint results[3];
+        OpenGl::getInstance().getProgramResourceiv(_id, GL_PROGRAM_INPUT, i, 3, properties, 3, NULL, results);
+
+        GLint nameBufSize = results[0] + 1;
+        char * name = new char[nameBufSize];
+        OpenGl::getInstance().getProgramResourceName(_id, GL_PROGRAM_INPUT, i, nameBufSize, NULL, name);
+        printf("%-5d %s\n", results[2], name);
+        delete [] name;
+    }
 }

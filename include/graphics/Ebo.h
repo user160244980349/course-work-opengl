@@ -10,9 +10,10 @@
 
 class Ebo : public ABuffer {
 public:
-    ~Ebo();
-    int create() override;
-    int set(GLuint *o, GLuint size);
+    ~Ebo() override {};
+    void create() override;
+    void remove() override;
+    void set(GLuint *o, GLuint size);
 };
 
 

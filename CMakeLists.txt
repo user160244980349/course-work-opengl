@@ -15,12 +15,10 @@ set(COMPILER_PATH "D:/Program\ Files/mingw-w64/x86_64-7.2.0-posix-seh-rt_v5-rev1
 set(SOURCES
 
         # HEADERS
-        include/graphics/UboBindIndexes.h
         include/graphics/OpenGl.h
         include/graphics/Graphics.h
         include/graphics/ABuffer.h
         include/graphics/Ebo.h
-        include/graphics/Shader.h
         include/objects/Scene.h
         include/graphics/Vao.h
         include/graphics/Vbo.h
@@ -55,7 +53,6 @@ set(SOURCES
         source/graphics/Ebo.cpp
         source/graphics/Graphics.cpp
         source/objects/Scene.cpp
-        source/graphics/Shader.cpp
         source/graphics/Vao.cpp
         source/graphics/Vbo.cpp
 
@@ -75,7 +72,13 @@ set(SOURCES
         source/commands/AInputCommand.cpp
 
         source/Kernel.cpp
-        source/commands/MoveUp.cpp include/commands/MoveUp.h source/commands/MoveDown.cpp include/commands/MoveDown.h source/graphics/ShaderProgram.cpp include/graphics/ShaderTypes.h include/graphics/ShaderProgram.h)
+        source/commands/MoveUp.cpp
+        include/commands/MoveUp.h
+        source/commands/MoveDown.cpp
+        include/commands/MoveDown.h
+        source/graphics/ShaderProgram.cpp
+        include/graphics/ShaderTypes.h
+        include/graphics/ShaderProgram.h include/commands/Accelerate.cpp include/commands/Accelerate.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

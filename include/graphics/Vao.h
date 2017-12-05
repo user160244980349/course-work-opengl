@@ -10,10 +10,11 @@
 
 class Vao : public ABuffer {
 public:
-    ~Vao();
-    int create() override;
-    int bind();
-    int bind(GLuint draw_style, GLuint used_vertices);
+    ~Vao() override {};
+    void create() override;
+    void remove() override;
+    void bind();
+    void bind(GLuint draw_style, GLuint used_vertices);
 };
 
 

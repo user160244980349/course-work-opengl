@@ -11,8 +11,9 @@
 class ABuffer {
 public:
     GLuint id{};
-
-    virtual int create() = 0;
+    virtual ~ABuffer() {};
+    virtual void create() {};
+    virtual void remove() {};
 };
 
 

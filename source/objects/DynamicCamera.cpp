@@ -5,6 +5,7 @@
 #include "objects/DynamicCamera.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/rotate_vector.hpp>
+#include <commands/Accelerate.h>
 
 DynamicCamera::DynamicCamera() {
 
@@ -13,6 +14,7 @@ DynamicCamera::DynamicCamera() {
     _speedUp = 0.2f;
     _speedFront = 0.2f;
     _sensitivity = 0.1f;
+    _acceleration = 10.0f;
 
     glm::vec3 front = glm::vec3(1.0f, 0.0f, 0.0f);
 
@@ -35,6 +37,7 @@ int DynamicCamera::initCommands() {
     new MoveLeft(this);
     new MoveRight(this);
     new MoveUp(this);
+    new Accelerate(this);
     return 0;
 }
 
@@ -51,25 +54,51 @@ int DynamicCamera::update() {
             cosf(glm::radians(_mouseY)) * sinf(glm::radians(_mouseX)))
     );
 
-    if (!_keys.w)
-        _cameraPos += -glm::normalize(_cameraFront) * _speedFront;
 
-    if (!_keys.s)
-        _cameraPos += glm::normalize(_cameraFront) * _speedFront;
+    if (!_keys.shift) {
 
-    if (!_keys.a)
-        _cameraPos += glm::normalize(glm::cross(_cameraFront, _cameraUp)) * _speedUp;
+        if (!_keys.w)
+            _cameraPos += -glm::normalize(_cameraFront) * _speedFront;
 
-    if (!_keys.d)
-        _cameraPos += -glm::normalize(glm::cross(_cameraFront, _cameraUp)) * _speedUp;
+        if (!_keys.s)
+            _cameraPos += glm::normalize(_cameraFront) * _speedFront;
 
-    if (!_keys.e)
-        _cameraPos += -glm::normalize(_cameraUp) * _speedUp;
+        if (!_keys.a)
+            _cameraPos += glm::normalize(glm::cross(_cameraFront, _cameraUp)) * _speedUp;
 
-    if (!_keys.q)
-        _cameraPos += glm::normalize(_cameraUp) * _speedUp;
+        if (!_keys.d)
+            _cameraPos += -glm::normalize(glm::cross(_cameraFront, _cameraUp)) * _speedUp;
+
+        if (!_keys.e)
+            _cameraPos += -glm::normalize(_cameraUp) * _speedUp;
+
+        if (!_keys.q)
+            _cameraPos += glm::normalize(_cameraUp) * _speedUp;
+
+    } else {
+
+        if (!_keys.w)
+            _cameraPos += -glm::normalize(_cameraFront) * _speedFront * _acceleration;
+
+        if (!_keys.s)
+            _cameraPos += glm::normalize(_cameraFront) * _speedFront * _acceleration;
+
+        if (!_keys.a)
+            _cameraPos += glm::normalize(glm::cross(_cameraFront, _cameraUp)) * _speedUp * _acceleration;
+
+        if (!_keys.d)
+            _cameraPos += -glm::normalize(glm::cross(_cameraFront, _cameraUp)) * _speedUp * _acceleration;
+
+        if (!_keys.e)
+            _cameraPos += -glm::normalize(_cameraUp) * _speedUp * _acceleration;
+
+        if (!_keys.q)
+            _cameraPos += glm::normalize(_cameraUp) * _speedUp * _acceleration;
+
+    }
 
     _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
+
     _shaderProgram->setUniform("viewPoint", _transform.viewPoint);
     _shaderProgram->setUniform("projection", _transform.projection);
 
@@ -103,6 +132,11 @@ int DynamicCamera::moveUp() {
 
 int DynamicCamera::moveDown() {
     _keys.q = !_keys.q;
+    return 0;
+}
+
+int DynamicCamera::accelerate() {
+    _keys.shift = !_keys.shift;
     return 0;
 }
 

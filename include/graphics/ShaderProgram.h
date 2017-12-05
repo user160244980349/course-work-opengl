@@ -19,7 +19,6 @@ public:
     void link();
     void use();
     GLuint getId();
-    bool isLinked();
     void bindAttribLocation(unsigned int  location, const std::string& name);
     void bindFragDataLocation(unsigned int  location, const std::string& name);
     void setUniform(const char* name, float x, float y, float z);
@@ -32,11 +31,13 @@ public:
     void setUniform(const char* name, int val);
     void setUniform(const char* name, unsigned int val);
     void setUniform(const char* name, bool val);
+    void printActiveAttribs();
+    void printActiveUniformBlocks();
+    void printActiveUniforms();
 
 protected:
     unsigned int _id;
-    bool _linked;
-    std::map<std::string, unsigned int> _uniformLocations;
+
 };
 
 

@@ -5,30 +5,19 @@
 #include <graphics/OpenGl.h>
 #include "graphics/Vao.h"
 
-Vao::~Vao() {
-
-    OpenGl::getInstance().deleteVertexArrays(1, &id);
-
-}
-
-int Vao::create() {
-
+void Vao::create() {
     OpenGl::getInstance().genVertexArrays(1, &id);
-
-    return 0;
 }
 
-int Vao::bind() {
-
+void Vao::bind() {
     OpenGl::getInstance().bindVertexArray(id);
-
-    return 0;
 }
 
-int Vao::bind(GLuint draw_style, GLuint used_vertices) {
-
+void Vao::bind(GLuint draw_style, GLuint used_vertices) {
     OpenGl::getInstance().bindVertexArray(id);
     OpenGl::getInstance().drawElements(draw_style, used_vertices, GL_UNSIGNED_INT, static_cast<GLvoid*>(nullptr));
+}
 
-    return 0;
+void Vao::remove() {
+    OpenGl::getInstance().deleteVertexArrays(1, &id);
 }

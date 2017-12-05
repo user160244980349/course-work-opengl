@@ -10,9 +10,9 @@ int Scene::draw() {
 
     _camera.update();
 
-    for (auto &object : _objects) {
-        object->update();
-    }
+//    for (auto &object : _objects) {
+//        object->update();
+//    }
 
     for (auto &object : _objects) {
         auto drawableObject = dynamic_cast<IDrawable *>(object);
@@ -26,10 +26,12 @@ int Scene::draw() {
 
 Scene::Scene() {
 
-    for (int i = -20; i < 20; i++) {
-        for (int j = -20; j < 20; j++) {
-            _objects.push_back(new Cube);
-            dynamic_cast<Cube*>(_objects.back())->translate({i*3, 0, j*3});
+    for (int i = -10; i < 10; i++) {
+        for (int j = -10; j < 10; j++) {
+            for (int k = -10; k < 10; k++) {
+                _objects.push_back(new Cube);
+                dynamic_cast<Cube *>(_objects.back())->translate({i * 3, k * 3, j * 3});
+            }
         }
     }
 
@@ -39,6 +41,8 @@ Scene::Scene() {
             drawableObject->setCamera(_camera);
         }
     }
+
+
 }
 
 Scene::~Scene() {

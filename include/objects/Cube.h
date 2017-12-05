@@ -9,6 +9,10 @@
 #include <objects/IObject.h>
 #include <objects/ICamera.h>
 #include <graphics/ShaderProgram.h>
+#include <graphics/Vao.h>
+#include <graphics/Vbo.h>
+#include <graphics/Ebo.h>
+#include <vector>
 #include "AObject.h"
 
 

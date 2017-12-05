@@ -10,9 +10,10 @@
 
 class Vbo : public ABuffer {
 public:
-    ~Vbo();
-    int create() override;
-    int set(glm::vec3* v, GLuint size);
+    ~Vbo() override {};
+    void create() override;
+    void remove() override;
+    void set(glm::vec3* v, GLuint size);
 };
 
 
