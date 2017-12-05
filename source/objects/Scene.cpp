@@ -29,7 +29,7 @@ Scene::Scene() {
     for (int i = -20; i < 20; i++) {
         for (int j = -20; j < 20; j++) {
             _objects.push_back(new Cube);
-            dynamic_cast<Cube *>(_objects.back())->translate({i*3, 0, j*3});
+            dynamic_cast<Cube*>(_objects.back())->translate({i*3, 0, j*3});
         }
     }
 

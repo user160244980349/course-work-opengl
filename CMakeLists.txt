@@ -22,7 +22,6 @@ set(SOURCES
         include/graphics/Ebo.h
         include/graphics/Shader.h
         include/objects/Scene.h
-        include/graphics/Ubo.h
         include/graphics/Vao.h
         include/graphics/Vbo.h
         include/graphics/IDrawable.h
@@ -57,7 +56,6 @@ set(SOURCES
         source/graphics/Graphics.cpp
         source/objects/Scene.cpp
         source/graphics/Shader.cpp
-        source/graphics/Ubo.cpp
         source/graphics/Vao.cpp
         source/graphics/Vbo.cpp
 
@@ -77,7 +75,7 @@ set(SOURCES
         source/commands/AInputCommand.cpp
 
         source/Kernel.cpp
-        source/commands/MoveUp.cpp include/commands/MoveUp.h source/commands/MoveDown.cpp include/commands/MoveDown.h)
+        source/commands/MoveUp.cpp include/commands/MoveUp.h source/commands/MoveDown.cpp include/commands/MoveDown.h source/graphics/ShaderProgram.cpp include/graphics/ShaderTypes.h include/graphics/ShaderProgram.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

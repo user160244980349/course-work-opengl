@@ -46,6 +46,17 @@ OpenGl::OpenGl() {
     finish = (PFNGLFINISHPROC)SDL_GL_GetProcAddress("glFinish");
     clearColor = (PFNGLCLEARCOLORPROC)SDL_GL_GetProcAddress("glClearColor");
     polygonMode = (PFNGLPOLYGONMODEPROC)SDL_GL_GetProcAddress("glPolygonMode");
+    bindAttribLocation = (PFNGLBINDATTRIBLOCATIONPROC)SDL_GL_GetProcAddress("glBindAttribLocation ");
+    bindFragDataLocation = (PFNGLBINDFRAGDATALOCATIONPROC)SDL_GL_GetProcAddress("glBindFragDataLocation ");
+    getUniformLocation = (PFNGLGETUNIFORMLOCATIONPROC)SDL_GL_GetProcAddress("getUniformLocation ");
+    uniform3f = (PFNGLUNIFORM3FPROC)SDL_GL_GetProcAddress("glUniform3f ");
+    uniform4f = (PFNGLUNIFORM4FPROC)SDL_GL_GetProcAddress("glUniform4f ");
+    uniform2f = (PFNGLUNIFORM2FPROC)SDL_GL_GetProcAddress("glUniform2f ");
+    uniformMatrix4fv = (PFNGLUNIFORMMATRIX4FVPROC)SDL_GL_GetProcAddress("glUniformMatrix4fv ");
+    uniformMatrix3fv = (PFNGLUNIFORMMATRIX3FVPROC)SDL_GL_GetProcAddress("glUniformMatrix3fv ");
+    uniform1f = (PFNGLUNIFORM1FPROC)SDL_GL_GetProcAddress("glUniform1f ");
+    uniform1i = (PFNGLUNIFORM1IPROC)SDL_GL_GetProcAddress("glUniform1i ");
+    uniform1ui = (PFNGLUNIFORM1UIPROC)SDL_GL_GetProcAddress("glUniform1ui ");
 
     SDL_GL_UnloadLibrary();
 

@@ -8,6 +8,7 @@
 #include <graphics/IDrawable.h>
 #include <objects/IObject.h>
 #include <objects/ICamera.h>
+#include <graphics/ShaderProgram.h>
 #include "AObject.h"
 
 
@@ -26,14 +27,13 @@ protected:
         Vao vao;
         Vbo vbo;
         Ebo ebo;
-        Ubo ubo;
     } _buffers;
 
     struct {
         glm::mat4 model = glm::mat4(1.0f);
     } _transform;
 
-    std::vector <Shader> _shaders{};
+    ShaderProgram _shaderProgram;
     std::vector <glm::vec3> _vertices{};
     std::vector <GLuint> _order{};
 };

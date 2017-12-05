@@ -9,12 +9,9 @@
 Cube::~Cube() = default;
 
 Cube::Cube() : AObject() {
-    _shaders.emplace_back(Shader(
-            "../resource/shaders/FirstVertex.glsl",
-            "../resource/shaders/FirstFragment.glsl")
-    );
 
-    _shaders.front().use();
+    _shaderProgram.compileShader("../resource/shaders/FirstVertex.glsl", VERTEX);
+    _shaderProgram.compileShader("../resource/shaders/FirstFragment.glsl", FRAGMENT);
 
     _vertices.emplace_back(glm::vec3( 1.0f, 1.0f,-1.0f));
     _vertices.emplace_back(glm::vec3(-1.0f, 1.0f,-1.0f));
@@ -77,31 +74,29 @@ Cube::Cube() : AObject() {
     _buffers.ebo.create();
     _buffers.ebo.set(_order.data(), static_cast<GLuint>(_order.size()));
 
-    _buffers.ubo.create();
-    _buffers.ubo.set(static_cast<GLvoid*>(&_transform.model), sizeof(_transform.model));
 }
 
 int Cube::draw() {
-    _buffers.ubo.connect(_shaders.front().shaderProgramId, TRANSFORM_BIND_INDEX, "object");
+    _shaderProgram.setUniform("model", _transform.model);
     _buffers.vao.bind(GL_TRIANGLES, static_cast<GLuint>(_order.size()));
     return 0;
 }
 
 int Cube::setCamera(ICamera& camera) {
-    camera.use(_shaders.front().shaderProgramId);
+    camera.use(&_shaderProgram);
     return 0;
 }
 
 int Cube::update() {
     _transform.model = glm::rotate(_transform.model, 0.05f, glm::vec3(0.0f, 1.0f, 0.0f));
     _transform.model = glm::translate(_transform.model, glm::vec3(0.0f, sinf((SDL_GetTicks() + _id) * 0.005f) * 0.5f, 0.0f));
-    _buffers.ubo.update(static_cast<GLvoid*>(&_transform.model), sizeof(_transform.model));
+    _shaderProgram.setUniform("model", _transform.model);
     return 0;
 }
 
 int Cube::translate(glm::vec3 position) {
     _transform.model = glm::translate(_transform.model, position);
-    _buffers.ubo.update(static_cast<GLvoid*>(&_transform.model), sizeof(_transform.model));
+    _shaderProgram.setUniform("model", _transform.model);
     return 0;
 }
 

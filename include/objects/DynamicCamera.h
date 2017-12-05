@@ -6,7 +6,6 @@
 #define OPENGL_DYNAMICCAMERA_H
 
 #include <SDL2/SDL_events.h>
-#include <graphics/Ubo.h>
 #include <objects/ICamera.h>
 #include <input/IControlable.h>
 #include <commands/LookVertical.h>
@@ -22,7 +21,7 @@
 class DynamicCamera : public ICamera , public IControlable {
 public:
     DynamicCamera();
-    int use(GLuint shaderProgramId) override;
+    int use(ShaderProgram* shaderProgram) override;
     int update() override;
 
     int initCommands() override;
@@ -37,7 +36,7 @@ public:
     int lookVertical(int y);
 
 protected:
-    Ubo _ubo;
+    ShaderProgram* _shaderProgram;
 
     struct {
         glm::mat4 projection;

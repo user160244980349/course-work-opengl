@@ -9,11 +9,12 @@
 #include <glm/detail/type_mat.hpp>
 #include <glm/vec3.hpp>
 #include <glm/detail/type_mat4x4.hpp>
+#include <graphics/ShaderProgram.h>
 
 
 class ICamera {
 public:
-    virtual int use(GLuint shaderProgramId) {};
+    virtual int use(ShaderProgram* shaderProgram) {};
     virtual int update() {};
 };
 

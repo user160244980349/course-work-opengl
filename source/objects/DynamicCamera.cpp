@@ -23,9 +23,6 @@ DynamicCamera::DynamicCamera() {
     _transform.projection = glm::perspective(glm::radians(50.0f), 16.0f / 9.0f, 0.1f, 500.0f);
     _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
 
-    _ubo.create();
-    _ubo.set(static_cast<GLvoid*>(&_transform), sizeof(_transform));
-
     initCommands();
 }
 
@@ -41,10 +38,8 @@ int DynamicCamera::initCommands() {
     return 0;
 }
 
-int DynamicCamera::use(GLuint shaderProgramId) {
-
-    _ubo.connect(shaderProgramId, CAMERA_BIND_INDEX, "camera");
-
+int DynamicCamera::use(ShaderProgram* shaderProgram) {
+    _shaderProgram = shaderProgram;
     return 0;
 }
 
@@ -75,7 +70,8 @@ int DynamicCamera::update() {
         _cameraPos += glm::normalize(_cameraUp) * _speedUp;
 
     _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
-    _ubo.update(static_cast<GLvoid*>(&_transform), sizeof(_transform));
+    _shaderProgram->setUniform("viewPoint", _transform.viewPoint);
+    _shaderProgram->setUniform("projection", _transform.projection);
 
     return 0;
 }

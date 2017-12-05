@@ -7,11 +7,11 @@
 
 #include <graphics/Vao.h>
 #include <graphics/Vbo.h>
-#include <graphics/Ubo.h>
 #include <graphics/Ebo.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <vector>
 #include <graphics/Shader.h>
+#include <string>
 
 
 class IObject {
