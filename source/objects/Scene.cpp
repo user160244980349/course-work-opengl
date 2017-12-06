@@ -6,7 +6,7 @@
 #include <objects/DynamicCamera.h>
 #include "objects/Scene.h"
 
-int Scene::draw() {
+void Scene::draw() {
 
     _camera.update();
 
