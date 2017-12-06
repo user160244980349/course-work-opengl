@@ -6,18 +6,18 @@
 #include "graphics/Vao.h"
 
 void Vao::create() {
-    OpenGl::getInstance().genVertexArrays(1, &id);
+    OpenGl::getInstance().genVertexArrays(1, &_id);
 }
 
 void Vao::bind() {
-    OpenGl::getInstance().bindVertexArray(id);
+    OpenGl::getInstance().bindVertexArray(_id);
 }
 
 void Vao::bind(GLuint draw_style, GLuint used_vertices) {
-    OpenGl::getInstance().bindVertexArray(id);
+    OpenGl::getInstance().bindVertexArray(_id);
     OpenGl::getInstance().drawElements(draw_style, used_vertices, GL_UNSIGNED_INT, static_cast<GLvoid*>(nullptr));
 }
 
 void Vao::remove() {
-    OpenGl::getInstance().deleteVertexArrays(1, &id);
+    OpenGl::getInstance().deleteVertexArrays(1, &_id);
 }

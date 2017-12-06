@@ -5,15 +5,13 @@
 #ifndef OPENGL_LOOKVERTICAL_H
 #define OPENGL_LOOKVERTICAL_H
 
+#include "BaseInputCommand.h"
 
-#include "AInputCommand.h"
-
-
-class LookVertical : public AInputCommand {
+class LookVertical : public BaseInputCommand {
 public:
-    virtual ~LookVertical() override;
-    explicit LookVertical(IControlable* o);
-    int execute(SDL_Event event) override;
+    explicit LookVertical(IControlable &object);
+
+    void execute(SDL_Event event) override;
 };
 
 

@@ -7,7 +7,7 @@
 
 Kernel::Kernel() {
     Graphics::getInstance();
-    UserInput::getInstance().addCommand(new QuitCommand);
+    UserInput::getInstance().addCommand(new QuitCommand());
 };
 
 int Kernel::run() {
@@ -16,7 +16,7 @@ int Kernel::run() {
 
     while(_running) {
         UserInput::getInstance().perform();
-        Graphics::getInstance().draw(scene);
+        Graphics::getInstance().draw(*scene);
     }
 
     delete(scene);

@@ -74,13 +74,18 @@ Graphics::~Graphics() {
 
 }
 
-int Graphics::draw(Scene* scene) {
+Graphics& Graphics::getInstance() {
+    static Graphics instance;
+    return instance;
+}
 
-    static Uint32 start;
-    Uint32 duration;
+void Graphics::draw(Scene &scene) {
+
+    static unsigned int start;
+    unsigned int  duration;
 
     OpenGl::getInstance().clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    scene->draw();
+    scene.draw();
     OpenGl::getInstance().finish();
     SDL_GL_SwapWindow(_window);
 
@@ -90,11 +95,4 @@ int Graphics::draw(Scene* scene) {
         SDL_Delay(1000 / _fps - duration);
 
     start = SDL_GetTicks();
-
-    return 0;
-}
-
-Graphics& Graphics::getInstance() {
-    static Graphics instance;
-    return instance;
 }

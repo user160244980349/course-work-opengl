@@ -5,9 +5,8 @@
 #ifndef OPENGL_SCENE_H
 #define OPENGL_SCENE_H
 
-#include <objects/IObject.h>
+#include <interfaces/IObject.h>
 #include <objects/DynamicCamera.h>
-
 
 class Scene {
 public:

@@ -5,15 +5,13 @@
 #ifndef OPENGL_MOVEBACK_H
 #define OPENGL_MOVEBACK_H
 
+#include "BaseInputCommand.h"
 
-#include "AInputCommand.h"
-
-
-class MoveBack : public AInputCommand {
+class MoveBack : public BaseInputCommand {
 public:
-    virtual ~MoveBack() override;
-    explicit MoveBack(IControlable* o);
-    int execute(SDL_Event event) override;
+    explicit MoveBack(IControlable &object);
+
+    void execute(SDL_Event event) override;
 };
 
 

@@ -5,12 +5,10 @@
 #ifndef OPENGL_EBO_H
 #define OPENGL_EBO_H
 
-#include <graphics/ABuffer.h>
+#include "BaseBuffer.h"
 
-
-class Ebo : public ABuffer {
+class Ebo : public BaseBuffer {
 public:
-    ~Ebo() override {};
     void create() override;
     void remove() override;
     void set(GLuint *o, GLuint size);

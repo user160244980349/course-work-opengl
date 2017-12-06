@@ -5,13 +5,12 @@
 #ifndef OPENGL_DRAWABLEINTERFACE_H
 #define OPENGL_DRAWABLEINTERFACE_H
 
-#include "objects/ICamera.h"
+#include "ICamera.h"
 
 
 class IDrawable {
 public:
-    virtual int draw() {};
-    virtual int setCamera(ICamera& camera) {};
+    virtual int draw(ICamera &camera) {};
 };
 
 

@@ -11,6 +11,7 @@
 
 class IObject {
 public:
+    IObject() {};
     virtual ~IObject() {};
     virtual std::string getName() {};
     virtual int getId() {};

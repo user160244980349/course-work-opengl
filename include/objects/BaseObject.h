@@ -6,14 +6,14 @@
 #define OPENGL_AOBJECT_H
 
 #include <string>
-#include <objects/IObject.h>
+#include <interfaces/IObject.h>
 
 
-class AObject : public IObject {
+class BaseObject : public IObject {
 public:
-    AObject();
-    explicit AObject(std::string name);
-    virtual ~AObject() override;
+    BaseObject();
+    explicit BaseObject(std::string name);
+    virtual ~BaseObject() override;
 
     std::string getName() override;
     int getId() override;

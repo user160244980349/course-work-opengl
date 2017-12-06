@@ -5,14 +5,13 @@
 #ifndef OPENGL_QUITCOMMAND_H
 #define OPENGL_QUITCOMMAND_H
 
-#include <commands/IInputCommand.h>
+#include <interfaces/IInputCommand.h>
 #include <Kernel.h>
 
 
 class QuitCommand : public IInputCommand {
 public:
-    virtual ~QuitCommand() override;
-    int execute(SDL_Event event) override;
+    void execute(SDL_Event event) override;
 };
 
 

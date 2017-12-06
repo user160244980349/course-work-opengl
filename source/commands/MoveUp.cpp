@@ -4,23 +4,19 @@
 
 #include <objects/DynamicCamera.h>
 
-MoveUp::MoveUp(IControlable *o) : AInputCommand(o) {}
+MoveUp::MoveUp(IControlable &object) : BaseInputCommand(object) {}
 
-int MoveUp::execute(SDL_Event event) {
+void MoveUp::execute(SDL_Event event) {
 
     static bool state = false;
 
     if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_e && !state) {
         state = !state;
-        dynamic_cast<DynamicCamera*>(_object)->moveUp();
+        dynamic_cast<DynamicCamera&>(_object).moveUp();
     }
 
     if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_e) {
         state = !state;
-        dynamic_cast<DynamicCamera*>(_object)->moveUp();
+        dynamic_cast<DynamicCamera&>(_object).moveUp();
     }
-
-    return 0;
 }
-
-MoveUp::~MoveUp() {}

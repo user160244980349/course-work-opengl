@@ -5,12 +5,11 @@
 #ifndef OPENGL_VBO_H
 #define OPENGL_VBO_H
 
-#include <graphics/ABuffer.h>
+#include "BaseBuffer.h"
 #include <glm/vec3.hpp>
 
-class Vbo : public ABuffer {
+class Vbo : public BaseBuffer {
 public:
-    ~Vbo() override {};
     void create() override;
     void remove() override;
     void set(glm::vec3* v, GLuint size);

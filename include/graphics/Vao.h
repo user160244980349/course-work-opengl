@@ -5,12 +5,10 @@
 #ifndef OPENGL_VAO_H
 #define OPENGL_VAO_H
 
-#include "ABuffer.h"
+#include "BaseBuffer.h"
 
-
-class Vao : public ABuffer {
+class Vao : public BaseBuffer {
 public:
-    ~Vao() override {};
     void create() override;
     void remove() override;
     void bind();

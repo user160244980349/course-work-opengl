@@ -4,14 +4,12 @@
 
 #include <objects/DynamicCamera.h>
 
-LookHorizontal::LookHorizontal(IControlable *o) : AInputCommand(o) {}
+LookHorizontal::LookHorizontal(IControlable &object) : BaseInputCommand(object) {}
 
-int LookHorizontal::execute(SDL_Event event) {
+void LookHorizontal::execute(SDL_Event event) {
 
     if (event.type == SDL_MOUSEMOTION)
-        dynamic_cast<DynamicCamera*>(_object)->lookHorizontal(event.motion.xrel);
+        dynamic_cast<DynamicCamera&>(_object).lookHorizontal(event.motion.xrel);
 
-    return 0;
 }
 
-LookHorizontal::~LookHorizontal() {}

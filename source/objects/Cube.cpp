@@ -8,7 +8,7 @@
 
 Cube::~Cube() = default;
 
-Cube::Cube() : AObject() {
+Cube::Cube() : BaseObject() {
 
     _shaderProgram.compileShader("../resource/shaders/FirstVertex.glsl", VERTEX);
     _shaderProgram.compileShader("../resource/shaders/FirstFragment.glsl", FRAGMENT);
@@ -78,14 +78,10 @@ Cube::Cube() : AObject() {
 
 }
 
-int Cube::draw() {
+int Cube::draw(ICamera &camera) {
+    camera.display(_shaderProgram);
     _shaderProgram.setUniform("model", _transform.model);
     _buffers.vao.bind(GL_TRIANGLES, static_cast<GLuint>(_order.size()));
-    return 0;
-}
-
-int Cube::setCamera(ICamera& camera) {
-    camera.use(&_shaderProgram);
     return 0;
 }
 

@@ -5,15 +5,13 @@
 #ifndef OPENGL_LOOKHORIZONTAL_H
 #define OPENGL_LOOKHORIZONTAL_H
 
+#include "BaseInputCommand.h"
 
-#include "AInputCommand.h"
-
-
-class LookHorizontal : public AInputCommand {
+class LookHorizontal : public BaseInputCommand {
 public:
-    virtual ~LookHorizontal() override;
-    explicit LookHorizontal(IControlable* o);
-    int execute(SDL_Event event) override;
+    explicit LookHorizontal(IControlable &object);
+
+    void execute(SDL_Event event) override;
 };
 
 

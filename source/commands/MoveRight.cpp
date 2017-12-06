@@ -4,24 +4,19 @@
 
 #include <objects/DynamicCamera.h>
 
+MoveRight::MoveRight(IControlable &object) : BaseInputCommand(object) {}
 
-MoveRight::MoveRight(IControlable *o) : AInputCommand(o) {}
-
-int MoveRight::execute(SDL_Event event) {
+void MoveRight::execute(SDL_Event event) {
 
     static bool state = false;
 
     if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_d && !state) {
         state = !state;
-        dynamic_cast<DynamicCamera*>(_object)->moveRight();
+        dynamic_cast<DynamicCamera&>(_object).moveRight();
     }
 
     if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_d) {
         state = !state;
-        dynamic_cast<DynamicCamera*>(_object)->moveRight();
+        dynamic_cast<DynamicCamera&>(_object).moveRight();
     }
-
-    return 0;
 }
-
-MoveRight::~MoveRight() {}

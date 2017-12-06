@@ -7,15 +7,18 @@
 
 #include <SDL2/SDL_events.h>
 #include <list>
-#include <input/IControlable.h>
-
+#include <interfaces/IControlable.h>
 
 class UserInput {
 public:
-    static UserInput& getInstance();
-    int perform();
-    int addCommand(IInputCommand* command);
     ~UserInput();
+
+    static UserInput& getInstance();
+    void perform();
+    void addCommand(IInputCommand* command);
+    void addCommands(std::list<IInputCommand*> commands);
+    void removeCommand(IInputCommand* command);
+    void removeCommands(std::list<IInputCommand*> commands);
 
 protected:
     UserInput();

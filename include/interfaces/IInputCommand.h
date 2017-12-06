@@ -11,7 +11,7 @@
 class IInputCommand {
 public:
     virtual ~IInputCommand() {};
-    virtual int execute(SDL_Event event) {};
+    virtual void execute(SDL_Event event) {};
 };
 
 

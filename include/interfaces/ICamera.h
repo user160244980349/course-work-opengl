@@ -14,8 +14,8 @@
 
 class ICamera {
 public:
-    virtual int use(ShaderProgram* shaderProgram) {};
-    virtual int update() {};
+    virtual void display(ShaderProgram &_shaderProgram) {};
+    virtual void update() {};
 };
 
 

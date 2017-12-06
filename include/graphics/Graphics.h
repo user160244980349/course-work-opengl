@@ -12,17 +12,18 @@
 
 class Graphics {
     public:
-        static Graphics& getInstance();
         ~Graphics();
-        int draw(Scene* scene);
+
+        static Graphics& getInstance();
+        void draw(Scene &scene);
 
     protected:
         Graphics();
         SDL_Window* _window;
         SDL_GLContext _glContext;
-        GLuint _width;
-        GLuint _height;
-        GLuint _fps;
+        unsigned int _width;
+        unsigned int _height;
+        unsigned int _fps;
     };
 
 

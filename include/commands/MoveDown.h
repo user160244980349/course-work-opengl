@@ -5,14 +5,13 @@
 #ifndef OPENGL_MOVEDOWN_H
 #define OPENGL_MOVEDOWN_H
 
+#include "BaseInputCommand.h"
 
-#include "AInputCommand.h"
-
-class MoveDown : public AInputCommand {
+class MoveDown : public BaseInputCommand {
 public:
-    virtual ~MoveDown() override;
-    explicit MoveDown(IControlable* o);
-    int execute(SDL_Event event) override;
+    explicit MoveDown(IControlable &object);
+
+    void execute(SDL_Event event) override;
 };
 
 

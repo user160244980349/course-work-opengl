@@ -5,15 +5,13 @@
 #ifndef OPENGL_MOVEFORWARD_H
 #define OPENGL_MOVEFORWARD_H
 
+#include "BaseInputCommand.h"
 
-#include "AInputCommand.h"
-
-
-class MoveForward : public AInputCommand {
+class MoveForward : public BaseInputCommand {
 public:
-    virtual ~MoveForward() override;
-    explicit MoveForward(IControlable* o);
-    int execute(SDL_Event event) override;
+    explicit MoveForward(IControlable &object);
+
+    void execute(SDL_Event event) override;
 };
 
 

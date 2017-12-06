@@ -6,13 +6,13 @@
 #define OPENGL_CONTROLABLEINTERFACE_H
 
 #include <SDL2/SDL_events.h>
-#include "commands/IInputCommand.h"
+#include "IInputCommand.h"
 #include <list>
 
 
 class IControlable {
 public:
-    virtual int initCommands() {};
+    virtual void initCommands() {};
 };
 
 

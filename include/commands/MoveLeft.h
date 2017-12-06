@@ -5,15 +5,13 @@
 #ifndef OPENGL_MOVELEFT_H
 #define OPENGL_MOVELEFT_H
 
+#include "BaseInputCommand.h"
 
-#include "AInputCommand.h"
-
-
-class MoveLeft : public AInputCommand {
+class MoveLeft : public BaseInputCommand {
 public:
-    virtual ~MoveLeft() override;
-    explicit MoveLeft(IControlable* o);
-    int execute(SDL_Event event) override;
+    explicit MoveLeft(IControlable &object);
+
+    void execute(SDL_Event event) override;
 };
 
 

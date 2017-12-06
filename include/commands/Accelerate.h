@@ -5,14 +5,13 @@
 #ifndef OPENGL_ACCELERATE_H
 #define OPENGL_ACCELERATE_H
 
+#include "BaseInputCommand.h"
 
-#include "AInputCommand.h"
-
-class Accelerate : public AInputCommand {
+class Accelerate : public BaseInputCommand {
 public:
-    virtual ~Accelerate() override;
-    explicit Accelerate(IControlable* o);
-    int execute(SDL_Event event) override;
+    explicit Accelerate(IControlable &object);
+
+    void execute(SDL_Event event) override;
 };
 
 

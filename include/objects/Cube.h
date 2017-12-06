@@ -5,25 +5,23 @@
 #ifndef OPENGL_CUBE_H
 #define OPENGL_CUBE_H
 
-#include <graphics/IDrawable.h>
-#include <objects/IObject.h>
-#include <objects/ICamera.h>
+#include <interfaces/IDrawable.h>
+#include <interfaces/IObject.h>
+#include <interfaces/ICamera.h>
 #include <graphics/ShaderProgram.h>
 #include <graphics/Vao.h>
 #include <graphics/Vbo.h>
 #include <graphics/Ebo.h>
 #include <vector>
-#include "AObject.h"
+#include "BaseObject.h"
 
-
-class Cube : public IDrawable, public AObject {
+class Cube : public IDrawable, public BaseObject {
 public:
     Cube();
     virtual ~Cube() override;
 
-    int setCamera(ICamera& camera) override;
     int update() override;
-    int draw() override;
+    int draw(ICamera &camera) override;
     int translate(glm::vec3 position);
 
 protected:

@@ -17,20 +17,20 @@ set(SOURCES
         # HEADERS
         include/graphics/OpenGl.h
         include/graphics/Graphics.h
-        include/graphics/ABuffer.h
+        include/graphics/BaseBuffer.h
         include/graphics/Ebo.h
         include/objects/Scene.h
         include/graphics/Vao.h
         include/graphics/Vbo.h
-        include/graphics/IDrawable.h
+        include/interfaces/IDrawable.h
 
-        include/input/IControlable.h
+        include/interfaces/IControlable.h
         include/input/UserInput.h
 
-        include/objects/IObject.h
-        include/objects/ICamera.h
+        include/interfaces/IObject.h
+        include/interfaces/ICamera.h
         include/objects/Cube.h
-        include/objects/AObject.h
+        include/objects/BaseObject.h
         include/objects/DynamicCamera.h
 
         include/commands/MoveLeft.h
@@ -39,10 +39,10 @@ set(SOURCES
         include/commands/MoveForward.h
         include/commands/LookHorizontal.h
         include/commands/LookVertical.h
-        include/commands/IInputCommand.h
+        include/interfaces/IInputCommand.h
         include/commands/QuitCommand.h
-        include/commands/ICommand.h
-        include/commands/AInputCommand.h
+        include/interfaces/ICommand.h
+        include/commands/BaseInputCommand.h
 
         include/Kernel.h
 
@@ -60,7 +60,7 @@ set(SOURCES
 
         source/objects/Cube.cpp
         source/objects/DynamicCamera.cpp
-        source/objects/AObject.cpp
+        source/objects/BaseObject.cpp
 
         source/commands/QuitCommand.cpp
         source/commands/LookVertical.cpp
@@ -69,7 +69,7 @@ set(SOURCES
         source/commands/MoveBack.cpp
         source/commands/MoveRight.cpp
         source/commands/MoveLeft.cpp
-        source/commands/AInputCommand.cpp
+        source/commands/BaseInputCommand.cpp
 
         source/Kernel.cpp
         source/commands/MoveUp.cpp
@@ -78,7 +78,9 @@ set(SOURCES
         include/commands/MoveDown.h
         source/graphics/ShaderProgram.cpp
         include/graphics/ShaderTypes.h
-        include/graphics/ShaderProgram.h include/commands/Accelerate.cpp include/commands/Accelerate.h)
+        include/graphics/ShaderProgram.h
+        source/commands/Accelerate.cpp
+        include/commands/Accelerate.h source/graphics/BaseBuffer.cpp)
 
 # executables
 add_executable(OpenGL ${SOURCES})

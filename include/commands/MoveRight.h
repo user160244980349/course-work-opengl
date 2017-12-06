@@ -5,15 +5,13 @@
 #ifndef OPENGL_MOVERIGHT_H
 #define OPENGL_MOVERIGHT_H
 
+#include "BaseInputCommand.h"
 
-#include "AInputCommand.h"
-
-
-class MoveRight : public AInputCommand {
+class MoveRight : public BaseInputCommand {
 public:
-    virtual ~MoveRight() override;
-    explicit MoveRight(IControlable* o);
-    int execute(SDL_Event event) override;
+    explicit MoveRight(IControlable &object);
+
+    void execute(SDL_Event event) override;
 };
 
 

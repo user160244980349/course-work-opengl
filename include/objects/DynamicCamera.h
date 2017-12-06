@@ -6,8 +6,7 @@
 #define OPENGL_DYNAMICCAMERA_H
 
 #include <SDL2/SDL_events.h>
-#include <objects/ICamera.h>
-#include <input/IControlable.h>
+#include <interfaces/ICamera.h>
 #include <commands/LookVertical.h>
 #include <commands/LookHorizontal.h>
 #include <commands/MoveForward.h>
@@ -17,27 +16,26 @@
 #include <commands/MoveUp.h>
 #include <commands/MoveDown.h>
 
-
-class DynamicCamera : public ICamera , public IControlable {
+class DynamicCamera : public ICamera, public IControlable {
 public:
     DynamicCamera();
-    int use(ShaderProgram* shaderProgram) override;
-    int update() override;
+    ~DynamicCamera();
 
-    int initCommands() override;
-    int moveForward();
-    int moveBack();
-    int moveRight();
-    int moveLeft();
-    int moveUp();
-    int moveDown();
-    int accelerate();
-
-    int lookHorizontal(int x);
-    int lookVertical(int y);
+    void update() override;
+    void display(ShaderProgram &_shaderProgram) override;
+    void initCommands() override;
+    void moveForward();
+    void moveBack();
+    void moveRight();
+    void moveLeft();
+    void moveUp();
+    void moveDown();
+    void accelerate();
+    void lookHorizontal(int x);
+    void lookVertical(int y);
 
 protected:
-    ShaderProgram* _shaderProgram;
+
     struct {
         glm::mat4 projection;
         glm::mat4 viewPoint;
@@ -53,16 +51,19 @@ protected:
         bool shift = false;
     } _keys;
 
+    std::list<IInputCommand*> _commands;
+
     glm::vec3 _cameraPos;
     glm::vec3 _cameraUp;
     glm::vec3 _cameraFront;
 
-    GLfloat _sensitivity;
-    GLfloat _mouseX;
-    GLfloat _mouseY;
-    GLfloat _acceleration;
-    GLfloat _speedFront;
-    GLfloat _speedUp;
+    float _sensitivity;
+    float _mouseX;
+    float _mouseY;
+    float _acceleration;
+    float _speedFront;
+    float _speedUp;
+
 };
 
 
