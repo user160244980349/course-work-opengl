@@ -10,7 +10,7 @@
 
 class IDrawable {
 public:
-    virtual int draw(ICamera &camera) {};
+    virtual void draw(ICamera &camera) {};
 };
 
 
