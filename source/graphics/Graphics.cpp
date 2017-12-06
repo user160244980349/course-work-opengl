@@ -31,7 +31,6 @@ Graphics::Graphics() {
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
     SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
-
     _window = SDL_CreateWindow(
             "OpenGL",
             SDL_WINDOWPOS_UNDEFINED,
@@ -41,7 +40,7 @@ Graphics::Graphics() {
             SDL_WINDOW_OPENGL
             | SDL_WINDOW_ALLOW_HIGHDPI
 //            | SDL_WINDOW_FULLSCREEN
-            | SDL_WINDOW_FULLSCREEN_DESKTOP
+//            | SDL_WINDOW_FULLSCREEN_DESKTOP
     );
 
     if(_window == nullptr) {
