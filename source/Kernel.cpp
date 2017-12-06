@@ -10,7 +10,7 @@ Kernel::Kernel() {
     UserInput::getInstance().addCommand(new QuitCommand());
 };
 
-int Kernel::run() {
+void Kernel::run() {
     _running = true;
     Scene* scene = new Scene;
 
@@ -20,10 +20,9 @@ int Kernel::run() {
     }
 
     delete(scene);
-    return 0;
 }
 
-int Kernel::stop() {
+void Kernel::stop() {
     _running = false;
 }
 

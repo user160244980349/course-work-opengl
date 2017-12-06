@@ -14,8 +14,8 @@
 class Kernel {
 public:
     static Kernel& getInstance();
-    int run();
-    int stop();
+    void run();
+    void stop();
 
 protected:
     Kernel();

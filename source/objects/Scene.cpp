@@ -20,8 +20,6 @@ int Scene::draw() {
             drawableObject->draw(_camera);
         }
     }
-
-    return 0;
 }
 
 Scene::Scene() {

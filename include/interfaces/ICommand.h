@@ -8,7 +8,7 @@
 
 class ICommand {
 public:
-    virtual int execute() {};
+    virtual void execute() {};
 };
 
 
