@@ -12,8 +12,6 @@ class BaseInputCommand : public IInputCommand {
 public:
     explicit BaseInputCommand(IControlable &object);
 
-    void execute(SDL_Event event) override;
-
 protected:
     IControlable& _object;
 };

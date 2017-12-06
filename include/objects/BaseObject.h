@@ -16,7 +16,7 @@ public:
     virtual ~BaseObject() override;
 
     std::string getName() override;
-    int getId() override;
+    unsigned int getId() override;
 
 protected:
     static unsigned int _count;

@@ -6,14 +6,17 @@
 #include <objects/Cube.h>
 #include <SDL2/SDL_timer.h>
 
-Cube::~Cube() = default;
+Cube::~Cube() {
+    _buffers.vao.remove();
+    _buffers.vbo.remove();
+    _buffers.ebo.remove();
+}
 
 Cube::Cube() : BaseObject() {
 
     _shaderProgram.compileShader("../resource/shaders/FirstVertex.glsl", VERTEX);
     _shaderProgram.compileShader("../resource/shaders/FirstFragment.glsl", FRAGMENT);
     _shaderProgram.link();
-    _shaderProgram.use();
 
     _vertices.emplace_back(glm::vec3( 1.0f, 1.0f,-1.0f));
     _vertices.emplace_back(glm::vec3(-1.0f, 1.0f,-1.0f));
@@ -75,26 +78,21 @@ Cube::Cube() : BaseObject() {
 
     _buffers.ebo.create();
     _buffers.ebo.set(_order.data(), static_cast<GLuint>(_order.size()));
-
 }
 
-int Cube::draw(ICamera &camera) {
+void Cube::draw(ICamera &camera) {
+    _shaderProgram.use();
     camera.display(_shaderProgram);
     _shaderProgram.setUniform("model", _transform.model);
     _buffers.vao.bind(GL_TRIANGLES, static_cast<GLuint>(_order.size()));
-    return 0;
 }
 
-int Cube::update() {
+void Cube::update() {
     _transform.model = glm::rotate(_transform.model, 0.05f, glm::vec3(0.0f, 1.0f, 0.0f));
     _transform.model = glm::translate(_transform.model, glm::vec3(0.0f, sinf((SDL_GetTicks() + _id) * 0.005f) * 0.5f, 0.0f));
-    _shaderProgram.setUniform("model", _transform.model);
-    return 0;
 }
 
-int Cube::translate(glm::vec3 position) {
+void Cube::translate(glm::vec3 position) {
     _transform.model = glm::translate(_transform.model, position);
-    _shaderProgram.setUniform("model", _transform.model);
-    return 0;
 }
 

@@ -7,4 +7,3 @@
 
 BaseInputCommand::BaseInputCommand(IControlable &object) : _object(object) {}
 
-void BaseInputCommand::execute(SDL_Event event) {}

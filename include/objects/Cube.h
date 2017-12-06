@@ -18,11 +18,11 @@
 class Cube : public IDrawable, public BaseObject {
 public:
     Cube();
-    virtual ~Cube() override;
+    ~Cube() override;
 
-    int update() override;
-    int draw(ICamera &camera) override;
-    int translate(glm::vec3 position);
+    void update() override;
+    void draw(ICamera &camera) override;
+    void translate(glm::vec3 position);
 
 protected:
     struct {
@@ -37,7 +37,7 @@ protected:
 
     ShaderProgram _shaderProgram;
     std::vector <glm::vec3> _vertices{};
-    std::vector <GLuint> _order{};
+    std::vector <unsigned int> _order{};
 };
 
 

@@ -14,8 +14,8 @@ public:
     IObject() {};
     virtual ~IObject() {};
     virtual std::string getName() {};
-    virtual int getId() {};
-    virtual int update() {};
+    virtual unsigned int getId() {};
+    virtual void update() {};
 };
 
 

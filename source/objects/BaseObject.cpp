@@ -24,7 +24,7 @@ std::string BaseObject::getName() {
     return _name;
 }
 
-int BaseObject::getId() {
+unsigned int BaseObject::getId() {
     return _id;
 }
 
