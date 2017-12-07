@@ -16,7 +16,7 @@ void Kernel::run() {
 
     while(_running) {
         UserInput::getInstance().perform();
-        Graphics::getInstance().draw(*scene);
+        Graphics::getInstance().render(*scene);
     }
 
     delete(scene);

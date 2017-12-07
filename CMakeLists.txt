@@ -80,7 +80,7 @@ set(SOURCES
         include/graphics/ShaderTypes.h
         include/graphics/ShaderProgram.h
         source/commands/Accelerate.cpp
-        include/commands/Accelerate.h source/graphics/BaseBuffer.cpp)
+        include/commands/Accelerate.h source/graphics/BaseBuffer.cpp include/interfaces/ITransform.h include/interfaces/IMesh.h source/components/CubeMesh.cpp include/components/CubeMesh.h source/components/Transform.cpp include/components/Transform.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

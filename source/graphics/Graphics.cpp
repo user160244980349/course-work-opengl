@@ -78,13 +78,13 @@ Graphics& Graphics::getInstance() {
     return instance;
 }
 
-void Graphics::draw(Scene &scene) {
+void Graphics::render(Scene &scene) {
 
     static unsigned int start;
     unsigned int  duration;
 
     OpenGl::getInstance().clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    scene.draw();
+    scene.render();
     OpenGl::getInstance().finish();
     SDL_GL_SwapWindow(_window);
 

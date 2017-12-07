@@ -13,6 +13,8 @@
 #include <graphics/Vbo.h>
 #include <graphics/Ebo.h>
 #include <vector>
+#include <components/CubeMesh.h>
+#include <components/Transform.h>
 #include "BaseObject.h"
 
 class Cube : public IDrawable, public BaseObject {
@@ -21,24 +23,14 @@ public:
     ~Cube() override;
 
     void update() override;
-    void draw(ICamera &camera) override;
-    void translate(glm::vec3 position);
+    void render(ICamera &camera) override;
+
+    Transform transform;
 
 protected:
-    struct {
-        Vao vao;
-        Vbo vbo;
-        Ebo ebo;
-    } _buffers;
 
-    struct {
-        glm::mat4 model = glm::mat4(1.0f);
-    } _transform;
-
+    CubeMesh _mesh;
     ShaderProgram _shaderProgram;
-    std::vector <glm::vec3> _vertices{};
-    std::vector <unsigned int> _order{};
 };
-
 
 #endif //OPENGL_CUBE_H
