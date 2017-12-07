@@ -27,7 +27,7 @@ Scene::Scene() {
     for (int i = -10; i < 10; i++) {
         for (int j = -10; j < 10; j++) {
             _objects.push_back(new Cube);
-            dynamic_cast<Cube*>(_objects.back())->translate({i * 3, 0, j * 3});
+            dynamic_cast<Cube*>(_objects.back())->transform.translate({i * 3, 0, j * 3});
         }
     }
 
