@@ -23,7 +23,7 @@ public:
     ~Cube() override;
 
     void update() override;
-    void draw(ICamera &camera) override;
+    void render(ICamera &camera) override;
 
     Transform transform;
 

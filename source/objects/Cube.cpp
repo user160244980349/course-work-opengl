@@ -14,7 +14,7 @@ Cube::Cube() : BaseObject() {
     _shaderProgram.link();
 }
 
-void Cube::draw(ICamera &camera) {
+void Cube::render(ICamera &camera) {
     _shaderProgram.use();
     camera.display(_shaderProgram);
     _shaderProgram.setUniform("model", transform.getModel());

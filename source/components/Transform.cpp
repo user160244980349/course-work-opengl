@@ -3,7 +3,7 @@
 //
 
 #include <glm/gtc/matrix_transform.hpp>
-#include "Transform.h"
+#include "components/Transform.h"
 
 void Transform::translate(glm::vec3 position) {
     _model = glm::translate(_model, position);

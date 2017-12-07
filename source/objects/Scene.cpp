@@ -6,7 +6,7 @@
 #include <objects/DynamicCamera.h>
 #include "objects/Scene.h"
 
-void Scene::draw() {
+void Scene::render() {
 
     _camera.update();
 
@@ -17,7 +17,7 @@ void Scene::draw() {
     for (auto &object : _objects) {
         auto drawableObject = dynamic_cast<IDrawable *>(object);
         if (drawableObject != nullptr) {
-            drawableObject->draw(_camera);
+            drawableObject->render(_camera);
         }
     }
 }

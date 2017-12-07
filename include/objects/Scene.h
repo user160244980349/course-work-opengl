@@ -12,7 +12,7 @@ class Scene {
 public:
     Scene();
     ~Scene();
-    void draw();
+    void render();
 
 protected:
     DynamicCamera _camera;

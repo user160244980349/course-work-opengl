@@ -15,7 +15,7 @@ class Graphics {
         ~Graphics();
 
         static Graphics& getInstance();
-        void draw(Scene &scene);
+        void render(Scene &scene);
 
     protected:
         Graphics();
