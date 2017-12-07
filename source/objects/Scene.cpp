@@ -24,8 +24,8 @@ void Scene::render() {
 
 Scene::Scene() {
 
-    for (int i = -40; i < 40; i++) {
-        for (int j = -40; j < 40; j++) {
+    for (int i = -20; i < 20; i++) {
+        for (int j = -20; j < 20; j++) {
             _objects.push_back(new Cube);
             dynamic_cast<Cube*>(_objects.back())->transform.translate({i * 3, 0, j * 3});
         }
