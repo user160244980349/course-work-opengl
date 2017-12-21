@@ -4,10 +4,10 @@
 
 #include <objects/Cube.h>
 #include <objects/DynamicCamera.h>
-#include "objects/Scene.h"
+#include "objects/CubeScene.h"
 
 
-Scene::Scene() {
+CubeScene::CubeScene() {
 
     for (int i = -20; i < 20; i++) {
         for (int j = -20; j < 20; j++) {
@@ -21,14 +21,14 @@ Scene::Scene() {
 
 }
 
-Scene::~Scene() {
+CubeScene::~CubeScene() {
     for (auto &object : _objects) {
         delete(object);
     }
     _objects.clear();
 }
 
-void Scene::render() {
+void CubeScene::render() {
 
     _camera.update();
 
@@ -44,7 +44,7 @@ void Scene::render() {
     }
 }
 
-void Scene::update() {
+void CubeScene::update() {
     for (auto &object : _objects) {
         object->update();
     }

@@ -7,14 +7,14 @@
 
 #include <list>
 #include <GL/glcorearb.h>
-#include <objects/Scene.h>
+#include <objects/CubeScene.h>
 
 
 class Graphics {
     public:
         ~Graphics();
         static Graphics& getInstance();
-        void render(Scene &scene);
+        void render(CubeScene &scene);
 
     protected:
         Graphics();

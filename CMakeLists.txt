@@ -27,7 +27,7 @@ set(SOURCES
         include/objects/Cube.h
         include/objects/BaseObject.h
         include/objects/DynamicCamera.h
-        include/objects/Scene.h
+        include/objects/CubeScene.h
 # commands
         include/commands/MoveLeft.h
         include/commands/MoveRight.h
@@ -59,7 +59,7 @@ set(SOURCES
         sources/OpenGl.cpp
         sources/Ebo.cpp
         sources/Graphics.cpp
-        sources/Scene.cpp
+        sources/CubeScene.cpp
         sources/Vao.cpp
         sources/Vbo.cpp
         sources/UserInput.cpp
@@ -82,7 +82,7 @@ set(SOURCES
         sources/BaseBuffer.cpp
         sources/CubeMesh.cpp
         sources/Transform.cpp
-        include/interfaces/IScene.h include/objects/BaseScene.cpp include/objects/BaseScene.h)
+        include/interfaces/IScene.h sources/BaseScene.cpp include/objects/BaseScene.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

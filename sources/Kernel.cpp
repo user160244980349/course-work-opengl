@@ -12,7 +12,7 @@ Kernel::Kernel() {
 
 void Kernel::run() {
     _running = true;
-    Scene* scene = new Scene;
+    CubeScene* scene = new CubeScene;
 
     while(_running) {
         UserInput::getInstance().perform();

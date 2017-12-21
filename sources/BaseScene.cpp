@@ -2,7 +2,7 @@
 // Created by user on 21.12.2017.
 //
 
-#include "BaseScene.h"
+#include "objects/BaseScene.h"
 
 unsigned int BaseScene::_count = 0;
 

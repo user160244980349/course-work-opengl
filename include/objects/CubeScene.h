@@ -7,10 +7,10 @@
 
 #include "BaseScene.h"
 
-class Scene : public BaseScene {
+class CubeScene : public BaseScene {
 public:
-    Scene();
-    ~Scene();
+    CubeScene();
+    ~CubeScene();
     void render() override;
     void update() override;
 };
