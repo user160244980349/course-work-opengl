@@ -5,7 +5,6 @@
 
 #include <objects/Cube.h>
 
-Cube::~Cube() {}
 
 Cube::Cube() : BaseObject() {
     _shaderProgram.compileShader("../resources/shaders/FirstVertex.glsl", VERTEX);
