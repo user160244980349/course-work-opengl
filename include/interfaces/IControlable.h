@@ -12,6 +12,7 @@
 
 class IControlable {
 public:
+    virtual ~IControlable() {};
     virtual void initCommands() {};
 };
 

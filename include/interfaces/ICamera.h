@@ -14,6 +14,7 @@
 
 class ICamera {
 public:
+    virtual ~ICamera() {};
     virtual void display(ShaderProgram &_shaderProgram) {};
     virtual void update() {};
 };

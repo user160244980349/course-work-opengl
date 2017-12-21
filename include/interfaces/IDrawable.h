@@ -10,6 +10,7 @@
 
 class IDrawable {
 public:
+    virtual ~IDrawable() {};
     virtual void render(ICamera &camera) {};
 };
 
