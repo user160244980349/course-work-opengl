@@ -16,7 +16,6 @@ class CubeMesh : public IMesh {
 public:
     CubeMesh();
     ~CubeMesh();
-
     void render() override;
 
 protected:

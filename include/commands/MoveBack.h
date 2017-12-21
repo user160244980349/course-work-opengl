@@ -10,7 +10,6 @@
 class MoveBack : public BaseInputCommand {
 public:
     explicit MoveBack(IControlable &object);
-
     void execute(SDL_Event event) override;
 };
 

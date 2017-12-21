@@ -12,7 +12,6 @@
 class UserInput {
 public:
     ~UserInput();
-
     static UserInput& getInstance();
     void perform();
     void addCommand(IInputCommand* command);

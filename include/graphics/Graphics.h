@@ -13,7 +13,6 @@
 class Graphics {
     public:
         ~Graphics();
-
         static Graphics& getInstance();
         void render(Scene &scene);
 

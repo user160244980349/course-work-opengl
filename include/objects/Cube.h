@@ -20,8 +20,6 @@
 class Cube : public IDrawable, public BaseObject {
 public:
     Cube();
-    ~Cube() override;
-
     void update() override;
     void render(ICamera &camera) override;
 

@@ -12,8 +12,6 @@ BaseObject::BaseObject() {
     _name = "object" + std::to_string(_id);
 }
 
-BaseObject::~BaseObject() = default;
-
 BaseObject::BaseObject(std::string name) {
     _id = _count;
     _count++;

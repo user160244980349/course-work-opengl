@@ -15,7 +15,6 @@
 class ShaderProgram {
 public:
     ShaderProgram();
-
     void compileShader(const std::string &filename, ShaderTypes type);
     void link();
     void use();

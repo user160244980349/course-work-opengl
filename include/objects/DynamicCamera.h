@@ -20,7 +20,6 @@ class DynamicCamera : public ICamera, public IControlable {
 public:
     DynamicCamera();
     ~DynamicCamera();
-
     void update() override;
     void display(ShaderProgram &_shaderProgram) override;
     void initCommands() override;

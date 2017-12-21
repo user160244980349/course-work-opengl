@@ -10,7 +10,6 @@
 class MoveUp : public BaseInputCommand {
 public:
     explicit MoveUp(IControlable &object);
-
     void execute(SDL_Event event) override;
 };
 
