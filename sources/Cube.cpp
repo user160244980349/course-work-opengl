@@ -8,8 +8,8 @@
 Cube::~Cube() {}
 
 Cube::Cube() : BaseObject() {
-    _shaderProgram.compileShader("../resource/shaders/FirstVertex.glsl", VERTEX);
-    _shaderProgram.compileShader("../resource/shaders/FirstFragment.glsl", FRAGMENT);
+    _shaderProgram.compileShader("../resources/shaders/FirstVertex.glsl", VERTEX);
+    _shaderProgram.compileShader("../resources/shaders/FirstFragment.glsl", FRAGMENT);
     _shaderProgram.link();
 }
 
@@ -21,6 +21,6 @@ void Cube::render(ICamera &camera) {
 }
 
 void Cube::update() {
-//    _transform.translate({3.0f * _id, sinf(SDL_GetTicks() + _id * 0.0005f) * 5, 3.0f * _id / 10});
+
 }
 
