@@ -5,18 +5,14 @@
 #ifndef OPENGL_SCENE_H
 #define OPENGL_SCENE_H
 
-#include <interfaces/IObject.h>
-#include <objects/DynamicCamera.h>
+#include "BaseScene.h"
 
-class Scene {
+class Scene : public BaseScene {
 public:
     Scene();
     ~Scene();
-    void render();
-
-protected:
-    DynamicCamera _camera;
-    std::list<IObject*> _objects{};
+    void render() override;
+    void update() override;
 };
 
 

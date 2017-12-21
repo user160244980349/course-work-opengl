@@ -6,21 +6,6 @@
 #include <objects/DynamicCamera.h>
 #include "objects/Scene.h"
 
-void Scene::render() {
-
-    _camera.update();
-
-    for (auto &object : _objects) {
-        object->update();
-    }
-
-    for (auto &object : _objects) {
-        auto drawableObject = dynamic_cast<IDrawable *>(object);
-        if (drawableObject != nullptr) {
-            drawableObject->render(_camera);
-        }
-    }
-}
 
 Scene::Scene() {
 
@@ -41,4 +26,26 @@ Scene::~Scene() {
         delete(object);
     }
     _objects.clear();
+}
+
+void Scene::render() {
+
+    _camera.update();
+
+    for (auto &object : _objects) {
+        object->update();
+    }
+
+    for (auto &object : _objects) {
+        auto drawableObject = dynamic_cast<IDrawable *>(object);
+        if (drawableObject != nullptr) {
+            drawableObject->render(_camera);
+        }
+    }
+}
+
+void Scene::update() {
+    for (auto &object : _objects) {
+        object->update();
+    }
 }

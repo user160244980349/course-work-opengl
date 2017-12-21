@@ -82,7 +82,7 @@ set(SOURCES
         sources/BaseBuffer.cpp
         sources/CubeMesh.cpp
         sources/Transform.cpp
-)
+        include/interfaces/IScene.h include/objects/BaseScene.cpp include/objects/BaseScene.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})
