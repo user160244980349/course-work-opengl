@@ -12,14 +12,14 @@ Kernel::Kernel() {
 
 void Kernel::run() {
     _running = true;
-    CubeScene* scene = new CubeScene;
+    auto *scene = new Scene;
 
-    while(_running) {
+    while (_running) {
         UserInput::getInstance().perform();
         Graphics::getInstance().render(*scene);
     }
 
-    delete(scene);
+    delete (scene);
 }
 
 void Kernel::stop() {

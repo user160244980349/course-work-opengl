@@ -10,6 +10,7 @@
 class LookVertical : public BaseInputCommand {
 public:
     explicit LookVertical(IControlable &object);
+
     void execute(SDL_Event event) override;
 };
 

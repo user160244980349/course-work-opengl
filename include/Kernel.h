@@ -13,8 +13,10 @@
 
 class Kernel {
 public:
-    static Kernel& getInstance();
+    static Kernel &getInstance();
+
     void run();
+
     void stop();
 
 protected:

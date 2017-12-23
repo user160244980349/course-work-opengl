@@ -11,9 +11,12 @@
 
 class IObject {
 public:
-    virtual ~IObject() {};
+    virtual ~IObject() = default;;
+
     virtual std::string getName() {};
+
     virtual unsigned int getId() {};
+
     virtual void update() {};
 };
 

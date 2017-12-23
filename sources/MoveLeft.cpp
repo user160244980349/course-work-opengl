@@ -12,11 +12,11 @@ void MoveLeft::execute(SDL_Event event) {
 
     if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_a && !state) {
         state = !state;
-        dynamic_cast<DynamicCamera&>(_object).moveLeft();
+        dynamic_cast<DynamicCamera &>(_object).moveLeft();
     }
 
     if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_a) {
         state = !state;
-        dynamic_cast<DynamicCamera&>(_object).moveLeft();
+        dynamic_cast<DynamicCamera &>(_object).moveLeft();
     }
 }

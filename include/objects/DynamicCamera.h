@@ -19,18 +19,31 @@
 class DynamicCamera : public ICamera, public IControlable {
 public:
     DynamicCamera();
-    ~DynamicCamera();
+
+    ~DynamicCamera() override;
+
     void update() override;
+
     void display(ShaderProgram &_shaderProgram) override;
+
     void initCommands() override;
+
     void moveForward();
+
     void moveBack();
+
     void moveRight();
+
     void moveLeft();
+
     void moveUp();
+
     void moveDown();
+
     void accelerate();
+
     void lookHorizontal(int x);
+
     void lookVertical(int y);
 
 protected:
@@ -50,7 +63,7 @@ protected:
         bool shift = false;
     } _keys;
 
-    std::list<IInputCommand*> _commands;
+    std::list<IInputCommand *> _commands;
 
     glm::vec3 _cameraPos;
     glm::vec3 _cameraUp;

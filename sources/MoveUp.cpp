@@ -12,11 +12,11 @@ void MoveUp::execute(SDL_Event event) {
 
     if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_e && !state) {
         state = !state;
-        dynamic_cast<DynamicCamera&>(_object).moveUp();
+        dynamic_cast<DynamicCamera &>(_object).moveUp();
     }
 
     if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_e) {
         state = !state;
-        dynamic_cast<DynamicCamera&>(_object).moveUp();
+        dynamic_cast<DynamicCamera &>(_object).moveUp();
     }
 }

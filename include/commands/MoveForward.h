@@ -10,6 +10,7 @@
 class MoveForward : public BaseInputCommand {
 public:
     explicit MoveForward(IControlable &object);
+
     void execute(SDL_Event event) override;
 };
 

@@ -12,7 +12,8 @@
 
 class IControlable {
 public:
-    virtual ~IControlable() {};
+    virtual ~IControlable() = default;;
+
     virtual void initCommands() {};
 };
 

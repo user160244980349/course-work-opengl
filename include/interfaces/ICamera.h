@@ -14,8 +14,10 @@
 
 class ICamera {
 public:
-    virtual ~ICamera() {};
+    virtual ~ICamera() = default;;
+
     virtual void display(ShaderProgram &_shaderProgram) {};
+
     virtual void update() {};
 };
 

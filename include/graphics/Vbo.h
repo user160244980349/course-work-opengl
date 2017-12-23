@@ -11,8 +11,10 @@
 class Vbo : public BaseBuffer {
 public:
     void create() override;
+
     void remove() override;
-    void set(glm::vec3* v, GLuint size);
+
+    void set(glm::vec3 *v, GLuint size);
 };
 
 

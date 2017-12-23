@@ -10,6 +10,7 @@
 class MoveLeft : public BaseInputCommand {
 public:
     explicit MoveLeft(IControlable &object);
+
     void execute(SDL_Event event) override;
 };
 

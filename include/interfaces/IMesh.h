@@ -8,7 +8,8 @@
 
 class IMesh {
 public:
-    virtual ~IMesh() {};
+    virtual ~IMesh() = default;;
+
     virtual void render() {};
 };
 

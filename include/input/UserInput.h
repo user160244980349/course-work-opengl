@@ -12,17 +12,23 @@
 class UserInput {
 public:
     ~UserInput();
-    static UserInput& getInstance();
+
+    static UserInput &getInstance();
+
     void perform();
-    void addCommand(IInputCommand* command);
-    void addCommands(std::list<IInputCommand*> commands);
-    void removeCommand(IInputCommand* command);
-    void removeCommands(std::list<IInputCommand*> commands);
+
+    void addCommand(IInputCommand *command);
+
+    void addCommands(std::list<IInputCommand *> commands);
+
+    void removeCommand(IInputCommand *command);
+
+    void removeCommands(std::list<IInputCommand *> commands);
 
 protected:
     UserInput();
 
-    std::list<IInputCommand*> _commands{};
+    std::list<IInputCommand *> _commands{};
     SDL_Event _event{};
 };
 

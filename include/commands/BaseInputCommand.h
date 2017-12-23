@@ -13,9 +13,8 @@ public:
     explicit BaseInputCommand(IControlable &object);
 
 protected:
-    IControlable& _object;
+    IControlable &_object;
 };
-
 
 
 #endif //OPENGL_AINPUTCOMMAND_H

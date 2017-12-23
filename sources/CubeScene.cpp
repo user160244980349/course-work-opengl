@@ -9,21 +9,13 @@
 
 CubeScene::CubeScene() {
 
-    for (int i = -20; i < 20; i++) {
-        for (int j = -20; j < 20; j++) {
-            _objects.push_back(new Cube);
-            auto drawableObject = dynamic_cast<Cube *>(_objects.back());
-            if (drawableObject != nullptr) {
-                drawableObject->transform.translate({i * 3, 0, j * 3});
-            }
-        }
-    }
+    _objects.push_back(new Cube);
 
 }
 
 CubeScene::~CubeScene() {
     for (auto &object : _objects) {
-        delete(object);
+        delete (object);
     }
     _objects.clear();
 }

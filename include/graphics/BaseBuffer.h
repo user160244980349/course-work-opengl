@@ -9,13 +9,16 @@
 
 class BaseBuffer {
 public:
-    virtual ~BaseBuffer() {};
+    virtual ~BaseBuffer() = default;;
+
     virtual void create() {};
+
     virtual void remove() {};
+
     virtual unsigned int getId();
 
 protected:
-    unsigned int _id;
+    unsigned int _id{};
 };
 
 #endif //OPENGL_ABSTRACT_BUFFER_H

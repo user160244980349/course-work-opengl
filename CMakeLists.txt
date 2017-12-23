@@ -12,7 +12,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake-modules)
 set(COMPILER_PATH "D:/Program\ Files/mingw-w64/x86_64-7.2.0-posix-seh-rt_v5-rev1/mingw64/x86_64-w64-mingw32")
 
 set(SOURCES
-# graphics
+        # graphics
         include/graphics/OpenGl.h
         include/graphics/Graphics.h
         include/graphics/BaseBuffer.h
@@ -21,14 +21,14 @@ set(SOURCES
         include/graphics/Vbo.h
         include/graphics/ShaderTypes.h
         include/graphics/ShaderProgram.h
-# input
+        # input
         include/input/UserInput.h
-# objects
+        # objects
         include/objects/Cube.h
         include/objects/BaseObject.h
         include/objects/DynamicCamera.h
-        include/objects/CubeScene.h
-# commands
+        include/objects/Scene.h
+        # commands
         include/commands/MoveLeft.h
         include/commands/MoveRight.h
         include/commands/MoveBack.h
@@ -40,10 +40,10 @@ set(SOURCES
         include/commands/MoveUp.h
         include/commands/MoveDown.h
         include/commands/Accelerate.h
-# components
+        # components
         include/components/Transform.h
         include/components/CubeMesh.h
-# interfaces
+        # interfaces
         include/interfaces/ITransform.h
         include/interfaces/IMesh.h
         include/interfaces/IDrawable.h
@@ -54,12 +54,12 @@ set(SOURCES
         include/interfaces/IControlable.h
 
         include/Kernel.h
-# sources
+        # sources
         sources/main.cpp
         sources/OpenGl.cpp
         sources/Ebo.cpp
         sources/Graphics.cpp
-        sources/CubeScene.cpp
+        sources/Scene.cpp
         sources/Vao.cpp
         sources/Vbo.cpp
         sources/UserInput.cpp
@@ -82,7 +82,7 @@ set(SOURCES
         sources/BaseBuffer.cpp
         sources/CubeMesh.cpp
         sources/Transform.cpp
-        include/interfaces/IScene.h sources/BaseScene.cpp include/objects/BaseScene.h)
+        sources/ShaderProgramException.cpp include/exceptions/ShaderProgramException.h sources/ShaderProgramCreationException.cpp include/exceptions/ShaderProgramCreationException.h sources/BaseException.cpp include/exceptions/BaseException.h)
 
 # executables
 add_executable(OpenGL ${SOURCES})

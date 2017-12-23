@@ -8,10 +8,10 @@
 
 class ICommand {
 public:
-    virtual ~ICommand() {};
+    virtual ~ICommand() = default;;
+
     virtual void execute() {};
 };
-
 
 
 #endif //OPENGL_ICOMMAND_H

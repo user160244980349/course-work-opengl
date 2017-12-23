@@ -10,7 +10,8 @@
 
 class IInputCommand {
 public:
-    virtual ~IInputCommand() {};
+    virtual ~IInputCommand() = default;;
+
     virtual void execute(SDL_Event event) {};
 };
 

@@ -13,9 +13,13 @@
 class Transform : public ITransform {
 public:
     Transform();
+
     void translate(glm::vec3 position) override;
+
     void rotate(float angle, glm::vec3 axis) override;
+
     void scale(glm::vec3 size) override;
+
     glm::mat4 getModel() override;
 
 protected:
