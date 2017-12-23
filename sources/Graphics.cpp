@@ -78,7 +78,7 @@ Graphics &Graphics::getInstance() {
     return instance;
 }
 
-void Graphics::render(CubeScene &scene) {
+void Graphics::render(IScene &scene) {
 
     static unsigned int start;
     unsigned int duration;

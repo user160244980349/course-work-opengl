@@ -16,7 +16,7 @@ public:
 
     static Graphics &getInstance();
 
-    void render(Scene &scene);
+    void render(IScene &scene);
 
 protected:
     Graphics();

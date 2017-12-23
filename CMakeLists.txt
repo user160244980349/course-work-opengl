@@ -27,6 +27,7 @@ set(SOURCES
         include/objects/Cube.h
         include/objects/BaseObject.h
         include/objects/DynamicCamera.h
+        include/objects/BaseScene.h
         include/objects/Scene.h
         # commands
         include/commands/MoveLeft.h
@@ -50,8 +51,13 @@ set(SOURCES
         include/interfaces/ICommand.h
         include/interfaces/IInputCommand.h
         include/interfaces/IObject.h
+        include/interfaces/IScene.h
         include/interfaces/ICamera.h
         include/interfaces/IControlable.h
+        # exceptions
+        include/exceptions/ShaderProgramException.h
+        include/exceptions/ShaderProgramCreationException.h
+        include/exceptions/BaseException.h
 
         include/Kernel.h
         # sources
@@ -59,13 +65,14 @@ set(SOURCES
         sources/OpenGl.cpp
         sources/Ebo.cpp
         sources/Graphics.cpp
-        sources/Scene.cpp
         sources/Vao.cpp
         sources/Vbo.cpp
         sources/UserInput.cpp
         sources/Cube.cpp
         sources/DynamicCamera.cpp
         sources/BaseObject.cpp
+        sources/BaseScene.cpp
+        sources/Scene.cpp
         sources/QuitCommand.cpp
         sources/LookVertical.cpp
         sources/LookHorizontal.cpp
@@ -82,7 +89,10 @@ set(SOURCES
         sources/BaseBuffer.cpp
         sources/CubeMesh.cpp
         sources/Transform.cpp
-        sources/ShaderProgramException.cpp include/exceptions/ShaderProgramException.h sources/ShaderProgramCreationException.cpp include/exceptions/ShaderProgramCreationException.h sources/BaseException.cpp include/exceptions/BaseException.h)
+        sources/ShaderProgramException.cpp
+        sources/ShaderProgramCreationException.cpp
+        sources/BaseException.cpp
+        )
 
 # executables
 add_executable(OpenGL ${SOURCES})
