@@ -12,12 +12,12 @@ void Accelerate::execute(SDL_Event event) {
 
     if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_LSHIFT && !state) {
         state = !state;
-        dynamic_cast<DynamicCamera&>(_object).accelerate();
+        dynamic_cast<DynamicCamera &>(_object).accelerate();
     }
 
     if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LSHIFT) {
         state = !state;
-        dynamic_cast<DynamicCamera&>(_object).accelerate();
+        dynamic_cast<DynamicCamera &>(_object).accelerate();
     }
 }
 

@@ -13,7 +13,7 @@ Graphics::Graphics() {
     _width = 1920;
     _height = 1080;
 
-    if ( SDL_Init(SDL_INIT_VIDEO) != 0 ) {
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
         exit(1);
     }
@@ -43,14 +43,14 @@ Graphics::Graphics() {
 //            | SDL_WINDOW_FULLSCREEN_DESKTOP
     );
 
-    if(_window == nullptr) {
+    if (_window == nullptr) {
         std::cout << "Unable to create window, error: " << SDL_GetError() << std::endl;
         exit(5);
     }
 
     _glContext = SDL_GL_CreateContext(_window);
 
-    if(_glContext == nullptr) {
+    if (_glContext == nullptr) {
         std::cout << "Unable to create OpenGL context, error: " << SDL_GetError() << std::endl;
         exit(6);
     }
@@ -73,7 +73,7 @@ Graphics::~Graphics() {
 
 }
 
-Graphics& Graphics::getInstance() {
+Graphics &Graphics::getInstance() {
     static Graphics instance;
     return instance;
 }
@@ -81,7 +81,7 @@ Graphics& Graphics::getInstance() {
 void Graphics::render(Scene &scene) {
 
     static unsigned int start;
-    unsigned int  duration;
+    unsigned int duration;
 
     OpenGl::getInstance().clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     scene.render();

@@ -10,6 +10,7 @@
 class LookHorizontal : public BaseInputCommand {
 public:
     explicit LookHorizontal(IControlable &object);
+
     void execute(SDL_Event event) override;
 };
 

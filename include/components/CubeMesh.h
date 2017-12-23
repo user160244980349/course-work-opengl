@@ -15,7 +15,9 @@
 class CubeMesh : public IMesh {
 public:
     CubeMesh();
-    ~CubeMesh();
+
+    ~CubeMesh() override;
+
     void render() override;
 
 protected:
@@ -26,8 +28,8 @@ protected:
         Ebo ebo;
     } _buffers;
 
-    std::vector <glm::vec3> _vertices{};
-    std::vector <unsigned int> _order{};
+    std::vector<glm::vec3> _vertices{};
+    std::vector<unsigned int> _order{};
 };
 
 

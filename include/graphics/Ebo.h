@@ -10,7 +10,9 @@
 class Ebo : public BaseBuffer {
 public:
     void create() override;
+
     void remove() override;
+
     void set(GLuint *o, GLuint size);
 };
 

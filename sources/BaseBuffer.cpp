@@ -5,5 +5,5 @@
 #include "graphics/BaseBuffer.h"
 
 unsigned int BaseBuffer::getId() {
- return _id;
+    return _id;
 }

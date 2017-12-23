@@ -11,12 +11,14 @@
 class Scene {
 public:
     Scene();
+
     ~Scene();
+
     void render();
 
 protected:
     DynamicCamera _camera;
-    std::list<IObject*> _objects{};
+    std::list<IObject *> _objects{};
 };
 
 

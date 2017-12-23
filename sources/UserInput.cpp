@@ -8,7 +8,7 @@
 
 UserInput::UserInput() {
 
-    if ( SDL_Init(SDL_INIT_EVENTS) != 0 ){
+    if (SDL_Init(SDL_INIT_EVENTS) != 0) {
         std::cout << "Unable to init SDL, error: " << SDL_GetError() << std::endl;
         exit(1);
     }
@@ -20,14 +20,14 @@ UserInput::UserInput() {
 
 UserInput::~UserInput() {
     for (auto &command : _commands) {
-        delete(command);
+        delete (command);
     }
     _commands.clear();
 }
 
 void UserInput::perform() {
 
-    while(SDL_PollEvent(&_event)) {
+    while (SDL_PollEvent(&_event)) {
         for (auto &command : _commands)
             command->execute(_event);
     }
@@ -42,7 +42,7 @@ UserInput &UserInput::getInstance() {
     return instance;
 }
 
-void UserInput::addCommands(std::list<IInputCommand*> commands) {
+void UserInput::addCommands(std::list<IInputCommand *> commands) {
     _commands.merge(commands);
 }
 

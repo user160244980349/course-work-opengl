@@ -16,8 +16,8 @@ DynamicCamera::DynamicCamera() {
     _sensitivity = 0.1f;
     _acceleration = 10.0f;
 
-    _cameraPos   = glm::vec3(-4.0f, 1.0f,  0.0f);
-    _cameraUp    = glm::vec3(0.0f, 1.0f, 0.0f);
+    _cameraPos = glm::vec3(-4.0f, 1.0f, 0.0f);
+    _cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
     glm::vec3 front = glm::vec3(1.0f, 0.0f, 0.0f);
     _cameraFront = glm::normalize(front);
 
@@ -127,6 +127,6 @@ void DynamicCamera::lookHorizontal(int x) {
 DynamicCamera::~DynamicCamera() {
     UserInput::getInstance().removeCommands(_commands);
     for (auto command : _commands)
-        delete(command);
+        delete (command);
     _commands.clear();
 }

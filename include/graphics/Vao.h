@@ -10,8 +10,11 @@
 class Vao : public BaseBuffer {
 public:
     void create() override;
+
     void remove() override;
+
     void bind();
+
     void bind(GLuint draw_style, GLuint used_vertices);
 };
 

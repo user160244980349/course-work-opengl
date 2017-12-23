@@ -12,8 +12,11 @@
 class BaseObject : public IObject {
 public:
     BaseObject();
+
     explicit BaseObject(std::string name);
+
     std::string getName() override;
+
     unsigned int getId() override;
 
 protected:

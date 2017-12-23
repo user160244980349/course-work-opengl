@@ -5,15 +5,15 @@
 #include "components/CubeMesh.h"
 
 CubeMesh::CubeMesh() {
-    _vertices.emplace_back(glm::vec3( 1.0f, 1.0f,-1.0f));
-    _vertices.emplace_back(glm::vec3(-1.0f, 1.0f,-1.0f));
-    _vertices.emplace_back(glm::vec3(-1.0f,-1.0f,-1.0f));
-    _vertices.emplace_back(glm::vec3( 1.0f,-1.0f,-1.0f));
+    _vertices.emplace_back(glm::vec3(1.0f, 1.0f, -1.0f));
+    _vertices.emplace_back(glm::vec3(-1.0f, 1.0f, -1.0f));
+    _vertices.emplace_back(glm::vec3(-1.0f, -1.0f, -1.0f));
+    _vertices.emplace_back(glm::vec3(1.0f, -1.0f, -1.0f));
 
-    _vertices.emplace_back(glm::vec3( 1.0f, 1.0f, 1.0f));
+    _vertices.emplace_back(glm::vec3(1.0f, 1.0f, 1.0f));
     _vertices.emplace_back(glm::vec3(-1.0f, 1.0f, 1.0f));
-    _vertices.emplace_back(glm::vec3(-1.0f,-1.0f, 1.0f));
-    _vertices.emplace_back(glm::vec3( 1.0f,-1.0f, 1.0f));
+    _vertices.emplace_back(glm::vec3(-1.0f, -1.0f, 1.0f));
+    _vertices.emplace_back(glm::vec3(1.0f, -1.0f, 1.0f));
 
     _order.emplace_back(0u);
     _order.emplace_back(3u);
