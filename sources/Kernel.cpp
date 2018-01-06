@@ -3,6 +3,7 @@
 //
 
 #include <Kernel.h>
+#include <objects/Scene.h>
 #include <commands/QuitCommand.h>
 
 Kernel::Kernel() {
