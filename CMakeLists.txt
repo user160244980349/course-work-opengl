@@ -12,6 +12,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake-modules)
 set(COMPILER_PATH "D:/Program\ Files/mingw-w64/x86_64-7.2.0-posix-seh-rt_v5-rev1/mingw64/x86_64-w64-mingw32")
 
 set(SOURCES
+
         # graphics
         include/graphics/OpenGl.h
         include/graphics/Graphics.h
@@ -21,14 +22,17 @@ set(SOURCES
         include/graphics/Vbo.h
         include/graphics/ShaderTypes.h
         include/graphics/ShaderProgram.h
+
         # input
         include/input/UserInput.h
+
         # objects
         include/objects/Cube.h
         include/objects/BaseObject.h
         include/objects/DynamicCamera.h
         include/objects/BaseScene.h
         include/objects/Scene.h
+
         # commands
         include/commands/MoveLeft.h
         include/commands/MoveRight.h
@@ -41,9 +45,11 @@ set(SOURCES
         include/commands/MoveUp.h
         include/commands/MoveDown.h
         include/commands/Accelerate.h
+
         # components
         include/components/Transform.h
         include/components/CubeMesh.h
+
         # interfaces
         include/interfaces/ITransform.h
         include/interfaces/IMesh.h
@@ -54,12 +60,14 @@ set(SOURCES
         include/interfaces/IScene.h
         include/interfaces/ICamera.h
         include/interfaces/IControlable.h
+
         # exceptions
         include/exceptions/ShaderProgramException.h
         include/exceptions/ShaderProgramCreationException.h
         include/exceptions/BaseException.h
 
         include/Kernel.h
+
         # sources
         sources/main.cpp
         sources/OpenGl.cpp
