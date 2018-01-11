@@ -13,54 +13,28 @@
 #include <interfaces/IMesh.h>
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
-#include "Texture.h"
+#include "Vertex.h"
 
 class Mesh : public IMesh {
 public:
-    Mesh();
-
     ~Mesh() override;
+
+    void build(std::vector<Vertex> vertices, std::vector<unsigned int> indices);
 
     void prepare(ShaderProgram &shader) override;
 
     void render(ShaderProgram &shader) override;
 
-    void setVertices(std::vector<glm::vec3> vertices);
-
-    void setColors(std::vector<glm::vec3> colors);
-
-    void setNormals(std::vector<glm::vec3> normals);
-
-    void setTexCoords(std::vector<glm::vec2> texCoords);
-
-    void setTangents(std::vector<glm::vec3> tangents);
-
-    void setBitangents(std::vector<glm::vec3> bitangents);
-
-    void setIndices(std::vector<unsigned int> indices);
-
 protected:
 
     struct {
         Vao vao;
-        Vbo positionsVbo;
-        Vbo colorsVbo;
-        Vbo normalsVbo;
-        Vbo texCoordsVbo;
-        Vbo tangentsVbo;
-        Vbo bitangentsVbo;
+        Vbo vbo;
         Ebo ebo;
     } _buffers;
 
-    std::vector<glm::vec3> _vertices{};
-    std::vector<glm::vec3> _colors{};
-    std::vector<glm::vec3> _normals{};
-    std::vector<glm::vec2> _texCoords{};
-    std::vector<glm::vec3> _tangents{};
-    std::vector<glm::vec3> _bitangents{};
+    std::vector<Vertex> _vertices{};
     std::vector<unsigned int> _indices{};
-
-    Texture _texture;
 
 };
 

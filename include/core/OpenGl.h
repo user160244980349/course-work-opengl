@@ -65,6 +65,7 @@ public:
     PFNGLTEXPARAMETERIPROC texParameteri;
     PFNGLTEXIMAGE2DPROC texImage2D;
     PFNGLGENERATEMIPMAPPROC generateMipmap;
+    PFNGLPOLYGONMODEPROC polygonMode;
 
 protected:
     OpenGl();

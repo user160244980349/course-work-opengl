@@ -30,7 +30,6 @@ void Scene::render() {
 }
 
 void Scene::update() {
-
     for (auto &object : _objects) {
         auto updatableObject = dynamic_cast<IObject *>(object);
         if (updatableObject != nullptr) {

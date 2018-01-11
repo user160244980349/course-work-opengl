@@ -11,14 +11,14 @@ void Vbo::create() {
 
 void Vbo::set(void *data, unsigned int long long size) {
     OpenGl::getInstance().bindBuffer(GL_ARRAY_BUFFER, _id);
-    OpenGl::getInstance().bufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * size, data, GL_STATIC_DRAW);
+    OpenGl::getInstance().bufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
 }
 
-void Vbo::attach(ShaderProgram shader, std::string attribName, unsigned int count, unsigned int size) {
+void Vbo::attach(ShaderProgram shader, std::string attribName, unsigned int count, unsigned int size, void *offset) {
     auto attribLocation = static_cast<unsigned int>(OpenGl::getInstance().getAttribLocation(shader.getId(),
                                                                                             attribName.c_str()));
     OpenGl::getInstance().vertexAttribPointer(attribLocation, count, GL_FLOAT, GL_FALSE, size,
-                                              static_cast<void *>(nullptr));
+                                              offset);
 }
 
 void Vbo::remove() {

@@ -10,7 +10,7 @@
 
 class Model {
 public:
-    void setMeshes(std::vector<Mesh> meshes);
+    void build(std::vector<Mesh> meshes);
 
     void prepare(ShaderProgram shader);
 

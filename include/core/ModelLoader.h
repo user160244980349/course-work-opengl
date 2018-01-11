@@ -5,7 +5,6 @@
 #ifndef OPENGL_MODELLOADER_H
 #define OPENGL_MODELLOADER_H
 
-
 #include <string>
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
@@ -15,18 +14,17 @@
 
 class ModelLoader {
 public:
+    static ModelLoader &getInstacne();
     Model load(std::string path);
 
 protected:
+    ModelLoader();
     std::vector<Mesh> _meshes;
     std::string _directory;
 
-    void processNode(aiNode *node, const aiScene *scene);
+    void sceneBypass(aiNode *node, const aiScene *scene);
 
-    Mesh processMesh(aiMesh *mesh, const aiScene *scene);
-//    std::vector<Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName);
-//    unsigned int TextureFromFile(const char *path, const std::string &directory, bool gamma);
-
+    Mesh buildMesh(aiMesh *mesh);
 };
 
 

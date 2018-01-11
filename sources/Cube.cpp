@@ -8,8 +8,7 @@
 
 
 void Cube::prepare(ShaderProgram &shader) {
-    ModelLoader loader;
-    _model = loader.load("../resources/models/nanosuit/nanosuit.obj");
+    _model = ModelLoader::getInstacne().load("../resources/models/CHR_SAS_Smoke/CHR_SAS_Smoke.obj");
     _model.prepare(shader);
 }
 

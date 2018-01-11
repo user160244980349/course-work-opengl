@@ -6,10 +6,6 @@
 
 #include "core/Model.h"
 
-void Model::setMeshes(std::vector<Mesh> meshes) {
-    _meshes = std::move(meshes);
-}
-
 void Model::render(ShaderProgram shader) {
     for (auto &mesh : _meshes) {
         mesh.render(shader);
@@ -20,4 +16,8 @@ void Model::prepare(ShaderProgram shader) {
     for (auto &mesh : _meshes) {
         mesh.prepare(shader);
     }
+}
+
+void Model::build(std::vector<Mesh> meshes) {
+    _meshes = std::move(meshes);
 }

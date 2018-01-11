@@ -76,7 +76,12 @@ set(SOURCES
         sources/Transform.cpp
         sources/ShaderProgramException.cpp
         sources/ShaderProgramCreationException.cpp
-        sources/BaseException.cpp sources/ModelLoader.cpp include/core/ModelLoader.h sources/Texture.cpp include/core/Texture.h sources/Model.cpp include/core/Model.h include/core/Vertex.h)
+        sources/BaseException.cpp
+        include/core/ModelLoader.h
+        sources/ModelLoader.cpp
+        include/core/Model.h
+        sources/Model.cpp
+        include/core/Vertex.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

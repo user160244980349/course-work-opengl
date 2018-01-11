@@ -3,133 +3,57 @@
 //
 
 #include <core/Mesh.h>
+#include <core/OpenGl.h>
 
-Mesh::Mesh() {
-
-    _vertices.emplace_back(glm::vec3(1.0f, 1.0f, -1.0f));
-    _vertices.emplace_back(glm::vec3(-1.0f, 1.0f, -1.0f));
-    _vertices.emplace_back(glm::vec3(-1.0f, -1.0f, -1.0f));
-    _vertices.emplace_back(glm::vec3(1.0f, -1.0f, -1.0f));
-
-    _vertices.emplace_back(glm::vec3(1.0f, 1.0f, 1.0f));
-    _vertices.emplace_back(glm::vec3(-1.0f, 1.0f, 1.0f));
-    _vertices.emplace_back(glm::vec3(-1.0f, -1.0f, 1.0f));
-    _vertices.emplace_back(glm::vec3(1.0f, -1.0f, 1.0f));
-
-    _texCoords.emplace_back(glm::vec2(1.0f, 1.0f));
-    _texCoords.emplace_back(glm::vec2(1.0f, 0.0f));
-    _texCoords.emplace_back(glm::vec2(0.0f, 0.0f));
-    _texCoords.emplace_back(glm::vec2(0.0f, 1.0f));
-
-    _texCoords.emplace_back(glm::vec2(1.0f, 1.0f));
-    _texCoords.emplace_back(glm::vec2(1.0f, 0.0f));
-    _texCoords.emplace_back(glm::vec2(0.0f, 0.0f));
-    _texCoords.emplace_back(glm::vec2(0.0f, 1.0f));
-
-    _indices.emplace_back(0u);
-    _indices.emplace_back(3u);
-    _indices.emplace_back(1u);
-    _indices.emplace_back(1u);
-    _indices.emplace_back(3u);
-    _indices.emplace_back(2u);
-
-    _indices.emplace_back(2u);
-    _indices.emplace_back(5u);
-    _indices.emplace_back(1u);
-    _indices.emplace_back(6u);
-    _indices.emplace_back(5u);
-    _indices.emplace_back(2u);
-
-    _indices.emplace_back(5u);
-    _indices.emplace_back(7u);
-    _indices.emplace_back(4u);
-    _indices.emplace_back(6u);
-    _indices.emplace_back(7u);
-    _indices.emplace_back(5u);
-
-    _indices.emplace_back(0u);
-    _indices.emplace_back(4u);
-    _indices.emplace_back(3u);
-    _indices.emplace_back(3u);
-    _indices.emplace_back(4u);
-    _indices.emplace_back(7u);
-
-    _indices.emplace_back(2u);
-    _indices.emplace_back(7u);
-    _indices.emplace_back(6u);
-    _indices.emplace_back(3u);
-    _indices.emplace_back(7u);
-    _indices.emplace_back(2u);
-
-    _indices.emplace_back(1u);
-    _indices.emplace_back(4u);
-    _indices.emplace_back(0u);
-    _indices.emplace_back(5u);
-    _indices.emplace_back(4u);
-    _indices.emplace_back(1u);
-
-}
 
 void Mesh::prepare(ShaderProgram &shader) {
+
+    unsigned int portion;
 
     _buffers.vao.create();
     _buffers.vao.bind();
 
-    unsigned int portion = 3;
-    _buffers.positionsVbo.create();
-    _buffers.positionsVbo.set(_vertices.data(), _vertices.size());
-    shader.enableAttribute("position");
-    _buffers.positionsVbo.attach(shader, "position", portion, portion * sizeof(float));
+    _buffers.vbo.create();
+    _buffers.vbo.set(_vertices.data(), _vertices.size() * sizeof(Vertex));
 
-//    portion = 2;
-//    _buffers.texCoordsVbo.create();
-//    _buffers.texCoordsVbo.set(_texCoords.data(), _texCoords.size());
-//    shader.enableAttribute("UV");
-//    _buffers.texCoordsVbo.attach(shader, "UV", portion, portion * sizeof(float));
+    portion = 3;
+    shader.enableAttribute("position");
+    _buffers.vbo.attach(shader, "position", portion, sizeof(Vertex), (void *) offsetof(Vertex, position));
+
+    portion = 3;
+    shader.enableAttribute("normal");
+    _buffers.vbo.attach(shader, "normal", portion, sizeof(Vertex), (void *) offsetof(Vertex, normal));
+
+    portion = 2;
+    shader.enableAttribute("uv");
+    _buffers.vbo.attach(shader, "uv", portion, sizeof(Vertex), (void *) offsetof(Vertex, uv));
+
+    portion = 3;
+    shader.enableAttribute("tangent");
+    _buffers.vbo.attach(shader, "tangent", portion, sizeof(Vertex), (void *) offsetof(Vertex, tangent));
+
+    portion = 3;
+    shader.enableAttribute("bitangent");
+    _buffers.vbo.attach(shader, "bitangent", portion, sizeof(Vertex), (void *) offsetof(Vertex, bitangent));
 
     _buffers.ebo.create();
     _buffers.ebo.set(_indices.data(), _indices.size());
-
-//    _texture.load("../resources/1.png", GL_TEXTURE_2D);
 
 }
 
 void Mesh::render(ShaderProgram &shader) {
     shader.use();
-//    _texture.bind();
+    OpenGl::getInstance().polygonMode(GL_FRONT_AND_BACK, GL_LINE);
     _buffers.vao.render(GL_TRIANGLES, _indices.size());
 }
 
 Mesh::~Mesh() {
     _buffers.vao.remove();
-    _buffers.positionsVbo.remove();
+    _buffers.vbo.remove();
     _buffers.ebo.remove();
 }
 
-void Mesh::setVertices(std::vector<glm::vec3> vertices) {
+void Mesh::build(std::vector<Vertex> vertices, std::vector<unsigned int> indices) {
     _vertices = std::move(vertices);
-}
-
-void Mesh::setColors(std::vector<glm::vec3> colors) {
-    _colors = std::move(colors);
-}
-
-void Mesh::setNormals(std::vector<glm::vec3> normals) {
-    _normals = std::move(normals);
-}
-
-void Mesh::setTexCoords(std::vector<glm::vec2> texCoords) {
-    _texCoords = std::move(texCoords);
-}
-
-void Mesh::setTangents(std::vector<glm::vec3> tangents) {
-    _tangents = std::move(tangents);
-}
-
-void Mesh::setBitangents(std::vector<glm::vec3> bitangents) {
-    _bitangents = std::move(bitangents);
-}
-
-void Mesh::setIndices(std::vector<unsigned int> indices) {
     _indices = std::move(indices);
 }
