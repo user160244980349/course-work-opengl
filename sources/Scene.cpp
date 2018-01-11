@@ -14,6 +14,8 @@ void Scene::prepare() {
     _shader.link();
 
     _objects.push_back(new Cube);
+    dynamic_cast<Cube *>(_objects.back())->transform.rotate(glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    dynamic_cast<Cube *>(_objects.back())->transform.translate(glm::vec3(0.0f, -100.0f, -300.0f));
 
     for (auto &object : _objects) {
         object->prepare(_shader);
