@@ -7,6 +7,7 @@
 #include <glm/gtx/rotate_vector.hpp>
 #include <commands/Accelerate.h>
 #include <core/UserInput.h>
+#include <SDL2/SDL_timer.h>
 
 DynamicCamera::DynamicCamera() {
     _mouseX = 0.0f;
@@ -21,8 +22,8 @@ DynamicCamera::DynamicCamera() {
     glm::vec3 front = glm::vec3(1.0f, 0.0f, 0.0f);
     _cameraFront = glm::normalize(front);
 
-    _transform.projection = glm::perspective(glm::radians(50.0f), 16.0f / 9.0f, 0.1f, 500.0f);
-    _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
+    projection = glm::perspective(glm::radians(50.0f), 16.0f / 9.0f, 0.1f, 500.0f);
+    viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
 
     initCommands();
 }
@@ -76,10 +77,13 @@ void DynamicCamera::update(ShaderProgram &shader) {
         if (!_keys.q)
             _cameraPos += glm::normalize(_cameraUp) * _speedUp * _acceleration;
     }
-    _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
+    viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
 
-    shader.setUniform("viewPoint", _transform.viewPoint);
-    shader.setUniform("projection", _transform.projection);
+    shader.setUniform("lightPosition",
+                      glm::vec3(sinf(SDL_GetTicks() * 0.001f) * 100, 0, cosf(SDL_GetTicks() * 0.001f) * 100));
+    shader.setUniform("viewPoint", viewPoint);
+    shader.setUniform("projection", projection);
+    shader.setUniform("viewPosition", _cameraPos);
 }
 
 void DynamicCamera::moveForward() {

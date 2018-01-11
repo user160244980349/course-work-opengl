@@ -48,10 +48,8 @@ protected:
 
     ShaderProgram _shader;
 
-    struct {
-        glm::mat4 projection;
-        glm::mat4 viewPoint;
-    } _transform;
+    glm::mat4 projection;
+    glm::mat4 viewPoint;
 
     struct {
         bool w = false;

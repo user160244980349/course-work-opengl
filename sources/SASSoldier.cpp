@@ -3,21 +3,21 @@
 //
 
 
-#include <objects/Cube.h>
+#include <objects/SASSoldier.h>
 #include <core/ModelLoader.h>
 
 
-void Cube::prepare(ShaderProgram &shader) {
+void SASSoldier::prepare(ShaderProgram &shader) {
     _model = ModelLoader::getInstacne().load("../resources/models/CHR_SAS_Smoke/CHR_SAS_Smoke.obj");
     _model.prepare(shader);
 }
 
-void Cube::render(ShaderProgram &shader) {
+void SASSoldier::render(ShaderProgram &shader) {
     shader.setUniform("model", transform.getModel());
     _model.render(shader);
 }
 
-void Cube::update() {
+void SASSoldier::update() {
 
 }
 

@@ -2,8 +2,8 @@
 // Created by user on 21.10.2017.
 //
 
-#ifndef OPENGL_CUBE_H
-#define OPENGL_CUBE_H
+#ifndef OPENGL_SASSOLDIR_H
+#define OPENGL_SASSOLDIR_H
 
 #include <interfaces/IDrawable.h>
 #include <interfaces/IObject.h>
@@ -18,7 +18,7 @@
 #include <core/Model.h>
 #include "BaseObject.h"
 
-class Cube : public IDrawable, public BaseObject {
+class SASSoldier : public IDrawable, public BaseObject {
 public:
     Transform transform;
 
@@ -33,4 +33,4 @@ protected:
 
 };
 
-#endif //OPENGL_CUBE_H
+#endif //OPENGL_SASSOLDIR_H

@@ -10,7 +10,8 @@ void Transform::translate(glm::vec3 position) {
 }
 
 Transform::Transform() {
-    _model = glm::mat4(1.0f);
+    _model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f));
+    scale(glm::vec3(1.0f));
 }
 
 void Transform::rotate(float angle, glm::vec3 axis) {

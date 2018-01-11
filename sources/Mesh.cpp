@@ -3,7 +3,7 @@
 //
 
 #include <core/Mesh.h>
-#include <core/OpenGl.h>
+#include <iostream>
 
 
 void Mesh::prepare(ShaderProgram &shader) {
@@ -43,8 +43,10 @@ void Mesh::prepare(ShaderProgram &shader) {
 
 void Mesh::render(ShaderProgram &shader) {
     shader.use();
-    OpenGl::getInstance().polygonMode(GL_FRONT_AND_BACK, GL_LINE);
+//    OpenGl::getInstance().polygonMode(GL_FRONT_AND_BACK, GL_LINE);
     _buffers.vao.render(GL_TRIANGLES, _indices.size());
+    _buffers.vao.unbind();
+
 }
 
 Mesh::~Mesh() {

@@ -15,7 +15,7 @@ set(SOURCES
         include/core/ShaderTypes.h
         include/core/ShaderProgram.h
         include/core/UserInput.h
-        include/objects/Cube.h
+        include/objects/SASSoldier.h
         include/objects/BaseObject.h
         include/objects/DynamicCamera.h
         include/objects/BaseScene.h
@@ -53,7 +53,7 @@ set(SOURCES
         sources/Vao.cpp
         sources/Vbo.cpp
         sources/UserInput.cpp
-        sources/Cube.cpp
+        sources/SASSoldier.cpp
         sources/DynamicCamera.cpp
         sources/BaseObject.cpp
         sources/BaseScene.cpp
@@ -81,7 +81,7 @@ set(SOURCES
         sources/ModelLoader.cpp
         include/core/Model.h
         sources/Model.cpp
-        include/core/Vertex.h)
+        include/core/Vertex.h sources/Floor.cpp include/objects/Floor.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

@@ -2,8 +2,9 @@
 // Created by user on 20.10.2017.
 //
 
-#include <objects/Cube.h>
+#include <objects/SASSoldier.h>
 #include <objects/DynamicCamera.h>
+#include <objects/Floor.h>
 #include "objects/Scene.h"
 
 
@@ -13,9 +14,17 @@ void Scene::prepare() {
     _shader.compileShader("../resources/shaders/FirstFragment.glsl", FRAGMENT);
     _shader.link();
 
-    _objects.push_back(new Cube);
-    dynamic_cast<Cube *>(_objects.back())->transform.rotate(glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-    dynamic_cast<Cube *>(_objects.back())->transform.translate(glm::vec3(0.0f, -100.0f, -300.0f));
+    _objects.push_back(new Floor);
+    dynamic_cast<Floor *>(_objects.back())->transform.translate(glm::vec3(-5.0f, 0.0f, 0.0f));
+
+    _objects.push_back(new SASSoldier);
+    dynamic_cast<SASSoldier *>(_objects.back())->transform.translate(glm::vec3(0.0f, 0.0f, 5.0f));
+
+    _objects.push_back(new Floor);
+    dynamic_cast<Floor *>(_objects.back())->transform.translate(glm::vec3(5.0f, 0.0f, 0.0f));
+
+    _objects.push_back(new Floor);
+    dynamic_cast<Floor *>(_objects.back())->transform.translate(glm::vec3(15.0f, 0.0f, 0.0f));
 
     for (auto &object : _objects) {
         object->prepare(_shader);

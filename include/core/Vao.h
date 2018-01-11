@@ -15,6 +15,8 @@ public:
 
     void bind();
 
+    void unbind();
+
     void render(GLuint drawStyle, unsigned long long int usedVertices);
 };
 

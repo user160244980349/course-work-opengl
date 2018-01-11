@@ -11,7 +11,7 @@
 Model ModelLoader::load(std::string path) {
 
     Assimp::Importer importer;
-    const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate);
+    const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_GenNormals);
 
     if (scene == nullptr || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
         std::cerr << "ERROR::ASSIMP:: " << importer.GetErrorString() << std::endl;
@@ -23,6 +23,7 @@ Model ModelLoader::load(std::string path) {
 
     Model newModel;
     newModel.build(_meshes);
+    _meshes.clear();
 
     return newModel;
 }
