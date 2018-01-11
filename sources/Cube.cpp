@@ -4,16 +4,18 @@
 
 
 #include <objects/Cube.h>
+#include <core/ModelLoader.h>
 
 
 void Cube::prepare(ShaderProgram &shader) {
-    _mesh.prepare(shader);
+    ModelLoader loader;
+    _model = loader.load("../resources/models/nanosuit/nanosuit.obj");
+    _model.prepare(shader);
 }
 
 void Cube::render(ShaderProgram &shader) {
-    shader.use();
     shader.setUniform("model", transform.getModel());
-    _mesh.render(shader);
+    _model.render(shader);
 }
 
 void Cube::update() {

@@ -60,6 +60,11 @@ public:
     PFNGLGETPROGRAMRESOURCENAMEPROC getProgramResourceName;
     PFNGLGETATTRIBLOCATIONPROC getAttribLocation;
     PFNGLDISABLEVERTEXATTRIBARRAYPROC disableVertexAttribArray;
+    PFNGLGENTEXTURESPROC genTextures;
+    PFNGLBINDTEXTUREPROC bindTexture;
+    PFNGLTEXPARAMETERIPROC texParameteri;
+    PFNGLTEXIMAGE2DPROC texImage2D;
+    PFNGLGENERATEMIPMAPPROC generateMipmap;
 
 protected:
     OpenGl();

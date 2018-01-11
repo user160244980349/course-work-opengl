@@ -1,13 +1,15 @@
 #version 450 core
 
-in vec3 vertexPosition;
-smooth out vec4 vertexColor;
+in vec3 position;
+in vec2 UV;
+
+out vec2 fUV;
 
 uniform mat4 projection;
 uniform mat4 viewPoint;
 uniform mat4 model;
 
 void main() {
-   vertexColor = vec4(vertexPosition, 0.5f);
-   gl_Position = projection * viewPoint * model * vec4(vertexPosition, 1.0f);
+   fUV = UV;
+   gl_Position = projection * viewPoint * model * vec4(position, 1.0f);
 }

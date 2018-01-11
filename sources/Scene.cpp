@@ -14,11 +14,6 @@ void Scene::prepare() {
     _shader.link();
 
     _objects.push_back(new Cube);
-    dynamic_cast<Cube *>(_objects.back())->transform.translate(glm::vec3(0.0f));
-    _objects.push_back(new Cube);
-    dynamic_cast<Cube *>(_objects.back())->transform.translate(glm::vec3(1.0f));
-    _objects.push_back(new Cube);
-    dynamic_cast<Cube *>(_objects.back())->transform.translate(glm::vec3(2.0f));
 
     for (auto &object : _objects) {
         object->prepare(_shader);

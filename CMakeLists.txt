@@ -32,7 +32,7 @@ set(SOURCES
         include/commands/MoveDown.h
         include/commands/Accelerate.h
         include/core/Transform.h
-        include/core/CubeMesh.h
+        include/core/Mesh.h
         include/interfaces/ITransform.h
         include/interfaces/IMesh.h
         include/interfaces/IDrawable.h
@@ -72,11 +72,11 @@ set(SOURCES
         sources/ShaderProgram.cpp
         sources/Accelerate.cpp
         sources/BaseBuffer.cpp
-        sources/CubeMesh.cpp
+        sources/Mesh.cpp
         sources/Transform.cpp
         sources/ShaderProgramException.cpp
         sources/ShaderProgramCreationException.cpp
-        sources/BaseException.cpp)
+        sources/BaseException.cpp sources/ModelLoader.cpp include/core/ModelLoader.h sources/Texture.cpp include/core/Texture.h sources/Model.cpp include/core/Model.h include/core/Vertex.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
@@ -91,6 +91,7 @@ target_link_libraries(
         ${OPENGL_LIBRARIES}
         ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libSDL2main.a
         ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libSDL2.dll.a
+        ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libSDL2_image.dll.a
         ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libassimp.dll.a)
 
 

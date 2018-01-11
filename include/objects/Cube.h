@@ -13,8 +13,9 @@
 #include <core/Vbo.h>
 #include <core/Ebo.h>
 #include <vector>
-#include <core/CubeMesh.h>
+#include <core/Mesh.h>
 #include <core/Transform.h>
+#include <core/Model.h>
 #include "BaseObject.h"
 
 class Cube : public IDrawable, public BaseObject {
@@ -28,7 +29,7 @@ public:
     void update() override;
 
 protected:
-    CubeMesh _mesh;
+    Model _model;
 
 };
 
