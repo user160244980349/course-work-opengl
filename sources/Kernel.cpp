@@ -2,7 +2,7 @@
 // Created by user on 07.10.2017.
 //
 
-#include <Kernel.h>
+#include <core/Kernel.h>
 #include <objects/Scene.h>
 #include <commands/QuitCommand.h>
 

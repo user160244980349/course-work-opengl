@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "input/UserInput.h"
+#include "core/UserInput.h"
 
 UserInput::UserInput() {
 

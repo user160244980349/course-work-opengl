@@ -5,13 +5,13 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
-#include <graphics/OpenGl.h>
+#include <core/OpenGl.h>
 #include <glm/vec4.hpp>
 #include <glm/vec2.hpp>
 #include <glm/detail/type_mat4x4.hpp>
 #include <exceptions/ShaderProgramException.h>
 #include <exceptions/ShaderProgramCreationException.h>
-#include "graphics/ShaderProgram.h"
+#include "core/ShaderProgram.h"
 
 void ShaderProgram::compileShader(const std::string &filename, ShaderTypes type) {
 

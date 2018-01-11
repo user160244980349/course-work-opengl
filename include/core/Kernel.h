@@ -6,8 +6,8 @@
 #define OPENGL_APPLICATION_H
 
 #include <SDL2/SDL.h>
-#include <graphics/Graphics.h>
-#include <input/UserInput.h>
+#include <core/Graphics.h>
+#include <core/UserInput.h>
 
 
 class Kernel {

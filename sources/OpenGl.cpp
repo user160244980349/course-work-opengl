@@ -4,7 +4,7 @@
 
 #include <SDL2/SDL_video.h>
 #include <iostream>
-#include "graphics/OpenGl.h"
+#include "core/OpenGl.h"
 
 OpenGl::OpenGl() {
 

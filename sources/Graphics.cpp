@@ -3,9 +3,9 @@
 //
 
 #include <SDL2/SDL.h>
-#include "graphics/Graphics.h"
+#include "core/Graphics.h"
 #include <iostream>
-#include <graphics/OpenGl.h>
+#include <core/OpenGl.h>
 
 Graphics::Graphics() {
 

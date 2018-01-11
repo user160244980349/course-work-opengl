@@ -6,9 +6,9 @@
 #define OPENGL_CUBEMESH_H
 
 
-#include <graphics/Vao.h>
-#include <graphics/Vbo.h>
-#include <graphics/Ebo.h>
+#include <core/Vao.h>
+#include <core/Vbo.h>
+#include <core/Ebo.h>
 #include <vector>
 #include <interfaces/IMesh.h>
 

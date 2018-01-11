@@ -6,7 +6,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/rotate_vector.hpp>
 #include <commands/Accelerate.h>
-#include <input/UserInput.h>
+#include <core/UserInput.h>
 
 DynamicCamera::DynamicCamera() {
     _mouseX = 0.0f;

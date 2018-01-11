@@ -5,35 +5,21 @@ set(CMAKE_CXX_STANDARD 17)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lmingw32 -mwindows")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lmingw32 -mconsole")
 
-# cmake modules path
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake-modules)
-
-# compiler path
-set(COMPILER_PATH "D:/Program\ Files/mingw-w64/x86_64-7.2.0-posix-seh-rt_v5-rev1/mingw64/x86_64-w64-mingw32")
-
 set(SOURCES
-
-        # graphics
-        include/graphics/OpenGl.h
-        include/graphics/Graphics.h
-        include/graphics/BaseBuffer.h
-        include/graphics/Ebo.h
-        include/graphics/Vao.h
-        include/graphics/Vbo.h
-        include/graphics/ShaderTypes.h
-        include/graphics/ShaderProgram.h
-
-        # input
-        include/input/UserInput.h
-
-        # objects
+        include/core/OpenGl.h
+        include/core/Graphics.h
+        include/core/BaseBuffer.h
+        include/core/Ebo.h
+        include/core/Vao.h
+        include/core/Vbo.h
+        include/core/ShaderTypes.h
+        include/core/ShaderProgram.h
+        include/core/UserInput.h
         include/objects/Cube.h
         include/objects/BaseObject.h
         include/objects/DynamicCamera.h
         include/objects/BaseScene.h
         include/objects/Scene.h
-
-        # commands
         include/commands/MoveLeft.h
         include/commands/MoveRight.h
         include/commands/MoveBack.h
@@ -45,12 +31,8 @@ set(SOURCES
         include/commands/MoveUp.h
         include/commands/MoveDown.h
         include/commands/Accelerate.h
-
-        # components
-        include/components/Transform.h
-        include/components/CubeMesh.h
-
-        # interfaces
+        include/core/Transform.h
+        include/core/CubeMesh.h
         include/interfaces/ITransform.h
         include/interfaces/IMesh.h
         include/interfaces/IDrawable.h
@@ -60,15 +42,10 @@ set(SOURCES
         include/interfaces/IScene.h
         include/interfaces/ICamera.h
         include/interfaces/IControlable.h
-
-        # exceptions
         include/exceptions/ShaderProgramException.h
         include/exceptions/ShaderProgramCreationException.h
         include/exceptions/BaseException.h
-
-        include/Kernel.h
-
-        # sources
+        include/core/Kernel.h
         sources/main.cpp
         sources/OpenGl.cpp
         sources/Ebo.cpp
@@ -99,35 +76,21 @@ set(SOURCES
         sources/Transform.cpp
         sources/ShaderProgramException.cpp
         sources/ShaderProgramCreationException.cpp
-        sources/BaseException.cpp
-        )
+        sources/BaseException.cpp)
 
-# executables
-add_executable(OpenGL ${SOURCES})
+add_executable(${PROJECT_NAME} ${SOURCES})
 
-# SDL2 paths
-set(SDL2_PATH ${COMPILER_PATH})
-set(SDL2_TTF_PATH ${COMPILER_PATH})
-set(SDL2_IMAGE_PATH ${COMPILER_PATH})
-
-# include directories
 include_directories(
-        include
-)
+        ${CMAKE_SOURCE_DIR}/include
+        ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/include)
 
-# find section
-find_package(SDL2 REQUIRED)
-find_package(SDL2_IMAGE REQUIRED)
-find_package(SDL2_TTF REQUIRED)
 find_package(OpenGL REQUIRED)
 
-# link libraries
 target_link_libraries(
-        OpenGL
-        ${SDL2_LIBRARY}
-        ${SDL2_TTF_LIBRARIES}
-        ${SDL2_IMAGE_LIBRARIES}
+        ${PROJECT_NAME}
         ${OPENGL_LIBRARIES}
-)
+        ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libSDL2main.a
+        ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libSDL2.dll.a
+        ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libassimp.dll.a)
 
 

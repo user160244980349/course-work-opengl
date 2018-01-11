@@ -6,7 +6,7 @@
 #define OPENGL_QUITCOMMAND_H
 
 #include <interfaces/IInputCommand.h>
-#include <Kernel.h>
+#include <core/Kernel.h>
 
 
 class QuitCommand : public IInputCommand {

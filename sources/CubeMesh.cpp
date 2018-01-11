@@ -2,7 +2,7 @@
 // Created by user on 07.12.2017.
 //
 
-#include "components/CubeMesh.h"
+#include "core/CubeMesh.h"
 
 CubeMesh::CubeMesh() {
     _vertices.emplace_back(glm::vec3(1.0f, 1.0f, -1.0f));

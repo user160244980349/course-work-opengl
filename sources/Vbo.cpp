@@ -2,8 +2,8 @@
 // Created by user on 13.10.2017.
 //
 
-#include <graphics/OpenGl.h>
-#include "graphics/Vbo.h"
+#include <core/OpenGl.h>
+#include "core/Vbo.h"
 
 void Vbo::create() {
     OpenGl::getInstance().genBuffers(1, &_id);

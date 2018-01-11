@@ -2,8 +2,8 @@
 // Created by user on 13.10.2017.
 //
 
-#include <graphics/OpenGl.h>
-#include "graphics/Ebo.h"
+#include <core/OpenGl.h>
+#include "core/Ebo.h"
 
 void Ebo::create() {
     OpenGl::getInstance().genBuffers(1, &_id);

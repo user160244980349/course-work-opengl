@@ -8,13 +8,13 @@
 #include <interfaces/IDrawable.h>
 #include <interfaces/IObject.h>
 #include <interfaces/ICamera.h>
-#include <graphics/ShaderProgram.h>
-#include <graphics/Vao.h>
-#include <graphics/Vbo.h>
-#include <graphics/Ebo.h>
+#include <core/ShaderProgram.h>
+#include <core/Vao.h>
+#include <core/Vbo.h>
+#include <core/Ebo.h>
 #include <vector>
-#include <components/CubeMesh.h>
-#include <components/Transform.h>
+#include <core/CubeMesh.h>
+#include <core/Transform.h>
 #include "BaseObject.h"
 
 class Cube : public IDrawable, public BaseObject {

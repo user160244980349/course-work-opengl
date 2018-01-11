@@ -9,7 +9,7 @@
 #include <glm/detail/type_mat.hpp>
 #include <glm/vec3.hpp>
 #include <glm/detail/type_mat4x4.hpp>
-#include <graphics/ShaderProgram.h>
+#include <core/ShaderProgram.h>
 
 
 class ICamera {
