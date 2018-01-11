@@ -18,18 +18,24 @@ public:
 
     ~CubeMesh() override;
 
-    void render() override;
+    void prepare(ShaderProgram &shader) override;
+
+    void render(ShaderProgram &shader) override;
 
 protected:
 
     struct {
         Vao vao;
-        Vbo vbo;
+        Vbo positionsVbo;
+//        Vbo normalsVbo;
+//        Vbo texCoordsVbo;
+//        Vbo tangentsVbo;
+//        Vbo bitangentsVbo;
         Ebo ebo;
     } _buffers;
 
     std::vector<glm::vec3> _vertices{};
-    std::vector<unsigned int> _order{};
+    std::vector<unsigned int> _indices{};
 };
 
 

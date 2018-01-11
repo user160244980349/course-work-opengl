@@ -60,6 +60,8 @@ OpenGl::OpenGl() {
     getProgramInterfaceiv = (PFNGLGETPROGRAMINTERFACEIVPROC) SDL_GL_GetProcAddress("glGetProgramInterfaceiv");
     getProgramResourceiv = (PFNGLGETPROGRAMRESOURCEIVPROC) SDL_GL_GetProcAddress("glGetProgramResourceiv");
     getProgramResourceName = (PFNGLGETPROGRAMRESOURCENAMEPROC) SDL_GL_GetProcAddress("glGetProgramResourceName");
+    getAttribLocation = (PFNGLGETATTRIBLOCATIONPROC) SDL_GL_GetProcAddress("glGetAttribLocation");
+    disableVertexAttribArray = (PFNGLDISABLEVERTEXATTRIBARRAYPROC) SDL_GL_GetProcAddress("disableVertexAttribArray");
 
     SDL_GL_UnloadLibrary();
 

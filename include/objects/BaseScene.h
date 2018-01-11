@@ -13,8 +13,11 @@
 class BaseScene : public IScene {
 public:
     BaseScene();
+
     explicit BaseScene(std::string name);
+
     std::string getName() override;
+
     unsigned int getId() override;
 
 protected:
@@ -22,7 +25,7 @@ protected:
     unsigned int _id;
     std::string _name;
     DynamicCamera _camera;
-    std::list<IObject*> _objects{};
+    std::list<IObject *> _objects{};
 };
 
 

@@ -19,18 +19,17 @@
 
 class Cube : public IDrawable, public BaseObject {
 public:
-    Cube();
+    Transform transform;
+
+    void prepare(ShaderProgram &shader) override;
+
+    void render(ShaderProgram &shader) override;
 
     void update() override;
 
-    void render(ICamera &camera) override;
-
-    Transform transform;
-
 protected:
-
     CubeMesh _mesh;
-    ShaderProgram _shaderProgram;
+
 };
 
 #endif //OPENGL_CUBE_H

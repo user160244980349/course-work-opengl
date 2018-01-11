@@ -13,9 +13,10 @@ void Vao::bind() {
     OpenGl::getInstance().bindVertexArray(_id);
 }
 
-void Vao::bind(GLuint draw_style, GLuint used_vertices) {
+void Vao::render(GLuint drawStyle, unsigned long long int usedVertices) {
     OpenGl::getInstance().bindVertexArray(_id);
-    OpenGl::getInstance().drawElements(draw_style, used_vertices, GL_UNSIGNED_INT, static_cast<GLvoid *>(nullptr));
+    OpenGl::getInstance().drawElements(drawStyle, static_cast<GLsizei>(usedVertices), GL_UNSIGNED_INT,
+                                       static_cast<GLvoid *>(nullptr));
 }
 
 void Vao::remove() {

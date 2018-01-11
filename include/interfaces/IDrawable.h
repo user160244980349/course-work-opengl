@@ -12,7 +12,9 @@ class IDrawable {
 public:
     virtual ~IDrawable() = default;;
 
-    virtual void render(ICamera &camera) {};
+    virtual void prepare(ShaderProgram &shader) {};
+
+    virtual void render(ShaderProgram &shader) {};
 };
 
 

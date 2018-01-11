@@ -22,6 +22,10 @@ public:
 
     void use();
 
+    void enableAttribute(std::string name);
+
+    void disableAttribute(std::string name);
+
     unsigned int getId();
 
     void bindAttribLocation(unsigned int location, const std::string &name);
@@ -55,7 +59,7 @@ public:
     void printActiveUniforms();
 
 protected:
-    unsigned int _id;
+    static unsigned int _id;
 
 };
 

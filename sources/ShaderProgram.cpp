@@ -13,6 +13,9 @@
 #include <exceptions/ShaderProgramCreationException.h>
 #include "core/ShaderProgram.h"
 
+
+unsigned int ShaderProgram::_id = 0;
+
 void ShaderProgram::compileShader(const std::string &filename, ShaderTypes type) {
 
     std::string shaderCode;
@@ -54,6 +57,9 @@ unsigned int ShaderProgram::getId() {
 }
 
 ShaderProgram::ShaderProgram() {
+
+    if (_id > 0)
+        return;
 
     try {
         _id = OpenGl::getInstance().createProgram();
@@ -213,4 +219,14 @@ void ShaderProgram::printActiveAttribs() {
         printf("%-5d %s\n", results[2], name);
         delete[] name;
     }
+}
+
+void ShaderProgram::enableAttribute(std::string name) {
+    unsigned int attribLocation = static_cast<unsigned int>(OpenGl::getInstance().getAttribLocation(_id, name.c_str()));
+    OpenGl::getInstance().enableVertexAttribArray(attribLocation);
+}
+
+void ShaderProgram::disableAttribute(std::string name) {
+    unsigned int attribLocation = static_cast<unsigned int>(OpenGl::getInstance().getAttribLocation(_id, name.c_str()));
+    OpenGl::getInstance().disableVertexAttribArray(attribLocation);
 }

@@ -42,7 +42,7 @@ void DynamicCamera::initCommands() {
     UserInput::getInstance().addCommands(_commands);
 }
 
-void DynamicCamera::update() {
+void DynamicCamera::update(ShaderProgram &shader) {
     _cameraFront = glm::normalize(glm::vec3(
             cosf(glm::radians(_mouseY)) * cosf(glm::radians(_mouseX)),
             sinf(glm::radians(_mouseY)),
@@ -77,11 +77,9 @@ void DynamicCamera::update() {
             _cameraPos += glm::normalize(_cameraUp) * _speedUp * _acceleration;
     }
     _transform.viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
-}
 
-void DynamicCamera::display(ShaderProgram &_shaderProgram) {
-    _shaderProgram.setUniform("viewPoint", _transform.viewPoint);
-    _shaderProgram.setUniform("projection", _transform.projection);
+    shader.setUniform("viewPoint", _transform.viewPoint);
+    shader.setUniform("projection", _transform.projection);
 }
 
 void DynamicCamera::moveForward() {

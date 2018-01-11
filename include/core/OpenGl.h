@@ -58,6 +58,8 @@ public:
     PFNGLGETPROGRAMINTERFACEIVPROC getProgramInterfaceiv;
     PFNGLGETPROGRAMRESOURCEIVPROC getProgramResourceiv;
     PFNGLGETPROGRAMRESOURCENAMEPROC getProgramResourceName;
+    PFNGLGETATTRIBLOCATIONPROC getAttribLocation;
+    PFNGLDISABLEVERTEXATTRIBARRAYPROC disableVertexAttribArray;
 
 protected:
     OpenGl();

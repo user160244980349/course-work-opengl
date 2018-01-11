@@ -4,8 +4,8 @@
 
 #include <SDL2/SDL.h>
 #include "core/Graphics.h"
-#include <iostream>
 #include <core/OpenGl.h>
+#include <iostream>
 
 Graphics::Graphics() {
 

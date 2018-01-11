@@ -7,10 +7,41 @@
 #include "objects/Scene.h"
 
 
-Scene::Scene() {
+void Scene::prepare() {
+
+    _shader.compileShader("../resources/shaders/FirstVertex.glsl", VERTEX);
+    _shader.compileShader("../resources/shaders/FirstFragment.glsl", FRAGMENT);
+    _shader.link();
 
     _objects.push_back(new Cube);
+    dynamic_cast<Cube *>(_objects.back())->transform.translate(glm::vec3(0.0f));
+    _objects.push_back(new Cube);
+    dynamic_cast<Cube *>(_objects.back())->transform.translate(glm::vec3(1.0f));
+    _objects.push_back(new Cube);
+    dynamic_cast<Cube *>(_objects.back())->transform.translate(glm::vec3(2.0f));
 
+    for (auto &object : _objects) {
+        object->prepare(_shader);
+    }
+}
+
+void Scene::render() {
+
+    _camera.update(_shader);
+
+    for (auto &object : _objects) {
+        object->render(_shader);
+    }
+}
+
+void Scene::update() {
+
+    for (auto &object : _objects) {
+        auto updatableObject = dynamic_cast<IObject *>(object);
+        if (updatableObject != nullptr) {
+            updatableObject->update();
+        }
+    }
 }
 
 Scene::~Scene() {
@@ -18,26 +49,4 @@ Scene::~Scene() {
         delete (object);
     }
     _objects.clear();
-}
-
-void Scene::render() {
-
-    _camera.update();
-
-    for (auto &object : _objects) {
-        object->update();
-    }
-
-    for (auto &object : _objects) {
-        auto drawableObject = dynamic_cast<IDrawable *>(object);
-        if (drawableObject != nullptr) {
-            drawableObject->render(_camera);
-        }
-    }
-}
-
-void Scene::update() {
-    for (auto &object : _objects) {
-        object->update();
-    }
 }

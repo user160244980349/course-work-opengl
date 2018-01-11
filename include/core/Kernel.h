@@ -6,13 +6,14 @@
 #define OPENGL_APPLICATION_H
 
 #include <SDL2/SDL.h>
-#include <core/Graphics.h>
-#include <core/UserInput.h>
+#include <objects/Scene.h>
 
 
 class Kernel {
 public:
     static Kernel &getInstance();
+
+    void prepare();
 
     void run();
 
@@ -21,6 +22,7 @@ public:
 protected:
     Kernel();
 
+    Scene _scene;
     bool _running;
 };
 

@@ -6,17 +6,14 @@
 #include <objects/Cube.h>
 
 
-Cube::Cube() : BaseObject() {
-    _shaderProgram.compileShader("../resources/shaders/FirstVertex.glsl", VERTEX);
-    _shaderProgram.compileShader("../resources/shaders/FirstFragment.glsl", FRAGMENT);
-    _shaderProgram.link();
+void Cube::prepare(ShaderProgram &shader) {
+    _mesh.prepare(shader);
 }
 
-void Cube::render(ICamera &camera) {
-    _shaderProgram.use();
-    camera.display(_shaderProgram);
-    _shaderProgram.setUniform("model", transform.getModel());
-    _mesh.render();
+void Cube::render(ShaderProgram &shader) {
+    shader.use();
+    shader.setUniform("model", transform.getModel());
+    _mesh.render(shader);
 }
 
 void Cube::update() {

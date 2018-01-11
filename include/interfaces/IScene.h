@@ -11,9 +11,15 @@
 class IScene {
 public:
     virtual ~IScene() {};
+
+    virtual void prepare() {};
+
     virtual void render() {};
+
     virtual void update() {};
+
     virtual std::string getName() {};
+
     virtual unsigned int getId() {};
 };
 

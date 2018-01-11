@@ -13,7 +13,7 @@ public:
 
     void remove() override;
 
-    void set(GLuint *o, GLuint size);
+    void set(void *indices, unsigned int long long size);
 };
 
 

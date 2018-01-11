@@ -22,9 +22,7 @@ public:
 
     ~DynamicCamera() override;
 
-    void update() override;
-
-    void display(ShaderProgram &_shaderProgram) override;
+    void update(ShaderProgram &shader) override;
 
     void initCommands() override;
 
@@ -47,6 +45,8 @@ public:
     void lookVertical(int y);
 
 protected:
+
+    ShaderProgram _shader;
 
     struct {
         glm::mat4 projection;

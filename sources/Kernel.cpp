@@ -2,25 +2,25 @@
 // Created by user on 07.10.2017.
 //
 
+#include <core/UserInput.h>
+#include <core/Graphics.h>
 #include <core/Kernel.h>
-#include <objects/Scene.h>
 #include <commands/QuitCommand.h>
 
-Kernel::Kernel() {
-    Graphics::getInstance();
+void Kernel::prepare() {
     UserInput::getInstance().addCommand(new QuitCommand());
 };
 
 void Kernel::run() {
     _running = true;
-    auto *scene = new Scene;
+
+    _scene.prepare();
 
     while (_running) {
         UserInput::getInstance().perform();
-        Graphics::getInstance().render(*scene);
+        Graphics::getInstance().render(_scene);
     }
 
-    delete (scene);
 }
 
 void Kernel::stop() {
@@ -31,4 +31,6 @@ Kernel &Kernel::getInstance() {
     static Kernel instance;
     return instance;
 }
+
+Kernel::Kernel() = default;
 

@@ -10,7 +10,9 @@ class IMesh {
 public:
     virtual ~IMesh() = default;;
 
-    virtual void render() {};
+    virtual void prepare(ShaderProgram &shader) {};
+
+    virtual void render(ShaderProgram &shader) {};
 };
 
 
