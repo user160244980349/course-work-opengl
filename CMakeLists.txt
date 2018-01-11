@@ -81,7 +81,7 @@ set(SOURCES
         sources/ModelLoader.cpp
         include/core/Model.h
         sources/Model.cpp
-        include/core/Vertex.h sources/Floor.cpp include/objects/Floor.h)
+        include/core/Vertex.h sources/M4A1.cpp include/objects/M4A1.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

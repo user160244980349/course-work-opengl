@@ -19,7 +19,7 @@
 #include <core/Model.h>
 #include "BaseObject.h"
 
-class Floor : public IDrawable, public BaseObject {
+class M4A1 : public IDrawable, public BaseObject {
 public:
     Transform transform;
 
