@@ -23,7 +23,7 @@ protected:
     std::vector<Mesh> _meshes;
     std::string _directory;
 
-    ModelLoader();
+    ModelLoader() = default;
 
     void sceneBypass(aiNode *node, const aiScene *scene);
 

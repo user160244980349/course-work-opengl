@@ -119,5 +119,3 @@ ModelLoader &ModelLoader::getInstacne() {
     static ModelLoader instance;
     return instance;
 }
-
-ModelLoader::ModelLoader() = default;
