@@ -14,7 +14,7 @@ Model ModelLoader::load(std::string path) {
     const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_GenUVCoords | aiProcess_FlipUVs |
                                                    aiProcess_GenNormals);
 
-    if (scene == nullptr || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
+    if (scene == nullptr) {
         std::cerr << "ERROR::ASSIMP:: " << importer.GetErrorString() << std::endl;
         exit(0);
     }

@@ -7,10 +7,13 @@
 
 #include <string>
 #include <interfaces/IObject.h>
+#include <core/Transform.h>
 
 
 class BaseObject : public IObject {
 public:
+    Transform transform;
+
     BaseObject();
 
     explicit BaseObject(std::string name);

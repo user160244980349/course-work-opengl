@@ -34,7 +34,7 @@ void Texture::load(std::string path, std::string name, unsigned int index) {
 
 void Texture::bind(Shader shader, unsigned int block) {
     shader.setUniform(_bindName.c_str(), _index);
-    OpenGl::getInstance().activeTexture(GL_TEXTURE0);
+    OpenGl::getInstance().activeTexture(GL_TEXTURE0 + block);
     OpenGl::getInstance().bindTexture(GL_TEXTURE_2D, _id);
 }
 

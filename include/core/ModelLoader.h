@@ -20,9 +20,10 @@ public:
     Model load(std::string path);
 
 protected:
-    ModelLoader();
     std::vector<Mesh> _meshes;
     std::string _directory;
+
+    ModelLoader();
 
     void sceneBypass(aiNode *node, const aiScene *scene);
 

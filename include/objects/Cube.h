@@ -21,7 +21,6 @@
 
 class Cube : public IDrawable, public BaseObject {
 public:
-    Transform transform;
 
     void prepare(Shader &shader) override;
 

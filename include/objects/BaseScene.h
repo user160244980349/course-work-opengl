@@ -8,6 +8,7 @@
 
 #include <interfaces/IScene.h>
 #include <interfaces/IObject.h>
+#include <interfaces/IDrawable.h>
 #include "DynamicCamera.h"
 
 class BaseScene : public IScene {
@@ -25,7 +26,7 @@ protected:
     unsigned int _id;
     std::string _name;
     DynamicCamera _camera;
-    std::list<IObject *> _objects{};
+    std::list<IDrawable *> _objects{};
 };
 
 

@@ -6,8 +6,6 @@
 #define OPENGL_SCENE_H
 
 #include "BaseScene.h"
-#include "interfaces/IDrawable.h"
-#include <vector>
 
 class Scene : public BaseScene {
 public:
@@ -21,7 +19,6 @@ public:
 
 protected:
     Shader _shader;
-    std::vector<IDrawable *> _objects{};
 
 };
 
