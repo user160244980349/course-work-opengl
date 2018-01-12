@@ -11,15 +11,17 @@
 Model ModelLoader::load(std::string path) {
 
     Assimp::Importer importer;
-    const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_GenUVCoords | aiProcess_FlipUVs |
-                                                   aiProcess_GenNormals);
+    _directory = "../resources/models/";
+    const aiScene *scene = importer.ReadFile(_directory + path,
+                                             aiProcess_Triangulate | aiProcess_GenUVCoords | aiProcess_FlipUVs |
+                                             aiProcess_GenSmoothNormals | aiProcess_CalcTangentSpace);
 
     if (scene == nullptr) {
         std::cerr << "ERROR::ASSIMP:: " << importer.GetErrorString() << std::endl;
         exit(0);
     }
 
-    _directory = path.substr(0, path.find_last_of('/'));
+    _directory += path.substr(0, path.find_last_of('/'));
     sceneBypass(scene->mRootNode, scene);
 
     Model newModel;
@@ -59,9 +61,6 @@ std::vector<Texture> ModelLoader::loadMaps(aiMaterial *mat, aiTextureType type) 
                 texture.load(_directory + '/' + str.C_Str(), "matrial.specular", specularCounter++);
                 break;
         }
-
-        std::cout << str.C_Str() << std::endl;
-
         textures.push_back(texture);
     }
 

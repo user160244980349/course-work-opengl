@@ -8,7 +8,7 @@
 
 
 void Nanosuit::prepare(Shader &shader) {
-    _model = ModelLoader::getInstacne().load("../resources/models/nanosuit/nanosuit.obj");
+    _model = ModelLoader::getInstacne().load("nanosuit/nanosuit.obj");
     _model.prepare(shader);
 }
 
