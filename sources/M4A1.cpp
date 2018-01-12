@@ -6,7 +6,6 @@
 #include "objects/M4A1.h"
 
 void M4A1::prepare(ShaderProgram &shader) {
-//    _model = ModelLoader::getInstacne().load("../resources/models/floor/sol.obj");
     _model = ModelLoader::getInstacne().load("../resources/models/m4a1/m4a1_s.obj");
     _model.prepare(shader);
 }

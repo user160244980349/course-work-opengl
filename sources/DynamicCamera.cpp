@@ -7,7 +7,6 @@
 #include <glm/gtx/rotate_vector.hpp>
 #include <commands/Accelerate.h>
 #include <core/UserInput.h>
-#include <SDL2/SDL_timer.h>
 
 DynamicCamera::DynamicCamera() {
     _mouseX = 0.0f;
@@ -79,8 +78,6 @@ void DynamicCamera::update(ShaderProgram &shader) {
     }
     viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
 
-    shader.setUniform("lightPosition",
-                      glm::vec3(sinf(SDL_GetTicks() * 0.001f) * 100, 0, cosf(SDL_GetTicks() * 0.001f) * 100));
     shader.setUniform("viewPoint", viewPoint);
     shader.setUniform("projection", projection);
     shader.setUniform("viewPosition", _cameraPos);

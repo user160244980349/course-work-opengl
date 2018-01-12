@@ -27,6 +27,8 @@ protected:
     void sceneBypass(aiNode *node, const aiScene *scene);
 
     Mesh buildMesh(aiMesh *mesh);
+
+    unsigned int loadTexture(const char *path, const std::string &directory, bool gamma);
 };
 
 

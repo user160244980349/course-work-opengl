@@ -1,5 +1,6 @@
 #version 450 core
 
+
 in vec3 position;
 in vec3 normal;
 in vec2 uv;
@@ -15,6 +16,8 @@ out vec3 fBitangent;
 uniform mat4 projection;
 uniform mat4 viewPoint;
 uniform mat4 model;
+
+
 
 void main() {
 

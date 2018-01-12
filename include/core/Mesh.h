@@ -33,6 +33,11 @@ protected:
         Ebo ebo;
     } _buffers;
 
+    struct {
+        unsigned int diffuse;
+        unsigned int specular;
+    } _maps;
+
     std::vector<Vertex> _vertices{};
     std::vector<unsigned int> _indices{};
 
