@@ -22,6 +22,7 @@ Model ModelLoader::load(std::string path) {
     }
 
     _directory += path.substr(0, path.find_last_of('/'));
+
     sceneBypass(scene->mRootNode, scene);
 
     Model newModel;
@@ -32,12 +33,14 @@ Model ModelLoader::load(std::string path) {
 }
 
 void ModelLoader::sceneBypass(aiNode *node, const aiScene *scene) {
-    for (unsigned int i = 0; i < node->mNumMeshes; i++) {
-        aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
-        _meshes.push_back(buildMesh(mesh, scene));
-    }
-    for (unsigned int i = 0; i < node->mNumChildren; i++) {
-        sceneBypass(node->mChildren[i], scene);
+    if (scene->HasMaterials()) {
+        for (unsigned int i = 0; i < node->mNumMeshes; i++) {
+            aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
+            _meshes.push_back(buildMesh(mesh, scene));
+        }
+        for (unsigned int i = 0; i < node->mNumChildren; i++) {
+            sceneBypass(node->mChildren[i], scene);
+        }
     }
 }
 
@@ -98,13 +101,17 @@ Mesh ModelLoader::buildMesh(aiMesh *mesh, const aiScene *scene) {
                 indices.push_back(face.mIndices[j]);
         }
     }
-
     std::vector<Texture> textures;
-    aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
-    std::vector<Texture> diffuseMaps = loadMaps(material, aiTextureType_DIFFUSE);
-    textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
-    std::vector<Texture> specularMaps = loadMaps(material, aiTextureType_SPECULAR);
-    textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+
+    if (mesh->mMaterialIndex) {
+        aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
+
+        std::vector<Texture> diffuseMaps = loadMaps(material, aiTextureType_DIFFUSE);
+        textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+
+        std::vector<Texture> specularMaps = loadMaps(material, aiTextureType_SPECULAR);
+        textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+    }
 
     Mesh newMesh;
     Material newMaterial;

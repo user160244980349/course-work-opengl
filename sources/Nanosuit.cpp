@@ -9,6 +9,8 @@
 
 void Nanosuit::prepare(Shader &shader) {
     _model = ModelLoader::getInstacne().load("nanosuit/nanosuit.obj");
+//    _model = ModelLoader::getInstacne().load("BlackDragon/Dragon.fbx");
+//    _model = ModelLoader::getInstacne().load("cyborg/cyborg.obj");
     _model.prepare(shader);
 }
 

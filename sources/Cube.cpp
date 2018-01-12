@@ -6,7 +6,7 @@
 #include "objects/Cube.h"
 
 void Cube::prepare(Shader &shader) {
-    _model = ModelLoader::getInstacne().load("cube/cube.blend");
+    _model = ModelLoader::getInstacne().load("cube/cube.obj");
     _model.prepare(shader);
 }
 
