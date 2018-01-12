@@ -3,16 +3,17 @@
 //
 
 #include <utility>
+#include <iostream>
 
 #include "core/Model.h"
 
-void Model::render(ShaderProgram shader) {
+void Model::render(Shader shader) {
     for (auto &mesh : _meshes) {
         mesh.render(shader);
     }
 }
 
-void Model::prepare(ShaderProgram shader) {
+void Model::prepare(Shader shader) {
     for (auto &mesh : _meshes) {
         mesh.prepare(shader);
     }

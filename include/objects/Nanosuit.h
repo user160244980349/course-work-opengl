@@ -8,7 +8,7 @@
 #include <interfaces/IDrawable.h>
 #include <interfaces/IObject.h>
 #include <interfaces/ICamera.h>
-#include <core/ShaderProgram.h>
+#include <core/Shader.h>
 #include <core/Vao.h>
 #include <core/Vbo.h>
 #include <core/Ebo.h>
@@ -18,13 +18,13 @@
 #include <core/Model.h>
 #include "BaseObject.h"
 
-class SASSoldier : public IDrawable, public BaseObject {
+class Nanosuit : public IDrawable, public BaseObject {
 public:
     Transform transform;
 
-    void prepare(ShaderProgram &shader) override;
+    void prepare(Shader &shader) override;
 
-    void render(ShaderProgram &shader) override;
+    void render(Shader &shader) override;
 
     void update() override;
 

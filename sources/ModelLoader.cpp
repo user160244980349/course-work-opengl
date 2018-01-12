@@ -5,9 +5,6 @@
 #include <glm/vec3.hpp>
 #include <iostream>
 #include <core/Model.h>
-#include <core/OpenGl.h>
-#include <SDL2/SDL_surface.h>
-#include <SDL2/SDL_image.h>
 #include "core/ModelLoader.h"
 
 
@@ -35,43 +32,65 @@ Model ModelLoader::load(std::string path) {
 void ModelLoader::sceneBypass(aiNode *node, const aiScene *scene) {
     for (unsigned int i = 0; i < node->mNumMeshes; i++) {
         aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
-        _meshes.push_back(buildMesh(mesh));
+        _meshes.push_back(buildMesh(mesh, scene));
     }
     for (unsigned int i = 0; i < node->mNumChildren; i++) {
         sceneBypass(node->mChildren[i], scene);
     }
 }
 
-Mesh ModelLoader::buildMesh(aiMesh *mesh) {
+std::vector<Texture> ModelLoader::loadMaps(aiMaterial *mat, aiTextureType type) {
+    std::vector<Texture> textures;
+    unsigned int diffuseCounter = 1;
+    unsigned int specularCounter = 1;
+
+    for (unsigned int i = 0; i < mat->GetTextureCount(type); i++) {
+        aiString str;
+        mat->GetTexture(type, i, &str);
+
+        Texture texture;
+
+        switch (type) {
+            case aiTextureType_DIFFUSE:
+                texture.load(_directory + '/' + str.C_Str(), "matrial.diffuse", diffuseCounter++);
+                break;
+
+            case aiTextureType_SPECULAR:
+                texture.load(_directory + '/' + str.C_Str(), "matrial.specular", specularCounter++);
+                break;
+        }
+
+        std::cout << str.C_Str() << std::endl;
+
+        textures.push_back(texture);
+    }
+
+    return textures;
+}
+
+Mesh ModelLoader::buildMesh(aiMesh *mesh, const aiScene *scene) {
 
     std::vector<Vertex> vertices{};
     for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
         Vertex vertex;
-        // position
+
         if (mesh->HasPositions())
             vertex.position = glm::vec3(mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z);
 
-        // normal
         if (mesh->HasNormals())
             vertex.normal = glm::vec3(mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z);
 
-        // texture coords
         if (mesh->HasTextureCoords(0))
             vertex.uv = glm::vec2(mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y);
-        else
-            vertex.uv = glm::vec2(0.0f, 0.0f);
 
         if (mesh->HasTangentsAndBitangents()) {
-            // tangent
             vertex.tangent = glm::vec3(mesh->mTangents[i].x, mesh->mTangents[i].y, mesh->mTangents[i].z);
-            // bitangent
             vertex.bitangent = glm::vec3(mesh->mBitangents[i].x, mesh->mBitangents[i].y, mesh->mBitangents[i].z);
         }
 
         vertices.push_back(vertex);
     }
 
-    // indices
     std::vector<unsigned int> indices{};
     if (mesh->HasFaces()) {
         for (unsigned int i = 0; i < mesh->mNumFaces; i++) {
@@ -81,8 +100,18 @@ Mesh ModelLoader::buildMesh(aiMesh *mesh) {
         }
     }
 
+    std::vector<Texture> textures;
+    aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
+    std::vector<Texture> diffuseMaps = loadMaps(material, aiTextureType_DIFFUSE);
+    textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+    std::vector<Texture> specularMaps = loadMaps(material, aiTextureType_SPECULAR);
+    textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+
     Mesh newMesh;
-    newMesh.build(vertices, indices);
+    Material newMaterial;
+
+    newMaterial.build(textures);
+    newMesh.build(vertices, indices, newMaterial);
 
     return newMesh;
 }
@@ -90,37 +119,6 @@ Mesh ModelLoader::buildMesh(aiMesh *mesh) {
 ModelLoader &ModelLoader::getInstacne() {
     static ModelLoader instance;
     return instance;
-}
-
-unsigned int ModelLoader::loadTexture(const char *path, const std::string &directory, bool gamma) {
-    std::string filename = std::string(path);
-    filename = directory + '/' + filename;
-
-    unsigned int id;
-    OpenGl::getInstance().genTextures(1, &id);
-
-    IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF | IMG_INIT_WEBP);
-    SDL_Surface *texture = IMG_Load(directory.c_str());
-
-    if (texture) {
-
-        OpenGl::getInstance().bindTexture(GL_TEXTURE_2D, id);
-        OpenGl::getInstance().texImage2D(GL_TEXTURE_2D, 0, GL_RGBA, texture->w, texture->h, 0, GL_RGBA,
-                                         GL_UNSIGNED_BYTE, texture->pixels);
-        OpenGl::getInstance().generateMipmap(GL_TEXTURE_2D);
-
-        OpenGl::getInstance().texParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-        OpenGl::getInstance().texParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-        OpenGl::getInstance().texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-        OpenGl::getInstance().texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    } else
-        std::cout << "Texture failed to load at path: " << path << std::endl;
-
-    SDL_FreeSurface(texture);
-    IMG_Quit();
-
-    return id;
 }
 
 ModelLoader::ModelLoader() = default;

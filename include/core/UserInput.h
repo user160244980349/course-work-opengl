@@ -2,8 +2,8 @@
 // Created by user on 20.10.2017.
 //
 
-#ifndef OPENGL_UserInput_H
-#define OPENGL_UserInput_H
+#ifndef OPENGL_USERINPUT_H
+#define OPENGL_USERINPUT_H
 
 #include <SDL2/SDL_events.h>
 #include <list>
@@ -33,4 +33,4 @@ protected:
 };
 
 
-#endif //OPENGL_UserInput_H
+#endif //OPENGL_USERINPUT_H

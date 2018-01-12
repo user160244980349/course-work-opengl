@@ -6,7 +6,7 @@
 #define OPENGL_VBO_H
 
 #include "BaseBuffer.h"
-#include "ShaderProgram.h"
+#include "Shader.h"
 #include <glm/vec3.hpp>
 
 class Vbo : public BaseBuffer {
@@ -15,7 +15,7 @@ public:
 
     void set(void *data, unsigned int long long size);
 
-    void attach(ShaderProgram shader, std::string attribName, unsigned int count, unsigned int size, void *offset);
+    void attach(Shader shader, std::string attribName, unsigned int count, unsigned int size, void *offset);
 
     void remove() override;
 };

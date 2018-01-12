@@ -26,9 +26,11 @@ protected:
 
     void sceneBypass(aiNode *node, const aiScene *scene);
 
-    Mesh buildMesh(aiMesh *mesh);
+    Mesh buildMesh(aiMesh *mesh, const aiScene *scene);
 
-    unsigned int loadTexture(const char *path, const std::string &directory, bool gamma);
+    std::vector<Texture> loadMaps(aiMaterial *mat, aiTextureType type);
+
+
 };
 
 

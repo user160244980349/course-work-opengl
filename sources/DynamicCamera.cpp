@@ -42,7 +42,7 @@ void DynamicCamera::initCommands() {
     UserInput::getInstance().addCommands(_commands);
 }
 
-void DynamicCamera::update(ShaderProgram &shader) {
+void DynamicCamera::update(Shader &shader) {
     _cameraFront = glm::normalize(glm::vec3(
             cosf(glm::radians(_mouseY)) * cosf(glm::radians(_mouseX)),
             sinf(glm::radians(_mouseY)),

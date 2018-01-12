@@ -20,7 +20,7 @@ public:
     void update() override;
 
 protected:
-    ShaderProgram _shader;
+    Shader _shader;
     std::vector<IDrawable *> _objects{};
 
 };

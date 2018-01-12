@@ -12,9 +12,9 @@ class IDrawable {
 public:
     virtual ~IDrawable() = default;;
 
-    virtual void prepare(ShaderProgram &shader) {};
+    virtual void prepare(Shader &shader) {};
 
-    virtual void render(ShaderProgram &shader) {};
+    virtual void render(Shader &shader) {};
 };
 
 

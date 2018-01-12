@@ -13,9 +13,9 @@ set(SOURCES
         include/core/Vao.h
         include/core/Vbo.h
         include/core/ShaderTypes.h
-        include/core/ShaderProgram.h
+        include/core/Shader.h
         include/core/UserInput.h
-        include/objects/SASSoldier.h
+        include/objects/Nanosuit.h
         include/objects/BaseObject.h
         include/objects/DynamicCamera.h
         include/objects/BaseScene.h
@@ -53,7 +53,7 @@ set(SOURCES
         sources/Vao.cpp
         sources/Vbo.cpp
         sources/UserInput.cpp
-        sources/SASSoldier.cpp
+        sources/Nanosuit.cpp
         sources/DynamicCamera.cpp
         sources/BaseObject.cpp
         sources/BaseScene.cpp
@@ -69,7 +69,7 @@ set(SOURCES
         sources/Kernel.cpp
         sources/MoveUp.cpp
         sources/MoveDown.cpp
-        sources/ShaderProgram.cpp
+        sources/Shader.cpp
         sources/Accelerate.cpp
         sources/BaseBuffer.cpp
         sources/Mesh.cpp
@@ -81,7 +81,16 @@ set(SOURCES
         sources/ModelLoader.cpp
         include/core/Model.h
         sources/Model.cpp
-        include/core/Vertex.h sources/M4A1.cpp include/objects/M4A1.h)
+        include/core/Vertex.h
+        sources/Cube.cpp
+        include/objects/Cube.h
+        sources/Material.cpp
+        include/core/Material.h
+        include/interfaces/ITexture.h
+        include/interfaces/IMaterial.h
+        include/interfaces/IModel.h
+        sources/Texture.cpp
+        include/core/Texture.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

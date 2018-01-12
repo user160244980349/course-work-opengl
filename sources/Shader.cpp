@@ -11,12 +11,12 @@
 #include <glm/detail/type_mat4x4.hpp>
 #include <exceptions/ShaderProgramException.h>
 #include <exceptions/ShaderProgramCreationException.h>
-#include "core/ShaderProgram.h"
+#include "core/Shader.h"
 
 
-unsigned int ShaderProgram::_id = 0;
+unsigned int Shader::_id = 0;
 
-void ShaderProgram::compileShader(const std::string &filename, ShaderTypes type) {
+void Shader::compileShader(const std::string &filename, ShaderTypes type) {
 
     std::string shaderCode;
     try {
@@ -52,11 +52,11 @@ void ShaderProgram::compileShader(const std::string &filename, ShaderTypes type)
     }
 }
 
-unsigned int ShaderProgram::getId() {
+unsigned int Shader::getId() {
     return _id;
 }
 
-ShaderProgram::ShaderProgram() {
+Shader::Shader() {
 
     if (_id > 0)
         return;
@@ -70,7 +70,7 @@ ShaderProgram::ShaderProgram() {
     }
 }
 
-void ShaderProgram::link() {
+void Shader::link() {
 
     OpenGl::getInstance().linkProgram(_id);
 
@@ -88,68 +88,68 @@ void ShaderProgram::link() {
     }
 }
 
-void ShaderProgram::bindAttribLocation(unsigned int location, const std::string &name) {
+void Shader::bindAttribLocation(unsigned int location, const std::string &name) {
     OpenGl::getInstance().bindAttribLocation(_id, location, name.c_str());
 }
 
-void ShaderProgram::bindFragDataLocation(unsigned int location, const std::string &name) {
+void Shader::bindFragDataLocation(unsigned int location, const std::string &name) {
     OpenGl::getInstance().bindFragDataLocation(_id, location, name.c_str());
 }
 
-void ShaderProgram::setUniform(const char *name, float x, float y, float z) {
+void Shader::setUniform(const char *name, float x, float y, float z) {
     GLint loc = OpenGl::getInstance().getUniformLocation(_id, name);
     OpenGl::getInstance().uniform3f(loc, x, y, z);
 }
 
-void ShaderProgram::setUniform(const char *name, const glm::vec3 &v) {
+void Shader::setUniform(const char *name, const glm::vec3 &v) {
     setUniform(name, v.x, v.y, v.z);
 }
 
-void ShaderProgram::setUniform(const char *name, const glm::vec4 &v) {
+void Shader::setUniform(const char *name, const glm::vec4 &v) {
     GLint loc = OpenGl::getInstance().getUniformLocation(_id, name);
     OpenGl::getInstance().uniform4f(loc, v.x, v.y, v.z, v.w);
 }
 
-void ShaderProgram::setUniform(const char *name, const glm::vec2 &v) {
+void Shader::setUniform(const char *name, const glm::vec2 &v) {
     GLint loc = OpenGl::getInstance().getUniformLocation(_id, name);
     OpenGl::getInstance().uniform2f(loc, v.x, v.y);
 }
 
-void ShaderProgram::setUniform(const char *name, const glm::mat4 &m) {
+void Shader::setUniform(const char *name, const glm::mat4 &m) {
     GLint loc = OpenGl::getInstance().getUniformLocation(_id, name);
     OpenGl::getInstance().uniformMatrix4fv(loc, 1, GL_FALSE, &m[0][0]);
 }
 
-void ShaderProgram::setUniform(const char *name, const glm::mat3 &m) {
+void Shader::setUniform(const char *name, const glm::mat3 &m) {
     GLint loc = OpenGl::getInstance().getUniformLocation(_id, name);
     OpenGl::getInstance().uniformMatrix3fv(loc, 1, GL_FALSE, &m[0][0]);
 }
 
-void ShaderProgram::setUniform(const char *name, float val) {
+void Shader::setUniform(const char *name, float val) {
     GLint loc = OpenGl::getInstance().getUniformLocation(_id, name);
     OpenGl::getInstance().uniform1f(loc, val);
 }
 
-void ShaderProgram::setUniform(const char *name, int val) {
+void Shader::setUniform(const char *name, int val) {
     GLint loc = OpenGl::getInstance().getUniformLocation(_id, name);
     OpenGl::getInstance().uniform1i(loc, val);
 }
 
-void ShaderProgram::setUniform(const char *name, unsigned int val) {
+void Shader::setUniform(const char *name, unsigned int val) {
     GLint loc = OpenGl::getInstance().getUniformLocation(_id, name);
     OpenGl::getInstance().uniform1ui(loc, val);
 }
 
-void ShaderProgram::setUniform(const char *name, bool val) {
+void Shader::setUniform(const char *name, bool val) {
     int loc = OpenGl::getInstance().getUniformLocation(_id, name);
     OpenGl::getInstance().uniform1i(loc, val);
 }
 
-void ShaderProgram::use() {
+void Shader::use() {
     OpenGl::getInstance().useProgram(_id);
 }
 
-void ShaderProgram::printActiveUniforms() {
+void Shader::printActiveUniforms() {
     GLint numUniforms = 0;
     OpenGl::getInstance().getProgramInterfaceiv(_id, GL_UNIFORM, GL_ACTIVE_RESOURCES, &numUniforms);
     GLenum properties[] = {GL_NAME_LENGTH, GL_TYPE, GL_LOCATION, GL_BLOCK_INDEX};
@@ -168,7 +168,7 @@ void ShaderProgram::printActiveUniforms() {
     }
 }
 
-void ShaderProgram::printActiveUniformBlocks() {
+void Shader::printActiveUniformBlocks() {
     GLint numBlocks = 0;
     OpenGl::getInstance().getProgramInterfaceiv(_id, GL_UNIFORM_BLOCK, GL_ACTIVE_RESOURCES, &numBlocks);
     GLenum blockProps[] = {GL_NUM_ACTIVE_VARIABLES, GL_NAME_LENGTH};
@@ -203,7 +203,7 @@ void ShaderProgram::printActiveUniformBlocks() {
     }
 }
 
-void ShaderProgram::printActiveAttribs() {
+void Shader::printActiveAttribs() {
     GLint numAttribs;
     OpenGl::getInstance().getProgramInterfaceiv(_id, GL_PROGRAM_INPUT, GL_ACTIVE_RESOURCES, &numAttribs);
     GLenum properties[] = {GL_NAME_LENGTH, GL_TYPE, GL_LOCATION};
@@ -221,12 +221,12 @@ void ShaderProgram::printActiveAttribs() {
     }
 }
 
-void ShaderProgram::enableAttribute(std::string name) {
+void Shader::enableAttribute(std::string name) {
     unsigned int attribLocation = static_cast<unsigned int>(OpenGl::getInstance().getAttribLocation(_id, name.c_str()));
     OpenGl::getInstance().enableVertexAttribArray(attribLocation);
 }
 
-void ShaderProgram::disableAttribute(std::string name) {
+void Shader::disableAttribute(std::string name) {
     unsigned int attribLocation = static_cast<unsigned int>(OpenGl::getInstance().getAttribLocation(_id, name.c_str()));
     OpenGl::getInstance().disableVertexAttribArray(attribLocation);
 }

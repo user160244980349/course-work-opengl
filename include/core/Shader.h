@@ -2,8 +2,8 @@
 // Created by user on 05.12.2017.
 //
 
-#ifndef OPENGL_SHADERPROGRAM_H
-#define OPENGL_SHADERPROGRAM_H
+#ifndef OPENGL_SHADER_H
+#define OPENGL_SHADER_H
 
 #include <string>
 #include <map>
@@ -12,9 +12,9 @@
 #include <glm/detail/type_mat.hpp>
 #include "ShaderTypes.h"
 
-class ShaderProgram {
+class Shader {
 public:
-    ShaderProgram();
+    Shader();
 
     void compileShader(const std::string &filename, ShaderTypes type);
 
@@ -64,4 +64,4 @@ protected:
 };
 
 
-#endif //OPENGL_SHADERPROGRAM_H
+#endif //OPENGL_SHADER_H

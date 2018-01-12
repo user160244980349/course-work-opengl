@@ -2,8 +2,8 @@
 // Created by user on 13.10.2017.
 //
 
-#ifndef OPENGL_ABSTRACT_BUFFER_H
-#define OPENGL_ABSTRACT_BUFFER_H
+#ifndef OPENGL_BASEBUFFER_H
+#define OPENGL_BASEBUFFER_H
 
 #include <GL/glcorearb.h>
 
@@ -21,4 +21,4 @@ protected:
     unsigned int _id{};
 };
 
-#endif //OPENGL_ABSTRACT_BUFFER_H
+#endif //OPENGL_BASEBUFFER_H

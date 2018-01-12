@@ -15,7 +15,7 @@ void Vbo::set(void *data, unsigned int long long size) {
     OpenGl::getInstance().bufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
 }
 
-void Vbo::attach(ShaderProgram shader, std::string attribName, unsigned int count, unsigned int size, void *offset) {
+void Vbo::attach(Shader shader, std::string attribName, unsigned int count, unsigned int size, void *offset) {
     auto attribLocation = static_cast<unsigned int>(OpenGl::getInstance().getAttribLocation(shader.getId(),
                                                                                             attribName.c_str()));
     OpenGl::getInstance().vertexAttribPointer(attribLocation, count, GL_FLOAT, GL_FALSE, size,

@@ -2,8 +2,8 @@
 // Created by user on 07.12.2017.
 //
 
-#ifndef OPENGL_CUBEMESH_H
-#define OPENGL_CUBEMESH_H
+#ifndef OPENGL_MESH_H
+#define OPENGL_MESH_H
 
 
 #include <core/Vao.h>
@@ -19,11 +19,11 @@ class Mesh : public IMesh {
 public:
     ~Mesh() override;
 
-    void build(std::vector<Vertex> vertices, std::vector<unsigned int> indices);
+    void build(std::vector<Vertex> vertices, std::vector<unsigned int> indices, Material material) override;
 
-    void prepare(ShaderProgram &shader) override;
+    void prepare(Shader &shader) override;
 
-    void render(ShaderProgram &shader) override;
+    void render(Shader &shader) override;
 
 protected:
 
@@ -33,15 +33,11 @@ protected:
         Ebo ebo;
     } _buffers;
 
-    struct {
-        unsigned int diffuse;
-        unsigned int specular;
-    } _maps;
-
+    Material _material;
     std::vector<Vertex> _vertices{};
     std::vector<unsigned int> _indices{};
 
 };
 
 
-#endif //OPENGL_CUBEMESH_H
+#endif //OPENGL_MESH_H

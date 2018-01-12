@@ -12,9 +12,9 @@ class Model {
 public:
     void build(std::vector<Mesh> meshes);
 
-    void prepare(ShaderProgram shader);
+    void prepare(Shader shader);
 
-    void render(ShaderProgram shader);
+    void render(Shader shader);
 
 protected:
     std::vector<Mesh> _meshes;

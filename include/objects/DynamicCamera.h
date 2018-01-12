@@ -22,7 +22,7 @@ public:
 
     ~DynamicCamera() override;
 
-    void update(ShaderProgram &shader) override;
+    void update(Shader &shader) override;
 
     void initCommands() override;
 
@@ -46,7 +46,7 @@ public:
 
 protected:
 
-    ShaderProgram _shader;
+    Shader _shader;
 
     glm::mat4 projection;
     glm::mat4 viewPoint;

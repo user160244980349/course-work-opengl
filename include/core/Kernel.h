@@ -2,8 +2,8 @@
 // Created by user on 07.10.2017.
 //
 
-#ifndef OPENGL_APPLICATION_H
-#define OPENGL_APPLICATION_H
+#ifndef OPENGL_KERNEL_H
+#define OPENGL_KERNEL_H
 
 #include <SDL2/SDL.h>
 #include <objects/Scene.h>
@@ -27,4 +27,4 @@ protected:
 };
 
 
-#endif //OPENGL_APPLICATION_H
+#endif //OPENGL_KERNEL_H
