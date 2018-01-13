@@ -15,7 +15,7 @@ void Mesh::prepare(Shader &shader) {
     _buffers.vao.bind();
 
     _buffers.vbo.create();
-    _buffers.vbo.set(_vertices.data(), _vertices.size() * sizeof(Vertex));
+    _buffers.vbo.allocate(_vertices.data(), _vertices.size() * sizeof(Vertex));
 
     portion = 3;
     shader.enableAttribute("position");
@@ -43,12 +43,6 @@ void Mesh::prepare(Shader &shader) {
 }
 
 void Mesh::render(Shader &shader) {
-    shader.use();
-    shader.setUniform("light.position", glm::vec3(0.0f));
-    shader.setUniform("light.ambient", glm::vec3(0.8f));
-    shader.setUniform("light.diffuse", glm::vec3(1.0f));
-    shader.setUniform("light.specular", glm::vec3(1.0f));
-
     _material.bind(shader);
     _buffers.vao.render(GL_TRIANGLES, _indices.size());
 }

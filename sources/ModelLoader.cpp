@@ -57,13 +57,14 @@ std::vector<Texture> ModelLoader::loadMaps(aiMaterial *mat, aiTextureType type) 
 
         switch (type) {
             case aiTextureType_DIFFUSE:
-                texture.load(_directory + '/' + str.C_Str(), "matrial.diffuse", diffuseCounter++);
+                texture.load(_directory + '/' + str.C_Str(), "material.diffuse");
                 break;
 
             case aiTextureType_SPECULAR:
-                texture.load(_directory + '/' + str.C_Str(), "matrial.specular", specularCounter++);
+                texture.load(_directory + '/' + str.C_Str(), "material.specular");
                 break;
         }
+
         textures.push_back(texture);
     }
 

@@ -13,11 +13,17 @@ class Vbo : public BaseBuffer {
 public:
     void create() override;
 
-    void set(void *data, unsigned int long long size);
+    void allocate(void *data, unsigned int long long size);
 
     void attach(Shader shader, std::string attribName, unsigned int count, unsigned int size, void *offset);
 
     void remove() override;
+
+private:
+
+    unsigned int long long _size;
+    void *_data;
+
 };
 
 

@@ -17,14 +17,12 @@ public:
 
     ~Texture();
 
-    void load(std::string path, std::string name, unsigned int index) override;
+    void load(std::string path, std::string name) override;
 
     void bind(Shader shader, unsigned int block) override;
 
 protected:
-    std::string _bindName;
     unsigned int _id;
-    unsigned int _index;
     std::string _name;
 
 };

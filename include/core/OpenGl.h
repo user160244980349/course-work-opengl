@@ -67,6 +67,8 @@ public:
     PFNGLGENERATEMIPMAPPROC generateMipmap;
     PFNGLPOLYGONMODEPROC polygonMode;
     PFNGLACTIVETEXTUREPROC activeTexture;
+    PFNGLDEPTHFUNCPROC depthFunc;
+    PFNGLDRAWARRAYSPROC drawArrays;
 
 protected:
     OpenGl();

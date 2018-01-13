@@ -15,6 +15,7 @@
 #include <commands/MoveLeft.h>
 #include <commands/MoveUp.h>
 #include <commands/MoveDown.h>
+#include "SkyBox.h"
 
 class DynamicCamera : public ICamera, public IControlable {
 public:
@@ -45,8 +46,6 @@ public:
     void lookVertical(int y);
 
 protected:
-
-    Shader _shader;
 
     glm::mat4 projection;
     glm::mat4 viewPoint;

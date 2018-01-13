@@ -17,8 +17,6 @@ uniform mat4 projection;
 uniform mat4 viewPoint;
 uniform mat4 model;
 
-
-
 void main() {
 
     fPosition = position;

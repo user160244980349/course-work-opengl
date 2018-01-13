@@ -12,6 +12,7 @@
 
 class Material {
 public:
+
     void build(std::vector<Texture> textures);
 
     void bind(Shader &shader);

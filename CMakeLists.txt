@@ -15,7 +15,7 @@ set(SOURCES
         include/core/ShaderTypes.h
         include/core/Shader.h
         include/core/UserInput.h
-        include/objects/Nanosuit.h
+        include/objects/Dragon.h
         include/objects/BaseObject.h
         include/objects/DynamicCamera.h
         include/objects/BaseScene.h
@@ -53,7 +53,7 @@ set(SOURCES
         sources/Vao.cpp
         sources/Vbo.cpp
         sources/UserInput.cpp
-        sources/Nanosuit.cpp
+        sources/Dragon.cpp
         sources/DynamicCamera.cpp
         sources/BaseObject.cpp
         sources/BaseScene.cpp
@@ -90,7 +90,7 @@ set(SOURCES
         include/interfaces/IMaterial.h
         include/interfaces/IModel.h
         sources/Texture.cpp
-        include/core/Texture.h)
+        include/core/Texture.h sources/SkyBox.cpp include/objects/SkyBox.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

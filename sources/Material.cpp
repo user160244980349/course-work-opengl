@@ -11,7 +11,6 @@ void Material::build(std::vector<Texture> textures) {
 }
 
 void Material::bind(Shader &shader) {
-    shader.setUniform("material.shininess", 64.0f);
     unsigned int block = 0;
     for (auto &texture : _textures)
         texture.bind(shader, block++);

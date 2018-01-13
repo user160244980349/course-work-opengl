@@ -14,8 +14,6 @@
 #include "core/Shader.h"
 
 
-unsigned int Shader::_id = 0;
-
 void Shader::compileShader(const std::string &filename, ShaderTypes type) {
 
     std::string shaderCode;
@@ -57,9 +55,6 @@ unsigned int Shader::getId() {
 }
 
 Shader::Shader() {
-
-    if (_id > 0)
-        return;
 
     try {
         _id = OpenGl::getInstance().createProgram();
@@ -229,4 +224,9 @@ void Shader::enableAttribute(std::string name) {
 void Shader::disableAttribute(std::string name) {
     unsigned int attribLocation = static_cast<unsigned int>(OpenGl::getInstance().getAttribLocation(_id, name.c_str()));
     OpenGl::getInstance().disableVertexAttribArray(attribLocation);
+}
+
+void Shader::setUniform(std::string name, int val) {
+    unsigned int attribLocation = static_cast<unsigned int>(OpenGl::getInstance().getAttribLocation(_id, name.c_str()));
+    OpenGl::getInstance().uniform1i(attribLocation, val);
 }

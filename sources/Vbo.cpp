@@ -10,7 +10,7 @@ void Vbo::create() {
     OpenGl::getInstance().genBuffers(1, &_id);
 }
 
-void Vbo::set(void *data, unsigned int long long size) {
+void Vbo::allocate(void *data, unsigned int long long size) {
     OpenGl::getInstance().bindBuffer(GL_ARRAY_BUFFER, _id);
     OpenGl::getInstance().bufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
 }

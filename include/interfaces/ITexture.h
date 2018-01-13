@@ -13,7 +13,7 @@ public:
 
     virtual ~ITexture() = default;
 
-    virtual void load(std::string path, std::string name, unsigned int index) {};
+    virtual void load(std::string path, std::string name) {};
 
     virtual void bind(Shader shader, unsigned int block) {};
 

@@ -2,8 +2,8 @@
 // Created by user on 21.10.2017.
 //
 
-#ifndef OPENGL_SASSOLDIR_H
-#define OPENGL_SASSOLDIR_H
+#ifndef OPENGL_DRAGON_H
+#define OPENGL_DRAGON_H
 
 #include <interfaces/IDrawable.h>
 #include <interfaces/IObject.h>
@@ -18,7 +18,7 @@
 #include <core/Model.h>
 #include "BaseObject.h"
 
-class Nanosuit : public IDrawable, public BaseObject {
+class Dragon : public IDrawable, public BaseObject {
 public:
 
     void prepare(Shader &shader) override;
@@ -32,4 +32,4 @@ protected:
 
 };
 
-#endif //OPENGL_SASSOLDIR_H
+#endif //OPENGL_DRAGON_H

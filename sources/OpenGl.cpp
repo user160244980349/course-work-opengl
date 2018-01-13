@@ -69,6 +69,8 @@ OpenGl::OpenGl() {
     generateMipmap = (PFNGLGENERATEMIPMAPPROC) SDL_GL_GetProcAddress("glGenerateMipmap");
     activeTexture = (PFNGLACTIVETEXTUREPROC) SDL_GL_GetProcAddress("glActiveTexture");
     polygonMode = (PFNGLPOLYGONMODEPROC) SDL_GL_GetProcAddress("glPolygonMode");
+    depthFunc = (PFNGLDEPTHFUNCPROC) SDL_GL_GetProcAddress("glDepthFunc");
+    drawArrays = (PFNGLDRAWARRAYSPROC) SDL_GL_GetProcAddress("glDrawArrays");
 
     SDL_GL_UnloadLibrary();
 

@@ -16,7 +16,7 @@ DynamicCamera::DynamicCamera() {
     _sensitivity = 0.1f;
     _acceleration = 10.0f;
 
-    _cameraPos = glm::vec3(-4.0f, 1.0f, 0.0f);
+    _cameraPos = glm::vec3(-6.0f, 3.0f, 0.0f);
     _cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
     glm::vec3 front = glm::vec3(1.0f, 0.0f, 0.0f);
     _cameraFront = glm::normalize(front);
@@ -76,11 +76,13 @@ void DynamicCamera::update(Shader &shader) {
         if (!_keys.q)
             _cameraPos += glm::normalize(_cameraUp) * _speedUp * _acceleration;
     }
+
     viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
 
     shader.setUniform("viewPoint", viewPoint);
     shader.setUniform("projection", projection);
     shader.setUniform("viewPosition", _cameraPos);
+
 }
 
 void DynamicCamera::moveForward() {

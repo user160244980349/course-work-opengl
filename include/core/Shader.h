@@ -52,6 +52,8 @@ public:
 
     void setUniform(const char *name, bool val);
 
+    void setUniform(std::string name, int val);
+
     void printActiveAttribs();
 
     void printActiveUniformBlocks();
@@ -59,7 +61,7 @@ public:
     void printActiveUniforms();
 
 protected:
-    static unsigned int _id;
+    unsigned int _id;
 
 };
 

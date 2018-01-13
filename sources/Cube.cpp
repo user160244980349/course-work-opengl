@@ -6,7 +6,7 @@
 #include "objects/Cube.h"
 
 void Cube::prepare(Shader &shader) {
-    _model = ModelLoader::getInstacne().load("cube/cube.obj");
+    _model = ModelLoader::getInstacne().load("room/untitled.obj");
     _model.prepare(shader);
 }
 
@@ -18,3 +18,4 @@ void Cube::render(Shader &shader) {
 void Cube::update() {
 
 }
+

@@ -3,8 +3,7 @@
 //
 
 #include <objects/DynamicCamera.h>
-#include <objects/Nanosuit.h>
-#include <objects/Cube.h>
+#include <objects/Dragon.h>
 #include "objects/Scene.h"
 
 
@@ -14,11 +13,7 @@ void Scene::prepare() {
     _shader.compileShader("../resources/shaders/fragment.glsl", FRAGMENT);
     _shader.link();
 
-    _objects.push_back(new Nanosuit);
-    dynamic_cast<Nanosuit *>(_objects.back())->transform.translate(glm::vec3(20.0f, -5.0f, 0.0f));
-    dynamic_cast<Nanosuit *>(_objects.back())->transform.rotate(glm::radians(-135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-
-    _objects.push_back(new Cube);
+    _objects.push_back(new Dragon);
 
     for (auto &object : _objects) {
         object->prepare(_shader);
