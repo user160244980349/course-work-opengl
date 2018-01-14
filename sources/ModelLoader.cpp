@@ -14,7 +14,8 @@ Model ModelLoader::load(std::string path) {
     _directory = "../resources/models/";
     const aiScene *scene = importer.ReadFile(_directory + path,
                                              aiProcess_Triangulate | aiProcess_GenUVCoords | aiProcess_FlipUVs |
-                                             aiProcess_GenSmoothNormals | aiProcess_CalcTangentSpace);
+                                             aiProcess_GenSmoothNormals | aiProcess_CalcTangentSpace |
+                                             aiProcess_OptimizeMeshes | aiProcess_OptimizeGraph);
 
     if (scene == nullptr) {
         std::cerr << "ERROR::ASSIMP:: " << importer.GetErrorString() << std::endl;

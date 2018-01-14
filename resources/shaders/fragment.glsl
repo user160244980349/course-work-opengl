@@ -1,4 +1,4 @@
-#version 450 core
+#version 330 core
 
 struct Light {
     vec3 direction;
@@ -14,11 +14,10 @@ struct Material {
     float shininess;
 };
 
-in vec3 fPosition;
-in vec3 fNormal;
-in vec2 fUv;
-in vec3 fTangent;
-in vec3 fBitangent;
+in vec3 FragPos;
+in vec2 TexCoords;
+in vec3 TangentViewPos;
+in vec3 TangentFragPos;
 
 uniform samplerCube skybox;
 uniform Light light;
@@ -29,41 +28,31 @@ out vec4 finalColor;
 
 void main() {
 
+    vec3 normal = texture(material.normal, TexCoords).rgb;
+    normal = normalize(normal * 2.0 - 1.0);
+
+    // get diffuse color
+    vec4 color = texture(material.diffuse, TexCoords);
+
     // ambient
-    vec4 ambient = vec4(light.ambient, 1.0f) * texture(material.diffuse, fUv);
+    vec4 ambient = vec4(light.ambient, 0.0f) * color;
 
     // diffuse
-    vec3 normal = normalize(fNormal);
-    vec3 lightDir = normalize(-light.direction);
-    float diff = max(dot(normal, lightDir), 0.0);
-    vec4 diffuse = vec4(light.diffuse, 1.0f) * diff * texture(material.diffuse, fUv);
+    vec3 lightDir = normalize(light.direction);
+    float diff = max(dot(lightDir, normal), 0.0);
+    vec4 diffuse = vec4(light.diffuse, 0.0f) * diff * color;
 
     // specular
-    vec3 viewDir = normalize(viewPosition - fPosition);
-    vec3 reflectDir = reflect(-light.direction, normal);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
-    vec4 specular = vec4(light.specular, 1.0f) * spec * texture(material.specular, fUv);
+    vec3 viewDir = normalize(TangentViewPos - TangentFragPos);
+    vec3 reflectDir = reflect(-lightDir, normal);
+    vec3 halfwayDir = normalize(lightDir + viewDir);
+    float spec = pow(max(dot(normal, halfwayDir), 0.0), material.shininess);
+    vec4 specular = vec4(light.specular, 0.0f) * spec;
 
     // reflections
-    vec3 intense = normalize(fPosition - viewPosition);
+    vec3 intense = normalize(TangentFragPos - TangentViewPos);
     vec3 ref = reflect(-viewDir, normal);
     vec4 reflection = texture(skybox, ref);
 
-    // bump
-//    mat3 TBN = transpose(mat3(fTangent, fBitangent, fNormal));
-//    vs_out.TangentLightPos = TBN * lightPos;
-//    vs_out.TangentViewPos  = TBN * viewPos;
-//    vs_out.TangentFragPos  = TBN * vec3(model * vec4(aPos, 0.0));
-//
-//    vec3 normals = texture(normalMap, fs_in.TexCoords).rgb;
-//    normals = normalize(normals * 2.0 - 1.0);
-//    vec3 lightDir = fs_in.TBN * normalize(lightPos - fs_in.FragPos);
-//    vec3 viewDir  = fs_in.TBN * normalize(viewPos - fs_in.FragPos);
-
-    finalColor = vec4(1.0f);
-    finalColor = mix(finalColor ,ambient, 0.5f);
-    finalColor = mix(finalColor ,diffuse, 0.5f);
-    finalColor = mix(finalColor ,specular, 0.5f);
-//    finalColor = mix(finalColor, bump, 0.5f);
-//    finalColor = mix(finalColor, reflection, 0.5f);
+    finalColor = ambient + diffuse + specular + reflection;
 }
