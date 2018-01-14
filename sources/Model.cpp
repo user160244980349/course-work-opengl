@@ -11,10 +11,10 @@ void Model::render(Shader shader, ICamera &camera, SkyBox &skyBox) {
 
     shader.use();
     shader.setUniform("light.direction", glm::normalize(glm::vec3(0.5f, -1.0f, 0.5f)));
-    shader.setUniform("light.ambient", glm::vec3(0.3f));
+    shader.setUniform("light.ambient", glm::vec3(0.1f));
     shader.setUniform("light.diffuse", glm::vec3(0.7f));
-    shader.setUniform("light.specular", glm::vec3(0.5f));
-    shader.setUniform("material.shininess", 0.7f);
+    shader.setUniform("light.specular", glm::vec3(0.2f));
+    shader.setUniform("material.shininess", 0.2f);
 
     for (auto &mesh : _meshes) {
         mesh.render(shader, skyBox);

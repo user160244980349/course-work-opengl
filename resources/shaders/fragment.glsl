@@ -52,7 +52,12 @@ void main() {
     // reflections
     vec3 intense = normalize(TangentFragPos - TangentViewPos);
     vec3 ref = reflect(-viewDir, normal);
-    vec4 reflection = texture(skybox, ref);
+    vec4 reflection = texture(skybox, ref) * 0.1f;
 
-    finalColor = ambient + diffuse + specular + reflection;
+
+    finalColor = color + diffuse + ambient + specular;// + reflection;
+//    finalColor = mix(vec4(1.0f), diffuse, 0.5f);
+//    finalColor = mix(finalColor, ambient, 0.5f);
+//    finalColor = mix(finalColor, specular, 0.5f);
+//    finalColor = mix(finalColor, reflection, 0.5f);
 }
