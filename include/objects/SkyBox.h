@@ -11,15 +11,16 @@
 #include <glm/detail/type_mat4x4.hpp>
 #include <core/Vao.h>
 #include <core/Vbo.h>
+#include <interfaces/ICamera.h>
 
 class SkyBox {
 public:
 
-    void load(std::string path);
+    void load();
 
     void prepare(Shader &shader);
 
-    void render(Shader &shader, glm::mat4 cameraView, glm::mat4 projection);
+    void render(Shader &shader, ICamera &camera);
 
 protected:
 
@@ -65,7 +66,7 @@ protected:
             glm::vec3(1.0f, -1.0f, -1.0f),
             glm::vec3(1.0f, -1.0f, -1.0f),
             glm::vec3(-1.0f, -1.0f, 1.0f),
-            glm::vec3(1.0f, -1.0f, 1.0f)
+            glm::vec3(1.0f, -1.0f, 1.0)
     };
 
     unsigned int _id;

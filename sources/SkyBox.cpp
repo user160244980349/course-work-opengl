@@ -7,7 +7,7 @@
 #include <SDL2/SDL_image.h>
 #include "objects/SkyBox.h"
 
-void SkyBox::load(std::string path) {
+void SkyBox::load() {
     IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF | IMG_INIT_WEBP);
 
     int i = 0;
@@ -16,8 +16,8 @@ void SkyBox::load(std::string path) {
     std::vector<std::string> _names({
                                             "../resources/skybox/front.jpg",
                                             "../resources/skybox/back.jpg",
-                                            "../resources/skybox/top.jpg",
-                                            "../resources/skybox/bottom.jpg",
+                                            "../resources/skybox/topr.jpg",
+                                            "../resources/skybox/bottomr.jpg",
                                             "../resources/skybox/right.jpg",
                                             "../resources/skybox/left.jpg"
                                     });
@@ -87,19 +87,15 @@ void SkyBox::prepare(Shader &shader) {
     shader.enableAttribute("position");
     _vbo.attach(shader, "position", 3, sizeof(glm::vec3), static_cast<void *>(nullptr));
 
-    std::cout << shader.getId() << std::endl;
-    shader.printActiveAttribs();
-    shader.printActiveUniforms();
-
 }
 
-void SkyBox::render(Shader &shader, glm::mat4 cameraView, glm::mat4 projection) {
+void SkyBox::render(Shader &shader, ICamera &camera) {
 
     OpenGl::getInstance().depthFunc(GL_LEQUAL);
     shader.use();
-    glm::mat4 view = glm::mat4(glm::mat3(cameraView));
+    glm::mat4 view = glm::mat4(glm::mat3(camera.getView()));
     shader.setUniform("view", view);
-    shader.setUniform("projection", projection);
+    shader.setUniform("projection", camera.getProjection());
     shader.setUniform("skybox", 0);
 
     OpenGl::getInstance().activeTexture(GL_TEXTURE0);

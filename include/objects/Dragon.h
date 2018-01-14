@@ -23,7 +23,7 @@ public:
 
     void prepare(Shader &shader) override;
 
-    void render(Shader &shader) override;
+    void render(Shader &shader, ICamera &camera) override;
 
     void update() override;
 

@@ -10,9 +10,14 @@ void Cube::prepare(Shader &shader) {
     _model.prepare(shader);
 }
 
-void Cube::render(Shader &shader) {
-    shader.setUniform("model", transform.getModel());
-    _model.render(shader);
+void Cube::render(Shader &shader, ICamera &camera) {
+
+    shader.use();
+    shader.setUniform("camera.view", camera.getView());
+    shader.setUniform("camera.projection", camera.getProjection());
+    shader.setUniform("camera.model", transform.getModel());
+
+    _model.render(shader, camera);
 }
 
 void Cube::update() {

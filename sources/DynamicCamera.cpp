@@ -16,12 +16,12 @@ DynamicCamera::DynamicCamera() {
     _sensitivity = 0.1f;
     _acceleration = 10.0f;
 
-    _cameraPos = glm::vec3(-6.0f, 3.0f, 0.0f);
+    _cameraPos = glm::vec3(-6.0f, 0.0f, 0.0f);
     _cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
     glm::vec3 front = glm::vec3(1.0f, 0.0f, 0.0f);
     _cameraFront = glm::normalize(front);
 
-    projection = glm::perspective(glm::radians(50.0f), 16.0f / 9.0f, 0.1f, 500.0f);
+    projection = glm::perspective(glm::radians(75.0f), 16.0f / 9.0f, 0.1f, 500.0f);
     viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
 
     initCommands();
@@ -42,7 +42,7 @@ void DynamicCamera::initCommands() {
     UserInput::getInstance().addCommands(_commands);
 }
 
-void DynamicCamera::update(Shader &shader) {
+void DynamicCamera::update() {
     _cameraFront = glm::normalize(glm::vec3(
             cosf(glm::radians(_mouseY)) * cosf(glm::radians(_mouseX)),
             sinf(glm::radians(_mouseY)),
@@ -78,10 +78,6 @@ void DynamicCamera::update(Shader &shader) {
     }
 
     viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
-
-    shader.setUniform("viewPoint", viewPoint);
-    shader.setUniform("projection", projection);
-    shader.setUniform("viewPosition", _cameraPos);
 
 }
 
@@ -130,4 +126,16 @@ DynamicCamera::~DynamicCamera() {
     for (auto command : _commands)
         delete (command);
     _commands.clear();
+}
+
+glm::mat4 DynamicCamera::getView() {
+    return viewPoint;
+}
+
+glm::mat4 DynamicCamera::getProjection() {
+    return projection;
+}
+
+glm::vec3 DynamicCamera::getPosition() {
+    return _cameraPos;
 }

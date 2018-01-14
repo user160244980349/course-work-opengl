@@ -71,6 +71,7 @@ OpenGl::OpenGl() {
     polygonMode = (PFNGLPOLYGONMODEPROC) SDL_GL_GetProcAddress("glPolygonMode");
     depthFunc = (PFNGLDEPTHFUNCPROC) SDL_GL_GetProcAddress("glDepthFunc");
     drawArrays = (PFNGLDRAWARRAYSPROC) SDL_GL_GetProcAddress("glDrawArrays");
+    depthMask = (PFNGLDEPTHMASKPROC) SDL_GL_GetProcAddress("glDepthMask");
 
     SDL_GL_UnloadLibrary();
 

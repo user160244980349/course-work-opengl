@@ -23,9 +23,15 @@ public:
 
     ~DynamicCamera() override;
 
-    void update(Shader &shader) override;
+    void update() override;
 
     void initCommands() override;
+
+    glm::mat4 getView() override;
+
+    glm::mat4 getProjection() override;
+
+    glm::vec3 getPosition() override;
 
     void moveForward();
 

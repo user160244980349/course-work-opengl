@@ -69,6 +69,7 @@ public:
     PFNGLACTIVETEXTUREPROC activeTexture;
     PFNGLDEPTHFUNCPROC depthFunc;
     PFNGLDRAWARRAYSPROC drawArrays;
+    PFNGLDEPTHMASKPROC depthMask;
 
 protected:
     OpenGl();

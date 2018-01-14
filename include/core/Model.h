@@ -6,6 +6,7 @@
 #define OPENGL_MODEL_H
 
 
+#include <interfaces/ICamera.h>
 #include "Mesh.h"
 
 class Model {
@@ -14,7 +15,7 @@ public:
 
     void prepare(Shader shader);
 
-    void render(Shader shader);
+    void render(Shader shader, ICamera &camera);
 
 protected:
     std::vector<Mesh> _meshes;

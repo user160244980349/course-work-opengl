@@ -13,20 +13,35 @@ void Scene::prepare() {
     _shader.compileShader("../resources/shaders/fragment.glsl", FRAGMENT);
     _shader.link();
 
+    _skyBoxShader.compileShader("../resources/shaders/skyboxVertex.glsl", VERTEX);
+    _skyBoxShader.compileShader("../resources/shaders/skyboxFragment.glsl", FRAGMENT);
+    _skyBoxShader.link();
+
+    _skyBox.load();
+    _skyBox.prepare(_skyBoxShader);
+
     _objects.push_back(new Dragon);
+    dynamic_cast<BaseObject *>(_objects.back())->transform.translate(glm::vec3(300.0f, 75.0f, -125.0f));
+    dynamic_cast<BaseObject *>(_objects.back())->transform.rotate(glm::radians(-45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
     for (auto &object : _objects) {
         object->prepare(_shader);
     }
+
+    _camera.lookVertical(-200);
 }
 
 void Scene::render() {
 
-    _camera.update(_shader);
+    _camera.update();
+
 
     for (auto &object : _objects) {
-        object->render(_shader);
+        object->render(_shader, _camera);
     }
+
+    _skyBox.render(_skyBoxShader, _camera);
+
 }
 
 void Scene::update() {

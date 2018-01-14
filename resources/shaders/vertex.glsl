@@ -1,5 +1,10 @@
 #version 450 core
 
+struct Camera {
+    mat4 projection;
+    mat4 view;
+    mat4 model;
+};
 
 in vec3 position;
 in vec3 normal;
@@ -13,17 +18,15 @@ out vec2 fUv;
 out vec3 fTangent;
 out vec3 fBitangent;
 
-uniform mat4 projection;
-uniform mat4 viewPoint;
-uniform mat4 model;
+uniform Camera camera;
 
 void main() {
 
     fPosition = position;
-    fNormal = mat3(transpose(inverse(model))) * normal;
+    fNormal = mat3(transpose(inverse(camera.model))) * normal;
     fUv = uv;
     fTangent = tangent;
     fBitangent = bitangent;
 
-    gl_Position = projection * viewPoint * model * vec4(position, 1.0f);
+    gl_Position = camera.projection * camera.view * camera.model * vec4(position, 1.0f);
 }

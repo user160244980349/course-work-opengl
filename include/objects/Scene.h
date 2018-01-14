@@ -19,7 +19,8 @@ public:
 
 protected:
     Shader _shader;
-
+    Shader _skyBoxShader;
+    SkyBox _skyBox;
 };
 
 

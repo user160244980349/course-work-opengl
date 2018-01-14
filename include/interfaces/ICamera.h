@@ -16,7 +16,13 @@ class ICamera {
 public:
     virtual ~ICamera() = default;;
 
-    virtual void update(Shader &shader) {};
+    virtual void update() {};
+
+    virtual glm::mat4 getView() {};
+
+    virtual glm::mat4 getProjection() {};
+
+    virtual glm::vec3 getPosition() {};
 };
 
 
