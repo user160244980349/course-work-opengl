@@ -20,6 +20,7 @@ void Texture::load(std::string path, std::string name) {
     if (_texture) {
         switch (_texture->format->BytesPerPixel) {
             default:
+            case 1:
                 format = GL_RED;
                 break;
 

@@ -8,13 +8,20 @@
 #include "core/Model.h"
 
 void Model::render(Shader shader, ICamera &camera, SkyBox &skyBox) {
+//  glm::normalize(glm::vec3(sinf(SDL_GetTicks()*0.01f)*5.0f, -1.0f, cosf(SDL_GetTicks()*0.01f)*5.0f)));
 
-    shader.use();
-    shader.setUniform("light.direction", glm::normalize(glm::vec3(0.5f, -1.0f, 0.5f)));
-    shader.setUniform("light.ambient", glm::vec3(0.1f));
-    shader.setUniform("light.diffuse", glm::vec3(0.7f));
-    shader.setUniform("light.specular", glm::vec3(0.2f));
-    shader.setUniform("material.shininess", 0.2f);
+    shader.setUniform("light.direction", glm::normalize(glm::vec3(-1.0f)));
+    shader.setUniform("light.color", glm::normalize(glm::vec3(1.0f)));
+
+    shader.setUniform("material.ka", 0.2f);
+    shader.setUniform("material.kd", 0.1f);
+    shader.setUniform("material.ks", 0.5f);
+    shader.setUniform("material.s", 32.0f);
+
+//    shader.setUniform("material.ka", (sinf(SDL_GetTicks()*0.001f) + 1.0f)*0.5f);
+//    shader.setUniform("material.kd", (sinf(SDL_GetTicks()*0.001f) + 1.0f)*0.5f);
+//    shader.setUniform("material.ks", (sinf(SDL_GetTicks()*0.001f) + 1.0f)*0.5f);
+//    shader.setUniform("material.s", (sinf(SDL_GetTicks()*0.001f) + 1.0f)*100.0f);
 
     for (auto &mesh : _meshes) {
         mesh.render(shader, skyBox);
@@ -22,8 +29,6 @@ void Model::render(Shader shader, ICamera &camera, SkyBox &skyBox) {
 }
 
 void Model::prepare(Shader shader) {
-    shader.use();
-
     for (auto &mesh : _meshes) {
         mesh.prepare(shader);
     }

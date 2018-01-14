@@ -29,7 +29,7 @@ protected:
 
     Mesh buildMesh(aiMesh *mesh, const aiScene *scene);
 
-    std::vector<Texture> loadMaps(aiMaterial *mat, aiTextureType type);
+    std::vector<Texture> loadMaps(aiMaterial *mat);
 
 
 };

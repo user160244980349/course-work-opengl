@@ -14,7 +14,7 @@ Model ModelLoader::load(std::string path) {
     _directory = "../resources/models/";
     const aiScene *scene = importer.ReadFile(_directory + path,
                                              aiProcess_Triangulate | aiProcess_GenUVCoords | aiProcess_FlipUVs |
-                                             aiProcess_GenSmoothNormals | aiProcess_CalcTangentSpace |
+                                             aiProcess_GenNormals | aiProcess_CalcTangentSpace |
                                              aiProcess_OptimizeMeshes | aiProcess_OptimizeGraph);
 
     if (scene == nullptr) {
@@ -45,30 +45,30 @@ void ModelLoader::sceneBypass(aiNode *node, const aiScene *scene) {
     }
 }
 
-std::vector<Texture> ModelLoader::loadMaps(aiMaterial *mat, aiTextureType type) {
+std::vector<Texture> ModelLoader::loadMaps(aiMaterial *mat) {
+    aiString str;
     std::vector<Texture> textures;
 
-    for (unsigned int i = 0; i < mat->GetTextureCount(type); i++) {
+    for (unsigned int i = 0; i < mat->GetTextureCount(aiTextureType_DIFFUSE); i++) {
         aiString str;
-        mat->GetTexture(type, i, &str);
-
+        mat->GetTexture(aiTextureType_DIFFUSE, i, &str);
         Texture texture;
+        texture.load(_directory + '/' + str.C_Str(), "diffuse1");
+        textures.push_back(texture);
+    }
 
-        switch (type) {
+    for (unsigned int i = 0; i < mat->GetTextureCount(aiTextureType_SPECULAR); i++) {
+        aiString str;
+        mat->GetTexture(aiTextureType_SPECULAR, i, &str);
+        Texture texture;
+        texture.load(_directory + '/' + str.C_Str(), "specular1");
+        textures.push_back(texture);
+    }
 
-            case aiTextureType_NORMALS:
-                texture.load(_directory + '/' + str.C_Str(), "material.normal");
-                break;
-
-            case aiTextureType_SPECULAR:
-                texture.load(_directory + '/' + str.C_Str(), "material.specular");
-                break;
-
-            case aiTextureType_DIFFUSE:
-                texture.load(_directory + '/' + str.C_Str(), "material.diffuse");
-                break;
-        }
-
+    for (unsigned int i = 0; i < mat->GetTextureCount(aiTextureType_HEIGHT); i++) {
+        mat->GetTexture(aiTextureType_HEIGHT, i, &str);
+        Texture texture;
+        texture.load(_directory + '/' + str.C_Str(), "normal1");
         textures.push_back(texture);
     }
 
@@ -106,16 +106,13 @@ Mesh ModelLoader::buildMesh(aiMesh *mesh, const aiScene *scene) {
                 indices.push_back(face.mIndices[j]);
         }
     }
-    std::vector<Texture> textures;
 
+    std::vector<Texture> textures;
     if (mesh->mMaterialIndex) {
         aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
 
-        std::vector<Texture> diffuseMaps = loadMaps(material, aiTextureType_DIFFUSE);
+        std::vector<Texture> diffuseMaps = loadMaps(material);
         textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
-
-        std::vector<Texture> specularMaps = loadMaps(material, aiTextureType_SPECULAR);
-        textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
     }
 
     Mesh newMesh;

@@ -18,6 +18,7 @@ void Kernel::run() {
 
     while (_running) {
         UserInput::getInstance().perform();
+        _scene.update();
         Graphics::getInstance().render(_scene);
     }
 
