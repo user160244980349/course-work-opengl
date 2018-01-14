@@ -98,9 +98,14 @@ void SkyBox::render(Shader &shader, ICamera &camera) {
     shader.setUniform("projection", camera.getProjection());
     shader.setUniform("skybox", 0);
 
-    OpenGl::getInstance().activeTexture(GL_TEXTURE0);
-    OpenGl::getInstance().bindTexture(GL_TEXTURE_CUBE_MAP, _id);
+    bind(shader, 0);
     _vao.render(GL_TRIANGLES, 0, 36);
     OpenGl::getInstance().depthFunc(GL_LESS);
 
+}
+
+void SkyBox::bind(Shader &shader, unsigned int block) {
+    OpenGl::getInstance().activeTexture(GL_TEXTURE0 + block);
+    shader.setUniform("skybox", block);
+    OpenGl::getInstance().bindTexture(GL_TEXTURE_CUBE_MAP, _id);
 }

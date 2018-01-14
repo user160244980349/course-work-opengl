@@ -3,7 +3,7 @@
 //
 
 #include <objects/DynamicCamera.h>
-#include <objects/Dragon.h>
+#include <objects/AngelLucy.h>
 #include "objects/Scene.h"
 
 
@@ -20,9 +20,9 @@ void Scene::prepare() {
     _skyBox.load();
     _skyBox.prepare(_skyBoxShader);
 
-    _objects.push_back(new Dragon);
-    dynamic_cast<BaseObject *>(_objects.back())->transform.translate(glm::vec3(300.0f, 75.0f, -125.0f));
-    dynamic_cast<BaseObject *>(_objects.back())->transform.rotate(glm::radians(-45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    _objects.push_back(new AngelLucy);
+    dynamic_cast<BaseObject *>(_objects.back())->transform.translate(glm::vec3(20.0f, 0.0f, 0.0f));
+    dynamic_cast<BaseObject *>(_objects.back())->transform.rotate(glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
     for (auto &object : _objects) {
         object->prepare(_shader);
@@ -37,7 +37,7 @@ void Scene::render() {
 
 
     for (auto &object : _objects) {
-        object->render(_shader, _camera);
+        object->render(_shader, _camera, _skyBox);
     }
 
     _skyBox.render(_skyBoxShader, _camera);

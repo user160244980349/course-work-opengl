@@ -4,7 +4,6 @@
 
 #include <core/Mesh.h>
 #include <iostream>
-#include <math.h>
 
 
 void Mesh::prepare(Shader &shader) {
@@ -42,8 +41,8 @@ void Mesh::prepare(Shader &shader) {
 
 }
 
-void Mesh::render(Shader &shader) {
-    _material.bind(shader);
+void Mesh::render(Shader &shader, SkyBox &skyBox) {
+    _material.bind(shader, skyBox);
     _buffers.vao.render(GL_TRIANGLES, _indices.size());
 }
 

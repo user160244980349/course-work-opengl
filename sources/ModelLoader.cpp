@@ -46,8 +46,6 @@ void ModelLoader::sceneBypass(aiNode *node, const aiScene *scene) {
 
 std::vector<Texture> ModelLoader::loadMaps(aiMaterial *mat, aiTextureType type) {
     std::vector<Texture> textures;
-    unsigned int diffuseCounter = 1;
-    unsigned int specularCounter = 1;
 
     for (unsigned int i = 0; i < mat->GetTextureCount(type); i++) {
         aiString str;
@@ -56,12 +54,17 @@ std::vector<Texture> ModelLoader::loadMaps(aiMaterial *mat, aiTextureType type) 
         Texture texture;
 
         switch (type) {
-            case aiTextureType_DIFFUSE:
-                texture.load(_directory + '/' + str.C_Str(), "material.diffuse");
+
+            case aiTextureType_NORMALS:
+                texture.load(_directory + '/' + str.C_Str(), "material.normal");
                 break;
 
             case aiTextureType_SPECULAR:
                 texture.load(_directory + '/' + str.C_Str(), "material.specular");
+                break;
+
+            case aiTextureType_DIFFUSE:
+                texture.load(_directory + '/' + str.C_Str(), "material.diffuse");
                 break;
         }
 

@@ -21,7 +21,7 @@ DynamicCamera::DynamicCamera() {
     glm::vec3 front = glm::vec3(1.0f, 0.0f, 0.0f);
     _cameraFront = glm::normalize(front);
 
-    projection = glm::perspective(glm::radians(75.0f), 16.0f / 9.0f, 0.1f, 500.0f);
+    projection = glm::perspective(glm::radians(75.0f), 16.0f / 9.0f, 0.1f, 1500.0f);
     viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
 
     initCommands();
@@ -77,8 +77,22 @@ void DynamicCamera::update() {
             _cameraPos += glm::normalize(_cameraUp) * _speedUp * _acceleration;
     }
 
-    viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
+    GLfloat rect = 100.0f;
 
+    if (_cameraPos.x > rect)
+        _cameraPos.x = rect;
+    if (_cameraPos.x < -rect)
+        _cameraPos.x = -rect;
+    if (_cameraPos.y > rect)
+        _cameraPos.y = rect;
+    if (_cameraPos.y < 0.0f)
+        _cameraPos.y = 0.0f;
+    if (_cameraPos.z > rect)
+        _cameraPos.z = rect;
+    if (_cameraPos.z < -rect)
+        _cameraPos.z = -rect;
+
+    viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
 }
 
 void DynamicCamera::moveForward() {

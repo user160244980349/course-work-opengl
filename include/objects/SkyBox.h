@@ -22,6 +22,8 @@ public:
 
     void render(Shader &shader, ICamera &camera);
 
+    void bind(Shader &shader, unsigned int block);
+
 protected:
 
     std::vector<glm::vec3> _vertices = {

@@ -9,13 +9,14 @@
 #include <vector>
 #include "Shader.h"
 #include "Texture.h"
+#include "objects/SkyBox.h"
 
 class Material {
 public:
 
     void build(std::vector<Texture> textures);
 
-    void bind(Shader &shader);
+    void bind(Shader &shader, SkyBox &skyBox);
 
 protected:
     std::vector<Texture> _textures;

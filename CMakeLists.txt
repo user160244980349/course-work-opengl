@@ -15,7 +15,7 @@ set(SOURCES
         include/core/ShaderTypes.h
         include/core/Shader.h
         include/core/UserInput.h
-        include/objects/Dragon.h
+        include/objects/AngelLucy.h
         include/objects/BaseObject.h
         include/objects/DynamicCamera.h
         include/objects/BaseScene.h
@@ -53,7 +53,7 @@ set(SOURCES
         sources/Vao.cpp
         sources/Vbo.cpp
         sources/UserInput.cpp
-        sources/Dragon.cpp
+        sources/AngelLucy.cpp
         sources/DynamicCamera.cpp
         sources/BaseObject.cpp
         sources/BaseScene.cpp
@@ -82,8 +82,6 @@ set(SOURCES
         include/core/Model.h
         sources/Model.cpp
         include/core/Vertex.h
-        sources/Cube.cpp
-        include/objects/Cube.h
         sources/Material.cpp
         include/core/Material.h
         include/interfaces/ITexture.h

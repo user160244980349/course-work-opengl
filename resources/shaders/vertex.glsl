@@ -22,7 +22,7 @@ uniform Camera camera;
 
 void main() {
 
-    fPosition = position;
+    fPosition =  vec3(camera.model * vec4(position, 1.0));;
     fNormal = mat3(transpose(inverse(camera.model))) * normal;
     fUv = uv;
     fTangent = tangent;

@@ -5,6 +5,7 @@
 #ifndef OPENGL_DRAWABLEINTERFACE_H
 #define OPENGL_DRAWABLEINTERFACE_H
 
+#include <objects/SkyBox.h>
 #include "ICamera.h"
 
 
@@ -14,7 +15,7 @@ public:
 
     virtual void prepare(Shader &shader) {};
 
-    virtual void render(Shader &shader, ICamera &camera) {};
+    virtual void render(Shader &shader, ICamera &camera, SkyBox &skyBox) {};
 };
 
 

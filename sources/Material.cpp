@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <objects/SkyBox.h>
 #include "core/Material.h"
 
 
@@ -10,8 +11,9 @@ void Material::build(std::vector<Texture> textures) {
     _textures = std::move(textures);
 }
 
-void Material::bind(Shader &shader) {
+void Material::bind(Shader &shader, SkyBox &skyBox) {
     unsigned int block = 0;
     for (auto &texture : _textures)
         texture.bind(shader, block++);
+    skyBox.bind(shader, block);
 }

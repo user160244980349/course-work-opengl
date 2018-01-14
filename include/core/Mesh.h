@@ -13,6 +13,7 @@
 #include <interfaces/IMesh.h>
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
+#include <objects/SkyBox.h>
 #include "Vertex.h"
 
 class Mesh : public IMesh {
@@ -23,7 +24,7 @@ public:
 
     void prepare(Shader &shader) override;
 
-    void render(Shader &shader) override;
+    void render(Shader &shader, SkyBox &skyBox) override;
 
 protected:
 
