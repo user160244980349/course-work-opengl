@@ -23,18 +23,15 @@ void Texture::load(std::string path, std::string name) {
             case 1:
                 format = GL_RED;
                 break;
-
             case 2:
                 format = GL_RG;
                 break;
-
             case 3:
                 if (_texture->format->Rmask == 0x000000ff)
                     format = GL_RGB;
                 else
                     format = GL_BGR;
                 break;
-
             case 4:
                 if (_texture->format->Rmask == 0x000000ff)
                     format = GL_RGBA;
@@ -44,7 +41,7 @@ void Texture::load(std::string path, std::string name) {
         }
 
         OpenGl::getInstance().bindTexture(GL_TEXTURE_2D, _id);
-        OpenGl::getInstance().texImage2D(GL_TEXTURE_2D, 0, format, _texture->w, _texture->h, 0, format,
+        OpenGl::getInstance().texImage2D(GL_TEXTURE_2D, 0, GL_RGBA, _texture->w, _texture->h, 0, format,
                                          GL_UNSIGNED_BYTE, _texture->pixels);
         OpenGl::getInstance().generateMipmap(GL_TEXTURE_2D);
 
@@ -52,7 +49,7 @@ void Texture::load(std::string path, std::string name) {
         OpenGl::getInstance().texParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
         OpenGl::getInstance().texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         OpenGl::getInstance().texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
+        OpenGl::getInstance().bindTexture(GL_TEXTURE_2D, 0);
         SDL_FreeSurface(_texture);
     } else
         std::cerr << "texture bitten" << std::endl;
@@ -61,8 +58,9 @@ void Texture::load(std::string path, std::string name) {
 }
 
 void Texture::bind(Shader shader, unsigned int block) {
-    OpenGl::getInstance().activeTexture(GL_TEXTURE0 + block);
+    shader.use();
     shader.setUniform(_name, block);
+    OpenGl::getInstance().activeTexture(GL_TEXTURE0 + block);
     OpenGl::getInstance().bindTexture(GL_TEXTURE_2D, _id);
 }
 

@@ -53,7 +53,7 @@ std::vector<Texture> ModelLoader::loadMaps(aiMaterial *mat) {
         aiString str;
         mat->GetTexture(aiTextureType_DIFFUSE, i, &str);
         Texture texture;
-        texture.load(_directory + '/' + str.C_Str(), "diffuse1");
+        texture.load(_directory + '/' + str.C_Str(), "diffuseMap");
         textures.push_back(texture);
     }
 
@@ -61,14 +61,14 @@ std::vector<Texture> ModelLoader::loadMaps(aiMaterial *mat) {
         aiString str;
         mat->GetTexture(aiTextureType_SPECULAR, i, &str);
         Texture texture;
-        texture.load(_directory + '/' + str.C_Str(), "specular1");
+        texture.load(_directory + '/' + str.C_Str(), "material.specular");
         textures.push_back(texture);
     }
 
     for (unsigned int i = 0; i < mat->GetTextureCount(aiTextureType_HEIGHT); i++) {
         mat->GetTexture(aiTextureType_HEIGHT, i, &str);
         Texture texture;
-        texture.load(_directory + '/' + str.C_Str(), "normal1");
+        texture.load(_directory + '/' + str.C_Str(), "normalMap");
         textures.push_back(texture);
     }
 

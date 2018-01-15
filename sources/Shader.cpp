@@ -227,6 +227,7 @@ void Shader::disableAttribute(std::string name) {
 }
 
 void Shader::setUniform(std::string name, int val) {
-    unsigned int attribLocation = static_cast<unsigned int>(OpenGl::getInstance().getAttribLocation(_id, name.c_str()));
-    OpenGl::getInstance().uniform1i(attribLocation, val);
+    unsigned int uniformLocation = static_cast<unsigned int>(OpenGl::getInstance().getUniformLocation(_id,
+                                                                                                      name.c_str()));
+    OpenGl::getInstance().uniform1i(uniformLocation, val);
 }

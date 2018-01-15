@@ -13,7 +13,6 @@ void Kernel::prepare() {
 
 void Kernel::run() {
     _running = true;
-
     _scene.prepare();
 
     while (_running) {

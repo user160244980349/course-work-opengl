@@ -9,13 +9,16 @@
 
 void Scene::prepare() {
 
+    _skyBoxShader.compileShader("../resources/shaders/skyboxVertex.glsl", VERTEX);
+    _skyBoxShader.compileShader("../resources/shaders/skyboxFragment.glsl", FRAGMENT);
+    _skyBoxShader.link();
+
     _shader.compileShader("../resources/shaders/vertex.glsl", VERTEX);
     _shader.compileShader("../resources/shaders/fragment.glsl", FRAGMENT);
     _shader.link();
 
-    _skyBoxShader.compileShader("../resources/shaders/skyboxVertex.glsl", VERTEX);
-    _skyBoxShader.compileShader("../resources/shaders/skyboxFragment.glsl", FRAGMENT);
-    _skyBoxShader.link();
+    _skyBox.load();
+    _skyBox.prepare(_skyBoxShader);
 
     _objects.push_back(new AngelLucy);
     dynamic_cast<BaseObject *>(_objects.back())->transform.translate(glm::vec3(20.0f, 0.0f, 0.0f));
@@ -25,16 +28,18 @@ void Scene::prepare() {
         object->prepare(_shader);
     }
 
+    _camera.update();
     _camera.lookVertical(-200);
+    for (auto &object : _objects) {
+        object->render(_shader, _camera, _skyBox);
+    }
 
-    _skyBox.load();
-    _skyBox.prepare(_skyBoxShader);
+
 }
 
 void Scene::render() {
 
     _camera.update();
-
 
     for (auto &object : _objects) {
         object->render(_shader, _camera, _skyBox);
