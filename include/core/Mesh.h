@@ -24,7 +24,7 @@ public:
 
     void prepare(Shader &shader) override;
 
-    void render(Shader &shader, SkyBox &skyBox) override;
+    void render(Shader &shader) override;
 
 protected:
 

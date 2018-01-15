@@ -2,19 +2,18 @@
 // Created by user on 21.10.2017.
 //
 
-
-#include <objects/AngelLucy.h>
+#include <objects/LucyBase.h>
 #include <core/ModelLoader.h>
 
 
-void AngelLucy::prepare(Shader &shader) {
+void LucyBase::prepare(Shader &shader) {
 
-    _model = ModelLoader::getInstacne().load("lucy/lucy.obj");
+    _model = ModelLoader::getInstacne().load("lucy/base.obj");
     shader.use();
     _model.prepare(shader);
 }
 
-void AngelLucy::render(Shader &shader, ICamera &camera) {
+void LucyBase::render(Shader &shader, ICamera &camera) {
 
     shader.use();
     shader.setUniform("view", camera.getView());
@@ -25,7 +24,7 @@ void AngelLucy::render(Shader &shader, ICamera &camera) {
     _model.render(shader, camera);
 }
 
-void AngelLucy::update() {
+void LucyBase::update() {
 
 }
 

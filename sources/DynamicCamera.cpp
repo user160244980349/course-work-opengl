@@ -85,8 +85,8 @@ void DynamicCamera::update() {
         _cameraPos.x = -rect;
     if (_cameraPos.y > rect)
         _cameraPos.y = rect;
-    if (_cameraPos.y < 0.0f)
-        _cameraPos.y = 0.0f;
+    if (_cameraPos.y < 0.5f)
+        _cameraPos.y = 0.5f;
     if (_cameraPos.z > rect)
         _cameraPos.z = rect;
     if (_cameraPos.z < -rect)

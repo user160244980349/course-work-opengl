@@ -2,8 +2,8 @@
 // Created by user on 21.10.2017.
 //
 
-#ifndef OPENGL_ANGELLUCY_H
-#define OPENGL_ANGELLUCY_H
+#ifndef OPENGL_LUCYBASE_H
+#define OPENGL_LUCYBASE_H
 
 #include <interfaces/IDrawable.h>
 #include <interfaces/IObject.h>
@@ -18,7 +18,7 @@
 #include <core/Model.h>
 #include "BaseObject.h"
 
-class AngelLucy : public IDrawable, public BaseObject {
+class LucyBase : public IDrawable, public BaseObject {
 public:
 
     void prepare(Shader &shader) override;
@@ -32,4 +32,4 @@ protected:
 
 };
 
-#endif //OPENGL_ANGELLUCY_H
+#endif //OPENGL_DRAGON_H

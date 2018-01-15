@@ -7,9 +7,9 @@
 
 #include "core/Model.h"
 
-void Model::render(Shader shader, ICamera &camera, SkyBox &skyBox) {
+void Model::render(Shader shader, ICamera &camera) {
     for (auto &mesh : _meshes)
-        mesh.render(shader, skyBox);
+        mesh.render(shader);
 }
 
 void Model::prepare(Shader shader) {

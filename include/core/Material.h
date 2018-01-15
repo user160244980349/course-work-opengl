@@ -16,7 +16,7 @@ public:
 
     void build(std::vector<Texture> textures);
 
-    void bind(Shader &shader, SkyBox &skyBox);
+    void bind(Shader &shader);
 
 protected:
     std::vector<Texture> _textures;

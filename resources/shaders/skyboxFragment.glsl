@@ -2,11 +2,13 @@
 
 in vec3 fPosition;
 
-uniform samplerCube skybox;
-
 out vec4 finalColor;
+
+uniform samplerCube skybox;
+uniform vec3 lightColor;
+uniform float lightIntense;
 
 void main()
 {
-    finalColor = texture(skybox, fPosition);
+    finalColor = mix(texture(skybox, fPosition), vec4(lightColor, 1.0f), lightIntense);
 }

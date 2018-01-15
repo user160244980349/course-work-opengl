@@ -15,7 +15,7 @@ public:
 
     void prepare(Shader shader);
 
-    void render(Shader shader, ICamera &camera, SkyBox &skyBox);
+    void render(Shader shader, ICamera &camera);
 
 protected:
     std::vector<Mesh> _meshes;

@@ -4,6 +4,8 @@
 
 #include <objects/DynamicCamera.h>
 #include <objects/AngelLucy.h>
+#include <objects/LucyBase.h>
+#include <SDL2/SDL_timer.h>
 #include "objects/Scene.h"
 
 
@@ -21,28 +23,36 @@ void Scene::prepare() {
     _skyBox.prepare(_skyBoxShader);
 
     _objects.push_back(new AngelLucy);
-    dynamic_cast<BaseObject *>(_objects.back())->transform.translate(glm::vec3(20.0f, 0.0f, 0.0f));
-    dynamic_cast<BaseObject *>(_objects.back())->transform.rotate(glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    dynamic_cast<BaseObject *>(_objects.back())->transform.translate(glm::vec3(0.0f, 0.0f, 0.0f));
+    dynamic_cast<BaseObject *>(_objects.back())->transform.rotate(glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+    _objects.push_back(new LucyBase);
+    dynamic_cast<BaseObject *>(_objects.back())->transform.rotate(glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    dynamic_cast<BaseObject *>(_objects.back())->transform.translate(glm::vec3(3.0f, 0.0f, 0.0f));
 
     for (auto &object : _objects) {
         object->prepare(_shader);
     }
 
-    _camera.update();
     _camera.lookVertical(-200);
-    for (auto &object : _objects) {
-        object->render(_shader, _camera, _skyBox);
-    }
-
-
 }
 
 void Scene::render() {
 
     _camera.update();
 
+    float time = SDL_GetTicks() * 0.001f;
+    glm::vec3 lightColor = glm::normalize(glm::vec3(sinf(time), cosf(time + 1), sinf(time + 2)));
+    float lightIntense = 0.05f;
+    _shader.use();
+    _shader.setUniform("lightColor", lightColor);
+    _shader.setUniform("lightIntense", lightIntense);
+    _skyBoxShader.use();
+    _skyBoxShader.setUniform("lightColor", lightColor);
+    _skyBoxShader.setUniform("lightIntense", 0.1f);
+
     for (auto &object : _objects) {
-        object->render(_shader, _camera, _skyBox);
+        object->render(_shader, _camera);
     }
 
     _skyBox.render(_skyBoxShader, _camera);

@@ -41,8 +41,8 @@ void Mesh::prepare(Shader &shader) {
 
 }
 
-void Mesh::render(Shader &shader, SkyBox &skyBox) {
-    _material.bind(shader, skyBox);
+void Mesh::render(Shader &shader) {
+    _material.bind(shader);
     _buffers.vao.render(GL_TRIANGLES, _indices.size());
 }
 

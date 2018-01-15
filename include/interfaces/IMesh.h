@@ -18,7 +18,7 @@ public:
 
     virtual void prepare(Shader &shader) {};
 
-    virtual void render(Shader &shader, SkyBox &skyBox) {};
+    virtual void render(Shader &shader) {};
 };
 
 

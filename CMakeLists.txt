@@ -60,6 +60,7 @@ set(SOURCES
         sources/Scene.cpp
         sources/QuitCommand.cpp
         sources/LookVertical.cpp
+        sources/LucyBase.cpp
         sources/LookHorizontal.cpp
         sources/MoveForward.cpp
         sources/MoveBack.cpp

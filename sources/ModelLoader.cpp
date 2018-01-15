@@ -61,7 +61,7 @@ std::vector<Texture> ModelLoader::loadMaps(aiMaterial *mat) {
         aiString str;
         mat->GetTexture(aiTextureType_SPECULAR, i, &str);
         Texture texture;
-        texture.load(_directory + '/' + str.C_Str(), "material.specular");
+        texture.load(_directory + '/' + str.C_Str(), "specularMap");
         textures.push_back(texture);
     }
 
