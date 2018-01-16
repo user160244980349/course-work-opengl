@@ -74,6 +74,7 @@ public:
     PFNGLFRAMEBUFFERTEXTURE2DPROC framebufferTexture2D;
     PFNGLDRAWBUFFERPROC drawBuffer;
     PFNGLREADBUFFERPROC readBuffer;
+    PFNGLBINDFRAMEBUFFERPROC bindFramebuffer;
 
 protected:
     OpenGl();

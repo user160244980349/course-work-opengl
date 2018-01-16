@@ -19,19 +19,28 @@ void Scene::prepare() {
     _shader.compileShader("../resources/shaders/mainFragment.glsl", FRAGMENT);
     _shader.link();
 
-//    _depthShader.compileShader("../resources/shaders/depthVertex.glsl", VERTEX);
-//    _depthShader.compileShader("../resources/shaders/depthFragment.glsl", FRAGMENT);
-//    _depthShader.link();
+    _depthShader.compileShader("../resources/shaders/depthVertex.glsl", VERTEX);
+    _depthShader.link();
+
+    _debug.compileShader("../resources/shaders/debugQuadVertex.glsl", VERTEX);
+    _debug.compileShader("../resources/shaders/debugQuadFragment.glsl", FRAGMENT);
+    _debug.link();
 
     _skyBox.load();
 
     _light.prepare();
     _camera.prepare();
-//    _shadowMap.prepare();
+
+    _shadowMap.prepare();
     _skyBox.prepare(_skyBoxShader);
 
     _objects.push_back(new AngelLucy);
     _objects.push_back(new LucyBase);
+
+    for (auto &object : _objects) {
+        object->prepare(_depthShader);
+    }
+
     for (auto &object : _objects) {
         object->prepare(_shader);
     }
@@ -51,20 +60,22 @@ void Scene::render() {
 
     shaders.push_back(std::ref(_shader));
     shaders.push_back(std::ref(_skyBoxShader));
-//    shaders.push_back(std::ref(_depthShader));
+    shaders.push_back(std::ref(_depthShader));
+    shaders.push_back(std::ref(_debug));
 
     _light.update(shaders);
     _camera.update(shaders);
 
-//    _shadowMap.buildMap(_light, _depthShader);
+    _shadowMap.bindForBuild(_depthShader);
+    for (auto &object : _objects) {
+        object->render(_depthShader, _camera);
+    }
+    _shadowMap.unbind();
+
+    _shadowMap.bind(_shader);
     for (auto &object : _objects) {
         object->render(_shader, _camera);
     }
-
-//    _shadowMap.bind();
-//    for (auto &object : _objects) {
-//        object->render(_shader, _camera);
-//    }
 
     _skyBox.render(_skyBoxShader, _camera);
 

@@ -23,6 +23,7 @@ protected:
     Shader _shader;
     Shader _depthShader;
     Shader _skyBoxShader;
+    Shader _debug;
     SkyBox _skyBox;
     DirectionalLight _light;
     ShadowMap _shadowMap;

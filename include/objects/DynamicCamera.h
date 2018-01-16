@@ -19,13 +19,14 @@
 
 class DynamicCamera : public ICamera, public IControlable {
 public:
-    void prepare();
 
     ~DynamicCamera() override;
 
     void update(std::vector<std::reference_wrapper<Shader>> shaders) override;
 
     void initCommands() override;
+
+    void prepare();
 
     glm::mat4 getView() override;
 

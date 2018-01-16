@@ -20,7 +20,7 @@ public:
 
     glm::mat4 getProjection();
 
-    glm::vec3 getPosition();
+    glm::vec3 getDirection();
 
     glm::mat4 getView();
 
@@ -31,7 +31,7 @@ public:
 
 protected:
     glm::mat4 _lightProjection;
-    glm::vec3 _lightPosition;
+    glm::vec3 _lightDirection;
     glm::mat4 _lightView;
     glm::vec3 _lightColor;
     float _lightIntense;

@@ -3,7 +3,6 @@
 //
 
 #include <glm/gtc/matrix_transform.hpp>
-#include <SDL2/SDL_timer.h>
 #include <core/Shader.h>
 #include <vector>
 #include <functional>
@@ -11,21 +10,26 @@
 #include "core/DirectionalLight.h"
 
 void DirectionalLight::prepare() {
-    float near_plane = 1.0f, far_plane = 7.5f;
+    float near_plane = 1.0f, far_plane = 100.0f;
     _lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
+    _lightDirection = glm::vec3(9.0f);
     _lightIntense = 0.1f;
 }
 
 void DirectionalLight::update(std::vector<std::reference_wrapper<Shader>> shaders) {
 
-    float time = SDL_GetTicks() * 0.001f;
-    glm::vec3 _lightColor = glm::normalize(glm::vec3(sinf(time), cosf(time + 1), sinf(time + 2)));
-    _lightView = glm::lookAt(_lightPosition, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
+//    float time = SDL_GetTicks() * 0.001f;
+//    glm::vec3 _lightColor = glm::normalize(glm::vec3(sinf(time), cosf(time + 1), sinf(time + 2)));
+    _lightView = glm::lookAt(glm::vec3(10.0f), _lightDirection, glm::vec3(0.0f, 1.0f, 0.0));
 
     for (std::reference_wrapper<Shader> shader : shaders) {
         shader.get().use();
+        shader.get().setUniform("lightView", _lightView);
+        shader.get().setUniform("lightProjection", _lightProjection);
         shader.get().setUniform("lightColor", _lightColor);
         shader.get().setUniform("lightIntense", _lightIntense);
+
+        shader.get().printActiveUniforms();
     }
 }
 
@@ -33,8 +37,8 @@ glm::mat4 DirectionalLight::getProjection() {
     return _lightProjection;
 }
 
-glm::vec3 DirectionalLight::getPosition() {
-    return _lightPosition;
+glm::vec3 DirectionalLight::getDirection() {
+    return _lightDirection;
 }
 
 glm::mat4 DirectionalLight::getView() {

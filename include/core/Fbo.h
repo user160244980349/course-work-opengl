@@ -15,11 +15,12 @@ public:
 
     void remove() override;
 
-    void bind();
+    void bind(unsigned int map);
 
-    void render(GLuint drawStyle, unsigned long long int usedVertices);
+    void unbind();
 
-    void render(GLuint drawStyle, unsigned int first, unsigned long long int usedVertices);
+    virtual unsigned int getId();
+
 };
 
 

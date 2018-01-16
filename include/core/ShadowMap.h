@@ -8,19 +8,24 @@
 
 #include <interfaces/IScene.h>
 #include "Fbo.h"
+#include "Shader.h"
 
 class ShadowMap {
 public:
 
     void prepare();
 
-    void bind();
+    void bind(Shader &shader);
 
-    void buildMap(DirectionalLight &light, Shader &shader);
+    void bindForBuild(Shader &shader);
+
+    void unbind();
+
+    unsigned int getId();
 
 protected:
     unsigned int _id;
-    Fbo _fbo;
+    unsigned int _fbo;
 
 };
 

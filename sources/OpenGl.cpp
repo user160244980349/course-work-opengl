@@ -76,6 +76,7 @@ OpenGl::OpenGl() {
     framebufferTexture2D = (PFNGLFRAMEBUFFERTEXTURE2DPROC) SDL_GL_GetProcAddress("glFramebufferTexture2D");
     drawBuffer = (PFNGLDRAWBUFFERPROC) SDL_GL_GetProcAddress("glDrawBuffer");
     readBuffer = (PFNGLREADBUFFERPROC) SDL_GL_GetProcAddress("glReadBuffer");
+    bindFramebuffer = (PFNGLBINDFRAMEBUFFERPROC) SDL_GL_GetProcAddress("glBindFramebuffer");
 
     SDL_GL_UnloadLibrary();
 
