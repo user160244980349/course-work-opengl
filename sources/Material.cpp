@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <objects/SkyBox.h>
-#include <SDL2/SDL_timer.h>
 #include "core/Material.h"
 
 
@@ -19,7 +18,6 @@ void Material::bind(Shader &shader) {
     shader.setUniform("kd", glm::normalize(glm::vec3(0.58275f, 0.57f, 0.62525f)));
     shader.setUniform("ks", glm::normalize(glm::vec3(0.332741f, 0.328634f, 0.346435f)));
     shader.setUniform("s", 128.0f);
-    shader.setUniform("lightPos", glm::vec3(sinf(SDL_GetTicks() * 0.001f), -1.0f, cosf(SDL_GetTicks() * 0.001f)));
 
     unsigned int block = 1;
     for (auto &texture : _textures)

@@ -48,10 +48,10 @@ void Scene::prepare() {
     _camera.lookVertical(-200);
 
     dynamic_cast<BaseObject *>(_objects.front())->transform.translate(glm::vec3(0.0f, 0.0f, 0.0f));
-    dynamic_cast<BaseObject *>(_objects.front())->transform.rotate(glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    dynamic_cast<BaseObject *>(_objects.front())->transform.rotate(glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
     dynamic_cast<BaseObject *>(_objects.back())->transform.translate(glm::vec3(0.0f, 0.0f, 0.0f));
-    dynamic_cast<BaseObject *>(_objects.back())->transform.rotate(glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    dynamic_cast<BaseObject *>(_objects.back())->transform.rotate(glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
 void Scene::render() {
@@ -67,9 +67,11 @@ void Scene::render() {
     _camera.update(shaders);
 
     _shadowMap.bindForBuild(_depthShader);
+//    OpenGl::getInstance().cullFace(GL_FRONT);
     for (auto &object : _objects) {
         object->render(_depthShader, _camera);
     }
+//    OpenGl::getInstance().cullFace(GL_BACK);
     _shadowMap.unbind();
 
     _shadowMap.bind(_shader);

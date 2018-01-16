@@ -75,6 +75,7 @@ public:
     PFNGLDRAWBUFFERPROC drawBuffer;
     PFNGLREADBUFFERPROC readBuffer;
     PFNGLBINDFRAMEBUFFERPROC bindFramebuffer;
+    PFNGLCULLFACEPROC cullFace;
 
 protected:
     OpenGl();

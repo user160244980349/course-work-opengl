@@ -77,6 +77,7 @@ OpenGl::OpenGl() {
     drawBuffer = (PFNGLDRAWBUFFERPROC) SDL_GL_GetProcAddress("glDrawBuffer");
     readBuffer = (PFNGLREADBUFFERPROC) SDL_GL_GetProcAddress("glReadBuffer");
     bindFramebuffer = (PFNGLBINDFRAMEBUFFERPROC) SDL_GL_GetProcAddress("glBindFramebuffer");
+    cullFace = (PFNGLCULLFACEPROC) SDL_GL_GetProcAddress("glCullFace");
 
     SDL_GL_UnloadLibrary();
 
