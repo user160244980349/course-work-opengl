@@ -5,7 +5,7 @@
 #include <objects/DynamicCamera.h>
 #include <objects/AngelLucy.h>
 #include <objects/LucyBase.h>
-#include <SDL2/SDL_timer.h>
+#include <functional>
 #include "objects/Scene.h"
 
 
@@ -15,45 +15,56 @@ void Scene::prepare() {
     _skyBoxShader.compileShader("../resources/shaders/skyboxFragment.glsl", FRAGMENT);
     _skyBoxShader.link();
 
-    _shader.compileShader("../resources/shaders/vertex.glsl", VERTEX);
-    _shader.compileShader("../resources/shaders/fragment.glsl", FRAGMENT);
+    _shader.compileShader("../resources/shaders/mainVertex.glsl", VERTEX);
+    _shader.compileShader("../resources/shaders/mainFragment.glsl", FRAGMENT);
     _shader.link();
 
+//    _depthShader.compileShader("../resources/shaders/depthVertex.glsl", VERTEX);
+//    _depthShader.compileShader("../resources/shaders/depthFragment.glsl", FRAGMENT);
+//    _depthShader.link();
+
     _skyBox.load();
+
+    _light.prepare();
+    _camera.prepare();
+//    _shadowMap.prepare();
     _skyBox.prepare(_skyBoxShader);
 
     _objects.push_back(new AngelLucy);
-    dynamic_cast<BaseObject *>(_objects.back())->transform.translate(glm::vec3(0.0f, 0.0f, 0.0f));
-    dynamic_cast<BaseObject *>(_objects.back())->transform.rotate(glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-
     _objects.push_back(new LucyBase);
-    dynamic_cast<BaseObject *>(_objects.back())->transform.rotate(glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-    dynamic_cast<BaseObject *>(_objects.back())->transform.translate(glm::vec3(3.0f, 0.0f, 0.0f));
-
     for (auto &object : _objects) {
         object->prepare(_shader);
     }
 
     _camera.lookVertical(-200);
+
+    dynamic_cast<BaseObject *>(_objects.front())->transform.translate(glm::vec3(0.0f, 0.0f, 0.0f));
+    dynamic_cast<BaseObject *>(_objects.front())->transform.rotate(glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+    dynamic_cast<BaseObject *>(_objects.back())->transform.translate(glm::vec3(0.0f, 0.0f, 0.0f));
+    dynamic_cast<BaseObject *>(_objects.back())->transform.rotate(glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
 void Scene::render() {
 
-    _camera.update();
+    std::vector<std::reference_wrapper<Shader>> shaders;
 
-    float time = SDL_GetTicks() * 0.001f;
-    glm::vec3 lightColor = glm::normalize(glm::vec3(sinf(time), cosf(time + 1), sinf(time + 2)));
-    float lightIntense = 0.05f;
-    _shader.use();
-    _shader.setUniform("lightColor", lightColor);
-    _shader.setUniform("lightIntense", lightIntense);
-    _skyBoxShader.use();
-    _skyBoxShader.setUniform("lightColor", lightColor);
-    _skyBoxShader.setUniform("lightIntense", 0.1f);
+    shaders.push_back(std::ref(_shader));
+    shaders.push_back(std::ref(_skyBoxShader));
+//    shaders.push_back(std::ref(_depthShader));
 
+    _light.update(shaders);
+    _camera.update(shaders);
+
+//    _shadowMap.buildMap(_light, _depthShader);
     for (auto &object : _objects) {
         object->render(_shader, _camera);
     }
+
+//    _shadowMap.bind();
+//    for (auto &object : _objects) {
+//        object->render(_shader, _camera);
+//    }
 
     _skyBox.render(_skyBoxShader, _camera);
 

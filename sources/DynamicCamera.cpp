@@ -7,8 +7,10 @@
 #include <glm/gtx/rotate_vector.hpp>
 #include <commands/Accelerate.h>
 #include <core/UserInput.h>
+#include <functional>
 
-DynamicCamera::DynamicCamera() {
+
+void DynamicCamera::prepare() {
     _mouseX = 0.0f;
     _mouseY = 0.0f;
     _speedUp = 0.2f;
@@ -42,7 +44,7 @@ void DynamicCamera::initCommands() {
     UserInput::getInstance().addCommands(_commands);
 }
 
-void DynamicCamera::update() {
+void DynamicCamera::update(std::vector<std::reference_wrapper<Shader>> shaders) {
     _cameraFront = glm::normalize(glm::vec3(
             cosf(glm::radians(_mouseY)) * cosf(glm::radians(_mouseX)),
             sinf(glm::radians(_mouseY)),
@@ -93,6 +95,13 @@ void DynamicCamera::update() {
         _cameraPos.z = -rect;
 
     viewPoint = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
+
+    for (std::reference_wrapper<Shader> shader : shaders) {
+        shader.get().use();
+        shader.get().setUniform("view", viewPoint);
+        shader.get().setUniform("projection", projection);
+        shader.get().setUniform("viewPos", _cameraPos);
+    }
 }
 
 void DynamicCamera::moveForward() {
@@ -137,8 +146,8 @@ void DynamicCamera::lookHorizontal(int x) {
 
 DynamicCamera::~DynamicCamera() {
     UserInput::getInstance().removeCommands(_commands);
-    for (auto command : _commands)
-        delete (command);
+//    for (auto command : _commands)
+//        delete (command);
     _commands.clear();
 }
 

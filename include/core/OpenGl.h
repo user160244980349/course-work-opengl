@@ -70,6 +70,10 @@ public:
     PFNGLDEPTHFUNCPROC depthFunc;
     PFNGLDRAWARRAYSPROC drawArrays;
     PFNGLDEPTHMASKPROC depthMask;
+    PFNGLGENFRAMEBUFFERSPROC genFramebuffers;
+    PFNGLFRAMEBUFFERTEXTURE2DPROC framebufferTexture2D;
+    PFNGLDRAWBUFFERPROC drawBuffer;
+    PFNGLREADBUFFERPROC readBuffer;
 
 protected:
     OpenGl();

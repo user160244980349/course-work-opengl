@@ -17,10 +17,7 @@ void AngelLucy::prepare(Shader &shader) {
 void AngelLucy::render(Shader &shader, ICamera &camera) {
 
     shader.use();
-    shader.setUniform("view", camera.getView());
-    shader.setUniform("projection", camera.getProjection());
     shader.setUniform("model", transform.getModel());
-    shader.setUniform("viewPos", camera.getPosition());
 
     _model.render(shader, camera);
 }

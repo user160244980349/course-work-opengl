@@ -72,6 +72,10 @@ OpenGl::OpenGl() {
     depthFunc = (PFNGLDEPTHFUNCPROC) SDL_GL_GetProcAddress("glDepthFunc");
     drawArrays = (PFNGLDRAWARRAYSPROC) SDL_GL_GetProcAddress("glDrawArrays");
     depthMask = (PFNGLDEPTHMASKPROC) SDL_GL_GetProcAddress("glDepthMask");
+    genFramebuffers = (PFNGLGENFRAMEBUFFERSPROC) SDL_GL_GetProcAddress("glGenFramebuffers");
+    framebufferTexture2D = (PFNGLFRAMEBUFFERTEXTURE2DPROC) SDL_GL_GetProcAddress("glFramebufferTexture2D");
+    drawBuffer = (PFNGLDRAWBUFFERPROC) SDL_GL_GetProcAddress("glDrawBuffer");
+    readBuffer = (PFNGLREADBUFFERPROC) SDL_GL_GetProcAddress("glReadBuffer");
 
     SDL_GL_UnloadLibrary();
 

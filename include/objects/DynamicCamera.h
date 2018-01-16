@@ -19,11 +19,11 @@
 
 class DynamicCamera : public ICamera, public IControlable {
 public:
-    DynamicCamera();
+    void prepare();
 
     ~DynamicCamera() override;
 
-    void update() override;
+    void update(std::vector<std::reference_wrapper<Shader>> shaders) override;
 
     void initCommands() override;
 

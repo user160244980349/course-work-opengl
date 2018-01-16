@@ -21,7 +21,7 @@ void Material::bind(Shader &shader) {
     shader.setUniform("s", 128.0f);
     shader.setUniform("lightPos", glm::vec3(sinf(SDL_GetTicks() * 0.001f), -1.0f, cosf(SDL_GetTicks() * 0.001f)));
 
-    unsigned int block = 0;
+    unsigned int block = 1;
     for (auto &texture : _textures)
         texture.bind(shader, block++);
 }

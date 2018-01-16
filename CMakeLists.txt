@@ -89,7 +89,7 @@ set(SOURCES
         include/interfaces/IMaterial.h
         include/interfaces/IModel.h
         sources/Texture.cpp
-        include/core/Texture.h sources/SkyBox.cpp include/objects/SkyBox.h)
+        include/core/Texture.h sources/SkyBox.cpp include/objects/SkyBox.h sources/Fbo.cpp include/core/Fbo.h sources/ShadowMap.cpp include/core/ShadowMap.h sources/DirectionalLight.cpp include/core/DirectionalLight.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
