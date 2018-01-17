@@ -21,7 +21,7 @@ void DirectionalLight::update(std::vector<std::reference_wrapper<Shader>> shader
     float time = SDL_GetTicks() * 0.0001f;
     glm::vec3 _lightColor = glm::normalize(glm::vec3(sinf(time), cosf(time + 1), sinf(time + 2)));
     glm::vec3 lightPosition = glm::vec3(0.0f, 4.0f, 0.0f);
-    _lightDirection = glm::vec3(sinf(time) * 5.0f, 8.0f, cosf(time) * 5.0f);
+    _lightDirection = glm::vec3(cosf(time) * 5.0f, 8.0f, sinf(time) * 5.0f);
     _lightView = glm::lookAt(_lightDirection, lightPosition, glm::vec3(0.0f, 1.0f, 0.0));
 
     for (std::reference_wrapper<Shader> shader : shaders) {

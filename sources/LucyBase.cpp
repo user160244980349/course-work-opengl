@@ -3,12 +3,11 @@
 //
 
 #include <objects/LucyBase.h>
-#include <core/ModelLoader.h>
 
 
 void LucyBase::prepare(Shader &shader) {
 
-    _model = ModelLoader::getInstacne().load("lucy/base.obj");
+//    _model = ModelLoader::getInstacne().load("lucy/base.obj");
     shader.use();
     _model.prepare(shader);
 }
