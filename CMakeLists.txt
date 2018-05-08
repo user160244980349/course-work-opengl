@@ -46,7 +46,7 @@ set(SOURCES
         include/exceptions/ShaderProgramCreationException.h
         include/exceptions/BaseException.h
         include/core/Kernel.h
-        sources/main.cpp
+        main.cpp
         sources/OpenGl.cpp
         sources/Ebo.cpp
         sources/Graphics.cpp
