@@ -1,11 +1,5 @@
-//
-// Created by user on 21.10.2017.
-//
-
-
-#include <objects/AngelLucy.h>
-#include <core/ModelLoader.h>
-
+#include "../include/objects/AngelLucy.h"
+#include "../include/core/ModelLoader.h"
 
 void AngelLucy::prepare(Shader &shader) {
 
@@ -23,4 +17,3 @@ void AngelLucy::render(Shader &shader, ICamera &camera) {
 void AngelLucy::update() {
 
 }
-

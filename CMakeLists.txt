@@ -1,110 +1,26 @@
 cmake_minimum_required(VERSION 3.9)
-project(OpenGL)
+project(opengl CXX)
 set(CMAKE_CXX_STANDARD 17)
 
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lmingw32 -mwindows")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lmingw32 -mconsole")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lmingw32 -mwindows")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lmingw32 -mconsole")
 
-set(SOURCES
-        include/core/OpenGl.h
-        include/core/Graphics.h
-        include/core/BaseBuffer.h
-        include/core/Ebo.h
-        include/core/Vao.h
-        include/core/Vbo.h
-        include/core/ShaderTypes.h
-        include/core/Shader.h
-        include/core/UserInput.h
-        include/objects/AngelLucy.h
-        include/objects/BaseObject.h
-        include/objects/DynamicCamera.h
-        include/objects/BaseScene.h
-        include/objects/Scene.h
-        include/commands/MoveLeft.h
-        include/commands/MoveRight.h
-        include/commands/MoveBack.h
-        include/commands/MoveForward.h
-        include/commands/LookHorizontal.h
-        include/commands/LookVertical.h
-        include/commands/QuitCommand.h
-        include/commands/BaseInputCommand.h
-        include/commands/MoveUp.h
-        include/commands/MoveDown.h
-        include/commands/Accelerate.h
-        include/core/Transform.h
-        include/core/Mesh.h
-        include/interfaces/ITransform.h
-        include/interfaces/IMesh.h
-        include/interfaces/IDrawable.h
-        include/interfaces/ICommand.h
-        include/interfaces/IInputCommand.h
-        include/interfaces/IObject.h
-        include/interfaces/IScene.h
-        include/interfaces/ICamera.h
-        include/interfaces/IControlable.h
-        include/exceptions/ShaderProgramException.h
-        include/exceptions/ShaderProgramCreationException.h
-        include/exceptions/BaseException.h
-        include/core/Kernel.h
-        main.cpp
-        sources/OpenGl.cpp
-        sources/Ebo.cpp
-        sources/Graphics.cpp
-        sources/Vao.cpp
-        sources/Vbo.cpp
-        sources/UserInput.cpp
-        sources/AngelLucy.cpp
-        sources/DynamicCamera.cpp
-        sources/BaseObject.cpp
-        sources/BaseScene.cpp
-        sources/Scene.cpp
-        sources/QuitCommand.cpp
-        sources/LookVertical.cpp
-        sources/LucyBase.cpp
-        sources/LookHorizontal.cpp
-        sources/MoveForward.cpp
-        sources/MoveBack.cpp
-        sources/MoveRight.cpp
-        sources/MoveLeft.cpp
-        sources/BaseInputCommand.cpp
-        sources/Kernel.cpp
-        sources/MoveUp.cpp
-        sources/MoveDown.cpp
-        sources/Shader.cpp
-        sources/Accelerate.cpp
-        sources/BaseBuffer.cpp
-        sources/Mesh.cpp
-        sources/Transform.cpp
-        sources/ShaderProgramException.cpp
-        sources/ShaderProgramCreationException.cpp
-        sources/BaseException.cpp
-        include/core/ModelLoader.h
-        sources/ModelLoader.cpp
-        include/core/Model.h
-        sources/Model.cpp
-        include/core/Vertex.h
-        sources/Material.cpp
-        include/core/Material.h
-        include/interfaces/ITexture.h
-        include/interfaces/IMaterial.h
-        include/interfaces/IModel.h
-        sources/Texture.cpp
-        include/core/Texture.h sources/SkyBox.cpp include/objects/SkyBox.h sources/Fbo.cpp include/core/Fbo.h sources/ShadowMap.cpp include/core/ShadowMap.h sources/DirectionalLight.cpp include/core/DirectionalLight.h)
+file(GLOB_RECURSE HEADERS "include/*.h")
+file(GLOB_RECURSE SOURCES "source/*.cpp")
 
-add_executable(${PROJECT_NAME} ${SOURCES})
+message(${HEADERS} ${SOURCES})
 
-include_directories(
-        ${CMAKE_SOURCE_DIR}/include
-        ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/include)
+# include_directories(${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/include)
 
-find_package(OpenGL REQUIRED)
+add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
 
-target_link_libraries(
-        ${PROJECT_NAME}
-        ${OPENGL_LIBRARIES}
-        ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libSDL2main.a
-        ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libSDL2.dll.a
-        ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libSDL2_image.dll.a
-        ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libassimp.dll.a)
+# find_package(OpenGL REQUIRED)
+# find_package(Assimp REQUIRED)
+# find_package(SDL2 REQUIRED)
 
-
+target_link_libraries(${PROJECT_NAME})
+    # ${OPENGL_LIBRARIES})
+    # ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libSDL2main.a
+    # ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libSDL2.dll.a
+    # ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libSDL2_image.dll.a
+    # ${CMAKE_SOURCE_DIR}/../x86_64-w64-mingw32/lib/libassimp.dll.a)

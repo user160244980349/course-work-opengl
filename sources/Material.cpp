@@ -1,11 +1,7 @@
-//
-// Created by user on 12.01.2018.
-//
-
 #include <iostream>
-#include <objects/SkyBox.h>
-#include "core/Material.h"
 
+#include "../include/objects/SkyBox.h"
+#include "../include/core/Material.h"
 
 void Material::build(std::vector<Texture> textures) {
     _textures = std::move(textures);

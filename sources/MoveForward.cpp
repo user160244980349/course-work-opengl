@@ -1,8 +1,4 @@
-//
-// Created by user on 31.10.2017.
-//
-
-#include <objects/DynamicCamera.h>
+#include "../include/objects/DynamicCamera.h"
 
 MoveForward::MoveForward(IControlable &object) : BaseInputCommand(object) {}
 
@@ -20,4 +16,3 @@ void MoveForward::execute(SDL_Event event) {
         dynamic_cast<DynamicCamera &>(_object).moveForward();
     }
 }
-

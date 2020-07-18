@@ -1,12 +1,9 @@
-//
-// Created by user on 16.01.2018.
-//
-
-#include <core/OpenGl.h>
 #include <glm/detail/type_mat.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <core/Shader.h>
-#include "core/ShadowMap.h"
+
+#include "../include/core/OpenGl.h"
+#include "../include/core/Shader.h"
+#include "../include/core/ShadowMap.h"
 
 void ShadowMap::prepare() {
     OpenGl::getInstance().genFramebuffers(1, &_fbo);

@@ -1,18 +1,14 @@
-//
-// Created by user on 05.12.2017.
-//
-
 #include <fstream>
 #include <sstream>
 #include <iostream>
-#include <core/OpenGl.h>
 #include <glm/vec4.hpp>
 #include <glm/vec2.hpp>
 #include <glm/detail/type_mat4x4.hpp>
-#include <exceptions/ShaderProgramException.h>
-#include <exceptions/ShaderProgramCreationException.h>
-#include "core/Shader.h"
 
+#include "../include/core/OpenGl.h"
+#include "../include/core/Shader.h"
+#include "../include/exceptions/ShaderProgramException.h"
+#include "../include/exceptions/ShaderProgramCreationException.h"
 
 void Shader::compileShader(const std::string &filename, ShaderTypes type) {
 

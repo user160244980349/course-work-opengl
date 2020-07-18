@@ -1,11 +1,7 @@
-//
-// Created by user on 11.01.2018.
-//
-
 #include <utility>
 #include <iostream>
 
-#include "core/Model.h"
+#include "../include/core/Model.h"
 
 void Model::render(Shader shader, ICamera &camera) {
     for (auto &mesh : _meshes)

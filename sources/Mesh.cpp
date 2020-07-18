@@ -1,10 +1,6 @@
-//
-// Created by user on 07.12.2017.
-//
-
-#include <core/Mesh.h>
 #include <iostream>
 
+#include "../include/core/Mesh.h"
 
 void Mesh::prepare(Shader &shader) {
 

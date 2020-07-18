@@ -1,11 +1,8 @@
-//
-// Created by user on 13.01.2018.
-//
-
-#include <core/OpenGl.h>
 #include <iostream>
 #include <SDL2/SDL_image.h>
-#include "objects/SkyBox.h"
+
+#include "../include/core/OpenGl.h"
+#include "../include/objects/SkyBox.h"
 
 void SkyBox::load() {
     IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF | IMG_INIT_WEBP);

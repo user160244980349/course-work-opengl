@@ -1,31 +1,23 @@
-//
-// Created by user on 13.01.2018.
-//
-
 #ifndef OPENGL_SKYBOX_H
 #define OPENGL_SKYBOX_H
 
 
-#include <core/Texture.h>
 #include <vector>
 #include <glm/detail/type_mat4x4.hpp>
-#include <core/Vao.h>
-#include <core/Vbo.h>
-#include <interfaces/ICamera.h>
+
+#include "../core/Texture.h"
+#include "../core/Vao.h"
+#include "../core/Vbo.h"
+#include "../interfaces/ICamera.h"
 
 class SkyBox {
 public:
-
     void load();
-
     void prepare(Shader &shader);
-
     void render(Shader &shader, ICamera &camera);
-
     void bind(Shader &shader, unsigned int block);
 
 protected:
-
     std::vector<glm::vec3> _vertices = {
             // positions
             glm::vec3(-1.0f, 1.0f, -1.0f),
@@ -75,7 +67,6 @@ protected:
 
     Vao _vao;
     Vbo _vbo;
-
 };
 
 

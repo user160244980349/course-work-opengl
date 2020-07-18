@@ -1,11 +1,7 @@
-//
-// Created by user on 07.10.2017.
-//
-
-#include <core/UserInput.h>
-#include <core/Graphics.h>
-#include <core/Kernel.h>
-#include <commands/QuitCommand.h>
+#include "../include/core/UserInput.h"
+#include "../include/core/Graphics.h"
+#include "../include/core/Kernel.h"
+#include "../include/commands/QuitCommand.h"
 
 void Kernel::prepare() {
     UserInput::getInstance().addCommand(new QuitCommand());
@@ -33,4 +29,3 @@ Kernel &Kernel::getInstance() {
 }
 
 Kernel::Kernel() = default;
-

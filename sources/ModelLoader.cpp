@@ -1,12 +1,8 @@
-//
-// Created by user on 11.01.2018.
-//
-
-#include <glm/vec3.hpp>
 #include <iostream>
-#include <core/Model.h>
-#include "core/ModelLoader.h"
+#include <glm/vec3.hpp>
 
+#include "../include/core/Model.h"
+#include "../include/core/ModelLoader.h"
 
 Model ModelLoader::load(std::string path) {
 

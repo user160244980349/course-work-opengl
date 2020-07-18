@@ -1,8 +1,4 @@
-//
-// Created by user on 02.12.2017.
-//
-
-#include <objects/DynamicCamera.h>
+#include "../include/objects/DynamicCamera.h"
 
 MoveUp::MoveUp(IControlable &object) : BaseInputCommand(object) {}
 

@@ -1,8 +1,4 @@
-//
-// Created by user on 21.12.2017.
-//
-
-#include "objects/BaseScene.h"
+#include "../include/objects/BaseScene.h"
 
 unsigned int BaseScene::_count = 0;
 

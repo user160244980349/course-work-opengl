@@ -1,12 +1,8 @@
-//
-// Created by user on 27.10.2017.
-//
-
 #ifndef OPENGL_OPENGL_H
 #define OPENGL_OPENGL_H
 
-#include <GL/glcorearb.h>
 
+#include <GL/glcorearb.h>
 
 class OpenGl {
 public:

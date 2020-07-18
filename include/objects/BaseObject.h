@@ -1,25 +1,19 @@
-//
-// Created by user on 27.10.2017.
-//
-
 #ifndef OPENGL_AOBJECT_H
 #define OPENGL_AOBJECT_H
 
-#include <string>
-#include <interfaces/IObject.h>
-#include <core/Transform.h>
 
+#include <string>
+
+#include "../interfaces/IObject.h"
+#include "../core/Transform.h"
 
 class BaseObject : public IObject {
 public:
     Transform transform;
 
     BaseObject();
-
     explicit BaseObject(std::string name);
-
     std::string getName() override;
-
     unsigned int getId() override;
 
 protected:

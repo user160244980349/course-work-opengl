@@ -1,9 +1,5 @@
-//
-// Created by user on 06.12.2017.
-//
-
-#include <objects/DynamicCamera.h>
-#include "commands/Accelerate.h"
+#include "../include/objects/DynamicCamera.h"
+#include "../include/commands/Accelerate.h"
 
 Accelerate::Accelerate(IControlable &object) : BaseInputCommand(object) {}
 
@@ -20,4 +16,3 @@ void Accelerate::execute(SDL_Event event) {
         dynamic_cast<DynamicCamera &>(_object).accelerate();
     }
 }
-

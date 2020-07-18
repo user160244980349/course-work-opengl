@@ -1,14 +1,10 @@
-//
-// Created by user on 21.10.2017.
-//
-
-#include "objects/DynamicCamera.h"
+#include <functional>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/rotate_vector.hpp>
-#include <commands/Accelerate.h>
-#include <core/UserInput.h>
-#include <functional>
 
+#include "../include/core/UserInput.h"
+#include "../include/commands/Accelerate.h"
+#include "../include/objects/DynamicCamera.h"
 
 void DynamicCamera::prepare() {
     _mouseX = 0.0f;

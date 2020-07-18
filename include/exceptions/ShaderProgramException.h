@@ -1,7 +1,3 @@
-//
-// Created by user on 23.12.2017.
-//
-
 #ifndef OPENGL_SHADERPROGRAMEXCEPTION_H
 #define OPENGL_SHADERPROGRAMEXCEPTION_H
 

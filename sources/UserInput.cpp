@@ -1,10 +1,7 @@
-//
-// Created by user on 20.10.2017.
-//
-
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "core/UserInput.h"
+
+#include "../include/core/UserInput.h"
 
 UserInput::UserInput() {
 

@@ -1,7 +1,3 @@
-//
-// Created by user on 16.01.2018.
-//
-
 #ifndef OPENGL_FBO_H
 #define OPENGL_FBO_H
 
@@ -10,17 +6,11 @@
 
 class Fbo : public BaseBuffer {
 public:
-
     void create() override;
-
     void remove() override;
-
     void bind(unsigned int map);
-
     void unbind();
-
     virtual unsigned int getId();
-
 };
 
 

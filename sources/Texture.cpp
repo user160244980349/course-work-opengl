@@ -1,11 +1,8 @@
-//
-// Created by user on 12.01.2018.
-//
-
-#include <SDL2/SDL_image.h>
-#include <core/OpenGl.h>
 #include <iostream>
-#include "core/Texture.h"
+#include <SDL2/SDL_image.h>
+
+#include "../include/core/OpenGl.h"
+#include "../include/core/Texture.h"
 
 void Texture::load(std::string path, std::string name) {
 

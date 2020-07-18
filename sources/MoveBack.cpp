@@ -1,9 +1,4 @@
-//
-// Created by user on 31.10.2017.
-//
-
-#include <objects/DynamicCamera.h>
-
+#include "../include/objects/DynamicCamera.h"
 
 MoveBack::MoveBack(IControlable &object) : BaseInputCommand(object) {}
 

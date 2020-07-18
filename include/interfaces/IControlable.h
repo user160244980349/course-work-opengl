@@ -1,19 +1,15 @@
-//
-// Created by user on 21.10.2017.
-//
-
 #ifndef OPENGL_CONTROLABLEINTERFACE_H
 #define OPENGL_CONTROLABLEINTERFACE_H
 
-#include <SDL2/SDL_events.h>
-#include "IInputCommand.h"
-#include <list>
 
+#include <list>
+#include <SDL2/SDL_events.h>
+
+#include "IInputCommand.h"
 
 class IControlable {
 public:
-    virtual ~IControlable() = default;;
-
+    virtual ~IControlable() = default;
     virtual void initCommands() {};
 };
 

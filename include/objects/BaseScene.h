@@ -1,24 +1,17 @@
-//
-// Created by user on 21.12.2017.
-//
-
 #ifndef OPENGL_BASESCENE_H
 #define OPENGL_BASESCENE_H
 
 
-#include <interfaces/IScene.h>
-#include <interfaces/IObject.h>
-#include <interfaces/IDrawable.h>
+#include "../interfaces/IScene.h"
+#include "../interfaces/IObject.h"
+#include "../interfaces/IDrawable.h"
 #include "DynamicCamera.h"
 
 class BaseScene : public IScene {
 public:
     BaseScene();
-
     explicit BaseScene(std::string name);
-
     std::string getName() override;
-
     unsigned int getId() override;
 
 protected:
@@ -26,7 +19,7 @@ protected:
     unsigned int _id;
     std::string _name;
     DynamicCamera _camera;
-    std::list<IDrawable *> _objects{};
+    std::list<IDrawable *> _objects {};
 };
 
 

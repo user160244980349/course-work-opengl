@@ -1,11 +1,8 @@
-//
-// Created by user on 20.10.2017.
-//
-
-#include <SDL2/SDL.h>
-#include "core/Graphics.h"
-#include <core/OpenGl.h>
 #include <iostream>
+#include <SDL2/SDL.h>
+
+#include "../include/core/Graphics.h"
+#include "../include/core/OpenGl.h"
 
 Graphics::Graphics() {
 

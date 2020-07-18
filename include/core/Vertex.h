@@ -1,7 +1,3 @@
-//
-// Created by user on 11.01.2018.
-//
-
 #ifndef OPENGL_VERTEX_H
 #define OPENGL_VERTEX_H
 

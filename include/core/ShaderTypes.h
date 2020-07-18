@@ -1,7 +1,3 @@
-//
-// Created by user on 05.12.2017.
-//
-
 #ifndef OPENGL_SHADERTYPE_H
 #define OPENGL_SHADERTYPE_H
 

@@ -1,13 +1,9 @@
-//
-// Created by user on 20.10.2017.
-//
-
-#include <objects/DynamicCamera.h>
-#include <objects/AngelLucy.h>
-#include <objects/LucyBase.h>
 #include <functional>
-#include "objects/Scene.h"
 
+#include "../include/objects/DynamicCamera.h"
+#include "../include/objects/AngelLucy.h"
+#include "../include/objects/LucyBase.h"
+#include "../include/objects/Scene.h"
 
 void Scene::prepare() {
 

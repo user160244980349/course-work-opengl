@@ -1,14 +1,11 @@
-//
-// Created by user on 16.01.2018.
-//
-
-#include <glm/gtc/matrix_transform.hpp>
-#include <core/Shader.h>
 #include <vector>
 #include <functional>
 #include <iostream>
 #include <SDL2/SDL_timer.h>
-#include "core/DirectionalLight.h"
+#include <glm/gtc/matrix_transform.hpp>
+
+#include "../include/core/Shader.h"
+#include "../include/core/DirectionalLight.h"
 
 void DirectionalLight::prepare() {
     float near_plane = 1.0f, far_plane = 100.0f;

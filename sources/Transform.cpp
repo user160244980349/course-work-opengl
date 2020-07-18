@@ -1,9 +1,6 @@
-//
-// Created by user on 07.12.2017.
-//
-
 #include <glm/gtc/matrix_transform.hpp>
-#include "core/Transform.h"
+
+#include "../include/core/Transform.h"
 
 void Transform::translate(glm::vec3 position) {
     _model = glm::translate(_model, position);

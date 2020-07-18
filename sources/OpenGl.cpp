@@ -1,10 +1,7 @@
-//
-// Created by user on 28.10.2017.
-//
-
-#include <SDL2/SDL_video.h>
 #include <iostream>
-#include "core/OpenGl.h"
+#include <SDL2/SDL_video.h>
+
+#include "../include/core/OpenGl.h"
 
 OpenGl::OpenGl() {
 
@@ -87,4 +84,3 @@ OpenGl &OpenGl::getInstance() {
     static OpenGl instance;
     return instance;
 }
-

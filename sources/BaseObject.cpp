@@ -1,8 +1,4 @@
-//
-// Created by user on 27.10.2017.
-//
-
-#include "objects/BaseObject.h"
+#include "../include/objects/BaseObject.h"
 
 unsigned int BaseObject::_count = 0;
 
@@ -25,4 +21,3 @@ std::string BaseObject::getName() {
 unsigned int BaseObject::getId() {
     return _id;
 }
-

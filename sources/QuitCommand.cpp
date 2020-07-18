@@ -1,8 +1,4 @@
-//
-// Created by user on 31.10.2017.
-//
-
-#include "commands/QuitCommand.h"
+#include "../include/commands/QuitCommand.h"
 
 void QuitCommand::execute(SDL_Event event) {
 
@@ -10,4 +6,3 @@ void QuitCommand::execute(SDL_Event event) {
         Kernel::getInstance().stop();
 
 }
-

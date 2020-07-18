@@ -1,9 +1,5 @@
-//
-// Created by user on 16.01.2018.
-//
-
-#include <core/OpenGl.h>
-#include <core/ShadowMap.h>
+#include "../include/core/OpenGl.h"
+#include "../include/core/ShadowMap.h"
 
 void Fbo::create() {
     OpenGl::getInstance().genFramebuffers(1, &_id);

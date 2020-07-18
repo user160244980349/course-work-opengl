@@ -1,6 +1,6 @@
 
-#include <core/Graphics.h>
-#include "core/Kernel.h"
+#include "../include/core/Graphics.h"
+#include "../include/core/Kernel.h"
 
 int main(int argc, char **argv) {
 

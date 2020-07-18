@@ -1,9 +1,4 @@
-//
-// Created by user on 21.10.2017.
-//
-
-#include <objects/LucyBase.h>
-
+#include "../include/objects/LucyBase.h"
 
 void LucyBase::prepare(Shader &shader) {
 
@@ -26,4 +21,3 @@ void LucyBase::render(Shader &shader, ICamera &camera) {
 void LucyBase::update() {
 
 }
-

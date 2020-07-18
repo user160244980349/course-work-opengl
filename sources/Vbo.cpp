@@ -1,10 +1,7 @@
-//
-// Created by user on 13.10.2017.
-//
-
-#include <core/OpenGl.h>
 #include <iostream>
-#include "core/Vbo.h"
+
+#include "../include/core/OpenGl.h"
+#include "../include/core/Vbo.h"
 
 void Vbo::create() {
     OpenGl::getInstance().genBuffers(1, &_id);
