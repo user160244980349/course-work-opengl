@@ -8,9 +8,9 @@
 class IMesh {
 public:
     virtual ~IMesh() = default;
-    virtual void build(std::vector<Vertex> vertices, std::vector<unsigned int> indices, Material material) {};
-    virtual void prepare(Shader &shader) {};
-    virtual void render(Shader &shader) {};
+    virtual void build(std::vector<Vertex> vertices, std::vector<unsigned int> indices, Material material) = 0;
+    virtual void prepare(Shader &shader) = 0;
+    virtual void render(Shader &shader) = 0;
 };
 
 

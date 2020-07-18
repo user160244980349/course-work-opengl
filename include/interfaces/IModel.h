@@ -8,9 +8,9 @@
 class IModel {
 public:
     virtual ~IModel() = default;
-    virtual void build(std::vector<Mesh> meshes) {};
-    virtual void prepare(Shader shader) {};
-    virtual void render(Shader shader) {};
+    virtual void build(std::vector<Mesh> meshes) = 0;
+    virtual void prepare(Shader shader) = 0;
+    virtual void render(Shader shader) = 0;
 };
 
 

@@ -1,5 +1,5 @@
 #include <iostream>
-#include <SDL2/SDL_video.h>
+#include <SDL_video.h>
 
 #include "../include/core/OpenGl.h"
 

@@ -8,8 +8,8 @@
 class IDrawable {
 public:
     virtual ~IDrawable() = default;
-    virtual void prepare(Shader &shader) {};
-    virtual void render(Shader &shader, ICamera &camera) {};
+    virtual void prepare(Shader &shader) = 0;
+    virtual void render(Shader &shader, ICamera &camera) = 0;
 };
 
 

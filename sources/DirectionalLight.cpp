@@ -1,7 +1,7 @@
 #include <vector>
 #include <functional>
 #include <iostream>
-#include <SDL2/SDL_timer.h>
+#include <SDL_timer.h>
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "../include/core/Shader.h"

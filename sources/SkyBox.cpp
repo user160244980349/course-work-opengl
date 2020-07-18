@@ -1,5 +1,5 @@
 #include <iostream>
-#include <SDL2/SDL_image.h>
+#include <SDL_image.h>
 
 #include "../include/core/OpenGl.h"
 #include "../include/objects/SkyBox.h"

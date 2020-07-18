@@ -2,8 +2,8 @@
 #define OPENGL_QUITCOMMAND_H
 
 
-#include <interfaces/IInputCommand.h>
-#include <core/Kernel.h>
+#include "../core/Kernel.h"
+#include "../interfaces/IInputCommand.h"
 
 class QuitCommand : public IInputCommand {
 public:

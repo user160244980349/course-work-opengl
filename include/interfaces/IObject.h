@@ -8,9 +8,9 @@
 class IObject {
 public:
     virtual ~IObject() = default;;
-    virtual std::string getName() {};
-    virtual unsigned int getId() {};
-    virtual void update() {};
+    virtual std::string getName() = 0;
+    virtual unsigned int getId() = 0;
+    virtual void update() = 0;
 };
 
 

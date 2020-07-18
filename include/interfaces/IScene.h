@@ -6,12 +6,12 @@
 
 class IScene {
 public:
-    virtual ~IScene() {};
-    virtual void prepare() {};
-    virtual void render() {};
-    virtual void update() {};
-    virtual std::string getName() {};
-    virtual unsigned int getId() {};
+    virtual ~IScene() = default;
+    virtual void prepare() = 0;
+    virtual void render() = 0;
+    virtual void update() = 0;
+    virtual std::string getName() = 0;
+    virtual unsigned int getId() = 0;
 };
 
 

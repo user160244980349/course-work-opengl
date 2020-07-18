@@ -2,7 +2,7 @@
 #define OPENGL_KERNEL_H
 
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 #include "../objects/Scene.h"
 

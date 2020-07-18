@@ -3,14 +3,14 @@
 
 
 #include <list>
-#include <SDL2/SDL_events.h>
+#include <SDL_events.h>
 
 #include "IInputCommand.h"
 
 class IControlable {
 public:
     virtual ~IControlable() = default;
-    virtual void initCommands() {};
+    virtual void initCommands() = 0;
 };
 
 

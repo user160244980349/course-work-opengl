@@ -2,7 +2,7 @@
 #define OPENGL_TEXTURE_H
 
 
-#include <SDL2/SDL_surface.h>
+#include <SDL_surface.h>
 
 #include "Shader.h"
 #include "../interfaces/ITexture.h"

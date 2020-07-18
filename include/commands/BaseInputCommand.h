@@ -2,7 +2,7 @@
 #define OPENGL_AINPUTCOMMAND_H
 
 
-#include <SDL2/SDL_events.h>
+#include <SDL_events.h>
 
 #include "../interfaces/IControlable.h"
 
