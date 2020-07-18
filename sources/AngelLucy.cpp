@@ -3,7 +3,7 @@
 
 void AngelLucy::prepare(Shader &shader) {
 
-    _model = ModelLoader::getInstacne().load("Lucy/Lucy.obj");
+    _model = ModelLoader::getInstacne().load("lucy/lucy.obj");
     shader.use();
     _model.prepare(shader);
 }
