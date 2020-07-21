@@ -26,6 +26,7 @@ if(WIN32)
     find_package(SDL2 REQUIRED)
     find_package(SDL2_image REQUIRED)
     find_package(SDL2_ttf REQUIRED)
+    find_package(OpenGL REQUIRED)
 
 else(WIN32)
     find_package(PkgConfig REQUIRED)
@@ -33,10 +34,10 @@ else(WIN32)
     pkg_check_modules(SDL2IMAGE REQUIRED SDL2_image)
     pkg_check_modules(SDL2TTF REQUIRED SDL2_ttf)
     pkg_check_modules(assimp REQUIRED assimp)
+    pkg_check_modules(OPENGL REQUIRED opengl)
 
 endif(WIN32)
 
-find_package(OpenGL REQUIRED)
 
 target_include_directories(
     ${PROJECT_NAME} PUBLIC
